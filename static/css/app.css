@@ -1,0 +1,34 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #3A4B57;
+}
+
+footer {
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+td, th {
+  padding: 20px;
+  min-width: 100px;
+  text-align: center;
+}
+
+th {
+  vertical-align: bottom;
+}
+
+tr:not(:first-child) td {
+  border-top: 1px dotted black;
+}
+
+td:only-child(:first-child) {
+  border-left: 1px dotted black;
+}
