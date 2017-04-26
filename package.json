@@ -31,7 +31,7 @@
     "dev": "next dev",
     "build": "next build",
     "postinstall": "npm run build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "test": "jest",
     "pretest": "standard"
   },
