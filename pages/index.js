@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Row, Col, Button } from 'react-bootstrap'
 import Page from './../components/layouts/page.js'
 
-export default class Home extends React.Component {
+export default class extends React.Component {
   render () {
     return (
       <Page>
