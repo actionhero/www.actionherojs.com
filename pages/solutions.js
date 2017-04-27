@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Page from './../components/layouts/page.js'
+import SolutionsGrid from './../components/solutionsGrid.js'
 
 export default class extends React.Component {
   render () {
@@ -11,6 +12,8 @@ export default class extends React.Component {
             <h1>Solutions</h1>
           </Col>
         </Row>
+
+        <SolutionsGrid />
       </Page>
     )
   }

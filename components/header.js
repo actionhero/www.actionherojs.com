@@ -24,7 +24,7 @@ export default class extends React.Component {
         <Navbar collapseOnSelect inverse>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href='/'>ActionHero</a>
+              <a href='#' onClick={() => Router.push('/')}><strong>ActionHero</strong></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

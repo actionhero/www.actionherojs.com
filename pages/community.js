@@ -4,6 +4,8 @@ import Page from './../components/layouts/page.js'
 import DangerAlert from './../components/alerts/danger.js'
 import GitHub from 'github-api'
 
+import SolutionsGrid from './../components/solutionsGrid.js'
+
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
@@ -88,6 +90,8 @@ export default class extends React.Component {
             </Table>
           </Col>
         </Row>
+
+        <SolutionsGrid />
       </Page>
     )
   }
