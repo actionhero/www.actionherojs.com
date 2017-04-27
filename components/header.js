@@ -5,11 +5,14 @@ import FontAwesome from 'react-fontawesome'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 
 export default class extends React.Component {
-  isActive (path) {
+  constructor () {
+    super()
+    this.state = { activeKey: null }
+  }
+
+  componentDidMount () {
     if (!process || process.browser) {
-      if (Router.pathname === path) { return 'active' }
-    } else {
-      return null
+      this.setState({activeKey: Router.pathname})
     }
   }
 
@@ -31,19 +34,19 @@ export default class extends React.Component {
 
             <Nav pullLeft>
               <Link href='/get-started'>
-                <NavItem className={this.isActive('/get-started')}>Get Started</NavItem>
+                <NavItem className={this.state.activeKey === '/get-started' ? 'active' : null}>Get Started</NavItem>
               </Link>
 
               <Link href='/docs'>
-                <NavItem className={this.isActive('/docs')}>Documentation</NavItem>
+                <NavItem className={this.state.activeKey === '/docs' ? 'active' : null}>Documentation</NavItem>
               </Link>
 
               <Link href='/solutions'>
-                <NavItem className={this.isActive('/solutions')}>Solutions</NavItem>
+                <NavItem className={this.state.activeKey === '/solutions' ? 'active' : null}>Solutions</NavItem>
               </Link>
 
               <Link href='/community'>
-                <NavItem className={this.isActive('/community')}>Community</NavItem>
+                <NavItem className={this.state.activeKey === '/community' ? 'active' : null}>Community</NavItem>
               </Link>
             </Nav>
 
@@ -53,7 +56,7 @@ export default class extends React.Component {
               </NavItem>
 
               <Link href='/downloads'>
-                <NavItem className={this.isActive('/downloads')}>Downloads</NavItem>
+                <NavItem className={this.state.activeKey === '/downloads' ? 'active' : null}>Downloads</NavItem>
               </Link>
             </Nav>
           </Navbar.Collapse>

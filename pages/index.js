@@ -25,7 +25,7 @@ export default class extends React.Component {
               <em>words</em>
             </p>
             <div style={{textAlign: 'center', width: '100%', padding: 50}}>
-              <Link href='/get'>
+              <Link href='/get-started'>
                 <a>
                   <Button style={{maxWidth: 400, margin: '0 auto'}} bsStyle='primary' bsSize='large' block>button</Button>
                 </a>
