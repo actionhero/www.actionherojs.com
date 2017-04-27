@@ -12,7 +12,7 @@ export default class extends React.Component {
         <hr />
         <div className='row'>
           <div className='col-md-12'>
-            <p className='text-muted _footer-date'>
+            <p className='text-muted _footer'>
               A <a target='_blank' href='https://www.delicioushat.com'> Delicious Hat</a> Thingamagig, { String.fromCharCode(169) + ' ' + this.state.date.getFullYear() }
             </p>
             <img style={{width: 50, padding: 10}} alt='delicious hat log' src='/static/images/delicious_hat.png' />
