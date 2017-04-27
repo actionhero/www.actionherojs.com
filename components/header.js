@@ -48,12 +48,12 @@ export default class extends React.Component {
             </Nav>
 
             <Nav pullRight>
-              <NavItem onClick={() => { window.location.href = 'https://twitter.com/actionherojs' }}>
+              <NavItem className='_twitterLink' onClick={() => { window.location.href = 'https://twitter.com/actionherojs' }}>
                 <FontAwesome name='twitter' />
               </NavItem>
 
-              <Link href='/download'>
-                <NavItem className={this.isActive('/download')}>Download</NavItem>
+              <Link href='/downloads'>
+                <NavItem className={this.isActive('/downloads')}>Downloads</NavItem>
               </Link>
             </Nav>
           </Navbar.Collapse>

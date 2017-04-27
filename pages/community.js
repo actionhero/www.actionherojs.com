@@ -1,15 +1,34 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Table } from 'react-bootstrap'
 import Page from './../components/layouts/page.js'
-import GithubReleasesList from '../components/github/releasesList.js'
+import DangerAlert from './../components/alerts/danger.js'
+import GitHub from 'github-api'
+
+const github = new GitHub()
+const repository = github.getRepo('actionhero', 'actionhero')
 
 export default class extends React.Component {
+  static async getInitialProps () {
+    let error
+    let releases = []
+
+    try {
+      let response = await repository.listReleases()
+      releases = response.data
+    } catch (e) {
+      error = e
+    }
+
+    return { releases, error }
+  }
+
   render () {
     return (
       <Page>
         <Row>
           <Col md={12} style={{textAlign: 'center'}}>
             <h1>Team Up</h1>
+            <DangerAlert message={this.props.error} />
           </Col>
 
           <Col md={12}>
@@ -32,7 +51,7 @@ export default class extends React.Component {
 
           <Col md={12}>
             <h2>
-              <a target='_blank' href='https://github.com/actionhero/actionhero'>Github</a>
+              <a target='_blank' href='https://github.com/actionhero/actionhero'>GitHub</a>
             </h2>
           </Col>
 
@@ -40,7 +59,33 @@ export default class extends React.Component {
 
           <Col md={12}>
             <h3>Recent Releases</h3>
-            <GithubReleasesList />
+            <Table striped bordered condensed hover>
+              <thead>
+                <tr>
+                  <th>Version</th>
+                  <th>Release Date</th>
+                  <th>Name</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.props.releases.map((release) => {
+                    let date = new Date(release.published_at)
+                    let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+
+                    return (
+                      <tr key={release.tag_name}>
+                        <td><strong>{release.tag_name}</strong></td>
+                        <td>{dateString}</td>
+                        <td>{release.name}</td>
+                        <td><a target='_blank' href={release.html_url}>Learn More</a></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </Page>
