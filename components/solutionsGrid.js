@@ -1,13 +1,60 @@
 import React from 'react'
 import Link from 'next/link'
-import { Row, Col, Panel, Button } from 'react-bootstrap'
+import { Row, Col, Panel, Button, Modal, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
+import SuccessAlert from './alerts/success.js'
+
+function FieldGroup ({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  )
+}
 
 export default class extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      showModal: false,
+      successMessage: null
+    }
+  }
+
+  showModal () {
+    this.setState({showModal: true})
+  }
+
+  hideModal () {
+    this.setState({showModal: false})
+  }
+
+  // handleChange (event) {
+  //   let change = {}
+  //   change[event.target.id] = event.target.value
+  //   this.setState(change)
+  // }
+
+  // submitForm () {
+  //   fetch(this.state.url, {
+  //     method: 'POST',
+  //     body: new FormData(this.state)
+  //   }).then((response) => {
+  //     console.log(response)
+  //     this.setState({
+  //       showModal: false,
+  //       successMessage: 'Thank You.  We will be in touch soon!'
+  //     })
+  //   })
+  // }
+
   render () {
     return (
       <Row>
         <Col md={12}>
           <hr />
+          <SuccessAlert message={this.state.successMessage} />
         </Col>
 
         <Col md={4}>
@@ -40,7 +87,7 @@ export default class extends React.Component {
               <li>We have packages appropriate for all company sizes.  Contact us to learn more.</li>
             </ul>
 
-            <Button style={{maxWidth: 400, margin: '0 auto'}} bsStyle='primary' bsSize='large' block>Contact Us</Button>
+            <Button onClick={this.showModal.bind(this)} style={{maxWidth: 400, margin: '0 auto'}} bsStyle='primary' bsSize='large' block>Contact Us</Button>
           </Panel>
         </Col>
 
@@ -54,9 +101,30 @@ export default class extends React.Component {
               <li>...and custom development against Actionhero’s core as needed.</li>
             </ul>
 
-            <Button style={{maxWidth: 400, margin: '0 auto'}} bsStyle='success' bsSize='large' block>Contact Us</Button>
+            <Button onClick={this.showModal.bind(this)} style={{maxWidth: 400, margin: '0 auto'}} bsStyle='success' bsSize='large' block>Contact Us</Button>
           </Panel>
         </Col>
+
+        <Modal show={this.state.showModal} onHide={this.hideModal.bind(this)}>
+          <form action='//delicioushat.us15.list-manage.com/subscribe/post?u=bbdc9a683c995f14392f649f4&amp;id=b2867a5444' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' className='validate' target='_blank' noValidate>
+            <Modal.Header>
+              <Modal.Title>ActionHero Professional Services</Modal.Title>
+              <FieldGroup name='NAME' id='mce-NAME' type='text' label='Name' placeholder='Enter your name' />
+              <FieldGroup name='COMPANY' id='mce-COMPANY' type='text' label='Company' placeholder='Your company' />
+              <FieldGroup name='EMAIL' id='mce-EMAIL' type='email' label='Email address' placeholder='Enter email' />
+              <FieldGroup name='PHONE' id='mce-PHONE' type='text' label='Phone Number' placeholder='xxx.xxx.xxxx' />
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>The ActionHero team is looking forward to working with you.  We will respond to your inquiry within 2 busniess days.</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button onClick={this.hideModal.bind(this)}>Close</Button>
+              <Button type='submit' bsStyle='primary'>Submit</Button>
+            </Modal.Footer>
+          </form>
+        </Modal>
       </Row>
     )
   }
