@@ -124,8 +124,8 @@ export default class extends React.Component {
 
         <Row>
           <Col md={12}>
-            <h1 id='getting-started' class='page-header'>Getting Started</h1>
-            <h2 id='requirements'>Requirements</h2>
+            <h1>Getting Started</h1>
+            <h2>Requirements</h2>
 
             <ul>
               <li>node.js ( >= v4.0.0)</li>
