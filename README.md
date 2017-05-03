@@ -1,9 +1,9 @@
-# www.scoreboard.guru
+# www.actionherojs.com
 
 [![Build Status](https://travis-ci.org/actionhero/www.actionherojs.com.svg?branch=master)](https://travis-ci.org/actionhero/www.actionherojs.com)
 
 ## Install
-This is a [React Project](https://facebook.github.io/react/) utilizing next.js
+This is a [React Project](https://facebook.github.io/react/) utilizing [next.js]()
 
 - `npm install`
 
@@ -18,3 +18,7 @@ This is a [React Project](https://facebook.github.io/react/) utilizing next.js
 ## Lint
 
 We use [Standard](https://github.com/feross/standard) for linting
+
+## CSS
+
+http://bootstrap-live-customizer.com/

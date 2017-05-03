@@ -20,7 +20,7 @@ export default class extends React.Component {
           <link rel='icon' href='/static/images/icons/favicon-96x96.png' type='image/png' />
 
           <meta name='viewport' content='width=device-width' />
-          <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css' />
+          <link rel='stylesheet' type='text/css' href='/static/css/theme.min.css' />
           <link rel='stylesheet' type='text/css' href='/static/css/app.css' />
           <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' />
 

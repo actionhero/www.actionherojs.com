@@ -1,6 +1,6 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { docco } from 'react-syntax-highlighter/dist/styles'
+import { github } from 'react-syntax-highlighter/dist/styles'
 
 export default class extends React.Component {
   render () {
@@ -10,7 +10,7 @@ export default class extends React.Component {
     return (
       <SyntaxHighlighter
         language={language}
-        style={docco}
+        style={github}
         showLineNumbers={showLineNumbers}
       >
         { this.props.children }
