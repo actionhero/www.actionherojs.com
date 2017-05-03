@@ -18,9 +18,7 @@ export default class extends React.Component {
 
           <Col md={3} className='hidden-sm hidden-xs'>
             <div style={{position: 'fixed'}} >
-              <p>
-                <h3>{title}</h3>
-              </p>
+              <h3>{title}</h3>
 
               <ol>
                 {
