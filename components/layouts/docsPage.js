@@ -13,7 +13,9 @@ export default class extends React.Component {
       <Page>
         <Row>
           <Col md={9}>
-            { this.props.children }
+            <div>
+              { this.props.children }
+            </div>
           </Col>
 
           <Col md={3} className='hidden-sm hidden-xs'>

@@ -21,7 +21,7 @@ export default class extends React.Component {
       <div>
         <br />
 
-        <Navbar collapseOnSelect inverse>
+        <Navbar collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href='#' onClick={() => Router.push('/')}><strong>ActionHero</strong></a>
@@ -58,6 +58,8 @@ export default class extends React.Component {
               <Link href='/downloads'>
                 <NavItem className={this.state.activeKey === '/downloads' ? 'active' : null}>Downloads</NavItem>
               </Link>
+
+              <NavItem />
             </Nav>
           </Navbar.Collapse>
         </Navbar>
