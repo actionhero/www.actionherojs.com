@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { Grid, Row, Col } from 'react-bootstrap'
+import Theme from './theme.js'
+import StarAndLogo from './elements/starAndLogo.js'
 
 const footerLinkStyle = {
-  color: 'white'
+  color: Theme.colors.yellow
 }
 
 export default class extends React.Component {
@@ -15,22 +17,23 @@ export default class extends React.Component {
   render () {
     return (
       <footer id='footer-container' style={{
-        backgroundColor: 'rgb(62, 83, 101)',
-        color: '#EEEEEE',
+        backgroundColor: '#2F5266',
+        color: Theme.colors.yellow,
+        fontFamily: Theme.fonts.main,
+        fontWeight: 300,
         padding: 20
       }}>
         <Grid>
           <Row style={{paddingBottom: 40}}>
             <Col md={12}>
-              <img src='/static/images/actionhero-logo-footer.svg' style={{float: 'left', marginTop: 10}} />
-              <h2 style={{color: 'white', float: 'left', paddingLeft: 20}}>ACTIONHERO</h2>
+              <StarAndLogo />
             </Col>
           </Row>
 
           <Row>
             <Col md={4}>
               <p><Link href='/terms'><a style={footerLinkStyle}>Terms</a></Link></p>
-              <p>Contact us at <a href='mailto:hello@actionherojs.com'>hello@actionherojs.com</a></p>
+              <p>Contact us at <a style={{color: Theme.colors.yellow, fontWeight: 500}} href='mailto:hello@actionherojs.com'>hello@actionherojs.com</a></p>
               <p><Link href='https://medium.com/tag/actionherojs'><a target='_new' style={footerLinkStyle}>Blogs</a></Link></p>
               <p>{ String.fromCharCode(169) + ' ' + this.state.date.getFullYear() } ActionHero</p>
             </Col>
