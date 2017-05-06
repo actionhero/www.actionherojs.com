@@ -7,9 +7,8 @@ import Footer from '../../components/footer.js'
 describe('Footer', () => {
   it('renders the date and body content', () => {
     let page = TestUtils.renderIntoDocument(<Footer />)
-    let content = TestUtils.findRenderedDOMComponentWithClass(page, '_footer')
-    let body = ReactDOM.findDOMNode(content).textContent
+    let body = ReactDOM.findDOMNode(page).textContent
     expect(body).toContain(new Date().getFullYear())
-    expect(body).toContain('Thingamagig')
+    expect(body).toContain('Contact us')
   })
 })
