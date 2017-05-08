@@ -1,8 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import FontAwesome from 'react-fontawesome'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap'
+
+import StarAndLogo from './elements/starAndLogo.js'
+import Theme from './theme.js'
 
 export default class extends React.Component {
   constructor () {
@@ -16,55 +18,74 @@ export default class extends React.Component {
     }
   }
 
+  linkStyle (matchKey) {
+    let color = Theme.colors.white
+    if (this.state.activeKey && this.state.activeKey.match(matchKey)) {
+      color = Theme.colors.red
+    }
+
+    return {
+      paddingTop: 8,
+      fontWeight: 500,
+      color: color,
+      float: 'left'
+    }
+  }
+
   render () {
     return (
-      <div>
-        <br />
+      <header style={{
+        backgroundColor: Theme.colors.blue
+      }}>
+        <Grid>
 
-        <Navbar collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href='#' onClick={() => Router.push('/')}><strong>ActionHero</strong></a>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
+          <Navbar style={{
+            backgroundColor: Theme.colors.blue,
+            paddingTop: 5,
+            border: 0
+          }}>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Link href='/'>
+                  <a><StarAndLogo /></a>
+                </Link>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
 
-          <Navbar.Collapse>
-            <Nav pullRight />
+            <Navbar.Collapse>
+              <Nav pullRight />
 
-            <Nav pullLeft>
-              <Link href='/get-started'>
-                <NavItem className={this.state.activeKey === '/get-started' ? 'active' : null}>Get Started</NavItem>
-              </Link>
+              <Nav pullLeft>
+                <Link href='/get-started'>
+                  <NavItem><span style={this.linkStyle('/get-started')}>Get Started</span></NavItem>
+                </Link>
 
-              <Link href='/docs'>
-                <NavItem className={this.state.activeKey === '/docs' ? 'active' : null}>Documentation</NavItem>
-              </Link>
+                <Link href='/docs'>
+                  <NavItem><span style={this.linkStyle('/docs')}>Documentation</span></NavItem>
+                </Link>
 
-              <Link href='/solutions'>
-                <NavItem className={this.state.activeKey === '/solutions' ? 'active' : null}>Solutions</NavItem>
-              </Link>
+                <Link href='/solutions'>
+                  <NavItem><span style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
+                </Link>
 
-              <Link href='/community'>
-                <NavItem className={this.state.activeKey === '/community' ? 'active' : null}>Community</NavItem>
-              </Link>
-            </Nav>
+                <Link href='/community'>
+                  <NavItem><span style={this.linkStyle('/community')}>Community</span></NavItem>
+                </Link>
+              </Nav>
 
-            <Nav pullRight>
-              <NavItem className='_twitterLink' onClick={() => { window.location.href = 'https://twitter.com/actionherojs' }}>
-                <FontAwesome name='twitter' />
-              </NavItem>
+              <Nav pullRight>
+                <Link href='/downloads'>
+                  <NavItem><span style={this.linkStyle('/downloads')}>Downloads</span></NavItem>
+                </Link>
 
-              <Link href='/downloads'>
-                <NavItem className={this.state.activeKey === '/downloads' ? 'active' : null}>Downloads</NavItem>
-              </Link>
+                <NavItem />
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
 
-              <NavItem />
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-
-      </div>
+        </Grid>
+      </header>
     )
   }
 }

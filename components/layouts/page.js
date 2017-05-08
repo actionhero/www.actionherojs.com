@@ -21,6 +21,7 @@ export default class extends React.Component {
 
           <meta name='viewport' content='width=device-width' />
           <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css' />
+          <link rel='stylesheet' type='text/css' href='/static/css/animations.css' />
           <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Roboto:100,300,400,500,700,900' rel='stylesheet' />
 
           <title>ActionHero</title>
@@ -28,15 +29,17 @@ export default class extends React.Component {
           <script src='/static/js/googleAnalytics.js' />
         </Head>
 
-        <Grid fluid>
-          <Row>
-            <Col md={12}>
-              <Header />
-            </Col>
-          </Row>
+        <Grid fluid style={{
+          paddingLeft: 0,
+          paddingRight: 0
+        }}>
+          <Header />
         </Grid>
 
-        <Grid>
+        <Grid fluid style={{
+          paddingLeft: 0,
+          paddingRight: 0
+        }}>
           { this.props.children }
         </Grid>
 
@@ -44,11 +47,7 @@ export default class extends React.Component {
           paddingLeft: 0,
           paddingRight: 0
         }}>
-          <Row>
-            <Col md={12}>
-              <Footer />
-            </Col>
-          </Row>
+          <Footer />
         </Grid>
 
       </div>

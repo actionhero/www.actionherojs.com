@@ -1,0 +1,18 @@
+.hover-jetpack {
+  animation: hover-jetpack 3s ease-in-out infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes hover-jetpack {
+  0 {
+    bottom: 0;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
