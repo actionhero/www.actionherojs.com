@@ -14,7 +14,7 @@ export default class FeatureBox extends React.Component {
         {
           this.props.code
           ? <OverlayTrigger trigger={['hover', 'focus', 'click']} placement='top' overlay={
-            <Popover title='Code Sample' style={{maxWidth: 500}}>
+            <Popover id={`popover-${this.props.title}`} title='Code Sample' style={{maxWidth: 500}}>
               <Code language='javascript'>{this.props.code}</Code>
             </Popover>
           }>
