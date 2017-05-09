@@ -350,7 +350,7 @@ export default class extends React.Component {
           color: Theme.colors.lightGray,
           fontWeight: 200,
           paddingBottom: 50,
-          backgroundImage: 'url("/static/images/starburst.svg")',
+          backgroundImage: 'url("/static/images/starburst.png")',
           backgroundSize: '100% 100%'
         }}>
           <Grid>
