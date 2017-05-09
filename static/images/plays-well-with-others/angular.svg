@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="47px" viewBox="0 0 45 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 47</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="44.9013551 0 0.316336594 0 0.316336594 46.999765 44.9013551 46.999765 44.9013551 0"></polygon>
+    </defs>
+    <g id="Design-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-47" transform="translate(-1.000000, 0.000000)">
+            <g id="Group-55" transform="translate(0.662732, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-54"></g>
+                <polygon id="Fill-53" fill="#E13336" mask="url(#mask-2)" points="0.316336594 7.790015 22.3133147 -0.000235 44.9013551 7.651365 41.243861 36.57869 22.3133147 46.999765 3.67711737 36.71734"></polygon>
+            </g>
+            <polygon id="Fill-56" fill="#B52F31" points="45.5645599 7.6516 22.9753373 0 22.9753373 47 41.9070658 36.59655"></polygon>
+            <path d="M23.0454373,15.1992125 L27.6781843,24.8248125 L23.2369415,24.8248125 L23.0111556,24.8248125 L18.969471,24.8248125 L23.0454373,15.1992125 Z M23.0111556,5.4878375 L23.0111556,5.4878375 L9.30441872,35.7993125 L14.4242012,35.7135375 L17.1761877,28.8750375 L23.0277054,28.8750375 L23.0454373,28.8750375 L29.4714676,28.8750375 L32.4847037,35.7993125 L37.3787003,35.8862625 L23.0111556,5.4878375 Z" id="Fill-58" fill="#FEFEFE"></path>
+        </g>
+    </g>
+</svg>

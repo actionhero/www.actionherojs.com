@@ -95,7 +95,7 @@ export default class extends React.Component {
             <Row style={{paddingTop: 60, paddingBottom: 80}}>
               <Col md={1} />
               <Col md={1}>
-                <img src='/static/images/cloud.svg' />
+                <img src='/static/images/cloud.svg' className='animated-clouds-left' />
               </Col>
               <Col md={1} />
 
@@ -116,7 +116,7 @@ export default class extends React.Component {
               </Col>
 
               <Col md={1}>
-                <img style={{marginTop: 30}} src='/static/images/cloud.svg' />
+                <img style={{marginTop: 30}} src='/static/images/cloud.svg' className='animated-clouds-right' />
               </Col>
               <Col md={1}>
                 <img style={{marginTop: -30}} src='/static/images/cloud.svg' />
@@ -145,7 +145,7 @@ export default class extends React.Component {
             <Row>
               <Col md={1} />
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/jetpack-lady.svg' className='hover-jetpack' />
+                <img src='/static/images/jetpack-lady.svg' className='animated-hover-jetpack' />
               </Col>
               <Col md={1} />
               <Col md={6} style={{textAlign: 'center'}}>
@@ -201,9 +201,26 @@ export default class extends React.Component {
               <Col md={1} />
             </Row>
             <Row style={{paddingTop: 50, paddingBottom: 100}}>
-              <Col md={12} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with.svg' />
+              <Col md={3} />
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/electron.svg' />
               </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/angular.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/swift.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/elasticsearch.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/redis.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/plays-well-with-others/npm.svg' />
+              </Col>
+              <Col md={3} />
             </Row>
           </Grid>
         </div>
@@ -211,7 +228,8 @@ export default class extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.yellow,
           color: Theme.colors.lightGray,
-          fontWeight: 200
+          fontWeight: 200,
+          paddingBottom: 50
         }}>
           <Grid>
             <Row style={{paddingTop: 50}}>
@@ -291,7 +309,72 @@ export default class extends React.Component {
           </Grid>
         </div>
 
+        <div style={{
+          backgroundColor: Theme.colors.white,
+          color: Theme.colors.lightGray
+        }}>
+          <Grid>
+            <Row style={{paddingTop: 100}}>
+              <Col md={3} />
+              <Col md={6} style={{textAlign: 'center'}}>
+                <h1>Trusted by Top Compaines and Orginizations</h1>
+              </Col>
+              <Col md={3} />
+            </Row>
+            <Row style={{paddingTop: 50, paddingBottom: 100}}>
+              <Col md={1} />
+              <Col md={3} style={{textAlign: 'center'}}>
+                <img src='/static/images/companies/taskrabbit.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/companies/riot-games.svg' />
+              </Col>
+              <Col md={2} style={{textAlign: 'center'}}>
+                <img src='/static/images/companies/samsung.svg' />
+              </Col>
+              <Col md={1} style={{textAlign: 'center'}}>
+                <img src='/static/images/companies/va.svg' />
+              </Col>
+              <Col md={2} style={{textAlign: 'center'}}>
+                <img src='/static/images/companies/madglory.svg' />
+              </Col>
+              <Col md={1} />
+            </Row>
+          </Grid>
+        </div>
+
         <SolutionsGrid />
+
+        <div style={{
+          backgroundColor: Theme.colors.yellow,
+          color: Theme.colors.lightGray,
+          fontWeight: 200,
+          paddingBottom: 50,
+          backgroundImage: 'url("/static/images/starburst.svg")',
+          backgroundSize: '100% 100%'
+        }}>
+          <Grid>
+            <Row style={{paddingTop: 50}}>
+              <Col md={2} />
+              <Col md={8} style={{textAlign: 'center'}}>
+                <h1>Ready to take your development to the next level?</h1>
+                <br />
+              </Col>
+              <Col md={2} />
+            </Row>
+
+            <Row>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <Link href='/get-started'>
+                  <a>
+                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsStyle='primary' bsSize='large' block>Get Started</Button>
+                  </a>
+                </Link>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+
       </Page>
     )
   }
