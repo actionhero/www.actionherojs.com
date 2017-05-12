@@ -130,15 +130,11 @@ export default class extends React.Component {
           </Grid>
         </div>
 
-        <Row>
-          <Col md={12}>
-            <div style={{
-              height: 229,
-              backgroundColor: Theme.colors.blue,
-              backgroundImage: 'url("/static/images/clouds.svg")'
-            }} />
-          </Col>
-        </Row>
+        <div style={{
+          height: 229,
+          backgroundColor: Theme.colors.blue,
+          backgroundImage: 'url("/static/images/clouds.svg")'
+        }} />
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
