@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
-import Theme from './../components/theme.js'
+// import Theme from './../components/theme.js'
 import Code from './../components/code.js'
 import SectionHeader from './../components/elements/sectionHeader.js'
 

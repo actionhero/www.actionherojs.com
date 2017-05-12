@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import Waypoint from 'react-waypoint'
 
 import Page from './page.js'
 import Theme from './../theme.js'
@@ -8,51 +7,7 @@ import Theme from './../theme.js'
 import SolutionsGrid from './../solutionsGrid.js'
 import SiteSearch from './../elements/siteSearch.js'
 
-let ScrollSpy = ({ href, onBefore, onAfter }) => (
-  <Waypoint
-    onEnter={({ previousPosition }) => (
-      previousPosition === Waypoint.above && onBefore(href)
-    )}
-    onLeave={({ currentPosition }) => (
-      currentPosition === Waypoint.above && onAfter(href)
-    )}
-    topOffset={10}
-    bottomOffset={-10}
-  />
-)
-
 export default class extends React.Component {
-  renderScrollSpy (href) {
-    return (
-      <ScrollSpy
-        href={href}
-        onBefore={this.onBefore}
-        onAfter={this.onAfter}
-      />
-    )
-  }
-
-  onBefore (href) {
-    this.afterSections[href] = false
-    this.updateActiveHref()
-  }
-
-  onAfter (href) {
-    this.afterSections[href] = true
-    this.updateActiveHref()
-  }
-
-  updateActiveHref () {
-    if (this.updateActiveHrefHandle != null) {
-      return
-    }
-
-    this.updateActiveHrefHandle = setTimeout(() => {
-      this.updateActiveHrefHandle = null
-      this.setActiveNavItem()
-    })
-  }
-
   render () {
     let contentColWidth = 12
     if (this.props.sideNav) { contentColWidth = 9 }

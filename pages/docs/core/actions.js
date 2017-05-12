@@ -1,8 +1,9 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
-import Page from './../../../components/layouts/page.js'
+import DocsPage from './../../../components/layouts/docsPage.js'
 
 import Code from './../../../components/code.js'
+import SectionHeader from './../../../components/elements/sectionHeader.js'
 
 const SimpleAction = `// A Simple Action //
 
@@ -84,8 +85,7 @@ const VersionRoutes = `exports.routes = {
 };
 `
 
-const Options = `
-exports.action = {
+const Options = `exports.action = {
   // the action's name (the \`exports\` key doesn't matter)
   name: 'randomNumber',
   // the description
@@ -129,8 +129,7 @@ exports.action = {
 }
 `
 
-const Inputs = `
-action.inputs = {
+const Inputs = `action.inputs = {
   // a simple input
   // defaults assume required = false
   minimalInput: {}
@@ -168,8 +167,7 @@ action.inputs = {
 };
 `
 
-const MoneyInCents = `
-moneyInCents: {
+const MoneyInCents = `moneyInCents: {
   required:  true,
   default:   function(p){ return 0; },
   formatter: function(p){ return parseFloat(p); },
@@ -180,8 +178,7 @@ moneyInCents: {
   },
 }`
 
-const CacheTest = `
-exports.cacheTest = {
+const CacheTest = `exports.cacheTest = {
   name: 'cacheTest',
   description: 'I will test the internal cache functions of the API',
   outputExample: {},
@@ -209,8 +206,7 @@ exports.cacheTest = {
   }
 };`
 
-const UniqueKeyName = `
-module.exports = {
+const UniqueKeyName = `module.exports = {
   initialize: function(api, next){
     api.formatter = {
       uniqueKeyName: function(key){
@@ -222,8 +218,7 @@ module.exports = {
   },
 };`
 
-const SchemaInput = `
-exports.addUser = {
+const SchemaInput = `exports.addUser = {
   name: 'api/addUser',
   description: 'I add user',
 
@@ -248,8 +243,7 @@ exports.addUser = {
   run: () => {},
 }`
 
-const DataObject = `
-data = {
+const DataObject = `data = {
   connection: connection,
   action: 'randomNumber',
   toProcess: true,
@@ -263,16 +257,46 @@ data = {
 export default class extends React.Component {
   render () {
     return (
-      <Page>
-        <Row>
-          <Col md={12} style={{textAlign: 'center'}}>
-            <h1>Documentation > Core > Actions</h1>
-          </Col>
-        </Row>
+      <DocsPage
+        sideNav={[
+          {
+            label: 'General',
+            key: '#general'
+          },
+          {
+            label: 'Versions',
+            key: '#versions'
+          },
+          {
+            label: 'Options',
+            key: '#options'
+          },
+          {
+            label: 'Inputs',
+            key: '#inputs'
+          },
+          {
+            label: 'The Data Object',
+            key: '#the-data-object'
+          },
+          {
+            label: 'Middleware',
+            key: '#middleware'
+          },
+          {
+            label: 'Notes',
+            key: '#notes'
+          }
+        ]}
 
+        titleSection={{
+          title: 'Core > Actions',
+          icon: '/static/images/easy-to-use-actions.svg'
+        }}
+        >
         <Row>
           <Col md={12}>
-            <h2>General</h2>
+            <SectionHeader id='general'>General</SectionHeader>
 
             <Code>{SimpleAction}</Code>
 
@@ -284,7 +308,7 @@ export default class extends React.Component {
 
             <Code>{CompoundAction}</Code>
 
-            <h2>Versions</h2>
+            <SectionHeader id='versions'>Versions</SectionHeader>
 
             <p>ActionHero supports multiple versions of the same action.  This will allow you to support actions/routes of the same name with upgraded functionality.</p>
 
@@ -300,13 +324,13 @@ export default class extends React.Component {
 
             <p><em>As a note, if a client accessing ActionHero via routes does not provide an apiVersion and it is explicitly defined in the route, the highest number will not be assigned automatically, and will be seen as a routing error.</em></p>
 
-            <h2>Options</h2>
+            <SectionHeader id='options'>Options</SectionHeader>
 
             <Code>{Options}</Code>
 
             <p>The complete set of options an action can have are:</p>
 
-            <h2>Inputs</h2>
+            <SectionHeader id='inputs'>Inputs</SectionHeader>
 
             <Code>{Inputs}</Code>
 
@@ -390,7 +414,7 @@ export default class extends React.Component {
 
             <Code>{SchemaInput}</Code>
 
-            <h2>The Data Object</h2>
+            <SectionHeader id='the-data-object'>The Data Object</SectionHeader>
 
             <Code>{DataObject}</Code>
 
@@ -399,12 +423,12 @@ export default class extends React.Component {
             <p>You can also modify properties of the connection by accessing <code>data.connection</code>, IE changing the response header for a HTTP request.</p>
             <p>If you don't want your action to respond to the client, or you have already sent data to the client (perhaps you already rendered a file to them or sent an error HTTP header), you can set <code>data.toRender = false;</code></p>
 
-            <h2>Using Middleware in Actions</h2>
+            <SectionHeader id='middleware'>Using Middleware in Actions</SectionHeader>
 
             <p>You can create middlware which would apply to the connection both before and after an action.  Middleware can be either global (applied to all actions) or local, specified in each action via <code>action.middleware = []</code>.  Supply the <code>names</code> of any middleware you want to use.</p>
             <p>You can <a href='/docs/core/#middleware'>learn more about middleware here</a>.</p>
 
-            <h2>Notes</h2>
+            <SectionHeader id='notes'>Notes</SectionHeader>
 
             <ul>
               <li>Actions are asynchronous, and require in the API object, the <code>data</code> object, and the callback function.  Completing an action is as simple as calling <code>next(error)</code>.  If you have an error, be sure that it is a <code>new Error()</code> object, and not a string.</li>
@@ -423,7 +447,7 @@ export default class extends React.Component {
 
           </Col>
         </Row>
-      </Page>
+      </DocsPage>
     )
   }
 }
