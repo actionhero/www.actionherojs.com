@@ -21,7 +21,9 @@ export default {
         margin: '0 auto',
         color: color,
         backgroundColor: backgroundColor,
-        borderColor: backgroundColor
+        borderColor: backgroundColor,
+        marginTop: 20,
+        marginBottom: 20
       }
     }
   }

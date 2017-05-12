@@ -25,10 +25,9 @@ export default class extends React.Component {
     }
 
     return {
-      paddingTop: 8,
       fontWeight: 500,
-      color: color,
-      float: 'left'
+      lineHeight: 3,
+      color: color
     }
   }
 

@@ -67,6 +67,10 @@ client.on('message', (message) => alert(message))
 `
 }
 
+let smallIconStyle = {
+  padding: 30
+}
+
 export default class extends React.Component {
   render () {
     return (
@@ -192,33 +196,33 @@ export default class extends React.Component {
               <Col md={3} />
               <Col md={6} style={{textAlign: 'center'}}>
                 <h1>Plays Well With Others</h1>
-                <h3 style={{fontWeight: 200}}>Use ActionHero around your workflow <br />and preferred tools.</h3>
+                <h3 style={{fontWeight: 200}}>Use ActionHero around <em>your</em> workflow and preferred tools.</h3>
               </Col>
               <Col md={1} />
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/flying-man.svg' />
+                <img style={smallIconStyle} src='/static/images/flying-man.svg' />
               </Col>
               <Col md={1} />
             </Row>
-            <Row style={{paddingTop: 50, paddingBottom: 100}}>
+            <Row style={{paddingTop: 20, paddingBottom: 60}}>
               <Col md={3} />
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/electron.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/angular.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/angular.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/swift.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/swift.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/elasticsearch.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/elasticsearch.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/redis.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/redis.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/plays-well-with-others/npm.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/npm.svg' />
               </Col>
               <Col md={3} />
             </Row>
@@ -324,19 +328,19 @@ export default class extends React.Component {
             <Row style={{paddingTop: 50, paddingBottom: 100}}>
               <Col md={1} />
               <Col md={3} style={{textAlign: 'center'}}>
-                <img src='/static/images/companies/taskrabbit.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/taskrabbit.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/companies/riot-games.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
               </Col>
               <Col md={2} style={{textAlign: 'center'}}>
-                <img src='/static/images/companies/samsung.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/samsung.svg' />
               </Col>
               <Col md={1} style={{textAlign: 'center'}}>
-                <img src='/static/images/companies/va.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/va.svg' />
               </Col>
               <Col md={2} style={{textAlign: 'center'}}>
-                <img src='/static/images/companies/madglory.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/madglory.svg' />
               </Col>
               <Col md={1} />
             </Row>

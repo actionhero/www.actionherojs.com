@@ -80,7 +80,38 @@ export default class extends React.Component {
               </div>
             </Col>
 
-            <Col md={4}>
+            <Col md={4} className='hidden-md hidden-lg hidden-xl'>
+              <div style={{
+                width: '100%',
+                padding: 20,
+                backgroundColor: Theme.colors.blue,
+                color: Theme.colors.yellow,
+                boxShadow: '3px 3px 5px #222222'
+              }}>
+                <div style={{textAlign: 'center'}}>
+                  <img src='/static/images/dog.svg' />
+                  <h2>Premium Training & Review</h2>
+                </div>
+                <RedLine />
+                <p>We provide support for corperate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
+                <RedLine />
+                <ul>
+                  <li><strong>Remote training for your team</strong></li>
+                  <li><strong>Code Reviews</strong></li>
+                  <li><strong>Best Practices Audits</strong></li>
+                  <li><strong>Custom plugin & Feature Development</strong></li>
+                </ul>
+                <RedLine />
+                <p>We have packages appropriate for all company sizes.  Contact us to learn more.</p>
+                <br />
+                <br />
+                <br />
+                <br />
+                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Contact Us</Button>
+              </div>
+            </Col>
+
+            <Col md={4} className='hidden-xs hidden-sm'>
               <div style={{
                 width: '125%',
                 padding: 20,
