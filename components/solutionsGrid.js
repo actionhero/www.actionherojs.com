@@ -5,6 +5,7 @@ import { Grid, Row, Col, Button, Modal, FormGroup, ControlLabel, FormControl } f
 import Theme from './theme.js'
 import SuccessAlert from './alerts/success.js'
 import RedLine from './elements/redLine.js'
+import SectionHeader from './elements/sectionHeader.js'
 
 function FieldGroup ({ id, label, ...props }) {
   return (
@@ -173,22 +174,35 @@ export default class extends React.Component {
 
             <Modal show={this.state.showModal} onHide={this.hideModal.bind(this)}>
               <form action='//delicioushat.us15.list-manage.com/subscribe/post?u=bbdc9a683c995f14392f649f4&amp;id=b2867a5444' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' className='validate' target='_blank' noValidate>
-                <Modal.Header>
-                  <Modal.Title>ActionHero Professional Services</Modal.Title>
+                <Modal.Body style={{
+                  padding: 20,
+                  backgroundColor: Theme.colors.yellow,
+                  color: Theme.colors.lightGray,
+                  fontWeight: 200
+                }}>
+                  <SectionHeader id='_solutionsModal'>ActionHero Professional Services</SectionHeader>
+
+                  <div style={{textAlign: 'center'}}>
+                    <img style={{
+                      padding: 20
+                    }} src='/static/images/flying-man.svg' />
+                  </div>
+
                   <FieldGroup name='NAME' id='mce-NAME' type='text' label='Name' placeholder='Enter your name' />
                   <FieldGroup name='COMPANY' id='mce-COMPANY' type='text' label='Company' placeholder='Your company' />
                   <FieldGroup name='EMAIL' id='mce-EMAIL' type='email' label='Email address' placeholder='Enter email' />
                   <FieldGroup name='PHONE' id='mce-PHONE' type='text' label='Phone Number' placeholder='xxx.xxx.xxxx' />
-                </Modal.Header>
 
-                <Modal.Body>
                   <p>The ActionHero team is looking forward to working with you.  We will respond to your inquiry within 2 busniess days.</p>
-                </Modal.Body>
 
-                <Modal.Footer>
-                  <Button onClick={this.hideModal.bind(this)}>Close</Button>
-                  <Button type='submit' bsStyle='primary'>Submit</Button>
-                </Modal.Footer>
+                  <div style={{
+                    textAlign: 'center',
+                    padding: 20
+                  }}>
+                    <Button type='submit' style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Submit</Button>
+                    <a onClick={this.hideModal.bind(this)}>Cancel</a>
+                  </div>
+                </Modal.Body>
               </form>
             </Modal>
           </Row>

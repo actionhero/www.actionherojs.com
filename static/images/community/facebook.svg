@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Community" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Page-1">
+            <path d="M20,0 C31.046,0 40,8.954 40,20 C40,31.046 31.046,40 20,40 C8.954,40 0,31.046 0,20 C0,8.954 8.954,0 20,0" id="Fill-1" fill="#3D5A9A"></path>
+            <path d="M26.5032,6.1389 L22.0732,6.1389 C19.4432,6.1389 16.5192,7.2449 16.5192,11.0559 C16.5322,12.3839 16.5192,13.6559 16.5192,15.0869 L13.4772,15.0869 L13.4772,19.9269 L16.6132,19.9269 L16.6132,33.8609 L22.3752,33.8609 L22.3752,19.8349 L26.1782,19.8349 L26.5222,15.0729 L22.2762,15.0729 C22.2762,15.0729 22.2852,12.9549 22.2762,12.3399 C22.2762,10.8339 23.8432,10.9199 23.9372,10.9199 C24.6832,10.9199 26.1332,10.9219 26.5052,10.9199 L26.5052,6.1389 L26.5032,6.1389 Z" id="Fill-3" fill="#FEFEFE"></path>
+        </g>
+    </g>
+</svg>

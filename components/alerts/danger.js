@@ -8,7 +8,7 @@ export default class extends React.Component {
     return (
       <Row>
         <Col md={12}>
-          <Alert bsStyle='danger'> {this.props.message} </Alert>
+          <Alert bsStyle='danger'> {this.props.message.toString()} </Alert>
         </Col>
       </Row>
     )

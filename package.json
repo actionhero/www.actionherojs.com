@@ -19,7 +19,8 @@
     "react-dom": "^15.4.2",
     "react-fontawesome": "^1.5.0",
     "react-ga": "^2.1.2",
-    "react-syntax-highlighter": "^5.5.0"
+    "react-syntax-highlighter": "^5.5.0",
+    "react-waypoint": "^7.0.0"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
