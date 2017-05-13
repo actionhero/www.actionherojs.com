@@ -22,6 +22,7 @@ export default class extends React.Component {
           <meta name='viewport' content='width=device-width' />
           <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css' />
           <link rel='stylesheet' type='text/css' href='/static/css/animations.css' />
+          <link rel='stylesheet' type='text/css' href='/static/css/menu.css' />
           <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Roboto:100,300,400,500,700,900' rel='stylesheet' />
 
           <title>ActionHero</title>

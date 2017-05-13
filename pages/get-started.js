@@ -113,13 +113,7 @@ export default class extends React.Component {
         },
         {
           label: 'Getting Started',
-          key: '#getting-started',
-          children: [
-            {
-              label: 'Requirements',
-              key: '#requirements'
-            }
-          ]
+          key: '#getting-started'
         },
         {
           label: 'Install and Quickstart',
