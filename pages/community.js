@@ -9,6 +9,8 @@ import GitHub from 'github-api'
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
+let maxReleases = 5
+
 export default class extends React.Component {
   static async getInitialProps () {
     let error
@@ -29,6 +31,8 @@ export default class extends React.Component {
   }
 
   render () {
+    let releaseCounter = 0
+
     let communityIcon = {
       padding: 20,
       float: 'left'
@@ -44,7 +48,7 @@ export default class extends React.Component {
         icon: '/static/images/team-up.svg'
       }}>
         <Row>
-          <Col md={8} style={{padding: 50}}>
+          <Col md={6} style={{padding: 50}}>
             <a href='https://slack.actionherojs.com'>
               <img style={communityIcon} src='/static/images/community/slack.svg' />
               <h2 style={communityHeader}>Chat with us on Slack</h2>
@@ -72,7 +76,7 @@ export default class extends React.Component {
             </a>
           </Col>
 
-          <Col md={4}>
+          <Col md={6}>
             <SectionHeader>Recent Releases</SectionHeader>
             {
               this.props.error
@@ -89,8 +93,11 @@ export default class extends React.Component {
                 <tbody>
                   {
                     this.props.releases.map((release) => {
+                      releaseCounter++
                       let date = new Date(release.published_at)
                       let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+
+                      if (releaseCounter > maxReleases) return null
 
                       return (
                         <tr key={release.tag_name}>
