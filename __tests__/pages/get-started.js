@@ -9,6 +9,6 @@ describe('GetStarted', () => {
     let page = TestUtils.renderIntoDocument(<GetStarted />)
     let body = ReactDOM.findDOMNode(page).textContent
 
-    expect(body).toContain('Get Started with ActionHero')
+    expect(body).toContain('Who is the ActionHero?')
   })
 })

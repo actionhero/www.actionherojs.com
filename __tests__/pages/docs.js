@@ -9,6 +9,6 @@ describe('Docs', () => {
     let page = TestUtils.renderIntoDocument(<Docs />)
     let body = ReactDOM.findDOMNode(page).textContent
 
-    expect(body).toContain('ActionHero Docs')
+    expect(body).toContain('The core methods of ActionHero')
   })
 })

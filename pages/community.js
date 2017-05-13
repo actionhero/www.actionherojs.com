@@ -61,7 +61,7 @@ export default class extends React.Component {
 
             <a href='https://www.github.com/actionhero/actionhero'>
               <img style={communityIcon} src='/static/images/community/github.svg' />
-              <h2 style={communityHeader}>View the source on Github</h2>
+              <h2 style={communityHeader}>View the source on GitHub</h2>
             </a>
 
             <Clearfix />
