@@ -70,14 +70,16 @@ export default class extends React.Component {
               color: Theme.colors.yellow,
               boxShadow: '3px 3px 5px #222222'
             }}>
-              <SectionHeader>Servers</SectionHeader>
-              <p>The in-depth details of the 3 types of servers which come with ActionHero.  The specifics of each type of connection and the limitations of each can be found here.</p>
+              <SectionHeader>Deployment & Testing</SectionHeader>
+              <p>Operational and Test considerations for ActionHero.  Best practices and upgrade paths can be found here.</p>
               <br />
 
               <div style={{textAlign: 'center'}}>
-                <DocSectionLink href='/docs/servers/web'>Web Server</DocSectionLink>
-                <DocSectionLink href='/docs/servers/socket'>Socket (TCP) Server</DocSectionLink>
-                <DocSectionLink href='/docs/servers/websocket'>Web Socket Server</DocSectionLink>
+                <DocSectionLink href='/docs/ops/running-actionhero'>Running ActionHero</DocSectionLink>
+                <DocSectionLink href='/docs/ops/development-mode'>Development Mode</DocSectionLink>
+                <DocSectionLink href='/docs/ops/testing'>Testing</DocSectionLink>
+                <DocSectionLink href='/docs/ops/production-notes'>Production Notes</DocSectionLink>
+                <DocSectionLink href='/docs/ops/upgrade-path'>Upgrade Path</DocSectionLink>
               </div>
             </div>
 
@@ -90,16 +92,14 @@ export default class extends React.Component {
               color: Theme.colors.yellow,
               boxShadow: '3px 3px 5px #222222'
             }}>
-              <SectionHeader>Deployment & Testing</SectionHeader>
-              <p>Operational and Test considerations for ActionHero.  Best practices and upgrade paths can be found here.</p>
+              <SectionHeader>Servers</SectionHeader>
+              <p>The in-depth details of the 3 types of servers which come with ActionHero.  The specifics of each type of connection and the limitations of each can be found here.</p>
               <br />
 
               <div style={{textAlign: 'center'}}>
-                <DocSectionLink href='/docs/ops/running-actionhero'>Running ActionHero</DocSectionLink>
-                <DocSectionLink href='/docs/ops/development-mode'>Development Mode</DocSectionLink>
-                <DocSectionLink href='/docs/ops/testing'>Testing</DocSectionLink>
-                <DocSectionLink href='/docs/ops/production-notes'>Production Notes</DocSectionLink>
-                <DocSectionLink href='/docs/ops/upgrade-path'>Upgrade Path</DocSectionLink>
+                <DocSectionLink href='/docs/servers/web'>Web Server</DocSectionLink>
+                <DocSectionLink href='/docs/servers/socket'>Socket (TCP) Server</DocSectionLink>
+                <DocSectionLink href='/docs/servers/websocket'>Web Socket Server</DocSectionLink>
               </div>
             </div>
           </Col>

@@ -48,7 +48,9 @@ export default class extends React.Component {
         icon: '/static/images/team-up.svg'
       }}>
         <Row>
-          <Col md={6} style={{padding: 50}}>
+          <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
+            <SectionHeader>Join the Team</SectionHeader>
+
             <a href='https://slack.actionherojs.com'>
               <img style={communityIcon} src='/static/images/community/slack.svg' />
               <h2 style={communityHeader}>Chat with us on Slack</h2>
@@ -76,7 +78,7 @@ export default class extends React.Component {
             </a>
           </Col>
 
-          <Col md={6}>
+          <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
             <SectionHeader>Recent Releases</SectionHeader>
             {
               this.props.error
