@@ -86,7 +86,7 @@ server.sendMessage = function(connection, message){
    server.destroyConnection(connection);
  }`
 
- const Verbs =
+const Verbs =
  `allowedVerbs: [
       "quit",
       "exit",
