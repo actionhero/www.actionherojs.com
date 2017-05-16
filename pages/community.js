@@ -87,7 +87,7 @@ export default class extends React.Component {
                 <thead>
                   <tr>
                     <th>Version</th>
-                    <th>Release Date</th>
+                    <th>Date</th>
                     <th>Name</th>
                     <th />
                   </tr>
