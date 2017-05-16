@@ -4,8 +4,8 @@ import DocsPage from './../../../components/layouts/docsPage.js'
 
 import Code from './../../../components/code.js'
 
-const CodeSample = `
-// something multi-line
+const CodeSample =
+`// something multi-line
 `
 
 export default class extends DocsPageWithNav {
@@ -21,7 +21,7 @@ export default class extends DocsPageWithNav {
         'general': 'General'
       },
       links: [
-        {link: '/docs/core/middlware', title: '» << Core > Middleware'},
+        {link: '/docs/core/middlware', title: '» Core > Middleware'},
         {link: '/docs/core/actions', title: '« Core > Actions'}
       ]
     }
