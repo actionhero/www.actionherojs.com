@@ -1,10 +1,9 @@
-import React from 'react'
+import DocsPageWithNav from './../pageClasses/docsPageWithSideNav.js'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
 // import Theme from './../components/theme.js'
 import Code from './../components/code.js'
-import DocSection from './../components/elements/docSection.js'
 
 const ExampleBootCode = `> npm start
 
@@ -95,12 +94,11 @@ const Folders = `# ActionHero Project Layout
 readme.md
 package.json (be sure to include 'actionhero':'x')`
 
-export default class extends React.Component {
+export default class extends DocsPageWithNav {
   constructor (props) {
     super(props)
 
     this.state = {
-      currentSection: null,
       titleSection: {
         title: "Let's get Started",
         icon: '/static/images/get-started.svg'
@@ -113,61 +111,8 @@ export default class extends React.Component {
         'quickstart': 'Install and Quickstart',
         'structure': 'Application Structure',
         'tutorial': 'Tutorial'
-      },
-      currentlyVisableSections: []
-    }
-  }
-
-  waypointEnter (id, { previousPosition, currentPosition }) {
-    if (this.state.currentlyVisableSections.indexOf(id) < 0) {
-      // going down
-      if (previousPosition === 'below' || !previousPosition) {
-        this.state.currentlyVisableSections.push(id)
-      }
-
-      // going up
-      if (previousPosition === 'above') {
-        this.state.currentlyVisableSections = [id].concat(this.state.currentlyVisableSections)
       }
     }
-    this.highlightSection()
-  }
-
-  waypointExit (id, { previousPosition, currentPosition }) {
-    if (this.state.currentlyVisableSections.indexOf(id >= 0)) {
-      this.state.currentlyVisableSections.splice(this.state.currentlyVisableSections.indexOf(id), 1)
-    }
-    this.highlightSection()
-  }
-
-  highlightSection () {
-    let ids = Object.keys(this.state.sections)
-    let i = 0
-    let id
-    while (i < ids.length) {
-      id = ids[i]
-      if (this.state.currentlyVisableSections.indexOf(id) >= 0) {
-        return this.setState({currentSection: id})
-      }
-      i++
-    }
-  }
-
-  section (id, content) {
-    let sectionTitle = this.state.sections[id]
-
-    return (
-      <DocSection
-        waypointEnter={this.waypointEnter}
-        waypointExit={this.waypointExit}
-        currentSection={this.state.currentSection}
-        id={id}
-        parent={this}
-        title={sectionTitle}
-      >
-        {content}
-      </DocSection>
-    )
   }
 
   render () {
