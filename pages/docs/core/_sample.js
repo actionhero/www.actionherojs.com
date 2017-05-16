@@ -18,7 +18,7 @@ export default class extends DocsPageWithNav {
         icon: '/static/images/easy-to-use-actions.svg'
       },
       sections: {
-        'general': 'General'
+        'overview': 'Overview'
       },
       links: [
         {link: '/docs/core/middlware', title: '» Core > Middleware'},
@@ -32,7 +32,7 @@ export default class extends DocsPageWithNav {
       <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} links={this.state.links} currentSection={this.state.currentSection}>
         <Row>
           <Col md={12}>
-            { this.section('general',
+            { this.section('overview',
               <div>
                 <Code>{CodeSample}</Code>
 

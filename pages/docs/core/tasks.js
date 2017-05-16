@@ -255,7 +255,7 @@ export default class extends DocsPageWithNav {
         icon: '/static/images/built-in-tasks.svg'
       },
       sections: {
-        'general': 'General',
+        'overview': 'Overview',
         'enqueing': 'Enqueing Tasks',
         'processing-tasks': 'Processing Tasks',
         'creating-a-task': 'Creating a Task',
@@ -277,7 +277,7 @@ export default class extends DocsPageWithNav {
       <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} links={this.state.links} currentSection={this.state.currentSection}>
         <Row>
           <Col md={12}>
-            { this.section('general',
+            { this.section('overview',
               <div>
                 <p>Tasks are background jobs meant to be run separately from a client's request.  They can be started by an action or by the server itself.  With ActionHero, there is no need to run a separate daemon to process these jobs.  ActionHero uses the <a href='https://github.com/taskrabbit/node-resque'>node-resque</a> package to store and process tasks in a way compatible with the <a href='https://github.com/resque/resque'>resque</a> ecosystem.</p>
                 <p>There are 3 types of tasks ActionHero can process: <code>normal</code>, <code>delayed</code>, and <code>periodic</code>.</p>
