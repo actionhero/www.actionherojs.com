@@ -53,8 +53,8 @@ export default class extends DocsPageWithNav {
         'boot-options': 'Boot Options'
       },
       links: [
-        {link: '/docs/core/localization', title: '» Core > localization'},
-        {link: '/docs/core/utils', title: '« Core > Utils'}
+        {link: '/docs/core/utils', title: '» Core > Utils'},
+        {link: '/docs/core/localization', title: '« Core > localization'}
       ]
     }
   }

@@ -162,7 +162,7 @@ export default class extends React.Component {
               />
 
               <FeatureBox
-                title='Internet of Things'
+                title='Real Time Chat'
                 image='/static/images/real-time-chat.svg'
                 body='ActionHero works with both stateless and statefull clients, making it ideal for chat applications.  ActionHero can work in a cluster to handle all the clients you can throw at it.'
               />
