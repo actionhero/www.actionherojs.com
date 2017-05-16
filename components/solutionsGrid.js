@@ -5,7 +5,7 @@ import { Grid, Row, Col, Button, Modal, FormGroup, ControlLabel, FormControl } f
 import Theme from './theme.js'
 import SuccessAlert from './alerts/success.js'
 import RedLine from './elements/redLine.js'
-import SectionHeader from './elements/sectionHeader.js'
+import DocSection from './elements/docSection.js'
 
 function FieldGroup ({ id, label, ...props }) {
   return (
@@ -180,7 +180,7 @@ export default class extends React.Component {
                   color: Theme.colors.lightGray,
                   fontWeight: 200
                 }}>
-                  <SectionHeader id='_solutionsModal'>ActionHero Professional Services</SectionHeader>
+                  <DocSection id='_solutionsModal' title='ActionHero Professional Services' />
 
                   <div style={{textAlign: 'center'}}>
                     <img style={{

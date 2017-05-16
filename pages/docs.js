@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
 import Theme from './../components/theme.js'
-import SectionHeader from './../components/elements/sectionHeader.js'
+import DocSection from './../components/elements/docSection.js'
 
 class DocSectionLink extends React.Component {
   render () {
@@ -35,7 +35,7 @@ export default class extends React.Component {
               color: Theme.colors.yellow,
               boxShadow: '3px 3px 5px #222222'
             }}>
-              <SectionHeader>Core</SectionHeader>
+              <DocSection title='Core' />
               <p>The core methods of ActionHero.  This section is for application developers who are implanting an API for thier application.</p>
               <br />
 
@@ -70,7 +70,7 @@ export default class extends React.Component {
               color: Theme.colors.yellow,
               boxShadow: '3px 3px 5px #222222'
             }}>
-              <SectionHeader>Deployment & Testing</SectionHeader>
+              <DocSection title='Deployment & Testing' />
               <p>Operational and Test considerations for ActionHero.  Best practices and upgrade paths can be found here.</p>
               <br />
 
@@ -92,7 +92,7 @@ export default class extends React.Component {
               color: Theme.colors.yellow,
               boxShadow: '3px 3px 5px #222222'
             }}>
-              <SectionHeader>Servers</SectionHeader>
+              <DocSection title='Servers' />
               <p>The in-depth details of the 3 types of servers which come with ActionHero.  The specifics of each type of connection and the limitations of each can be found here.</p>
               <br />
 

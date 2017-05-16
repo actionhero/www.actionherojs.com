@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Table, Clearfix } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 import DangerAlert from './../components/alerts/danger.js'
-import SectionHeader from './../components/elements/sectionHeader.js'
+import DocSection from './../components/elements/docSection.js'
 
 import GitHub from 'github-api'
 
@@ -49,7 +49,7 @@ export default class extends React.Component {
       }}>
         <Row>
           <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
-            <SectionHeader>Join the Team</SectionHeader>
+            <DocSection title='Join the Team' />
 
             <a href='https://slack.actionherojs.com'>
               <img style={communityIcon} src='/static/images/community/slack.svg' />
@@ -79,7 +79,7 @@ export default class extends React.Component {
           </Col>
 
           <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
-            <SectionHeader>Recent Releases</SectionHeader>
+            <DocSection title='Recent Releases' />
             {
               this.props.error
               ? <DangerAlert message={this.props.error} />

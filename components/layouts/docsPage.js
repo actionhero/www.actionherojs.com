@@ -1,7 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { AutoAffix } from 'react-overlays'
-import Scrollspy from 'react-scrollspy'
 
 import Page from './page.js'
 import Theme from './../theme.js'
@@ -13,9 +12,6 @@ export default class extends React.Component {
   render () {
     let contentColWidth = 12
     if (this.props.sideNav) { contentColWidth = 9 }
-
-    let scrollSpyClasses = this.props.sideNav.map((e) => { return e.key.replace('#', '') })
-    console.log('scrollSpyClasses', scrollSpyClasses)
 
     return (
       <Page>
@@ -56,24 +52,33 @@ export default class extends React.Component {
                   <div style={{paddingTop: 75}}>
                     <SiteSearch />
 
-                    <Scrollspy items={scrollSpyClasses} currentClassName='activeMenuItem' style={{
+                    <ul style={{
                       listStyleType: 'none',
-                      paddingLeft: '0px',
-                      marginLeft: '0px'
+                      paddingLeft: 0,
+                      marginLeft: 0
                     }}>
                       {
-                        this.props.sideNav.map((e) => {
+                        Object.keys(this.props.sideNav).map((key) => {
+                          let message = this.props.sideNav[key]
+
+                          let aStyle = {
+                            fontWeight: 200,
+                            fontSize: 18
+                          }
+
+                          if (this.props.currentSection === key) {
+                            aStyle.color = Theme.colors.red
+                            aStyle.fontWeight = 400
+                          }
+
                           return (
-                            <li key={e.key} style={{
-                              fontWeight: 200,
-                              fontSize: 18
-                            }}>
-                              <a href={e.key} className='text-info'>{e.label}</a>
+                            <li key={key}>
+                              <a href={`#${key}`} className='text-info' style={aStyle}>{message}</a>
                             </li>
                           )
                         })
                       }
-                    </Scrollspy>
+                    </ul>
 
                     <br />
                     <a href='#_top' style={{fontWeight: 200, color: Theme.colors.red}}>Back to top</a>
@@ -87,6 +92,9 @@ export default class extends React.Component {
 
         <Row>
           <Col md={12}>
+            <br />
+            <br />
+            <br />
             <SolutionsGrid />
           </Col>
         </Row>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
-import SectionHeader from './../components/elements/sectionHeader.js'
+import DocSection from './../components/elements/docSection.js'
 import Code from './../components/code.js'
 
 let npm = `# mkdir my_project && cd my_project
@@ -25,7 +25,7 @@ export default class extends React.Component {
       }}>
         <Row>
           <Col md={6} style={{textAlign: 'center', padding: 50}}>
-            <SectionHeader>NPM</SectionHeader>
+            <DocSection title='NPM' />
             <img src='/static/images/downloads/npm.svg' />
             <br />
             <br />
@@ -34,7 +34,7 @@ export default class extends React.Component {
             </div>
           </Col>
           <Col md={6} style={{textAlign: 'center', padding: 50}}>
-            <SectionHeader>Github</SectionHeader>
+            <DocSection title='Github' />
             <img src='/static/images/downloads/github.svg' />
             <br />
             <br />
