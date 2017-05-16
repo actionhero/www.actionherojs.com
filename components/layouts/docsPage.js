@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { AutoAffix } from 'react-overlays'
+import Link from 'next/link'
 
 import Page from './page.js'
 import Theme from './../theme.js'
@@ -12,6 +13,11 @@ export default class extends React.Component {
   render () {
     let contentColWidth = 12
     if (this.props.sideNav) { contentColWidth = 9 }
+
+    let bottomLinkStyle = {
+      fontWeight: 200,
+      color: Theme.colors.red
+    }
 
     return (
       <Page>
@@ -81,7 +87,33 @@ export default class extends React.Component {
                     </ul>
 
                     <br />
-                    <a href='#_top' style={{fontWeight: 200, color: Theme.colors.red}}>Back to top</a>
+
+                    <ul style={{
+                      listStyleType: 'none',
+                      paddingLeft: 0,
+                      marginLeft: 0
+                    }}>
+                      {
+                        this.props.links
+                        ? <div>
+                          {
+                            this.props.links.map((k) => {
+                              return (
+                                <li key={`side-nav-link-${k.link}`}>
+                                  <Link href={k.link}>
+                                    <a style={bottomLinkStyle}>{k.title}</a>
+                                  </Link>
+                                </li>
+                              )
+                            })
+                          }
+                        </div>
+                        : null
+                      }
+                      <li>
+                        <a href='#_top' style={bottomLinkStyle}>↑ Back to top</a>
+                      </li>
+                    </ul>
                   </div>
                 </AutoAffix>
               </Col>
@@ -95,9 +127,10 @@ export default class extends React.Component {
             <br />
             <br />
             <br />
-            <SolutionsGrid />
+            { this.props.showSolutions ? <SolutionsGrid /> : null }
           </Col>
         </Row>
+
       </Page>
     )
   }

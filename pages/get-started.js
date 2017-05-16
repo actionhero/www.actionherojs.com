@@ -117,7 +117,7 @@ export default class extends DocsPageWithNav {
 
   render () {
     return (
-      <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} currentSection={this.state.currentSection}>
+      <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} currentSection={this.state.currentSection} showSolutions>
         <Row>
           <Col md={12}>
             { this.section('who',

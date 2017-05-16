@@ -103,7 +103,7 @@ export default class extends DocsPageWithNav {
 
             { this.section('code',
               <div>
-                <p>ActionHero's source code licence is <a href='https://github.com/actionhero/actionhero/master/LICENSE.txt'>The V2 Apache Licence, and is distributed with the code.</a></p>
+                <p>ActionHero's source code licence is <a href='https://github.com/actionhero/actionhero/blob/master/LICENSE.txt'>The V2 Apache Licence, and is distributed with the code.</a></p>
               </div>
             )}
 

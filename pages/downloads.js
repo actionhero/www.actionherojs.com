@@ -19,7 +19,7 @@ let github = `# mkdir my_project && cd my_project
 export default class extends React.Component {
   render () {
     return (
-      <DocsPage titleSection={{
+      <DocsPage showSolutions titleSection={{
         title: 'Downloads',
         icon: '/static/images/downloads.svg'
       }}>
