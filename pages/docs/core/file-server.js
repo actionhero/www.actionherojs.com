@@ -65,7 +65,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > File Server',
+        title: 'Core: File Server',
         icon: '/static/images/file-server.svg'
       },
       sections: {
@@ -76,8 +76,8 @@ export default class extends DocsPageWithNav {
         'customizing': 'Customizing the File Server'
       },
       links: [
-        {link: '/docs/core/logging', title: '» Core > Logging'},
-        {link: '/docs/core/chat', title: '« Core > Chat'}
+        {link: '/docs/core/logging', title: '» Core: Logging'},
+        {link: '/docs/core/chat', title: '« Core: Chat'}
       ]
     }
   }

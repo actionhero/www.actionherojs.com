@@ -259,7 +259,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Actions',
+        title: 'Core: Actions',
         icon: '/static/images/easy-to-use-actions.svg'
       },
       sections: {
@@ -272,7 +272,7 @@ export default class extends DocsPageWithNav {
         'notes': 'Notes'
       },
       links: [
-        {link: '/docs/core/tasks', title: '» Core > Tasks'}
+        {link: '/docs/core/tasks', title: '» Core: Tasks'}
       ]
     }
   }

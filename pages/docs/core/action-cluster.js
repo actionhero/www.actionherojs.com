@@ -32,7 +32,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Action Cluster',
+        title: 'Core: Action Cluster',
         icon: '/static/images/cluster-ready.svg'
       },
       sections: {
@@ -43,8 +43,8 @@ export default class extends DocsPageWithNav {
         'pubsub': 'Generic Pub/Sub'
       },
       links: [
-        {link: '/docs/core/cache', title: '» Core > Cache'},
-        {link: '/docs/core/cli', title: '« Core > CLI'}
+        {link: '/docs/core/cache', title: '» Core: Cache'},
+        {link: '/docs/core/cli', title: '« Core: CLI'}
       ]
     }
   }

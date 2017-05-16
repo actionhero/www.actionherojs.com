@@ -44,7 +44,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Config',
+        title: 'Core: Config',
         icon: '/static/images/ops-tools.svg'
       },
       sections: {
@@ -53,8 +53,8 @@ export default class extends DocsPageWithNav {
         'boot-options': 'Boot Options'
       },
       links: [
-        {link: '/docs/core/utils', title: '» Core > Utils'},
-        {link: '/docs/core/localization', title: '« Core > localization'}
+        {link: '/docs/core/utils', title: '» Core: Utils'},
+        {link: '/docs/core/localization', title: '« Core: localization'}
       ]
     }
   }

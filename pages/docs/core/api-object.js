@@ -357,14 +357,14 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > API Object',
+        title: 'Core: API Object',
         icon: '/static/images/routing.svg'
       },
       sections: {
         'overview': 'Overview'
       },
       links: [
-        {link: '/docs/core/utils', title: '« Core > Utils'}
+        {link: '/docs/core/utils', title: '« Core: Utils'}
       ]
     }
   }

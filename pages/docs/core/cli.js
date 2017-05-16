@@ -48,7 +48,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > CLI',
+        title: 'Core: CLI',
         icon: '/static/images/ops-tools.svg'
       },
       sections: {
@@ -56,8 +56,8 @@ export default class extends DocsPageWithNav {
         'syntax': 'Syntax'
       },
       links: [
-        {link: '/docs/core/action-cluster', title: '» Core > Action Cluster'},
-        {link: '/docs/core/initializers', title: '« Core > Initializers'}
+        {link: '/docs/core/action-cluster', title: '» Core: Action Cluster'},
+        {link: '/docs/core/initializers', title: '« Core: Initializers'}
       ]
     }
   }

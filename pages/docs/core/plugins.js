@@ -22,7 +22,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Plugins',
+        title: 'Core: Plugins',
         icon: '/static/images/ops-tools.svg'
       },
       sections: {
@@ -33,8 +33,8 @@ export default class extends DocsPageWithNav {
         'published': 'Published Plugins'
       },
       links: [
-        {link: '/docs/core/servers', title: '» Core > Servers'},
-        {link: '/docs/core/logging', title: '« Core > Logging'}
+        {link: '/docs/core/servers', title: '» Core: Servers'},
+        {link: '/docs/core/logging', title: '« Core: Logging'}
       ]
     }
   }

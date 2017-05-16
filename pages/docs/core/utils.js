@@ -8,7 +8,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Utils',
+        title: 'Core: Utils',
         icon: '/static/images/ops-tools.svg'
       },
       sections: {
@@ -16,8 +16,8 @@ export default class extends DocsPageWithNav {
         'methods': 'Methods'
       },
       links: [
-        {link: '/docs/core/api-object', title: '» Core > API Object'},
-        {link: '/docs/core/config', title: '« Core > Config'}
+        {link: '/docs/core/api-object', title: '» Core: API Object'},
+        {link: '/docs/core/config', title: '« Core: Config'}
       ]
     }
   }

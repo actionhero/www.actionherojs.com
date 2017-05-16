@@ -48,14 +48,14 @@ export default class extends React.Component {
                 <DocSectionLink href='/docs/core/action-cluster'>Action Cluster</DocSectionLink>
                 <DocSectionLink href='/docs/core/cache'>Cache</DocSectionLink>
                 <DocSectionLink href='docs/core/chat'>Chat</DocSectionLink>
-                <DocSectionLink href='docs/core/file_server'>File Server</DocSectionLink>
+                <DocSectionLink href='docs/core/file-server'>File Server</DocSectionLink>
                 <DocSectionLink href='docs/core/logging'>Logging</DocSectionLink>
                 <DocSectionLink href='docs/core/plugins'>Plugins</DocSectionLink>
                 <DocSectionLink href='docs/core/servers'>Servers</DocSectionLink>
                 <DocSectionLink href='docs/core/localization'>Localization</DocSectionLink>
                 <DocSectionLink href='docs/core/config'>Config</DocSectionLink>
-                <DocSectionLink href='docs/core/util'>Util</DocSectionLink>
-                <DocSectionLink href='docs/core/api_object'>Api Object</DocSectionLink>
+                <DocSectionLink href='docs/core/utils'>Util</DocSectionLink>
+                <DocSectionLink href='docs/core/api-object'>Api Object</DocSectionLink>
               </div>
             </div>
 

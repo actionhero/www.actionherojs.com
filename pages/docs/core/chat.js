@@ -20,7 +20,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Chat',
+        title: 'Core: Chat',
         icon: '/static/images/chat.svg'
       },
       sections: {
@@ -31,8 +31,8 @@ export default class extends DocsPageWithNav {
         'client-use': 'Client Use'
       },
       links: [
-        {link: '/docs/core/cache', title: '» Core > Cache'},
-        {link: '/docs/core/file-server', title: '« Core > File Server'}
+        {link: '/docs/core/file-server', title: '» Core: File Server'},
+        {link: '/docs/core/cache', title: '« Core: Cache'}
       ]
     }
   }

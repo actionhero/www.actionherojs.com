@@ -171,7 +171,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Middleware',
+        title: 'Core: Middleware',
         icon: '/static/images/api-first-development.svg'
       },
       sections: {
@@ -184,8 +184,8 @@ export default class extends DocsPageWithNav {
         'task-middleware': 'Task Middleware'
       },
       links: [
-        {link: '/docs/core/initializers', title: '» Core > Initializers'},
-        {link: '/docs/core/tasks', title: '« Core > Tasks'}
+        {link: '/docs/core/initializers', title: '» Core: Initializers'},
+        {link: '/docs/core/tasks', title: '« Core: Tasks'}
       ]
     }
   }

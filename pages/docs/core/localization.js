@@ -33,7 +33,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Localization',
+        title: 'Core: Localization',
         icon: '/static/images/localization.svg'
       },
       sections: {
@@ -44,8 +44,8 @@ export default class extends DocsPageWithNav {
         'other-strings': 'Localizing other Strings'
       },
       links: [
-        {link: '/docs/core/config', title: '» Core > Config'},
-        {link: '/docs/core/servers', title: '« Core > Servers'}
+        {link: '/docs/core/config', title: '» Core: Config'},
+        {link: '/docs/core/servers', title: '« Core: Servers'}
       ]
     }
   }

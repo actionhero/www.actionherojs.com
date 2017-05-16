@@ -8,7 +8,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Cache',
+        title: 'Core: Cache',
         icon: '/static/images/video-game-servers.svg'
       },
       sections: {
@@ -19,8 +19,8 @@ export default class extends DocsPageWithNav {
         'redis': 'Redis & Cache'
       },
       links: [
-        {link: '/docs/core/chat', title: '» Core > Chat'},
-        {link: '/docs/core/action-cluster', title: '« Core > Action Cluster'}
+        {link: '/docs/core/chat', title: '» Core: Chat'},
+        {link: '/docs/core/action-cluster', title: '« Core: Action Cluster'}
       ]
     }
   }

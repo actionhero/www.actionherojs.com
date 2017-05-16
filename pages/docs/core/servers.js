@@ -135,7 +135,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Servers',
+        title: 'Core: Servers',
         icon: '/static/images/internet-of-things.svg'
       },
       sections: {
@@ -148,8 +148,8 @@ export default class extends DocsPageWithNav {
         'sending-files': 'Sending Files'
       },
       links: [
-        {link: '/docs/core/plugins', title: '» Core > Plugins'},
-        {link: '/docs/core/localization', title: '« Core > Localization'}
+        {link: '/docs/core/localization', title: '» Core: Localization'},
+        {link: '/docs/core/plugins', title: '« Core: Plugins'}
       ]
     }
   }

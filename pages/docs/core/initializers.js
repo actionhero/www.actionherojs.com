@@ -33,7 +33,7 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Initializers',
+        title: 'Core: Initializers',
         icon: '/static/images/internet-of-things.svg'
       },
       sections: {
@@ -42,8 +42,8 @@ export default class extends DocsPageWithNav {
         'errors': 'Errors'
       },
       links: [
-        {link: '/docs/core/cli', title: '» Core > CLI'},
-        {link: '/docs/core/middleware', title: '« Core > Middleware'}
+        {link: '/docs/core/cli', title: '» Core: CLI'},
+        {link: '/docs/core/middleware', title: '« Core: Middleware'}
       ]
     }
   }

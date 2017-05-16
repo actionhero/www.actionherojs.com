@@ -14,15 +14,15 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: 'Core > Actions',
+        title: 'Core: Actions',
         icon: '/static/images/easy-to-use-actions.svg'
       },
       sections: {
         'overview': 'Overview'
       },
       links: [
-        {link: '/docs/core/middlware', title: '» Core > Middleware'},
-        {link: '/docs/core/actions', title: '« Core > Actions'}
+        {link: '/docs/core/middlware', title: '» Core: Middleware'},
+        {link: '/docs/core/actions', title: '« Core: Actions'}
       ]
     }
   }
