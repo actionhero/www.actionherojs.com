@@ -1,11 +1,12 @@
+import React from 'react'
 import DocsPageWithNav from './../pageClasses/docsPageWithSideNav.js'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
-// import Theme from './../components/theme.js'
 import Code from './../components/code.js'
 
-const ExampleBootCode = `> npm start
+const ExampleBootCode =
+`> npm start
 
 > actionhero@12.2.2 start /app/actionhero
 > node ./bin/actionhero

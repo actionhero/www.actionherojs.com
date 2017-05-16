@@ -1,3 +1,4 @@
+import React from 'react'
 import DocsPageWithNav from './../pageClasses/docsPageWithSideNav.js'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
