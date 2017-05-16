@@ -21,6 +21,7 @@ export default class extends React.Component {
     return (
       <Waypoint onEnter={waypointEnterCallback} onLeave={waypointExitCallback}>
         <div>
+          <br />
           <h2 id={id} style={headerStyle}>{title}</h2>
           <RedLine />
           {children}
