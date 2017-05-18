@@ -51,6 +51,8 @@ export default class extends React.Component {
           <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
             <DocSection title='Join the Team' />
 
+            <Clearfix />
+
             <a href='https://slack.actionherojs.com'>
               <img style={communityIcon} src='/static/images/community/slack.svg' />
               <h2 style={communityHeader}>Chat with us on Slack</h2>
