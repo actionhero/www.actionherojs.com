@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from 'react-bootstrap'
 export default class extends React.Component {
   render () {
     return (
-      <form action='https://www.google.com?site:www.actionherojs.com' method='get' target='_blank' noValidate>
+      <form action='https://www.google.com/#q=site:www.actionherojs.com+file' method='get' target='_blank' noValidate>
         <FormGroup>
           <FormControl
             id='q'
