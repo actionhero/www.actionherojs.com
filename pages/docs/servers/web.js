@@ -419,7 +419,7 @@ export default class extends DocsPageWithNav {
       sections: {
         'overview': 'Overview',
         'http-example': 'HTTP Example',
-        'config-settings': 'Config Settings',
+        'config-options': 'Config Options',
         'the-connection-object': 'The Connection Object',
         'sending-files': 'Sending Files',
         'routes': 'Routes',
@@ -458,7 +458,7 @@ export default class extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('config-settings',
+            { this.section('config-options',
               <div>
                 <p><code>/config/servers/web.js</code> contains the settings for the web server.  The relevant options are:</p>
                 <Code>{Config}</Code>
