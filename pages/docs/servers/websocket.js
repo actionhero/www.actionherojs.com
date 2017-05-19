@@ -122,8 +122,8 @@ export default class extends DocsPageWithNav {
         'config-options': 'Config Options'
       },
       links: [
-        {link: '/docs/servers/web', title: '» Servers: Web'},
-        {link: '/docs/servers/socket', title: '« Servers: Socket'}
+        {link: '/docs/servers/socket', title: '» Servers: Socket'},
+        {link: '/docs/servers/web', title: '« Servers: Web'}
       ]
     }
   }
