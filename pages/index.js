@@ -317,7 +317,7 @@ export default class extends React.Component {
             <Row style={{paddingTop: 100}}>
               <Col md={3} />
               <Col md={6} style={{textAlign: 'center'}}>
-                <h1>Trusted by Top Compaines and Orginizations</h1>
+                <h1>Trusted by Top Companies and Organizations</h1>
               </Col>
               <Col md={3} />
             </Row>
