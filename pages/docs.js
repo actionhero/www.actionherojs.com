@@ -76,7 +76,7 @@ export default class extends React.Component {
 
               <div style={{textAlign: 'center'}}>
                 <DocSectionLink href='/docs/ops/running-actionhero'>Running ActionHero</DocSectionLink>
-                <DocSectionLink href='/docs/ops/development-mode'>Development Mode</DocSectionLink>
+                <DocSectionLink href='/docs/ops/development-mode'>Development Mode & REPL</DocSectionLink>
                 <DocSectionLink href='/docs/ops/testing'>Testing</DocSectionLink>
                 <DocSectionLink href='/docs/ops/production-notes'>Production Notes</DocSectionLink>
                 <DocSectionLink href='/docs/ops/upgrade-path'>Upgrade Path</DocSectionLink>

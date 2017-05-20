@@ -241,7 +241,7 @@ export default class extends DocsPageWithNav {
         'windows-notes': 'Windows-Specific Notes'
       },
       links: [
-        {link: '/docs/ops/development-mode', title: '» Core: Development Mode'}
+        {link: '/docs/ops/development-mode', title: '» Core: Development Mode & REPL'}
       ]
     }
   }
