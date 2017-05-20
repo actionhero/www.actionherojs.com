@@ -257,8 +257,8 @@ export default class extends DocsPageWithNav {
         'best-practices': 'Best Practices'
       },
       links: [
-        {link: '/docs/ops/testing', title: '» Core: Testing'},
-        {link: '/docs/ops/upgrade-path', title: '« Core: Upgrade Path'}
+        {link: '/docs/ops/upgrade-path', title: '» Core: Upgrade Path'},
+        {link: '/docs/ops/testing', title: '« Core: Testing'}
       ]
     }
   }
