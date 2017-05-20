@@ -115,8 +115,8 @@ export default class extends DocsPageWithNav {
         'notes': 'Notes'
       },
       links: [
-        {link: '/docs/ops/development-mode', title: '» Operations: Development Mode & REPL'},
-        {link: '/docs/ops/production-notes', title: '« Operations: Production Notes'}
+        {link: '/docs/ops/production-notes', title: '» Operations: Production Notes'},
+        {link: '/docs/ops/development-mode', title: '« Operations: Development Mode & REPL'}
       ]
     }
   }
