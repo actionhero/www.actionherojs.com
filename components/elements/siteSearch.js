@@ -2,17 +2,40 @@ import React from 'react'
 import { FormGroup, FormControl } from 'react-bootstrap'
 
 export default class extends React.Component {
+  constructor (params) {
+    super(params)
+    this.state = {
+      site: 'www.actionherojs.com',
+      query: ''
+    }
+  }
+
+  buildUrl () {
+    return `https://www.google.com/#q=site:${this.state.site}+${this.state.query}`
+  }
+
+  handleChange (event) {
+    let change = {}
+    change[event.target.id] = event.target.value
+    this.setState(change)
+  }
+
+  submit (event) {
+    event.preventDefault()
+    window.location.href = this.buildUrl()
+  }
+
   render () {
     return (
-      <form action='https://www.google.com/#q=site:www.actionherojs.com+file' method='get' target='_blank' noValidate>
+      <form onSubmit={this.submit.bind(this)}>
         <FormGroup>
           <FormControl
-            id='q'
-            name='q'
+            id='query'
             type='text'
-            placeholder='Search'
+            value={this.state.query}
+            onChange={this.handleChange.bind(this)}
+            placeholder='Search Docs'
           />
-          <FormControl type='hidden' id='site' name='site' value='www.actionherojs.com' />
           <FormControl.Feedback />
         </FormGroup>
       </form>

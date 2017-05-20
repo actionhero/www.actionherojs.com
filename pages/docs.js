@@ -24,7 +24,7 @@ export default class extends React.Component {
       <DocsPage titleSection={{
         title: 'Documentation',
         icon: '/static/images/documentation.svg',
-        subTitle: 'The ActionHero documentation is divided into three parts'
+        search: true
       }}>
         <Row style={{padding: 50}}>
           <Col md={6}>
