@@ -55,7 +55,7 @@ export default class extends DocsPageWithNav {
         'overview': 'Overview',
         'effects': 'Effects of Development Mode',
         'watching-custom-files': 'Watching custom files',
-        'dbugging': 'Debugging',
+        'debugging': 'Debugging',
         'repl': 'REPL'
       },
       links: [
