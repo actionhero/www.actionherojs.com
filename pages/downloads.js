@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Alert } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
 import DocSection from './../components/elements/docSection.js'
@@ -10,10 +10,6 @@ npm install actionhero
 ./node_modules/.bin/actionhero generate
 npm install
 npm start
-`
-
-let github = `# mkdir my_project && cd my_project
-# TODO
 `
 
 export default class extends React.Component {
@@ -35,12 +31,16 @@ export default class extends React.Component {
           </Col>
           <Col md={6} style={{textAlign: 'center', padding: 50}}>
             <DocSection title='Github' />
-            <img src='/static/images/downloads/github.svg' />
-            <br />
-            <br />
-            <div style={{textAlign: 'left'}}>
-              <Code language='bash'>{github}</Code>
-            </div>
+            <a href='https://github.com/actionhero/actionhero'>
+              <img src='/static/images/downloads/github.svg' />
+              <br />
+              <br />
+              <div style={{textAlign: 'center'}}>
+                <Alert bsStyle='success'>
+                  {`https://github.com/actionhero/actionhero`}
+                </Alert>
+              </div>
+            </a>
           </Col>
         </Row>
       </DocsPage>

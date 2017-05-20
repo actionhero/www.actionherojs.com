@@ -9,7 +9,7 @@ import GitHub from 'github-api'
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
-let maxReleases = 5
+let maxReleases = 10
 
 export default class extends React.Component {
   static async getInitialProps () {
@@ -48,7 +48,7 @@ export default class extends React.Component {
         icon: '/static/images/team-up.svg'
       }}>
         <Row>
-          <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
+          <Col md={5} style={{paddingTop: 50, paddingBottom: 50}}>
             <DocSection title='Join the Team' />
 
             <Clearfix />
@@ -80,7 +80,7 @@ export default class extends React.Component {
             </a>
           </Col>
 
-          <Col md={6} style={{paddingTop: 50, paddingBottom: 50}}>
+          <Col md={7} style={{paddingTop: 50, paddingBottom: 50}}>
             <DocSection title='Recent Releases' />
             {
               this.props.error
