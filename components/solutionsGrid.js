@@ -135,7 +135,7 @@ export default class extends React.Component {
                 <ul>
                   <li><strong>Remote training for your team</strong></li>
                   <li><strong>Code Reviews</strong></li>
-                  <li><strong>Best Practices Audits</strong></li>
+                  <li><strong>Best Practices Workshops</strong></li>
                   <li><strong>Custom plugin & Feature Development</strong></li>
                 </ul>
                 <RedLine />
