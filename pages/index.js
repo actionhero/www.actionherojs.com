@@ -7,6 +7,10 @@ import Theme from './../components/theme.js'
 import SolutionsGrid from './../components/solutionsGrid.js'
 import FeatureBox from './../components/elements/homepageFeatureBox.js'
 
+import GitHub from 'github-api'
+const github = new GitHub()
+const repository = github.getRepo('actionhero', 'actionhero')
+
 const CodeSamples = {
   eastToUseActions: `exports.action = {
   name: 'randomNumber',
@@ -72,7 +76,28 @@ let smallIconStyle = {
 }
 
 export default class extends React.Component {
+  static async getInitialProps () {
+    let error
+    let latestRelease
+
+    try {
+      let response = await repository.listReleases()
+      let releases = response.data
+      latestRelease = releases[0].tag_name
+    } catch (e) {
+      if (e.message) {
+        error = `Cannot load recent releases: ${e.message}`
+      } else {
+        error = e.toString()
+      }
+    }
+
+    return { latestRelease, error }
+  }
+
   render () {
+    if (this.props.error) { console.log(`Error fetching versions: ${this.props.error}`) }
+
     return (
       <Page>
         <div style={{
@@ -90,7 +115,11 @@ export default class extends React.Component {
               <Col md={2} />
               <Col md={8} style={{textAlign: 'center'}}>
                 <h1 style={{letterSpacing: '0.3em', color: Theme.colors.yellow}}>ACTIONHERO</h1>
-                <p><em>v17.0.0</em></p>
+                {
+                  this.props.latestRelease
+                  ? <p><em>Latest Release: {this.props.latestRelease}</em></p>
+                  : null
+                }
                 <h2 style={{fontWeight: 200, paddingTop: 30}}>The Reusable, Scalable, and Quick node.js API Server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />

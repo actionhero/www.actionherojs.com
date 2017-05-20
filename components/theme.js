@@ -25,6 +25,19 @@ export default {
         marginTop: 20,
         marginBottom: 20
       }
+    },
+
+    header: (backgroundColor, color) => {
+      return {
+        maxWidth: 200,
+        borderRadius: 50,
+        margin: '0 auto',
+        color: color,
+        backgroundColor: backgroundColor,
+        borderColor: backgroundColor,
+        marginTop: 20,
+        marginBottom: 0
+      }
     }
   }
 }

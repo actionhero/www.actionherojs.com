@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Grid, Navbar, Nav, NavItem, Button } from 'react-bootstrap'
 
 import StarAndLogo from './elements/starAndLogo.js'
 import Theme from './theme.js'
@@ -75,10 +75,8 @@ export default class extends React.Component {
 
               <Nav pullRight>
                 <Link href='/downloads'>
-                  <NavItem><span style={this.linkStyle('/downloads')}>Downloads</span></NavItem>
+                  <Button style={Theme.buttons.header(Theme.colors.red, Theme.colors.yellow)} block>Downloads</Button>
                 </Link>
-
-                <NavItem />
               </Nav>
             </Navbar.Collapse>
           </Navbar>

@@ -5,7 +5,6 @@ import DangerAlert from './../components/alerts/danger.js'
 import DocSection from './../components/elements/docSection.js'
 
 import GitHub from 'github-api'
-
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
