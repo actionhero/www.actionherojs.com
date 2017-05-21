@@ -106,12 +106,12 @@ export default class extends DocsPageWithNav {
       },
       sections: {
         'who': 'Who is the ActionHero?',
-        'contributing': 'Contributing',
-        'notes': 'Documentation Notes',
         'getting-started': 'Getting Started',
         'quickstart': 'Install and Quickstart',
         'structure': 'Application Structure',
-        'tutorial': 'Tutorial'
+        'tutorial': 'Tutorial',
+        'contributing': 'Contributing',
+        'notes': 'Documentation Notes'
       }
     }
   }
@@ -129,18 +129,6 @@ export default class extends DocsPageWithNav {
                 <p>ActionHero will also serve static files for you, but ActionHero is not a 'rendering' server (like express or rails).</p>
 
                 <Code language='bash'>{ExampleBootCode}</Code>
-              </div>
-            )}
-
-            { this.section('contributing',
-              <div>
-                <p>The actionherojs.com website and documentation is hosted on <a href='http://pages.github.com'>GitHub Pages</a>.  You can submit pull requests to the <a href='https://github.com/actionhero/actionhero/tree/master/docs'>master branch's `docs` folder</a> within the ActionHero project.</p>
-              </div>
-            )}
-
-            { this.section('notes',
-              <div>
-                <p>This documentation will always reflect the master branch of ActionHero, and therefore may be slightly ahead of the latest release on NPM.</p>
               </div>
             )}
 
@@ -189,6 +177,18 @@ export default class extends DocsPageWithNav {
             { this.section('tutorial',
               <div>
                 <p>Want to see an example application using ActionHero?  You can check out the code and follow the detailed guide <a href='https://github.com/actionhero/actionhero-tutorial'>here (https://github.com/actionhero/actionhero-tutorial)</a>.  This project demonstrates many of the core features of ActionHero in a simple project.</p>
+              </div>
+            )}
+
+            { this.section('contributing',
+              <div>
+                <p>The www.actionherojs.com website and documentation is hosted on Heroku, and built from <a href='https://github.com/actionhero/www.actionherojs.com'>this codebase</a>.  You can submit pull requests to the master branch with any updates or changes.</p>
+              </div>
+            )}
+
+            { this.section('notes',
+              <div>
+                <p>This documentation will always reflect the master branch of ActionHero, and therefore may be slightly ahead of the latest release on NPM.</p>
               </div>
             )}
           </Col>
