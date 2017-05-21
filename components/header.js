@@ -75,7 +75,7 @@ export default class extends React.Component {
 
               <Nav pullRight>
                 <Link href='/downloads'>
-                  <Button style={Theme.buttons.header(Theme.colors.red, Theme.colors.yellow)} block>Downloads</Button>
+                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.yellow)} block>Downloads</Button>
                 </Link>
               </Nav>
             </Navbar.Collapse>
