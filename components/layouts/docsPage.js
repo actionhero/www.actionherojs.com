@@ -1,11 +1,10 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import { AutoAffix } from 'react-overlays'
-import Link from 'next/link'
 
 import Page from './page.js'
 import Theme from './../theme.js'
 
+import SideNav from './../elements/sideNav.js'
 import SolutionsGrid from './../solutionsGrid.js'
 import SiteSearch from './../elements/siteSearch.js'
 
@@ -13,11 +12,6 @@ export default class extends React.Component {
   render () {
     let contentColWidth = 12
     if (this.props.sideNav) { contentColWidth = 9 }
-
-    let bottomLinkStyle = {
-      fontWeight: 200,
-      color: Theme.colors.red
-    }
 
     return (
       <Page>
@@ -52,85 +46,16 @@ export default class extends React.Component {
               { this.props.children }
             </Col>
 
-            {
-              this.props.sideNav
-              ? <Col md={3} className='hidden-xs hidden-sm'>
-                <AutoAffix container={this}>
-                  <div style={{paddingTop: 75}}>
-                    <SiteSearch />
-
-                    <ul style={{
-                      listStyleType: 'none',
-                      paddingLeft: 0,
-                      marginLeft: 0
-                    }}>
-                      {
-                        Object.keys(this.props.sideNav).map((key) => {
-                          let message = this.props.sideNav[key]
-
-                          let aStyle = {
-                            fontWeight: 200,
-                            fontSize: 18
-                          }
-
-                          if (this.props.currentSection === key) {
-                            aStyle.color = Theme.colors.red
-                            aStyle.fontWeight = 400
-                          }
-
-                          return (
-                            <li key={key}>
-                              <a href={`#${key}`} className='text-info' style={aStyle}>{message}</a>
-                            </li>
-                          )
-                        })
-                      }
-                    </ul>
-
-                    <br />
-
-                    <ul style={{
-                      listStyleType: 'none',
-                      paddingLeft: 0,
-                      marginLeft: 0
-                    }}>
-                      {
-                        this.props.links
-                        ? <div>
-                          {
-                            this.props.links.map((k) => {
-                              return (
-                                <li key={`side-nav-link-${k.link}`}>
-                                  <Link href={k.link}>
-                                    <a style={bottomLinkStyle}>{k.title}</a>
-                                  </Link>
-                                </li>
-                              )
-                            })
-                          }
-                        </div>
-                        : null
-                      }
-                      <li>
-                        <a href='#_top' style={bottomLinkStyle}>↑ Back to top</a>
-                      </li>
-                    </ul>
-                  </div>
-                </AutoAffix>
-              </Col>
-              : null
-            }
+            <SideNav sideNav={this.props.sideNav} links={this.props.links} currentSection={this.props.currentSection} />
           </Row>
         </Grid>
 
-        <Row>
-          <Col md={12}>
-            <br />
-            <br />
-            <br />
-            { this.props.showSolutions ? <SolutionsGrid /> : null }
-          </Col>
-        </Row>
+        <div>
+          <br />
+          <br />
+          <br />
+          { this.props.showSolutions ? <SolutionsGrid /> : null }
+        </div>
 
       </Page>
     )
