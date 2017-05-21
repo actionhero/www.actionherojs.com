@@ -15,9 +15,11 @@ This is a [React Project](https://facebook.github.io/react/) utilizing [next.js]
 - `npm run build`
 - `npm run serve`
 
-## Lint
+The master branch of this repository is automatically deployed by Travis.ci on a successful test run to www.actionherojs.com.  
 
-We use [Standard](https://github.com/feross/standard) for linting
+## Linting
+
+We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `standard` as part of our test suite, and your contributions must pass.  Standard is *very* opinionated and inflexible such that we cannot inject our own opinions.  There are no eslint/jshint files to manage in this project.  
 
 ## CSS
 - we use a default boostrap CSS file
