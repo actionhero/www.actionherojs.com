@@ -13,6 +13,8 @@ export default class extends React.Component {
       color: Theme.colors.red
     }
 
+    if (!this.props.sideNav) { return null }
+
     return (
       <div>
         <Col md={3} className='hidden-xs hidden-sm'>
@@ -26,8 +28,7 @@ export default class extends React.Component {
                 marginLeft: 0
               }}>
                 {
-                  this.props.sideNav
-                  ? Object.keys(this.props.sideNav).map((key) => {
+                  Object.keys(this.props.sideNav).map((key) => {
                     let message = this.props.sideNav[key]
 
                     let aStyle = {
@@ -46,7 +47,6 @@ export default class extends React.Component {
                       </li>
                     )
                   })
-                  : null
                 }
               </ul>
 
