@@ -110,7 +110,7 @@ export default class extends React.Component {
               <Col md={8} style={{textAlign: 'center'}}>
                 <img src='/static/images/logo-and-wordmark.svg' />
                 <p style={{paddingTop: 40}}>{this.props.latestRelease}</p>
-                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 30}}>The Reusable, Scalable, and Quick node.js API Server for stateless and stateful applications</h2>
+                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 30}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />
             </Row>
@@ -120,24 +120,22 @@ export default class extends React.Component {
               <Col md={1}>
                 <img src='/static/images/cloud.svg' className='animated-clouds-left' />
               </Col>
-              <Col md={1} />
-
-              <Col md={3}>
+              <Col md={2} />
+              <Col md={2}>
                 <Link href='/downloads'>
                   <a>
                     <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Download</Button>
                   </a>
                 </Link>
               </Col>
-
-              <Col md={3}>
+              <Col md={2}>
                 <Link href='/get-started'>
                   <a>
                     <Button style={Theme.buttons.big(Theme.colors.blueGray, Theme.colors.white)} bsStyle='primary' bsSize='large' block>Get Started</Button>
                   </a>
                 </Link>
               </Col>
-
+              <Col md={1} />
               <Col md={1}>
                 <img style={{marginTop: 30}} src='/static/images/cloud.svg' className='animated-clouds-right' />
               </Col>

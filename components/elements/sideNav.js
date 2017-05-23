@@ -16,71 +16,69 @@ export default class extends React.Component {
     if (!this.props.sideNav) { return null }
 
     return (
-      <div>
-        <Col md={3} className='hidden-xs hidden-sm'>
-          <AutoAffix>
-            <div style={{paddingTop: 75}}>
-              <SiteSearch />
+      <div style={{height: this.props.contentHeight}}>
+        <AutoAffix container={this}>
+          <div style={{paddingTop: 75}}>
+            <SiteSearch />
 
-              <ul style={{
-                listStyleType: 'none',
-                paddingLeft: 0,
-                marginLeft: 0
-              }}>
-                {
-                  Object.keys(this.props.sideNav).map((key) => {
-                    let message = this.props.sideNav[key]
+            <ul style={{
+              listStyleType: 'none',
+              paddingLeft: 0,
+              marginLeft: 0
+            }}>
+              {
+                Object.keys(this.props.sideNav).map((key) => {
+                  let message = this.props.sideNav[key]
 
-                    let aStyle = {
-                      fontWeight: 200,
-                      fontSize: 18
-                    }
+                  let aStyle = {
+                    fontWeight: 200,
+                    fontSize: 18
+                  }
 
-                    if (this.props.currentSection === key) {
-                      aStyle.color = Theme.colors.red
-                      aStyle.fontWeight = 400
-                    }
+                  if (this.props.currentSection === key) {
+                    aStyle.color = Theme.colors.red
+                    aStyle.fontWeight = 400
+                  }
 
-                    return (
-                      <li key={key}>
-                        <a href={`#${key}`} className='text-info' style={aStyle}>{message}</a>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
+                  return (
+                    <li key={key}>
+                      <a href={`#${key}`} className='text-info' style={aStyle}>{message}</a>
+                    </li>
+                  )
+                })
+              }
+            </ul>
 
-              <br />
+            <br />
 
-              <ul style={{
-                listStyleType: 'none',
-                paddingLeft: 0,
-                marginLeft: 0
-              }}>
-                {
-                  this.props.links
-                  ? <div>
-                    {
-                      this.props.links.map((k) => {
-                        return (
-                          <li key={`side-nav-link-${k.link}`}>
-                            <Link href={k.link}>
-                              <a style={bottomLinkStyle}>{k.title}</a>
-                            </Link>
-                          </li>
-                        )
-                      })
-                    }
-                  </div>
-                  : null
-                }
-                <li>
-                  <a href='#_top' style={bottomLinkStyle}>↑ Back to top</a>
-                </li>
-              </ul>
-            </div>
-          </AutoAffix>
-        </Col>
+            <ul style={{
+              listStyleType: 'none',
+              paddingLeft: 0,
+              marginLeft: 0
+            }}>
+              {
+                this.props.links
+                ? <div>
+                  {
+                    this.props.links.map((k) => {
+                      return (
+                        <li key={`side-nav-link-${k.link}`}>
+                          <Link href={k.link}>
+                            <a style={bottomLinkStyle}>{k.title}</a>
+                          </Link>
+                        </li>
+                      )
+                    })
+                  }
+                </div>
+                : null
+              }
+              <li>
+                <a href='#_top' style={bottomLinkStyle}>↑ Back to top</a>
+              </li>
+            </ul>
+          </div>
+        </AutoAffix>
       </div>
     )
   }

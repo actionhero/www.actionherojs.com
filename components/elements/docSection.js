@@ -21,7 +21,11 @@ export default class extends React.Component {
           <br />
           <h2 id={id} style={Theme.typeography.h2}>{title}</h2>
           <RedLine />
-          {children}
+          <div style={{
+            fontFamily: Theme.fonts.docs
+          }}>
+            {children}
+          </div>
         </div>
       </Waypoint>
     )

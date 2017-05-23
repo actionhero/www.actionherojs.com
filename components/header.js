@@ -18,14 +18,16 @@ export default class extends React.Component {
   }
 
   linkStyle (matchKey) {
-    let color = Theme.colors.white
+    let decoration = null
     if (this.state.activeKey && this.state.activeKey.match(matchKey)) {
-      color = Theme.colors.red
+      decoration = '3px solid currentColor'
     }
 
     return {
       lineHeight: 3,
-      color: color
+      color: Theme.colors.white,
+      paddingBottom: 10,
+      borderBottom: decoration
     }
   }
 
@@ -35,10 +37,10 @@ export default class extends React.Component {
         backgroundColor: Theme.colors.blue
       }}>
         <Grid>
-
           <Navbar style={{
             backgroundColor: Theme.colors.blue,
             paddingTop: 5,
+            marginBottom: 10,
             border: 0
           }}>
             <Navbar.Header>

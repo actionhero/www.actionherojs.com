@@ -10,7 +10,8 @@ export default {
 
   fonts: {
     main: 'Roboto, sans-serif',
-    title: 'BebasNeue, Roboto, sans-serif'
+    title: 'BebasNeue, Roboto, sans-serif',
+    docs: 'Open Sans, sans-serif'
   },
 
   typeography: {
