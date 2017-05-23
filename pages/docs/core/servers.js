@@ -145,7 +145,7 @@ export default class extends DocsPageWithNav {
         'options-and-attributes': 'Options and Attributes',
         'verbs': 'Verbs',
         'chat': 'Chat',
-        'sending-responses': 'Senging Responses',
+        'sending-responses': 'Sending Responses',
         'sending-files': 'Sending Files'
       },
       links: [
