@@ -1,5 +1,4 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
 import { AutoAffix } from 'react-overlays'
 import Link from 'next/link'
 

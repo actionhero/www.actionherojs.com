@@ -9,6 +9,6 @@ describe('Home', () => {
     let page = TestUtils.renderIntoDocument(<Home />)
     let body = ReactDOM.findDOMNode(page).textContent
 
-    expect(body).toContain('The Reusable, Scalable, and Quick')
+    expect(body).toContain('reusable, scalable, and quick')
   })
 })
