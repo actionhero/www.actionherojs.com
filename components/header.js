@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Router from 'next/router'
 import { Grid, Navbar, Nav, NavItem, Button } from 'react-bootstrap'
 
-import StarAndLogo from './elements/starAndLogo.js'
 import Theme from './theme.js'
 
 export default class extends React.Component {
@@ -19,15 +18,16 @@ export default class extends React.Component {
   }
 
   linkStyle (matchKey) {
-    let color = Theme.colors.white
+    let decoration = null
     if (this.state.activeKey && this.state.activeKey.match(matchKey)) {
-      color = Theme.colors.red
+      decoration = '3px solid currentColor'
     }
 
     return {
-      fontWeight: 500,
       lineHeight: 3,
-      color: color
+      color: Theme.colors.white,
+      paddingBottom: 10,
+      borderBottom: decoration
     }
   }
 
@@ -37,16 +37,16 @@ export default class extends React.Component {
         backgroundColor: Theme.colors.blue
       }}>
         <Grid>
-
           <Navbar style={{
             backgroundColor: Theme.colors.blue,
             paddingTop: 5,
+            marginBottom: 10,
             border: 0
           }}>
             <Navbar.Header>
               <Navbar.Brand>
                 <Link href='/'>
-                  <a><StarAndLogo /></a>
+                  <a><img src='/static/images/actionhero-logo-header-wordmark.svg' style={{paddingTop: 14, paddingBottom: 20}} /></a>
                 </Link>
               </Navbar.Brand>
               <Navbar.Toggle />
@@ -54,6 +54,13 @@ export default class extends React.Component {
 
             <Navbar.Collapse>
               <Nav pullRight />
+
+              <Nav pullLeft className='hidden-md hidden-sm hidden-xs'>
+                <Link><NavItem>&nbsp;</NavItem></Link>
+                <Link><NavItem>&nbsp;</NavItem></Link>
+                <Link><NavItem>&nbsp;</NavItem></Link>
+                <Link><NavItem>&nbsp;</NavItem></Link>
+              </Nav>
 
               <Nav pullLeft>
                 <Link href='/get-started'>
@@ -75,7 +82,7 @@ export default class extends React.Component {
 
               <Nav pullRight>
                 <Link href='/downloads'>
-                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.yellow)} block>Downloads</Button>
+                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.white)} block>Downloads</Button>
                 </Link>
               </Nav>
             </Navbar.Collapse>

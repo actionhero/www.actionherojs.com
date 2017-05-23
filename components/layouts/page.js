@@ -3,6 +3,7 @@ import { Grid } from 'react-bootstrap'
 import Head from 'next/head'
 import Router from 'next/router'
 
+import Theme from './../theme.js'
 import Header from './../header.js'
 import Footer from './../footer.js'
 
@@ -14,6 +15,14 @@ export default class extends React.Component {
   }
 
   render () {
+    const commmonSetupStyle = {
+      paddingLeft: 0,
+      paddingRight: 0,
+      fontFamily: Theme.fonts.main,
+      fontSize: Theme.typeography.default.fontSize,
+      fontWeight: Theme.typeography.default.fontWeight
+    }
+
     return (
       <div>
         <Head>
@@ -33,6 +42,7 @@ export default class extends React.Component {
 
           <meta name='viewport' content='width=device-width' />
           <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css' />
+          <link rel='stylesheet' type='text/css' href='/static/css/bebasNeue.css' />
           <link rel='stylesheet' type='text/css' href='/static/css/animations.css' />
           <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Roboto:100,300,400,500,700,900' rel='stylesheet' />
 
@@ -41,24 +51,15 @@ export default class extends React.Component {
           <script src='/static/js/googleAnalytics.js' />
         </Head>
 
-        <Grid fluid style={{
-          paddingLeft: 0,
-          paddingRight: 0
-        }}>
+        <Grid fluid style={commmonSetupStyle}>
           <Header />
         </Grid>
 
-        <Grid fluid style={{
-          paddingLeft: 0,
-          paddingRight: 0
-        }}>
+        <Grid fluid style={commmonSetupStyle}>
           { this.props.children }
         </Grid>
 
-        <Grid fluid style={{
-          paddingLeft: 0,
-          paddingRight: 0
-        }}>
+        <Grid fluid style={commmonSetupStyle}>
           <Footer />
         </Grid>
 

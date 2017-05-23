@@ -24,3 +24,19 @@ We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `
 ## CSS
 - we use a default boostrap CSS file
 - all components provide thier own CSS inline
+
+## TODO
+
+### Homepage Design
+- button click states (coming soon)
+  - buttons should have no hover state (undeline)
+- button link text should be white
+- remove 'latest release; no italics' (roboto 300 weight)
+  - have more equal padding on top and bottom (30px)
+- spacing between header and 'section tagline' should be 40px
+  - check font heading size
+   - section heading max-width should be 480px
+- bring back the blue grid lines
+- company logos need more padding, and to be centered properly; padding isn't maintinaed
+- solutions: titles should have top and bottom spacing symetric (50px)
+- footer: 3 cols, 50px margin from the right?

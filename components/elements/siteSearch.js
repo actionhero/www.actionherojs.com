@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, FormControl } from 'react-bootstrap'
+import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
 
 export default class extends React.Component {
   constructor (params) {
@@ -28,15 +28,18 @@ export default class extends React.Component {
   render () {
     return (
       <form onSubmit={this.submit.bind(this)}>
-        <FormGroup>
-          <FormControl
-            id='query'
-            type='text'
-            value={this.state.query}
-            onChange={this.handleChange.bind(this)}
-            placeholder='Search Docs'
-          />
-          <FormControl.Feedback />
+        <FormGroup bsSize='large'>
+          <InputGroup>
+            <InputGroup.Addon><Glyphicon glyph='search' /></InputGroup.Addon>
+            <FormControl
+              id='query'
+              type='text'
+              value={this.state.query}
+              onChange={this.handleChange.bind(this)}
+              placeholder='Search Docs'
+            />
+            <FormControl.Feedback />
+          </InputGroup>
         </FormGroup>
       </form>
     )

@@ -96,7 +96,7 @@ export default class extends React.Component {
   }
 
   render () {
-    if (this.props.error) { console.log(`Error fetching versions: ${this.props.error}`) }
+    if (this.props.error) { console.error(`Error fetching versions: ${this.props.error}`) }
 
     return (
       <Page>
@@ -104,50 +104,38 @@ export default class extends React.Component {
           backgroundColor: Theme.colors.blue,
           color: Theme.colors.white
         }}>
-          <Grid>
-            <Row style={{paddingTop: 100}}>
-              <Col md={12} style={{textAlign: 'center'}}>
-                <img alt='logo' src='/static/images/actionhero-logo-big.svg' />
-              </Col>
-            </Row>
-
-            <Row style={{paddingTop: 10}}>
+          <Grid style={{paddingTop: 50}}>
+            <Row>
               <Col md={2} />
               <Col md={8} style={{textAlign: 'center'}}>
-                <h1 style={{letterSpacing: '0.3em', color: Theme.colors.yellow}}>ACTIONHERO</h1>
-                {
-                  this.props.latestRelease
-                  ? <p><em>Latest Release: {this.props.latestRelease}</em></p>
-                  : null
-                }
-                <h2 style={{fontWeight: 200, paddingTop: 30}}>The Reusable, Scalable, and Quick node.js API Server for stateless and stateful applications</h2>
+                <img src='/static/images/logo-and-wordmark.svg' />
+                <p style={{paddingTop: 40}}>{this.props.latestRelease}</p>
+                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 30}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />
             </Row>
 
-            <Row style={{paddingTop: 60, paddingBottom: 80}}>
+            <Row>
               <Col md={1} />
               <Col md={1}>
                 <img src='/static/images/cloud.svg' className='animated-clouds-left' />
               </Col>
-              <Col md={1} />
-
-              <Col md={3}>
+              <Col md={2} />
+              <Col md={2}>
                 <Link href='/downloads'>
                   <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Download</Button>
+                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Download</Button>
                   </a>
                 </Link>
               </Col>
-
-              <Col md={3}>
+              <Col md={2}>
                 <Link href='/get-started'>
                   <a>
-                    <Button style={Theme.buttons.big(Theme.colors.blueGray, Theme.colors.yellow)} bsStyle='primary' bsSize='large' block>Get Started</Button>
+                    <Button style={Theme.buttons.big(Theme.colors.blueGray, Theme.colors.white)} bsStyle='primary' bsSize='large' block>Get Started</Button>
                   </a>
                 </Link>
               </Col>
-
+              <Col md={1} />
               <Col md={1}>
                 <img style={{marginTop: 30}} src='/static/images/cloud.svg' className='animated-clouds-right' />
               </Col>
@@ -160,17 +148,15 @@ export default class extends React.Component {
         </div>
 
         <div style={{
-          height: 229,
-          backgroundColor: Theme.colors.blue,
-          backgroundImage: 'url("/static/images/clouds.svg")'
+          height: 183,
+          background: `url("/static/images/clouds.svg") no-repeat center ${Theme.colors.blue}`
         }} />
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
-          color: Theme.colors.lightGray,
-          fontWeight: 200
+          color: Theme.colors.lightGray
         }}>
-          <Grid>
+          <Grid style={Theme.padding.section}>
             <Row>
               <Col md={1} />
               <Col md={1} style={{textAlign: 'center'}}>
@@ -178,8 +164,8 @@ export default class extends React.Component {
               </Col>
               <Col md={1} />
               <Col md={6} style={{textAlign: 'center'}}>
-                <h1>To the Rescue</h1>
-                <h2 style={{paddingTop: 30, fontWeight: 200}}>No matter what you are building,<br /> ActionHero is here to save the day.</h2>
+                <h1 style={Theme.typeography.h1}>To the Rescue</h1>
+                <h2 style={Theme.typeography.h2}>No matter what you are building,<br /> ActionHero is here to save the day.</h2>
               </Col>
               <Col md={3} />
             </Row>
@@ -187,7 +173,7 @@ export default class extends React.Component {
               <FeatureBox
                 title='Internet of Things'
                 image='/static/images/internet-of-things.svg'
-                body="ActionHero\'s small footprint and stateful server options make it ideal for IOT applications where as much logic as possible is offloaded to the server."
+                body="ActionHero's small footprint and stateful server options make it ideal for IOT applications where as much logic as possible is offloaded to the server."
               />
 
               <FeatureBox
@@ -204,9 +190,7 @@ export default class extends React.Component {
             </Row>
             <Row>
               <Col md={12} style={{textAlign: 'center'}}>
-                <div style={{padding: 50}}>
-                  <h2 style={{fontWeight: 200}}>... and a whole lot more!</h2>
-                </div>
+                <h2 style={Theme.typeography.h2}>... and a whole lot more!</h2>
               </Col>
             </Row>
           </Grid>
@@ -216,21 +200,20 @@ export default class extends React.Component {
           backgroundColor: Theme.colors.white,
           color: Theme.colors.lightGray
         }}>
-          <Grid>
-            <Row style={{paddingTop: 100}}>
-              <Col md={3} />
-              <Col md={6} style={{textAlign: 'center'}}>
-                <h1>Plays Well With Others</h1>
-                <h3 style={{fontWeight: 200}}>Use ActionHero around <em>your</em> workflow and preferred tools.</h3>
+          <Grid style={Theme.padding.section}>
+            <Row>
+              <Col md={2} />
+              <Col md={8} style={{textAlign: 'center'}}>
+                <h1 style={Theme.typeography.h1}>Plays Well With Others</h1>
+                <h2 style={Theme.typeography.h2}>Use ActionHero around <em>your</em> workflow and preferred tools.</h2>
               </Col>
               <Col md={1} />
               <Col md={1} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/flying-man.svg' />
               </Col>
-              <Col md={1} />
             </Row>
-            <Row style={{paddingTop: 20, paddingBottom: 60}}>
-              <Col md={3} />
+            <Row>
+              <Col md={2} />
               <Col md={1} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
               </Col>
@@ -249,26 +232,26 @@ export default class extends React.Component {
               <Col md={1} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/npm.svg' />
               </Col>
-              <Col md={3} />
+              <Col md={2} style={{textAlign: 'center'}}>
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/ember.svg' />
+              </Col>
+              <Col md={2} />
             </Row>
           </Grid>
         </div>
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
-          color: Theme.colors.lightGray,
-          fontWeight: 200,
-          paddingBottom: 50
+          color: Theme.colors.lightGray
         }}>
-          <Grid>
-            <Row style={{paddingTop: 50}}>
-              <Col md={2} />
-              <Col md={8} style={{textAlign: 'center'}}>
-                <h1>You've Got the Power</h1>
-                <br />
-                <p>ActionHero was built from the ground up to include all the features you expect from a modern API framework. It also knows when to get out of the way so you can customize your stack to fit your needs.</p>
+          <Grid style={Theme.padding.section}>
+            <Row>
+              <Col md={3} />
+              <Col md={6} style={{textAlign: 'center'}}>
+                <h1 style={Theme.typeography.h1}>You've Got the Power</h1>
+                <h2 style={Theme.typeography.h2}>ActionHero was built from the ground up to include all the features you expect from a modern API framework. It also knows when to get out of the way so you can customize your stack to fit your needs.</h2>
               </Col>
-              <Col md={2} />
+              <Col md={3} />
             </Row>
             <Row>
               <FeatureBox
@@ -342,20 +325,16 @@ export default class extends React.Component {
           backgroundColor: Theme.colors.white,
           color: Theme.colors.lightGray
         }}>
-          <Grid>
-            <Row style={{paddingTop: 100}}>
-              <Col md={3} />
-              <Col md={6} style={{textAlign: 'center'}}>
-                <h1>Trusted by Top Companies and Organizations</h1>
+          <Grid style={Theme.padding.section}>
+            <Row>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <h1 style={Theme.typeography.h1}>Trusted by Top Companies and Organizations</h1>
+                <br />
               </Col>
-              <Col md={3} />
             </Row>
-            <Row style={{paddingTop: 50, paddingBottom: 100}}>
+            <Row>
               <Col md={1} />
-              <Col md={3} style={{textAlign: 'center'}}>
-                <img style={smallIconStyle} src='/static/images/companies/taskrabbit.svg' />
-              </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={2} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
               </Col>
               <Col md={2} style={{textAlign: 'center'}}>
@@ -367,6 +346,9 @@ export default class extends React.Component {
               <Col md={2} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/companies/madglory.svg' />
               </Col>
+              <Col md={3} style={{textAlign: 'center'}}>
+                <img style={smallIconStyle} src='/static/images/companies/taskrabbit.svg' />
+              </Col>
               <Col md={1} />
             </Row>
           </Grid>
@@ -377,26 +359,21 @@ export default class extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.yellow,
           color: Theme.colors.lightGray,
-          fontWeight: 200,
-          paddingBottom: 50,
           backgroundImage: 'url("/static/images/starburst.png")',
           backgroundSize: '100% 100%'
         }}>
-          <Grid>
-            <Row style={{paddingTop: 50}}>
-              <Col md={2} />
-              <Col md={8} style={{textAlign: 'center'}}>
-                <h1>Ready to take your development to the next level?</h1>
-                <br />
+          <Grid style={Theme.padding.section}>
+            <Row>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <h1 style={Theme.typeography.h1}>Ready to take your development to the next level?</h1>
               </Col>
-              <Col md={2} />
             </Row>
 
             <Row>
               <Col md={12} style={{textAlign: 'center'}}>
                 <Link href='/get-started'>
                   <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsStyle='primary' bsSize='large' block>Get Started</Button>
+                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsStyle='primary' bsSize='large' block>Get Started</Button>
                   </a>
                 </Link>
               </Col>
