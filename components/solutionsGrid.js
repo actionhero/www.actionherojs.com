@@ -34,35 +34,40 @@ export default class extends React.Component {
   }
 
   render () {
+    let boxShadow = '0px 2px 4px #003C51'
+
     return (
       <div style={{
         backgroundColor: Theme.colors.blueGray,
         color: Theme.colors.lightGray,
         fontWeight: 200,
-        paddingTop: 50,
-        paddingBottom: 50
+        paddingTop: Theme.padding.section.paddingTop,
+        paddingBottom: Theme.padding.section.paddingBottom
       }}>
         <Grid>
           <Row>
-            <Col md={12} style={{
+            <Col md={2} />
+            <Col md={8} style={{
               textAlign: 'center',
               color: Theme.colors.yellow,
               paddingBottom: 100
             }}>
               <SuccessAlert message={this.state.successMessage} />
-              <h1>Solutions</h1>
-              <br />
-              <p>ActionHero was built from the ground up to include all the features you expect from a modern API framework.</p>
+              <h1 style={Theme.typeography.h1}>Solutions</h1>
+              <h2 style={Theme.typeography.h2}><span style={{color: Theme.colors.yellow}}>ActionHero was built from the ground up to include all the features you expect from a modern API framework.</span></h2>
             </Col>
+            <Col md={2} />
+          </Row>
 
+          <Row>
             <Col md={4}>
               <div style={{
                 width: '100%',
                 padding: 20,
                 backgroundColor: Theme.colors.yellow,
-                boxShadow: '3px 3px 5px #222222'
+                boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center'}}><h2>Open Source</h2></div>
+                <div style={{textAlign: 'center'}}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
                 <RedLine />
                 <p>The ActionHero server is open source, under the Apache-2 license</p>
                 <RedLine />
@@ -75,7 +80,7 @@ export default class extends React.Component {
                 <br />
                 <Link href='/downloads'>
                   <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Download</Button>
+                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Download</Button>
                   </a>
                 </Link>
               </div>
@@ -87,11 +92,11 @@ export default class extends React.Component {
                 padding: 20,
                 backgroundColor: Theme.colors.blue,
                 color: Theme.colors.yellow,
-                boxShadow: '3px 3px 5px #222222'
+                boxShadow: boxShadow
               }}>
                 <div style={{textAlign: 'center'}}>
                   <img src='/static/images/dog.svg' />
-                  <h2>Premium Training & Review</h2>
+                  <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
                 </div>
                 <RedLine />
                 <p>We provide support for corperate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
@@ -108,7 +113,7 @@ export default class extends React.Component {
                 <br />
                 <br />
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Contact Us</Button>
+                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
 
@@ -120,14 +125,14 @@ export default class extends React.Component {
                 color: Theme.colors.yellow,
                 position: 'relative',
                 top: -50,
-                boxShadow: '3px 3px 5px #222222',
+                boxShadow: boxShadow,
                 marginLeft: '-13%',
                 marginRight: '-5%',
                 zIndex: 10
               }}>
                 <div style={{textAlign: 'center'}}>
                   <img src='/static/images/dog.svg' />
-                  <h2>Premium Training & Review</h2>
+                  <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
                 </div>
                 <RedLine />
                 <p>We provide support for corperate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
@@ -144,7 +149,7 @@ export default class extends React.Component {
                 <br />
                 <br />
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Contact Us</Button>
+                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
 
@@ -153,9 +158,9 @@ export default class extends React.Component {
                 width: '100%',
                 padding: 20,
                 backgroundColor: Theme.colors.yellow,
-                boxShadow: '3px 3px 5px #222222'
+                boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center'}}><h2>Enterprise</h2></div>
+                <div style={{textAlign: 'center'}}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
                 <RedLine />
                 <p>For larger customers in need of a support contract, we offer an enterprise plan including everything in the Premium plan plus:</p>
                 <RedLine />
@@ -168,7 +173,7 @@ export default class extends React.Component {
                 <br />
                 <br />
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Contact Us</Button>
+                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
 

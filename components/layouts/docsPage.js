@@ -29,7 +29,7 @@ export default class extends React.Component {
                   { this.props.titleSection.icon ? <img src={this.props.titleSection.icon} /> : null }
                 </Col>
                 <Col md={6} style={{textAlign: 'center'}}>
-                  <h1><br />{this.props.titleSection.title}</h1>
+                  <h1 style={Theme.typeography.h1}><br />{this.props.titleSection.title}</h1>
                   { this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null }
                   { this.props.titleSection.search ? <SiteSearch /> : null}
                 </Col>
