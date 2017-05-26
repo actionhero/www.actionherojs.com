@@ -53,6 +53,12 @@ export default class extends React.Component {
           </div>
           : null
         }
+
+        <div style={{
+          height: 183,
+          background: `url("/static/images/clouds-white.svg") no-repeat center ${Theme.colors.yellow}`
+        }} />
+
         <Grid style={{paddingBottom: Theme.padding.section.paddingBottom}}>
           <Row>
             <div id='_top' />
