@@ -38,7 +38,7 @@ export default class extends React.Component {
         backgroundColor: Theme.colors.blue
       }}>
         <Grid>
-          <Navbar fixedTop style={{
+          <Navbar style={{
             backgroundColor: Theme.colors.blue,
             paddingTop: 5,
             marginBottom: 10,

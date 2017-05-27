@@ -17,7 +17,7 @@ export default class extends React.Component {
     return (
       <div style={{height: this.props.contentHeight}}>
         <AutoAffix container={this}>
-          <div style={{paddingTop: 100}}>
+          <div style={{paddingTop: 90}}>
             <SiteSearch />
 
             <ul style={{
