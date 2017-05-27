@@ -8,7 +8,7 @@ import Theme from './theme.js'
 export default class extends React.Component {
   constructor () {
     super()
-    this.state = { activeKey: null }
+    this.state = { activeKey: null, hoverKey: null }
   }
 
   componentDidMount () {
@@ -17,9 +17,20 @@ export default class extends React.Component {
     }
   }
 
+  onMouseEnter (matchKey) {
+    this.setState({hoverKey: matchKey})
+  }
+
+  onMouseLeave () {
+    this.setState({hoverKey: null})
+  }
+
   linkStyle (matchKey) {
     let decoration = null
-    if (this.state.activeKey && this.state.activeKey.match(matchKey)) {
+    if (
+      (this.state.activeKey && this.state.activeKey.match(matchKey)) ||
+      (this.state.hoverKey && this.state.hoverKey.match(matchKey))
+    ) {
       decoration = '3px solid currentColor'
     }
 
@@ -65,19 +76,19 @@ export default class extends React.Component {
 
               <Nav pullLeft>
                 <Link href='/get-started'>
-                  <NavItem><span style={this.linkStyle('/get-started')}>Get Started</span></NavItem>
+                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/get-started') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/get-started')}>Get Started</span></NavItem>
                 </Link>
 
                 <Link href='/docs'>
-                  <NavItem><span style={this.linkStyle('/docs')}>Documentation</span></NavItem>
+                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
                 </Link>
 
                 <Link href='/solutions'>
-                  <NavItem><span style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
+                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
                 </Link>
 
                 <Link href='/community'>
-                  <NavItem><span style={this.linkStyle('/community')}>Community</span></NavItem>
+                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/community') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/community')}>Community</span></NavItem>
                 </Link>
               </Nav>
 
