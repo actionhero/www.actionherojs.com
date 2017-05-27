@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import { Grid, Navbar, Nav, NavItem, Button } from 'react-bootstrap'
+import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap'
 
 import Theme from './theme.js'
+import HeaderButton from './buttons/headerButton.js'
 
 export default class extends React.Component {
   constructor () {
@@ -93,9 +94,7 @@ export default class extends React.Component {
               </Nav>
 
               <Nav pullRight>
-                <Link href='/downloads'>
-                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.white)} block>Download</Button>
-                </Link>
+                <HeaderButton href='/downloads' backgroundColor={Theme.colors.blueGray} textColor={Theme.colors.white}>Download</HeaderButton>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

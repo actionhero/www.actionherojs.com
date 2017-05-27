@@ -1,9 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
-import { Grid, Row, Col, Button } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import Page from './../components/layouts/page.js'
 
 import Theme from './../components/theme.js'
+import BigButton from './../components/buttons/bigButton.js'
 import SolutionsGrid from './../components/solutionsGrid.js'
 import FeatureBox from './../components/elements/homepageFeatureBox.js'
 
@@ -123,18 +123,10 @@ export default class extends React.Component {
               </Col>
               <Col md={2} />
               <Col md={2}>
-                <Link href='/downloads'>
-                  <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Download</Button>
-                  </a>
-                </Link>
+                <BigButton href='/downloads' backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Download</BigButton>
               </Col>
               <Col md={2}>
-                <Link href='/get-started'>
-                  <a>
-                    <Button style={Theme.buttons.big(Theme.colors.blueGray, Theme.colors.white)} bsStyle='primary' bsSize='large' block>Get Started</Button>
-                  </a>
-                </Link>
+                <BigButton href='/get-started' backgroundColor={Theme.colors.blueGray} textColor={Theme.colors.white}>Get Started</BigButton>
               </Col>
               <Col md={1} />
               <Col md={1}>
@@ -378,11 +370,7 @@ export default class extends React.Component {
 
             <Row>
               <Col md={12} style={{textAlign: 'center'}}>
-                <Link href='/get-started'>
-                  <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsStyle='primary' bsSize='large' block>Get Started</Button>
-                  </a>
-                </Link>
+                <BigButton href='/get-started' backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Get Started</BigButton>
               </Col>
             </Row>
           </Grid>

@@ -74,6 +74,7 @@ export default {
     header: (backgroundColor, color) => {
       return {
         fontFamily: 'Roboto, sans-serif',
+        fontSize: 14,
         maxWidth: 200,
         borderRadius: 50,
         margin: '0 auto',

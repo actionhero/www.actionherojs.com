@@ -1,11 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { Grid, Row, Col, Button, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
+import { Grid, Row, Col, Modal, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
 
 import Theme from './theme.js'
 import SuccessAlert from './alerts/success.js'
 import RedLine from './elements/redLine.js'
 import DocSection from './elements/docSection.js'
+import BigButton from './buttons/bigButton.js'
 
 function FieldGroup ({ id, label, ...props }) {
   return (
@@ -79,11 +80,7 @@ export default class extends React.Component {
                 <p>You always have access to the ActionHero team via <Link href='/community'><a>Slack and Github</a></Link></p>
                 <br />
                 <br />
-                <Link href='/downloads'>
-                  <a>
-                    <Button style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Download</Button>
-                  </a>
-                </Link>
+                <BigButton href='/downloads' backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Download</BigButton>
               </div>
             </Col>
 
@@ -111,7 +108,7 @@ export default class extends React.Component {
                 <RedLine />
                 <p>We have packages appropriate for all company sizes.  Contact us to learn more.</p>
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
+                <BigButton onClick={this.showModal.bind(this)} backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Contact Us</BigButton>
               </div>
             </Col>
 
@@ -144,7 +141,7 @@ export default class extends React.Component {
                 <RedLine />
                 <p>We have packages appropriate for all company sizes.  Contact us to learn more.</p>
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
+                <BigButton onClick={this.showModal.bind(this)} backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Contact Us</BigButton>
               </div>
             </Col>
 
@@ -169,7 +166,7 @@ export default class extends React.Component {
                   <li><strong>...and custom development against Actionhero’s core as needed.</strong></li>
                 </ul>
                 <br />
-                <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
+                <BigButton onClick={this.showModal.bind(this)} backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Contact Us</BigButton>
               </div>
             </Col>
 

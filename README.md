@@ -28,20 +28,6 @@ We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `
 ## TODO
 
 ### Homepage Design
-- header links should have white link on hover
-- button click states (coming soon)
-  - buttons should have no hover state (undeline)
-      Red Hover
-      BC3F31
-
-      Red Click
-      993129
-
-      Blue Hover
-      5F7682
-
-      Clue Click
-      596F7A
 - spacing between header and 'section tagline' should be 40px
   - check font heading size
    - section heading max-width should be 480px
