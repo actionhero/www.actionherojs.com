@@ -17,7 +17,7 @@ export default class extends React.Component {
     return (
       <div style={{height: this.props.contentHeight}}>
         <AutoAffix container={this}>
-          <div style={{paddingTop: 75}}>
+          <div style={{paddingTop: 100}}>
             <SiteSearch />
 
             <ul style={{
@@ -30,8 +30,9 @@ export default class extends React.Component {
                   let message = this.props.sideNav[key]
 
                   let aStyle = {
-                    fontWeight: 200,
-                    fontSize: 18
+                    fontWeight: 300,
+                    fontSize: 18,
+                    lineHeight: '1.6em'
                   }
 
                   if (this.props.currentSection === key) {

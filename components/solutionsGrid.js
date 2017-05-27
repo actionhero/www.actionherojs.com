@@ -40,7 +40,7 @@ export default class extends React.Component {
       <div style={{
         backgroundColor: Theme.colors.blueGray,
         color: Theme.colors.lightGray,
-        fontWeight: 200,
+        fontWeight: 300,
         paddingTop: Theme.padding.section.paddingTop,
         paddingBottom: Theme.padding.section.paddingBottom
       }}>
@@ -63,19 +63,20 @@ export default class extends React.Component {
             <Col md={4}>
               <div style={{
                 width: '100%',
-                padding: 20,
+                paddingTop: 40,
+                paddingBottom: 40,
+                paddingLeft: 40,
+                paddingRight: 50,
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center'}}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
+                <div style={{textAlign: 'center', paddingBottom: 10}}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
                 <RedLine />
                 <p>The ActionHero server is open source, under the Apache-2 license</p>
                 <RedLine />
                 <p>ActionHero runs on Linux, OS X, and Windows</p>
                 <RedLine />
                 <p>You always have access to the ActionHero team via <Link href='/community'><a>Slack and Github</a></Link></p>
-                <br />
-                <br />
                 <br />
                 <br />
                 <Link href='/downloads'>
@@ -91,12 +92,12 @@ export default class extends React.Component {
                 width: '100%',
                 padding: 20,
                 backgroundColor: Theme.colors.blue,
-                color: Theme.colors.yellow,
+                color: Theme.colors.white,
                 boxShadow: boxShadow
               }}>
                 <div style={{textAlign: 'center'}}>
                   <img src='/static/images/dog.svg' />
-                  <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
+                  <h1 style={Theme.typeography.h1}><span style={{color: Theme.colors.yellow}}>Premium Training & Review</span></h1>
                 </div>
                 <RedLine />
                 <p>We provide support for corperate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
@@ -110,9 +111,6 @@ export default class extends React.Component {
                 <RedLine />
                 <p>We have packages appropriate for all company sizes.  Contact us to learn more.</p>
                 <br />
-                <br />
-                <br />
-                <br />
                 <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
@@ -120,17 +118,17 @@ export default class extends React.Component {
             <Col md={4} className='hidden-xs hidden-sm'>
               <div style={{
                 width: '125%',
-                padding: 20,
+                padding: 40,
                 backgroundColor: Theme.colors.blue,
-                color: Theme.colors.yellow,
+                color: Theme.colors.white,
                 position: 'relative',
-                top: -50,
+                top: -60,
                 boxShadow: boxShadow,
                 marginLeft: '-13%',
                 marginRight: '-5%',
                 zIndex: 10
               }}>
-                <div style={{textAlign: 'center'}}>
+                <div style={{textAlign: 'center', paddingBottom: 10}}>
                   <img src='/static/images/dog.svg' />
                   <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
                 </div>
@@ -146,9 +144,6 @@ export default class extends React.Component {
                 <RedLine />
                 <p>We have packages appropriate for all company sizes.  Contact us to learn more.</p>
                 <br />
-                <br />
-                <br />
-                <br />
                 <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
@@ -156,11 +151,14 @@ export default class extends React.Component {
             <Col md={4}>
               <div style={{
                 width: '100%',
-                padding: 20,
+                paddingTop: 40,
+                paddingBottom: 40,
+                paddingRight: 40,
+                paddingLeft: 50,
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center'}}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
+                <div style={{textAlign: 'center', paddingBottom: 10}}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
                 <RedLine />
                 <p>For larger customers in need of a support contract, we offer an enterprise plan including everything in the Premium plan plus:</p>
                 <RedLine />
@@ -171,8 +169,6 @@ export default class extends React.Component {
                   <li><strong>...and custom development against Actionhero’s core as needed.</strong></li>
                 </ul>
                 <br />
-                <br />
-                <br />
                 <Button onClick={this.showModal.bind(this)} style={Theme.buttons.big(Theme.colors.red, Theme.colors.white)} bsSize='large' block>Contact Us</Button>
               </div>
             </Col>
@@ -180,7 +176,7 @@ export default class extends React.Component {
             <Modal show={this.state.showModal} onHide={this.hideModal.bind(this)}>
               <form action='//delicioushat.us15.list-manage.com/subscribe/post?u=bbdc9a683c995f14392f649f4&amp;id=b2867a5444' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' className='validate' target='_blank' noValidate>
                 <Modal.Body style={{
-                  padding: 20,
+                  padding: 40,
                   backgroundColor: Theme.colors.yellow,
                   color: Theme.colors.lightGray,
                   fontWeight: 200

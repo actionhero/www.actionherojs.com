@@ -102,6 +102,7 @@ export default class extends React.Component {
       <Page>
         <div style={{
           backgroundColor: Theme.colors.blue,
+          // background: `linear-gradient(to bottom ${Theme.colors.blue}, #2F5266)`,
           color: Theme.colors.white
         }}>
           <Grid style={{paddingTop: 50}}>
@@ -109,8 +110,8 @@ export default class extends React.Component {
               <Col md={2} />
               <Col md={8} style={{textAlign: 'center'}}>
                 <img src='/static/images/logo-and-wordmark.svg' />
-                <p style={{paddingTop: 40}}>{this.props.latestRelease}</p>
-                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 30}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
+                <p style={{paddingTop: 20}}>{this.props.latestRelease}</p>
+                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />
             </Row>
@@ -190,7 +191,13 @@ export default class extends React.Component {
             </Row>
             <Row>
               <Col md={12} style={{textAlign: 'center'}}>
-                <h2 style={Theme.typeography.h2}>... and a whole lot more!</h2>
+                <h2 style={{
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: 400,
+                  fontSize: 20,
+                  lineHeight: '1.5em',
+                  color: '#3B5D72'
+                }}>... and a whole lot more!</h2>
               </Col>
             </Row>
           </Grid>

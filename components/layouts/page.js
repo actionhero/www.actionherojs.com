@@ -56,6 +56,7 @@ export default class extends React.Component {
         </Grid>
 
         <Grid fluid style={commmonSetupStyle}>
+          <div style={{paddingTop: 70}} />
           { this.props.children }
         </Grid>
 

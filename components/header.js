@@ -27,6 +27,7 @@ export default class extends React.Component {
       lineHeight: 3,
       color: Theme.colors.white,
       paddingBottom: 10,
+      fontWeight: 300,
       borderBottom: decoration
     }
   }
@@ -37,7 +38,7 @@ export default class extends React.Component {
         backgroundColor: Theme.colors.blue
       }}>
         <Grid>
-          <Navbar style={{
+          <Navbar fixedTop style={{
             backgroundColor: Theme.colors.blue,
             paddingTop: 5,
             marginBottom: 10,
@@ -82,7 +83,7 @@ export default class extends React.Component {
 
               <Nav pullRight>
                 <Link href='/downloads'>
-                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.white)} block>Downloads</Button>
+                  <Button style={Theme.buttons.header(Theme.colors.blueGray, Theme.colors.white)} block>Download</Button>
                 </Link>
               </Nav>
             </Navbar.Collapse>

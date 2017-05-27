@@ -17,7 +17,7 @@ export default {
   typeography: {
     default: {
       fontSize: 14,
-      fontWeight: 200,
+      fontWeight: 300,
       lineHeight: 26
     },
     h1: {
@@ -30,14 +30,16 @@ export default {
     },
     h2: {
       fontFamily: 'Roboto, sans-serif',
-      fontWeight: 200,
-      fontSize: 24,
+      fontWeight: 300,
+      fontSize: 20,
+      lineHeight: '1.5em',
       color: '#3B5D72'
     },
     h2Alt: {
       fontFamily: 'BebasNeue, Roboto, sans-serif',
-      fontWeight: 600,
+      fontWeight: 800,
       fontSize: 24,
+      letterSpacing: 1,
       color: '#3B5D72'
     }
   },
@@ -54,7 +56,7 @@ export default {
     big: (backgroundColor, color) => {
       return {
         fontFamily: 'Roboto, sans-serif',
-        fontWeight: 400,
+        fontWeight: 300,
         fontSize: 14,
         maxWidth: 200,
         borderRadius: 50,
@@ -63,7 +65,9 @@ export default {
         backgroundColor: backgroundColor,
         borderColor: backgroundColor,
         marginTop: 20,
-        marginBottom: 20
+        marginBottom: 20,
+        paddingTop: 15,
+        paddingBottom: 15
       }
     },
 
@@ -76,10 +80,13 @@ export default {
         color: color,
         backgroundColor: backgroundColor,
         borderColor: backgroundColor,
+        fontWeight: 300,
         marginTop: 20,
         marginBottom: 0,
         marginLeft: 10,
         marginRight: 10
+        // paddingTop: 10,
+        // paddingBottom: 10
       }
     }
   }
