@@ -28,11 +28,6 @@ We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `
 ## TODO
 
 ### Homepage Design
-- spacing between header and 'section tagline' should be 40px
-  - check font heading size
-   - section heading max-width should be 480px
 - bring back the blue grid lines
 - feature "ROUTING" logo is too tall because of rocket tail
 - company logos & plays well with other logos need more padding, and to be centered properly; padding isn't maintinaed
-- solutions: titles should have top and bottom spacing symetric (50px)
-- footer: 3 cols, 50px margin from the right?
