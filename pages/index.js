@@ -211,7 +211,20 @@ export default class extends React.Component {
                 <img style={smallIconStyle} src='/static/images/flying-man.svg' />
               </Col>
             </Row>
-            <Row>
+
+            <Row className='hidden-xs hidden-sm'>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/angular.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/swift.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/elasticsearch.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/redis.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/npm.svg' />
+                <img style={smallIconStyle} src='/static/images/plays-well-with-others/ember.svg' />
+              </Col>
+            </Row>
+
+            <Row className='hidden-md hidden-lg hidden-xl'>
               <Col md={2} />
               <Col md={1} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
@@ -236,6 +249,7 @@ export default class extends React.Component {
               </Col>
               <Col md={2} />
             </Row>
+
           </Grid>
         </div>
 
@@ -331,7 +345,18 @@ export default class extends React.Component {
                 <br />
               </Col>
             </Row>
-            <Row>
+
+            <Row className='hidden-xs hidden-sm'>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/samsung.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/va.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/madglory.svg' />
+                <img style={smallIconStyle} src='/static/images/companies/taskrabbit.svg' />
+              </Col>
+            </Row>
+
+            <Row className='hidden-md hidden-lg hidden-xl'>
               <Col md={1} />
               <Col md={2} style={{textAlign: 'center'}}>
                 <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
@@ -350,6 +375,7 @@ export default class extends React.Component {
               </Col>
               <Col md={1} />
             </Row>
+
           </Grid>
         </div>
 

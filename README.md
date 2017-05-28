@@ -30,4 +30,3 @@ We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `
 ### Homepage Design
 - bring back the blue grid lines
 - feature "ROUTING" logo is too tall because of rocket tail
-- company logos & plays well with other logos need more padding, and to be centered properly; padding isn't maintinaed
