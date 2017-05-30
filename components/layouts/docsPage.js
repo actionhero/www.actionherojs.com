@@ -33,7 +33,7 @@ export default class extends React.Component {
           this.props.titleSection
           ? <div style={{
             backgroundColor: Theme.colors.yellow,
-            color: Theme.colors.lightGray,
+            color: Theme.colors.blue,
             fontWeight: 200,
             padding: 50
           }}>

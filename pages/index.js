@@ -147,7 +147,7 @@ export default class extends React.Component {
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
-          color: Theme.colors.lightGray
+          color: Theme.colors.blue
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
@@ -197,7 +197,7 @@ export default class extends React.Component {
 
         <div style={{
           backgroundColor: Theme.colors.white,
-          color: Theme.colors.lightGray
+          color: Theme.colors.blue
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
@@ -255,7 +255,7 @@ export default class extends React.Component {
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
-          color: Theme.colors.lightGray
+          color: Theme.colors.blue
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
@@ -336,7 +336,7 @@ export default class extends React.Component {
 
         <div style={{
           backgroundColor: Theme.colors.white,
-          color: Theme.colors.lightGray
+          color: Theme.colors.blue
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
@@ -383,7 +383,7 @@ export default class extends React.Component {
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
-          color: Theme.colors.lightGray,
+          color: Theme.colors.blue,
           backgroundImage: 'url("/static/images/starburst.png")',
           backgroundSize: '100% 100%'
         }}>

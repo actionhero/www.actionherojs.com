@@ -10,8 +10,7 @@ const handle = app.getRequestHandler()
 
 const rootStaticFiles = [
   '/robots.txt',
-  '/sitemap.xml',
-  '/favicon.ico'
+  '/sitemap.xml'
 ]
 
 app.prepare().then(() => {

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "github-api": "^3.0.0",
+    "glob": "^7.1.2",
     "next": "^2.4.0",
     "react": "^15.4.2",
     "react-bootstrap": "^0.31.0",
@@ -32,7 +33,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "postinstall": "npm run build",
+    "postinstall": "npm run build && npm run sitemap",
+    "sitemap": "node ./bin/buildSitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",
     "pretest": "standard"

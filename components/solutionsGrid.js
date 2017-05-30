@@ -40,7 +40,7 @@ export default class extends React.Component {
     return (
       <div style={{
         backgroundColor: Theme.colors.blueGray,
-        color: Theme.colors.lightGray,
+        color: Theme.colors.blue,
         fontWeight: 300,
         paddingTop: Theme.padding.section.paddingTop,
         paddingBottom: Theme.padding.section.paddingBottom
@@ -175,7 +175,7 @@ export default class extends React.Component {
                 <Modal.Body style={{
                   padding: 40,
                   backgroundColor: Theme.colors.yellow,
-                  color: Theme.colors.lightGray,
+                  color: Theme.colors.blue,
                   fontWeight: 200
                 }}>
                   <DocSection id='_solutionsModal' title='ActionHero Professional Services' />

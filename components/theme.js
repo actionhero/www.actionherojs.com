@@ -1,10 +1,9 @@
 export default {
   colors: {
-    yellow: '#FBF9E4',
+    red: '#E14E3A',
     blue: '#2F5266',
     blueGray: '#6E8898',
-    lightGray: '#2F5266',
-    red: '#E14E3A',
+    yellow: '#FBF9E4',
     white: '#FFFFFF'
   },
 

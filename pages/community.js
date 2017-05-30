@@ -4,6 +4,8 @@ import DocsPage from './../components/layouts/docsPage.js'
 import DangerAlert from './../components/alerts/danger.js'
 import DocSection from './../components/elements/docSection.js'
 
+import Theme from './../components/theme.js'
+
 import GitHub from 'github-api'
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
@@ -84,15 +86,7 @@ export default class extends React.Component {
             {
               this.props.error
               ? <DangerAlert message={this.props.error} />
-              : <Table striped bordered condensed hover>
-                <thead>
-                  <tr>
-                    <th>Version</th>
-                    <th>Date</th>
-                    <th>Name</th>
-                    <th />
-                  </tr>
-                </thead>
+              : <Table bordered condensed hover>
                 <tbody>
                   {
                     this.props.releases.map((release) => {
@@ -115,6 +109,54 @@ export default class extends React.Component {
                 </tbody>
               </Table>
             }
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={12}>
+            <DocSection title='Assets' />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={4} style={{textAlign: 'center'}}>
+            <h2 style={Theme.typeography.h2}>Logo</h2>
+            <br />
+            <img src='/static/press-assets/logo.png' style={{height: 50}} />
+            <p>
+              <br />
+              <a href='/static/press-assets/logo.png'>PNG</a> | <a href='/static/press-assets/logo.eps'>EPS</a> | <a href='/static/press-assets/logo.svg'>SVG</a> | <a href='/static/press-assets/logo.pdf'>PDF</a>
+            </p>
+          </Col>
+
+          <Col md={4} style={{textAlign: 'center'}}>
+            <h2 style={Theme.typeography.h2}>Wordmark</h2>
+            <br />
+            <img src='/static/press-assets/wordmark.png' style={{height: 50}} />
+            <p>
+              <br />
+              <a href='/static/press-assets/wordmark.png'>PNG</a> | <a href='/static/press-assets/wordmark.svg'>SVG</a>
+            </p>
+          </Col>
+
+          <Col md={4} style={{textAlign: 'center'}}>
+            <h2 style={Theme.typeography.h2}>Brand Colors</h2>
+            <br />
+            <table>
+              <tbody>
+                {
+                  Object.keys(Theme.colors).map((color) => {
+                    let hex = Theme.colors[color]
+                    return (
+                      <tr key={color}>
+                        <td width='50%'><div style={{backgroundColor: hex, margin: 10, height: 30, width: 30, border: '1px solid black'}} /></td>
+                        <td style={{textAlign: 'left'}}>{color}: <code>{hex}</code></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
           </Col>
         </Row>
       </DocsPage>
