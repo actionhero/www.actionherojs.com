@@ -24,8 +24,10 @@ diskPages.forEach((page) => {
   page = `${SITE_ROOT}${page}`
 
   if (page.match(/.*\/index$/)) {
-    page = page.replace(/(.*\\)index$/, '$1\\')
+    page = page.replace(/(.*)index$/, '$1')
   }
+
+  console.log(page)
 
   xml += '<url>'
   xml += `<loc>${page}</loc>`
