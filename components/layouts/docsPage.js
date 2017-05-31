@@ -7,6 +7,7 @@ import Theme from './../theme.js'
 import SideNav from './../elements/sideNav.js'
 import SolutionsGrid from './../solutionsGrid.js'
 import SiteSearch from './../elements/siteSearch.js'
+import BigButton from './../buttons/bigButton.js'
 
 export default class extends React.Component {
   constructor (props) {
@@ -76,6 +77,30 @@ export default class extends React.Component {
             </Col>
           </Row>
         </Grid>
+
+        {
+          this.props.links && this.props.links[0].title.indexOf('»') >= 0
+          ? <div fluid style={{
+            paddingBottom: Theme.padding.section.paddingBottom,
+            // backgroundColor: Theme.colors.yellow,
+            color: Theme.colors.blue
+          }}>
+            <Grid>
+              <Row>
+                <Col md={12} style={{textAlign: 'center'}}>
+                  <h1 style={Theme.typeography.h1}>Next Section</h1>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={12} style={{textAlign: 'center'}}>
+                  <BigButton href={this.props.links[0].link} backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>{this.props.links[0].title.replace('» ', '')}</BigButton>
+                </Col>
+              </Row>
+            </Grid>
+          </div>
+          : null
+        }
 
         { this.props.showSolutions ? <SolutionsGrid /> : null }
 

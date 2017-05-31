@@ -112,13 +112,16 @@ export default class extends DocsPageWithNav {
         'tutorial': 'Tutorial',
         'contributing': 'Contributing',
         'notes': 'Documentation Notes'
-      }
+      },
+      links: [
+        {link: '/docs', title: '» ActionHero Documentation'}
+      ]
     }
   }
 
   render () {
     return (
-      <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} currentSection={this.state.currentSection} showSolutions>
+      <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} links={this.state.links} currentSection={this.state.currentSection} showSolutions>
         <Row>
           <Col md={12}>
             { this.section('who',
