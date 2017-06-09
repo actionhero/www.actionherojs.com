@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
+import Link from 'next/link'
 
 import Page from './page.js'
 import Theme from './../theme.js'
@@ -7,7 +8,7 @@ import Theme from './../theme.js'
 import SideNav from './../elements/sideNav.js'
 import SolutionsGrid from './../solutionsGrid.js'
 import SiteSearch from './../elements/siteSearch.js'
-import BigButton from './../buttons/bigButton.js'
+import BlueLine from './../elements/blueLine.js'
 
 export default class extends React.Component {
   constructor (props) {
@@ -88,13 +89,9 @@ export default class extends React.Component {
             <Grid>
               <Row>
                 <Col md={12} style={{textAlign: 'center'}}>
-                  <h1 style={Theme.typeography.h1}>Next Section</h1>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md={12} style={{textAlign: 'center'}}>
-                  <BigButton href={this.props.links[0].link} backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>{this.props.links[0].title.replace('» ', '')}</BigButton>
+                  <BlueLine />
+                  <h2 style={Theme.typeography.h2}><span style={{fontWeight: 400}}>Up Next</span></h2>
+                  <h2 style={Theme.typeography.h2}><Link href={this.props.links[0].link}><a>{this.props.links[0].title.replace('» ', '')}</a></Link></h2>
                 </Col>
               </Row>
             </Grid>
