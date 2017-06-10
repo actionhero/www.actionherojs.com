@@ -1,47 +1,64 @@
 import React from 'react'
-import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
+import Head from 'next/head'
+import Link from 'next/link'
+import { InstantSearch, Hits, SearchBox } from 'react-instantsearch/dom'
+
+import Theme from './../theme.js'
+
+class Hit extends React.Component {
+  render () {
+    let hit = this.props.hit
+
+    if (!hit.content) { return null }
+    console.log(hit)
+
+    let messageParts = []
+    Object.entries(hit.hierarchy).forEach(collection => {
+      if (collection[1]) {
+        messageParts.push(`${collection[1]}`.replace('» ', ''))
+      }
+    })
+
+    return (
+      <div style={{
+        padding: 5,
+        fontFamily: 'Roboto, sans-serif',
+        color: Theme.colors.blueGray,
+        fontWeight: 300,
+        fontSize: 18,
+        lineHeight: '1.6em'
+      }}>
+        <Link href={hit.url}>
+          <a>{messageParts.join(' -> ')}</a>
+        </Link>
+      </div>
+    )
+  }
+}
 
 export default class extends React.Component {
   constructor (params) {
     super(params)
     this.state = {
-      site: 'www.actionherojs.com',
-      query: ''
+      appId: 'BH4D9OD16A',
+      apiKey: 'c815281728dda80aefecd9b4381390cb',
+      indexName: 'actionherojs'
     }
-  }
-
-  buildUrl () {
-    return `https://www.google.com/#q=site:${this.state.site}+${this.state.query}`
-  }
-
-  handleChange (event) {
-    let change = {}
-    change[event.target.id] = event.target.value
-    this.setState(change)
-  }
-
-  submit (event) {
-    event.preventDefault()
-    window.location.href = this.buildUrl()
   }
 
   render () {
     return (
-      <form onSubmit={this.submit.bind(this)}>
-        <FormGroup bsSize='large'>
-          <InputGroup>
-            <InputGroup.Addon><Glyphicon glyph='search' /></InputGroup.Addon>
-            <FormControl
-              id='query'
-              type='text'
-              value={this.state.query}
-              onChange={this.handleChange.bind(this)}
-              placeholder='Search Docs'
-            />
-            <FormControl.Feedback />
-          </InputGroup>
-        </FormGroup>
-      </form>
+      <div>
+        <Head>
+          <link rel='stylesheet' href='https://unpkg.com/react-instantsearch-theme-algolia@4.0.0/style.min.css' />
+        </Head>
+
+        <InstantSearch appId={this.state.appId} apiKey={this.state.apiKey} indexName={this.state.indexName} >
+          <SearchBox />
+          <Hits hitComponent={Hit} />
+        </InstantSearch>
+        <br />
+      </div>
     )
   }
 }
