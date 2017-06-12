@@ -50,7 +50,7 @@ export default class extends DocsPageWithNav {
         'v11': 'Upgrading from v10 to v11'
       },
       links: [
-        {link: '/docs/core/production-notes', title: '« Operations: Production Notes'}
+        {link: '/docs/ops/production-notes', title: '« Operations: Production Notes'}
       ]
     }
   }
