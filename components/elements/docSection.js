@@ -19,7 +19,7 @@ export default class extends React.Component {
       <Waypoint onEnter={waypointEnterCallback} onLeave={waypointExitCallback}>
         <div>
           <br />
-          <h2 id={id} style={Theme.typeography.h2}><span style={{fontWeight: 400}}>{title}</span></h2>
+          <h2 id={id} style={Theme.typeography.h2}><span style={{fontWeight: 300, fontSize: 36}}>{title}</span></h2>
           <RedLine />
           <div style={{
             fontFamily: Theme.fonts.docs

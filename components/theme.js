@@ -80,7 +80,8 @@ export default {
         marginTop: 20,
         marginBottom: 20,
         paddingTop: 15,
-        paddingBottom: 15
+        paddingBottom: 15,
+        outline: 'none'
       }
     },
 
@@ -98,7 +99,8 @@ export default {
         marginTop: 20,
         marginBottom: 0,
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        outline: 'none'
         // paddingTop: 10,
         // paddingBottom: 10
       }
