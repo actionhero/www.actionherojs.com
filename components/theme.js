@@ -51,6 +51,20 @@ export default {
     }
   },
 
+  form: {
+    input: {
+      border: 0,
+      outline: 0,
+      background: 'transparent',
+      borderBottom: '2px solid #2F5266',
+      marginBottom: 20,
+      paddingBottom: 10,
+      width: '100%',
+      fontSize: 24,
+      fontWeight: 300
+    }
+  },
+
   buttons: {
     big: (backgroundColor, color) => {
       return {

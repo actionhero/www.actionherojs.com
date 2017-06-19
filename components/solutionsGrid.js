@@ -1,21 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { Grid, Row, Col, Modal, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
+import { Grid, Row, Col, Modal, Button } from 'react-bootstrap'
 
 import Theme from './theme.js'
 import SuccessAlert from './alerts/success.js'
 import RedLine from './elements/redLine.js'
-import DocSection from './elements/docSection.js'
 import BigButton from './buttons/bigButton.js'
-
-function FieldGroup ({ id, label, ...props }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} />
-    </FormGroup>
-  )
-}
 
 export default class extends React.Component {
   constructor () {
@@ -173,33 +163,41 @@ export default class extends React.Component {
             <Modal show={this.state.showModal} onHide={this.hideModal.bind(this)}>
               <form action='//delicioushat.us15.list-manage.com/subscribe/post?u=bbdc9a683c995f14392f649f4&amp;id=b2867a5444' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' className='validate' target='_blank' noValidate>
                 <Modal.Body style={{
-                  padding: 40,
                   backgroundColor: Theme.colors.yellow,
+                  padding: Theme.padding.common,
                   color: Theme.colors.blue,
-                  fontWeight: 200
+                  fontWeight: 200,
+                  width: 750,
+                  marginLeft: -75,
+                  background: `url("/static/images/clouds-white.svg") no-repeat center bottom ${Theme.colors.yellow}`
                 }}>
-                  <DocSection id='_solutionsModal' title='ActionHero Professional Services' />
+                  <Row>
+                    <Col md={4}>
+                      <h1 style={Theme.typeography.h1}>ActionHero Professional Services</h1>
+                      <p>The ActionHero team is looking forward to working with you.</p>
+                      <p>We will respond to your inquiry within 2 busniess days.</p>
 
-                  <div style={{textAlign: 'center'}}>
-                    <img style={{
-                      padding: 20
-                    }} src='/static/images/flying-man.svg' />
-                  </div>
+                      <div className='hidden-sm hidden-xs' style={{textAlign: 'center', paddingTop: 100}}>
+                        <img style={{padding: 20}} src='/static/images/flying-man.svg' />
+                      </div>
+                    </Col>
+                    <Col md={8}>
+                      <div style={{paddingTop: 150}} className='hidden-sm hidden-xs' />
 
-                  <FieldGroup name='NAME' id='mce-NAME' type='text' label='Name' placeholder='Enter your name' />
-                  <FieldGroup name='COMPANY' id='mce-COMPANY' type='text' label='Company' placeholder='Your company' />
-                  <FieldGroup name='EMAIL' id='mce-EMAIL' type='email' label='Email address' placeholder='Enter email' />
-                  <FieldGroup name='PHONE' id='mce-PHONE' type='text' label='Phone Number' placeholder='xxx.xxx.xxxx' />
+                      <input style={Theme.form.input} name='NAME' id='mce-NAME' type='text' label='Name' placeholder='Your Name' /><br />
+                      <input style={Theme.form.input} name='COMPANY' id='mce-COMPANY' type='text' label='Company' placeholder='Company Name' /><br />
+                      <input style={Theme.form.input} name='EMAIL' id='mce-EMAIL' type='email' label='Email address' placeholder='Email Address' /><br />
+                      <input style={Theme.form.input} name='PHONE' id='mce-PHONE' type='text' label='Phone Number' placeholder='Phone Number' />
 
-                  <p>The ActionHero team is looking forward to working with you.  We will respond to your inquiry within 2 busniess days.</p>
-
-                  <div style={{
-                    textAlign: 'center',
-                    padding: 20
-                  }}>
-                    <Button type='submit' style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Submit</Button>
-                    <a onClick={this.hideModal.bind(this)}>Cancel</a>
-                  </div>
+                      <div style={{
+                        textAlign: 'center',
+                        padding: 20
+                      }}>
+                        <Button type='submit' style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Submit</Button>
+                        <a onClick={this.hideModal.bind(this)}>Cancel</a>
+                      </div>
+                    </Col>
+                  </Row>
                 </Modal.Body>
               </form>
             </Modal>
