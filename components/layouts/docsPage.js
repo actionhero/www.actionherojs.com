@@ -81,9 +81,8 @@ export default class extends React.Component {
 
         {
           this.props.links && this.props.links[0].title.indexOf('»') >= 0
-          ? <div fluid style={{
+          ? <div style={{
             paddingBottom: Theme.padding.section.paddingBottom,
-            // backgroundColor: Theme.colors.yellow,
             color: Theme.colors.blue
           }}>
             <Grid>
