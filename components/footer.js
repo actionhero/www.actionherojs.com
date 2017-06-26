@@ -37,7 +37,7 @@ export default class extends React.Component {
                 <p>Contact us at <a style={{color: Theme.colors.yellow, fontWeight: 500}} href='mailto:hello@actionherojs.com'>hello@actionherojs.com</a></p>
                 <p><Link href='https://medium.com/tag/actionherojs'><a target='_new' style={footerLinkStyle}>Blogs</a></Link></p>
                 <p>{ String.fromCharCode(169) + ' ' + this.state.date.getFullYear() } ActionHero</p>
-                <p><em>Search provided by <a href='https://www.algolia.com' target='_new'>Algolia</a></em></p>
+                <p><em>Search by <a href='https://www.algolia.com' target='_new'>Algolia <img style={{padding: 5}} width={30} src='/static/images/algolia.svg' /></a></em></p>
               </div>
             </Col>
             <Col md={4}>
