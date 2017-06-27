@@ -416,6 +416,7 @@ export default class extends DocsPageWithNav {
                 <p>The goal of most actions is to do work and then modify the value of <code>data.response</code>, which will eventually be sent down to the client.</p>
                 <p>You can also modify properties of the connection by accessing <code>data.connection</code>, IE changing the response header for a HTTP request.</p>
                 <p>If you don't want your action to respond to the client, or you have already sent data to the client (perhaps you already rendered a file to them or sent an error HTTP header), you can set <code>data.toRender = false;</code></p>
+                <p>If you are certain that your action is only going to be handled by a web server, then a convience function has been provided to you via <code>data.connection.setHeader()</code>. This function is a proxy to the <a href='https://nodejs.org/api/http.html#http_response_setheader_name_value'>Node HTTP Response setHeader</a> function and allows you to set response headers without having to drill into the <code>data.connection.rawConnection</code> object. Please be aware, the <code>data.connection.setHeader()</code> function will only be available if your action is being handled by a web server. Other server types will throw an exception.</p>
               </div>
             )}
 
