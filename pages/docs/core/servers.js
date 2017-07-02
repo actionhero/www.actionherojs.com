@@ -130,6 +130,30 @@ const ParseRequset =
    }
  }`
 
+const CustomMethodInitializer =
+ `//Initializer
+ module.exports = {
+   startPriority: 1000,
+   start: function (api, next) {
+     let webServer = api.servers.servers.web
+     webServer.connectionCustomMethods = {}
+     webServer.connectionCustomMethods.requestHeaders = function (connection) {
+       return connection.rawConnection.req.headers
+     }
+   }
+ }
+
+ //Action
+ module.exports = {
+   name: 'logHeaders',
+   description 'Log Web Request Headers',
+   run: function (api, data, next) {
+     let headers = data.connection.requestHeaders()
+     api.log('Headers:', 'debug', headers)
+     next()
+   }
+ }`
+
 export default class extends DocsPageWithNav {
   constructor (props) {
     super(props)
@@ -146,7 +170,8 @@ export default class extends DocsPageWithNav {
         'verbs': 'Verbs',
         'chat': 'Chat',
         'sending-responses': 'Sending Responses',
-        'sending-files': 'Sending Files'
+        'sending-files': 'Sending Files',
+        'customizing-servers': 'Customizing the Connection'
       },
       links: [
         {link: '/docs/core/localization', title: '» Core: Localization'},
@@ -210,6 +235,13 @@ export default class extends DocsPageWithNav {
                 <p>Servers can optionally implement the <code>server.sendFile = function(connection, error, fileStream, mime, length)</code> method.  This method is responsible for any connection-specific file transport (headers, chinking, encoding, etc). Note that fileStream is a <code>stream</code> which should be <code>pipe</code>d to the client.</p>
               </div>
             )}
+
+            { this.section('customizing-servers',
+              <div>
+                <Code>{CustomMethodInitializer}</Code>
+                <p>The <code>connection</code> object passed to a server can be customized on a per server basis through the use of the <code>server.connectionCustomMethods</code> hash. The hash can be populated with functions whose signature must match <code>function (connection, ...)</code>. Once populated, these functions are curried to always pass <code>connection</code> as the first argument and applied to the <code>data.connection</code> object passed to Actions, and can be accessed via <code>data.connection.functionName(...)</code> within the action or middleware.</p>
+              </div>
+          )}
           </Col>
         </Row>
       </DocsPage>
