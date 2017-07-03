@@ -136,7 +136,7 @@ const CustomMethodInitializer =
    startPriority: 1000,
    start: function (api, next) {
      let webServer = api.servers.servers.web
-     webServer.connectionCustomMethods = {}
+     webServer.connectionCustomMethods = webServer.connectionCustomMethods || {}
      webServer.connectionCustomMethods.requestHeaders = function (connection) {
        return connection.rawConnection.req.headers
      }
@@ -240,6 +240,7 @@ export default class extends DocsPageWithNav {
               <div>
                 <Code>{CustomMethodInitializer}</Code>
                 <p>The <code>connection</code> object passed to a server can be customized on a per server basis through the use of the <code>server.connectionCustomMethods</code> hash. The hash can be populated with functions whose signature must match <code>function (connection, ...)</code>. Once populated, these functions are curried to always pass <code>connection</code> as the first argument and applied to the <code>data.connection</code> object passed to Actions, and can be accessed via <code>data.connection.functionName(...)</code> within the action or middleware.</p>
+                <p>In this way, you can create custom methods on your connections.</p>
               </div>
           )}
           </Col>
