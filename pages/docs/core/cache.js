@@ -200,7 +200,7 @@ export default class extends DocsPageWithNav {
             { this.section('redis',
               <div>
                 <p>The timestamps regarding <code>api.cache.load</code> are to help clients understand if they are working with data which has been modified by another peer (when running in a cluster).</p>
-                <p>Keep in mind that many clients/servers can access a cached value simultaneously, so build your actions carefully not to have conflicting state.  You can <a href='/docs/core/cache'>learn more about the cache methods here</a>.  You can also <a href='/docs/deployment/production'>review recommendations about Production Redis configurations</a>.</p>
+                <p>Keep in mind that many clients/servers can access a cached value simultaneously, so build your actions carefully not to have conflicting state.  You can <a href='/docs/core/cache'>learn more about the cache methods here</a>.  You can also <a href='docs/ops/production-notes'>review recommendations about Production Redis configurations</a>.</p>
               </div>
             )}
 
