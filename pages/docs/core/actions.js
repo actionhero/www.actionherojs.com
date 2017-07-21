@@ -442,7 +442,7 @@ export default class extends DocsPageWithNav {
                   </li>
                 </ul>
 
-                <p><a href='/docs/servers/#web-uploading-files'>You can learn more about handling HTTP verbs and file uploads here</a> and <a href='/docs/servers/#socket'>TCP Clients</a> and <a href='/docs/servers/#websocket'>Web-Socket Clients</a></p>
+                <p><a href='/docs/servers/web#sending-files'>You can learn more about handling HTTP verbs and file uploads here</a> and <a href='/docs/servers/socket'>TCP Clients</a> and <a href='/docs/servers/websocket'>Web-Socket Clients</a></p>
               </div>
             )}
           </Col>
