@@ -208,7 +208,9 @@ export default class extends React.Component {
               </Col>
               <Col md={1} />
               <Col md={1} style={{textAlign: 'center'}}>
-                <img style={smallIconStyle} src='/static/images/flying-man.svg' />
+                <div className='hidden-md'>
+                  <img style={smallIconStyle} src='/static/images/flying-man.svg' />
+                </div>
               </Col>
             </Row>
 
