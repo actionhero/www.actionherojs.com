@@ -3,6 +3,6 @@ coverage/*
 npm-debug.log
 .DS_Store
 .env
-build
 .next
 static/sitemap.xml
+out

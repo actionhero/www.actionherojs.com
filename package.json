@@ -34,8 +34,6 @@
   },
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
-    "postinstall": "npm run build && npm run sitemap",
     "sitemap": "node ./bin/sitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",
