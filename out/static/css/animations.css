@@ -1,0 +1,71 @@
+.animated-hover-jetpack {
+  animation: animated-hover-jetpack 3s ease-in-out infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes animated-hover-jetpack {
+  0 {
+    bottom: 0;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+
+.animated-clouds-left {
+  animation: animated-clouds-left 10s infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes animated-clouds-left {
+  0 {
+    left: 0;
+  }
+  50% {
+    left: -25px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.animated-clouds-right {
+  animation: animated-clouds-right 13s infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes animated-clouds-right {
+  0 {
+    left: 0;
+  }
+  50% {
+    left: 25px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.animated-spin {
+  animation: animated-spin 10s infinite;
+}
+
+@animated-spin spin {
+  from {
+    -webkit-transform:rotate(0deg);
+  }
+
+  to {
+    -webkit-transform:rotate(360deg);
+  }
+}
