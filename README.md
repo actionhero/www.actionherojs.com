@@ -1,6 +1,6 @@
 # www.actionherojs.com
 
-[![Build Status](https://circleci.com/gh/actionhero/www.actionherojs.com.png)](https://circleci.com/gh/actionhero/www.actionherojs.com.png)](https://circleci.com/gh/actionhero/www.actionherojs.com)
+[![Build Status](https://circleci.com/gh/actionhero/www.actionherojs.com.png)](https://circleci.com/gh/actionhero/www.actionherojs.com)
 
 ## Install
 This is a [React Project](https://facebook.github.io/react/) utilizing [next.js](https://github.com/zeit/next.js/) and [react-bootstrap](https://react-bootstrap.github.io/)
