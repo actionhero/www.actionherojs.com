@@ -11,6 +11,9 @@ rm -rf ./out
 ./node_modules/.bin/next export
 
 ## Github Stuff
+git config --global user.email "admin@actionherojs.com"
+git config --global user.name "CircleCI for ActionHero"
+
 rm  -f ./out/CNAME
 echo "www.actionherojs.com" >> ./out/CNAME
 echo "actionherojs.com" >> ./out/CNAME
