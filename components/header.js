@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import Router from 'next/router'
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap'
 
@@ -44,8 +43,8 @@ export default class extends React.Component {
     }
   }
 
-  goHome () {
-    Router.push('/')
+  goTo (path) {
+    Router.push(path)
   }
 
   render () {
@@ -62,7 +61,7 @@ export default class extends React.Component {
           }}>
             <Navbar.Header>
               <Navbar.Brand>
-                <a onClick={this.goHome} style={{paddingTop: 0, marginBottom: 15}}>
+                <a onClick={this.goTo.bind(this, '/')} style={{paddingTop: 0, marginBottom: 15}}>
                   <img src='/static/images/actionhero-logo-header-wordmark.svg' style={{paddingTop: 14, paddingBottom: 20}} />
                 </a>
               </Navbar.Brand>
@@ -73,28 +72,24 @@ export default class extends React.Component {
               <Nav pullRight />
 
               <Nav pullLeft className='hidden-md hidden-sm hidden-xs'>
-                <Link><NavItem>&nbsp;</NavItem></Link>
-                <Link><NavItem>&nbsp;</NavItem></Link>
-                <Link><NavItem>&nbsp;</NavItem></Link>
-                <Link><NavItem>&nbsp;</NavItem></Link>
+                <NavItem>&nbsp;</NavItem>
+                <NavItem>&nbsp;</NavItem>
+                <NavItem>&nbsp;</NavItem>
+                <NavItem>&nbsp;</NavItem>
               </Nav>
 
               <Nav pullLeft>
-                <Link href='/downloads'>
-                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/downloads') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/downloads')}>Downloads</span></NavItem>
-                </Link>
+                <NavItem onClick={this.goTo.bind(this, '/downloads')}>
+                  <span onMouseEnter={() => { this.onMouseEnter('/downloads') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/downloads')}>
+                    Downloads
+                  </span>
+                </NavItem>
 
-                <Link href='/docs'>
-                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
-                </Link>
+                <NavItem onClick={this.goTo.bind(this, '/docs')}><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
 
-                <Link href='/solutions'>
-                  <NavItem className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
-                </Link>
+                <NavItem onClick={this.goTo.bind(this, '/solutions')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
 
-                <Link href='/community'>
-                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/community') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/community')}>Community</span></NavItem>
-                </Link>
+                <NavItem onClick={this.goTo.bind(this, '/community')}><span onMouseEnter={() => { this.onMouseEnter('/community') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/community')}>Community</span></NavItem>
               </Nav>
 
               <Nav pullRight>
