@@ -1,8 +1,0 @@
-node_modules/*
-coverage/*
-npm-debug.log
-.DS_Store
-.env
-.next
-static/sitemap.xml
-out
