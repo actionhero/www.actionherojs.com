@@ -102,7 +102,6 @@ export default class extends React.Component {
       <Page>
         <div style={{
           backgroundColor: Theme.colors.blue,
-          // background: `linear-gradient(to bottom ${Theme.colors.blue}, #2F5266)`,
           color: Theme.colors.white
         }}>
           <Grid style={{paddingTop: 50}}>

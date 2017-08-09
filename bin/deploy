@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+cd "$(dirname "$0")"
+cd ..
+
+## Build the project
+rm -rf ./out
+./node_modules/.bin/next build
+./node_modules/.bin/next export
+
+## Github Stuff
+rm  -f ./out/CNAME
+echo "www.actionherojs.com" >> ./out/CNAME
+echo "actionherojs.com" >> ./out/CNAME
+touch ./out/.nojekyll
+cp .gitignore ./out/.gitignore
+cp circle.yml ./out/circle.yml
+
+## Git Push
+git add -f out && git commit -m "deploy static site @ $(date)"
+git subtree push --prefix out origin gh-pages
