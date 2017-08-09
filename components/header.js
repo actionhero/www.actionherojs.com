@@ -44,6 +44,10 @@ export default class extends React.Component {
     }
   }
 
+  goHome () {
+    Router.push('/')
+  }
+
   render () {
     return (
       <header style={{
@@ -58,9 +62,9 @@ export default class extends React.Component {
           }}>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link href='/'>
-                  <a><img src='/static/images/actionhero-logo-header-wordmark.svg' style={{paddingTop: 14, paddingBottom: 20}} /></a>
-                </Link>
+                <a onClick={this.goHome} style={{paddingTop: 0, marginBottom: 15}}>
+                  <img src='/static/images/actionhero-logo-header-wordmark.svg' style={{paddingTop: 14, paddingBottom: 20}} />
+                </a>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
@@ -76,8 +80,8 @@ export default class extends React.Component {
               </Nav>
 
               <Nav pullLeft>
-                <Link href='/get-started'>
-                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/get-started') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/get-started')}>Get Started</span></NavItem>
+                <Link href='/downloads'>
+                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/downloads') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/downloads')}>Downloads</span></NavItem>
                 </Link>
 
                 <Link href='/docs'>
@@ -85,7 +89,7 @@ export default class extends React.Component {
                 </Link>
 
                 <Link href='/solutions'>
-                  <NavItem><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
+                  <NavItem className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
                 </Link>
 
                 <Link href='/community'>
@@ -94,7 +98,7 @@ export default class extends React.Component {
               </Nav>
 
               <Nav pullRight>
-                <HeaderButton href='/downloads' backgroundColor={Theme.colors.blueGray} textColor={Theme.colors.white}>Download</HeaderButton>
+                <HeaderButton href='/get-started' backgroundColor={Theme.colors.blueGray} textColor={Theme.colors.white}>Get Started</HeaderButton>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
