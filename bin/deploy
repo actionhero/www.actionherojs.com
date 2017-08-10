@@ -13,11 +13,10 @@ git config --global user.name "CircleCI for ActionHero"
 rm -rf ./out
 ./node_modules/.bin/next build
 ./node_modules/.bin/next export
-rm  -f ./out/CNAME
-echo "www.actionherojs.com" >> ./out/CNAME
-echo "actionherojs.com" >> ./out/CNAME
+
 touch ./out/.nojekyll
 cp .gitignore ./out/.gitignore
+cp CNAME ./out/CNAME
 cp circle.yml ./out/circle.yml
 
 # make a directory to put the gp-pages branch
