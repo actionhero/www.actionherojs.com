@@ -44,18 +44,3 @@ cd ..
 rm -rf gh-pages-branch
 
 echo "Depolyment Complete"
-
-
-
-
-
-
-
-
-
-
-
-## Git Push
-git add -f out && git commit -m "deploy static site @ $(date)"
-git subtree push --prefix out origin gh-pages
-git rm -rf out
