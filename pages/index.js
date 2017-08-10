@@ -76,13 +76,16 @@ let smallIconStyle = {
 }
 
 export default class extends React.Component {
-  constructor () {
-    super()
-    this.state = {error: null}
+  constructor (props) {
+    super(props)
+    this.state = {
+      error: props.error || null,
+      latestRelease: props.latestRelease || null
+    }
   }
 
   componentDidMount () {
-    this.loadReleases()
+    if (!this.state.latestRelease) { this.loadReleases() }
   }
 
   async loadReleases () {

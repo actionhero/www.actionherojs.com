@@ -13,13 +13,16 @@ const repository = github.getRepo('actionhero', 'actionhero')
 let maxReleases = 10
 
 export default class extends React.Component {
-  constructor () {
-    super()
-    this.state = {error: null, releases: []}
+  constructor (props) {
+    super(props)
+    this.state = {
+      error: props.error || null,
+      releases: props.releases || []
+    }
   }
 
   componentDidMount () {
-    this.loadReleases()
+    if (!this.state.props) { this.loadReleases() }
   }
 
   async loadReleases () {
