@@ -52,12 +52,16 @@ export default class extends React.Component {
               <Code language='bash'>{yarn}</Code>
             </div>
           </Col>
-          <Col md={6} style={{textAlign: 'center', padding: 50}}>
+          <Col md={12} style={{textAlign: 'center', padding: 50}}>
             <DocSection title='Github' />
             <a href='https://github.com/actionhero/actionhero'>
               <img src='/static/images/downloads/github.svg' />
-              <br />
-              <br />
+            </a>
+            <br />
+            <br />
+            <p>All of ActionHero's source code is hosted on <a target='_blank' href='https://github.com/actionhero/actionhero'>GitHub</a>.</p>
+            <p>If you are intersetd in forking or contributing to ActionHero, start here!</p>
+            <a href='https://github.com/actionhero/actionhero'>
               <div style={{textAlign: 'center'}}>
                 <Alert bsStyle='success'>
                   {`https://github.com/actionhero/actionhero`}
