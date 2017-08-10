@@ -33,7 +33,7 @@
     "standard": "^10.0.3"
   },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "sitemap": "node ./bin/sitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",

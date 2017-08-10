@@ -76,9 +76,18 @@ let smallIconStyle = {
 }
 
 export default class extends React.Component {
-  static async getInitialProps () {
-    let error
+  constructor () {
+    super()
+    this.state = {error: null}
+  }
+
+  componentDidMount () {
+    this.loadReleases()
+  }
+
+  async loadReleases () {
     let latestRelease
+    let error
 
     try {
       let response = await repository.listReleases()
@@ -92,11 +101,11 @@ export default class extends React.Component {
       }
     }
 
-    return { latestRelease, error }
+    this.setState({error, latestRelease})
   }
 
   render () {
-    if (this.props.error) { console.error(`Error fetching versions: ${this.props.error}`) }
+    if (this.state.error) { console.error(`Error fetching versions: ${this.state.error}`) }
 
     return (
       <Page>
@@ -109,7 +118,7 @@ export default class extends React.Component {
               <Col md={2} />
               <Col md={8} style={{textAlign: 'center'}}>
                 <img src='/static/images/logo-and-wordmark.svg' />
-                <p style={{paddingTop: 20}}>{this.props.latestRelease}</p>
+                <p style={{paddingTop: 20}}>{this.state.latestRelease}</p>
                 <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />

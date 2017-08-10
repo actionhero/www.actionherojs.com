@@ -13,7 +13,16 @@ const repository = github.getRepo('actionhero', 'actionhero')
 let maxReleases = 10
 
 export default class extends React.Component {
-  static async getInitialProps () {
+  constructor () {
+    super()
+    this.state = {error: null, releases: []}
+  }
+
+  componentDidMount () {
+    this.loadReleases()
+  }
+
+  async loadReleases () {
     let error
     let releases = []
 
@@ -28,7 +37,7 @@ export default class extends React.Component {
       }
     }
 
-    return { releases, error }
+    this.setState({error, releases})
   }
 
   render () {
@@ -84,12 +93,12 @@ export default class extends React.Component {
           <Col md={7} style={{paddingTop: 50, paddingBottom: 50}}>
             <DocSection title='Recent Releases' />
             {
-              this.props.error
-              ? <DangerAlert message={this.props.error} />
+              this.state.error
+              ? <DangerAlert message={this.state.error} />
               : <Table bordered condensed hover>
                 <tbody>
                   {
-                    this.props.releases.map((release) => {
+                    this.state.releases.map((release) => {
                       releaseCounter++
                       let date = new Date(release.published_at)
                       let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
