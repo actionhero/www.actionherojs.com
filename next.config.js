@@ -1,7 +1,8 @@
 module.exports = {
   exportPathMap: function () {
     return {
-      '/': { page: '/index' },
+      '/': { page: '/' },
+      '/index': { page: '/index' },
       '/community': { page: '/community' },
       '/docs': { page: '/docs' },
       '/downloads': { page: '/downloads' },
@@ -9,6 +10,7 @@ module.exports = {
       '/solutions': { page: '/solutions' },
       '/terms': { page: '/terms' },
 
+      '/docs/core': { page: '/docs/core/' },
       '/docs/core/action-cluster': { page: '/docs/core/action-cluster' },
       '/docs/core/actions': { page: '/docs/core/actions' },
       '/docs/core/api-object': { page: '/docs/core/api-object' },
@@ -17,7 +19,6 @@ module.exports = {
       '/docs/core/cli': { page: '/docs/core/cli' },
       '/docs/core/config': { page: '/docs/core/config' },
       '/docs/core/file-server': { page: '/docs/core/file-server' },
-      '/docs/core/index': { page: '/docs/core/index' },
       '/docs/core/initializers': { page: '/docs/core/initializers' },
       '/docs/core/localization': { page: '/docs/core/localization' },
       '/docs/core/logging': { page: '/docs/core/logging' },
@@ -27,14 +28,14 @@ module.exports = {
       '/docs/core/tasks': { page: '/docs/core/tasks' },
       '/docs/core/utils': { page: '/docs/core/utils' },
 
+      '/docs/ops': { page: '/docs/ops/' },
       '/docs/ops/development-mode': { page: '/docs/ops/development-mode' },
-      '/docs/ops/index': { page: '/docs/ops/index' },
       '/docs/ops/production-notes': { page: '/docs/ops/production-notes' },
       '/docs/ops/running-actionhero': { page: '/docs/ops/running-actionhero' },
       '/docs/ops/testing': { page: '/docs/ops/testing' },
       '/docs/ops/upgrade-path': { page: '/docs/ops/upgrade-path' },
 
-      '/docs/servers/index': { page: '/docs/servers/index' },
+      '/docs/servers': { page: '/docs/servers/' },
       '/docs/servers/socket': { page: '/docs/servers/socket' },
       '/docs/servers/web': { page: '/docs/servers/web' },
       '/docs/servers/websocket': { page: '/docs/servers/websocket' }
