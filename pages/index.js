@@ -120,7 +120,7 @@ export default class extends React.Component {
             <Row>
               <Col md={2} />
               <Col md={8} style={{textAlign: 'center'}}>
-                <img src='/static/images/logo-and-wordmark.svg' />
+                <a href='https://github.com/actionhero/actionhero'><img src='/static/images/logo-and-wordmark.svg' /></a>
                 <p style={{paddingTop: 20}}>{this.state.latestRelease}</p>
                 <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
