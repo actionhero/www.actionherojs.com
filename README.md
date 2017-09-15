@@ -24,8 +24,4 @@ We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `
 - we use a default boostrap CSS file
 - all components provide thier own CSS inline
 
-## TODO
 
-### Homepage Design
-- bring back the blue grid lines
-- feature "ROUTING" logo is too tall because of rocket tail
