@@ -174,7 +174,7 @@ module.exports = {
 
   stop: function(api, next){
     api.scheduledJobs.forEach(function(job){
-      job.canel();
+      job.cancel();
     });
 
     next();
