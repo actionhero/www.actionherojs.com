@@ -103,11 +103,17 @@ export default class extends DocsPageWithNav {
 
             { this.section('debugging',
               <div>
+                <h3>Old debugger</h3>
                 <p>You can use the awesome <a href='https://github.com/dannycoates/node-inspector'>node-inspector</a> project to help you debug your ActionHero application within the familiar Chrome Browser's developer tools.</p>
-                <p>Be sure to run ActionHero with node's <code>--debug</code> flag, ie: <code>node ./node_modules/.bin/actionhero start --debug</code></p>
+                <p>Be sure to run ActionHero with node's <code>--debug</code> flag, ie: <code>node ./node_modules/.bin/actionhero --debug start</code></p>
                 <Code>{Debugging}</Code>
                 <p>Start up node-inspector (both node-inspector and ActionHero have the same default port, so you will need to change one of them) <code>./node_modules/.bin/node-inspector --web-port=1234</code></p>
                 <p>That's it! Now you can visit <code>{`http://0.0.0.0:1234/debug?port=5858`}</code> and start debugging.  Remember that the way node-debugger works has you first set a breakpoint in the file view, and then you can use the console to inspect various objects.  IE: I put a breakpoint in the default <code>status</code> action in the <code>run</code> method:</p>
+             
+               <h3>New debugger</h3>
+               <p>New versions of node.js have built-in inspector capabilities.</p>
+               <p>Run ActionHero with node's <code>--inspect</code> flag, ie: <code>node ./node_modules/.bin/actionhero --inspect start</code></p>
+               <p>More info about new <a href='https://nodejs.org/en/docs/inspector'>node inspector</a></p>
               </div>
             )}
 
