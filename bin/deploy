@@ -19,7 +19,7 @@ cp .gitignore ./out/.gitignore
 cp CNAME ./out/CNAME
 cp circle.yml ./out/circle.yml
 
-# make a directory to put the gp-pages branch
+# make a directory to put the gh-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
 git init
