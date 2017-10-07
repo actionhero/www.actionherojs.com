@@ -3,7 +3,6 @@ import { AutoAffix } from 'react-overlays'
 import Link from 'next/link'
 
 import Theme from './../theme.js'
-import SiteSearch from './siteSearch.js'
 
 export default class extends React.Component {
   render () {
@@ -18,7 +17,6 @@ export default class extends React.Component {
       <div style={{height: this.props.contentHeight}}>
         <AutoAffix container={this}>
           <div style={{paddingTop: 90}}>
-            <SiteSearch />
 
             <ul style={{
               listStyleType: 'none',

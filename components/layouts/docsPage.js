@@ -7,7 +7,6 @@ import Theme from './../theme.js'
 
 import SideNav from './../elements/sideNav.js'
 import SolutionsGrid from './../solutionsGrid.js'
-import SiteSearch from './../elements/siteSearch.js'
 import BlueLine from './../elements/blueLine.js'
 
 export default class extends React.Component {
@@ -47,7 +46,6 @@ export default class extends React.Component {
                 <Col md={6} style={{textAlign: 'center'}}>
                   <h1 style={Theme.typeography.h1}><br />{this.props.titleSection.title}</h1>
                   { this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null }
-                  { this.props.titleSection.search ? <div><br /><SiteSearch /></div> : null}
                 </Col>
                 <Col md={3} />
               </Row>

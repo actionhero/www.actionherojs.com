@@ -12,19 +12,18 @@
     "node": "8.x.x"
   },
   "dependencies": {
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
     "github-api": "^3.0.0",
     "glob": "^7.1.2",
-    "next": "^3.0.3",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.2",
-    "react-dom": "^15.6.1",
+    "next": "^3.2.2",
+    "react": "^15.6.2",
+    "react-bootstrap": "^0.31.3",
+    "react-dom": "^15.6.2",
     "react-fontawesome": "^1.5.0",
-    "react-ga": "^2.1.2",
-    "react-instantsearch": "^4.0.10",
-    "react-overlays": "^0.8.0",
-    "react-syntax-highlighter": "^5.6.2",
-    "react-waypoint": "^7.0.4"
+    "react-ga": "^2.3.5",
+    "react-overlays": "^0.8.2",
+    "react-syntax-highlighter": "^5.7.0",
+    "react-waypoint": "^7.3.1"
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",

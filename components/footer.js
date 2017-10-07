@@ -35,15 +35,14 @@ export default class extends React.Component {
               <div style={{paddingLeft: columnPadding}}>
                 <p><Link href='/terms'><a style={footerLinkStyle}>Terms</a></Link></p>
                 <p>Contact us at <a style={{color: Theme.colors.yellow, fontWeight: 500}} href='mailto:hello@actionherojs.com'>hello@actionherojs.com</a></p>
-                <p><Link href='https://medium.com/tag/actionherojs'><a target='_new' style={footerLinkStyle}>Blogs</a></Link></p>
+                <p><Link href='https://medium.com/tag/actionherojs/latest'><a target='_new' style={footerLinkStyle}>Blogs</a></Link></p>
                 <p>{ String.fromCharCode(169) + ' ' + this.state.date.getFullYear() } ActionHero</p>
-                <p><em>Search by <a href='https://www.algolia.com' target='_new'>Algolia <img style={{padding: 5}} width={30} src='/static/images/algolia.svg' /></a></em></p>
               </div>
             </Col>
             <Col md={4}>
               <div style={{paddingLeft: columnPadding}}>
                 <p><Link href='/get-started'><a style={footerLinkStyle}>Get Started</a></Link></p>
-                <p><Link href='/docs'><a style={footerLinkStyle}>Documenation</a></Link></p>
+                <p><Link href='https://docs.actionherojs.com'><a style={footerLinkStyle}>Documenation</a></Link></p>
                 <p><Link href='/solutions'><a style={footerLinkStyle}>Solutions</a></Link></p>
                 <p><Link href='/community'><a style={footerLinkStyle}>Community</a></Link></p>
                 <p><Link href='/downloads'><a style={footerLinkStyle}>Downloads</a></Link></p>

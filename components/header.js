@@ -43,8 +43,12 @@ export default class extends React.Component {
     }
   }
 
-  goTo (path) {
-    Router.push(path)
+  async goTo (path) {
+    try {
+      await Router.push(path)
+    } catch (error) {
+      window.location.href = path
+    }
   }
 
   render () {
@@ -85,7 +89,7 @@ export default class extends React.Component {
                   </span>
                 </NavItem>
 
-                <NavItem onClick={this.goTo.bind(this, '/docs')}><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
+                <NavItem onClick={this.goTo.bind(this, 'https://docs.actionherojs.com')}><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
 
                 <NavItem onClick={this.goTo.bind(this, '/solutions')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
 
