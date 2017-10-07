@@ -12,40 +12,39 @@ const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
 const CodeSamples = {
-  eastToUseActions: `exports.action = {
-  name: 'randomNumber',
-  description: 'I generate a random number',
-  action.inputs: {
-    'required' : [],
-    'optional' : []
-  },
-  outputExample: {randomNumber: 123}
-  run: function(api, data, next){
-    data.response.randomNumber = Math.random();
-    next();
+  eastToUseActions: `const {Action} = require('actionhero')
+
+module.exports = class RandomNumber extends Action {
+  constructor () {
+    super()
+    this.name = 'randomNumber'
+    this.description = 'I am an API method which will generate a random number'
+    this.outputExample = { randomNumber: 0.123 }
+  }
+
+  async run ({connection, response}) {
+    response.randomNumber = Math.random()
   }
 }`,
-  backgroundTasks: `api.tasks.enqueue(
+  backgroundTasks: `await api.tasks.enqueue(
     "sendWelcomeEmail",
     {to: 'evan@evantahler.com'},
-    'default',
-function(error, toRun){
-  // done!
-});
+    'default');
 
-var task = {
-  name:          "sendWelcomeEmail",
-  description:   "I will send a new user a welcome email",
-  queue:         "default",
-  frequency:     0,
-  run: function(api, params, next){
-    api.sendEmail(params.email, function(error){
-      if(error){ api.log(error, 'error'); }
-      next();
-    })
+module.exports = class RunAction extends ActionHero.Task {
+  constructor () {
+    super()
+    this.name = 'sendWelcomeEmail'
+    this.description = 'I send an email'
+    this.frequency = 0
+    this.queue = 'default'
   }
-};`,
-  clusterReady: `./node_modules/.bin/actionhero start cluster --workers 10`,
+
+  async run (params) {
+    await api.sendEmail(params)
+  }
+}`,
+  clusterReady: `npx actionhero start cluster --workers 10`,
   localization: `let number = Math.random()
 let response = data.connection.localize(['Your random number is {{number}}', {number: number}])
 data.response.stringRandomNumber = response`,
@@ -64,7 +63,7 @@ data.response.stringRandomNumber = response`,
   ]
 }`,
   chat: `//server
-api.chatRoom.broadcast(null, 'myRoom', 'Hello!')
+await api.chatRoom.broadcast(null, 'myRoom', 'Hello!')
 
 //client
 client.on('message', (message) => alert(message))

@@ -7,7 +7,7 @@ import Code from './../components/code.js'
 
 let npm = `# mkdir my_project && cd my_project
 npm install actionhero --save
-./node_modules/.bin/actionhero generate
+npx actionhero generate
 npm install
 npm start
 `

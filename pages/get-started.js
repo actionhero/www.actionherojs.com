@@ -42,7 +42,7 @@ brew install redis
 
 const Quickstart = `mkdir ~/project && cd ~/project
 npm install actionhero
-./node_modules/.bin/actionhero generate
+npx actionhero generate
 npm install
 npm start`
 
@@ -157,7 +157,7 @@ export default class extends DocsPageWithNav {
                 <ul>
                   <li>Create a new directory <code>mkdir ~/project && cd ~/project</code></li>
                   <li>Checkout the ActionHero source <code>npm install actionhero</code></li>
-                  <li>Use the generator to create a template project <code>./node_modules/.bin/actionhero generate</code></li>
+                  <li>Use the generator to create a template project <code>npx actionhero generate</code></li>
                   <li><code>npm install</code> to install dependencies</li>
                   <li>You can now start up the server: <code>npm start</code></li>
                 </ul>
