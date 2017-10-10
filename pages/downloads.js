@@ -30,7 +30,7 @@ export default class extends React.Component {
           <Col md={12}>
             <br />
             <br />
-            <p>ActionHero's source code licence is The V2 Apache Licence, and is distributed with the code.  ActionHero can be installed via a number of methods, but we recommend using NPM or Yarn.</p>
+            <p>ActionHero's source code licence is The V2 Apache Licence, and is distributed with the code.  ActionHero can be installed via a number of methods, but we recommend using NPM or Yarn. <a href='https://nodejs.org' target='_blank'>Version 8.0.0+ of node.js</a> is required.</p>
           </Col>
         </Row>
         <Row>
