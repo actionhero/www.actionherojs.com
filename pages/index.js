@@ -188,7 +188,7 @@ export default class extends React.Component {
               <FeatureBox
                 title='Video Games & Apps'
                 image='/static/images/video-game-servers.svg'
-                body='ActionHero was build to serve the same APIs across multiple protocols.  Do your games speak both HTTP and Socket?  ActionHero has got you covered.'
+                body='ActionHero was built to serve the same APIs across multiple protocols.  Do your games speak both HTTP and Socket?  ActionHero has got you covered.'
               />
             </Row>
             <Row>
