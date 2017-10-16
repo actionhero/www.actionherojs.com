@@ -163,7 +163,7 @@ export default class extends DocsPageWithNav {
                 </ul>
 
                 <p>Visit <code>http://127.0.0.1:8080</code> in your browser to see the ActionHero in action!</p>
-                <p>You can also opt to install ActionHero globally <code>npm install actionhero -g</code> and then you can just call <code>actionhero start</code>.</p>
+                <p>Do not install ActionHero globally with `npm install -g`</p>
               </div>
             )}
 
