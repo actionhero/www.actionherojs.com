@@ -79,12 +79,12 @@ export default class extends React.Component {
     super(props)
     this.state = {
       error: props.error || null,
-      latestRelease: props.latestRelease || null
+      latestRelease: props.latestRelease || '~'
     }
   }
 
   componentDidMount () {
-    if (!this.state.latestRelease) { this.loadReleases() }
+    if (this.state.latestRelease === '~') { this.loadReleases() }
   }
 
   async loadReleases () {
