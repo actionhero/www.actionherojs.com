@@ -142,7 +142,7 @@ export default class extends DocsPageWithNav {
                 <ul>
                   <li>node.js ( >= v4.0.0)</li>
                   <li>npm</li>
-                  <li>redis (for cluster support, cache, stats, and tasks); but not required.</li>
+                  <li>redis (for cluster support, cache, chat, and tasks); but not required.</li>
                 </ul>
 
                 <Code language='bash'>{InstallInstructions}</Code>
@@ -164,6 +164,7 @@ export default class extends DocsPageWithNav {
 
                 <p>Visit <code>http://127.0.0.1:8080</code> in your browser to see the ActionHero in action!</p>
                 <p>Do not install ActionHero globally with `npm install -g`</p>
+                <p>You can disable the features of ActionHero which require redis (cache, chat, tasks, etc) from `./config/redis.js` and set `enabled = false`</p>
               </div>
             )}
 
