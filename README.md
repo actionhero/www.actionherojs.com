@@ -1,5 +1,7 @@
 # www.actionherojs.com
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/www.actionherojs.com.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://circleci.com/gh/actionhero/www.actionherojs.com.png)](https://circleci.com/gh/actionhero/www.actionherojs.com)
 
 ## Install
