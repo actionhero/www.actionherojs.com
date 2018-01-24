@@ -87,7 +87,7 @@ export default class extends React.Component {
                   <h1 style={Theme.typeography.h1}><span style={{color: Theme.colors.yellow}}>Premium Training & Review</span></h1>
                 </div>
                 <RedLine />
-                <p>We provide support for corperate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
+                <p>We provide support for corporate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
                 <RedLine />
                 <ul>
                   <li><strong>Remote training for your team</strong></li>
