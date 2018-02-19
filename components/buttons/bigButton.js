@@ -29,25 +29,25 @@ export default class extends React.Component {
       <div onMouseDown={() => { this.onMouseDown() }} onMouseUp={() => { this.onMouseUp() }}>
         {
           this.props.href
-          ? <Link href={this.props.href}>
-            <a style={{textDecoration: 'none'}}>
-              <Button
-                style={style}
-                bsSize={(this.props.bsSize || 'large')}
-                block
-              >
-                {this.props.children}
-              </Button>
-            </a>
-          </Link>
-          : <Button
-            onClick={this.props.onClick}
-            style={style}
-            bsSize={(this.props.bsSize || 'large')}
-            block
-          >
-            {this.props.children}
-          </Button>
+            ? <Link href={this.props.href}>
+              <a style={{textDecoration: 'none'}}>
+                <Button
+                  style={style}
+                  bsSize={(this.props.bsSize || 'large')}
+                  block
+                >
+                  {this.props.children}
+                </Button>
+              </a>
+            </Link>
+            : <Button
+              onClick={this.props.onClick}
+              style={style}
+              bsSize={(this.props.bsSize || 'large')}
+              block
+            >
+              {this.props.children}
+            </Button>
         }
       </div>
     )

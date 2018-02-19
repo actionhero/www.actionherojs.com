@@ -32,26 +32,26 @@ export default class extends React.Component {
       <Page>
         {
           this.props.titleSection
-          ? <div style={{
-            backgroundColor: Theme.colors.yellow,
-            color: Theme.colors.blue,
-            fontWeight: 200,
-            padding: 50
-          }}>
-            <Grid>
-              <Row>
-                <Col md={3} style={{textAlign: 'center'}}>
-                  { this.props.titleSection.icon ? <img src={this.props.titleSection.icon} /> : null }
-                </Col>
-                <Col md={6} style={{textAlign: 'center'}}>
-                  <h1 style={Theme.typeography.h1}><br />{this.props.titleSection.title}</h1>
-                  { this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null }
-                </Col>
-                <Col md={3} />
-              </Row>
-            </Grid>
-          </div>
-          : null
+            ? <div style={{
+              backgroundColor: Theme.colors.yellow,
+              color: Theme.colors.blue,
+              fontWeight: 200,
+              padding: 50
+            }}>
+              <Grid>
+                <Row>
+                  <Col md={3} style={{textAlign: 'center'}}>
+                    { this.props.titleSection.icon ? <img src={this.props.titleSection.icon} /> : null }
+                  </Col>
+                  <Col md={6} style={{textAlign: 'center'}}>
+                    <h1 style={Theme.typeography.h1}><br />{this.props.titleSection.title}</h1>
+                    { this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null }
+                  </Col>
+                  <Col md={3} />
+                </Row>
+              </Grid>
+            </div>
+            : null
         }
 
         <div style={{
@@ -79,21 +79,21 @@ export default class extends React.Component {
 
         {
           this.props.links && this.props.links[0].title.indexOf('»') >= 0
-          ? <div style={{
-            paddingBottom: Theme.padding.section.paddingBottom,
-            color: Theme.colors.blue
-          }}>
-            <Grid>
-              <Row>
-                <Col md={12} style={{textAlign: 'center'}}>
-                  <BlueLine />
-                  <h2 style={Theme.typeography.h2}><span style={{fontWeight: 400}}>Up Next</span></h2>
-                  <h2 style={Theme.typeography.h2}><Link href={this.props.links[0].link}><a>{this.props.links[0].title.replace('» ', '')}</a></Link></h2>
-                </Col>
-              </Row>
-            </Grid>
-          </div>
-          : null
+            ? <div style={{
+              paddingBottom: Theme.padding.section.paddingBottom,
+              color: Theme.colors.blue
+            }}>
+              <Grid>
+                <Row>
+                  <Col md={12} style={{textAlign: 'center'}}>
+                    <BlueLine />
+                    <h2 style={Theme.typeography.h2}><span style={{fontWeight: 400}}>Up Next</span></h2>
+                    <h2 style={Theme.typeography.h2}><Link href={this.props.links[0].link}><a>{this.props.links[0].title.replace('» ', '')}</a></Link></h2>
+                  </Col>
+                </Row>
+              </Grid>
+            </div>
+            : null
         }
 
         { this.props.showSolutions ? <SolutionsGrid /> : null }

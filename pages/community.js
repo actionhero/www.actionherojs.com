@@ -97,29 +97,29 @@ export default class extends React.Component {
             <DocSection title='Recent Releases' />
             {
               this.state.error
-              ? <DangerAlert message={this.state.error} />
-              : <Table bordered condensed hover>
-                <tbody>
-                  {
-                    this.state.releases.map((release) => {
-                      releaseCounter++
-                      let date = new Date(release.published_at)
-                      let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                ? <DangerAlert message={this.state.error} />
+                : <Table bordered condensed hover>
+                  <tbody>
+                    {
+                      this.state.releases.map((release) => {
+                        releaseCounter++
+                        let date = new Date(release.published_at)
+                        let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
-                      if (releaseCounter > maxReleases) return null
+                        if (releaseCounter > maxReleases) return null
 
-                      return (
-                        <tr key={release.tag_name}>
-                          <td><strong>{release.tag_name}</strong></td>
-                          <td>{dateString}</td>
-                          <td>{release.name}</td>
-                          <td><a target='_blank' href={release.html_url}>Learn More</a></td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </Table>
+                        return (
+                          <tr key={release.tag_name}>
+                            <td><strong>{release.tag_name}</strong></td>
+                            <td>{dateString}</td>
+                            <td>{release.name}</td>
+                            <td><a target='_blank' href={release.html_url}>Learn More</a></td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </Table>
             }
           </Col>
         </Row>

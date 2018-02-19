@@ -56,20 +56,20 @@ export default class extends React.Component {
             }}>
               {
                 this.props.links
-                ? <div>
-                  {
-                    this.props.links.map((k) => {
-                      return (
-                        <li key={`side-nav-link-${k.link}`}>
-                          <Link href={k.link}>
-                            <a style={bottomLinkStyle}>{k.title}</a>
-                          </Link>
-                        </li>
-                      )
-                    })
-                  }
-                </div>
-                : null
+                  ? <div>
+                    {
+                      this.props.links.map((k) => {
+                        return (
+                          <li key={`side-nav-link-${k.link}`}>
+                            <Link href={k.link}>
+                              <a style={bottomLinkStyle}>{k.title}</a>
+                            </Link>
+                          </li>
+                        )
+                      })
+                    }
+                  </div>
+                  : null
               }
               <li>
                 <a href='#_top' style={bottomLinkStyle}>↑ Back to top</a>
