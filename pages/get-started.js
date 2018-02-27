@@ -28,22 +28,26 @@ const InstallInstructions = `# On OSX With Homebrew:
 
 brew install node
 brew install redis
+brew services start redis # this will keep redis running in the background forever
 
 # On Ubuntu:
 
 (sudo) apt-get install node
 (sudo) apt-get install redis-server
+redis-server --daemonize yes # this will keep redis running in the background for this session
 
 # On Windows:
 
 [download nodeJS](https://nodejs.org/en/download)
 [download redis](https://github.com/MSOpenTech/redis)
+run redis.exe in a bcackground window
 `
 
 const Quickstart = `mkdir ~/project && cd ~/project
 npm install actionhero
 npx actionhero generate
 npm install
+# ensure redis is running; see above
 npm start`
 
 const Folders = `# ActionHero Project Layout
