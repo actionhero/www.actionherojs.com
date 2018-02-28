@@ -14,20 +14,23 @@ jobs:
       - run:
           name: npm-install
           command: npm install
+      - run:
+          name: test-reporter-setup
+          command: npm install jest-junit
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: test-reporter-setup
-          command: mkdir -p ./reports/junit/ && npm install jest-junit
   test:
     docker:
       - image: circleci/node:8
     steps:
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: linter
           command: ./node_modules/.bin/standard
+      - run: mkdir -p ./reports/junit
       - run:
           name: test
           command: ./node_modules/.bin/jest tests --ci --testResultsProcessor="jest-junit" --runInBand
