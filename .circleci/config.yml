@@ -1,33 +1,40 @@
 version: 2
 
+refrences:
+  ignored-branches: &ignored-branches
+     branches:
+      ignore:
+        - gh-pages
+
+  cache-options: &cache-options
+    key: package-cache-{{ checksum "package.json" }}
+
 jobs:
   build:
     docker:
       - image: circleci/node:8
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: sudo npm install -g npm@latest
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          <<: *cache-options
       - run:
           name: npm-install
           command: npm install
       - run:
           name: test-reporter-setup
-          command: npm install jest-junit
+          command: npm install jest-junit --no-save
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          <<: *cache-options
           paths:
             - ./node_modules
+
   test:
     docker:
       - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          <<: *cache-options
       - run:
           name: linter
           command: ./node_modules/.bin/standard
@@ -50,7 +57,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - build:
+          filters:
+            <<: *ignored-branches
       - test:
+          filters:
+            <<: *ignored-branches
           requires:
             - build
