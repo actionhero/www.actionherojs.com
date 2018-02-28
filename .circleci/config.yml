@@ -52,6 +52,17 @@ jobs:
       - store_artifacts:
           path: ./reports/junit/
 
+  deploy:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: deploy-gh-pages
+          command: ./bin/deploy
+
 
 workflows:
   version: 2
@@ -60,8 +71,17 @@ workflows:
       - build:
           filters:
             <<: *ignored-branches
+
       - test:
           filters:
             <<: *ignored-branches
           requires:
             - build
+
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
