@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/node:8
     steps:
@@ -21,6 +21,10 @@ jobs:
       - run:
           name: test-reporter-setup
           command: mkdir -p ./reports/junit/ && npm install jest-junit
+  test:
+    docker:
+      - image: circleci/node:8
+    steps:
       - run:
           name: linter
           command: ./node_modules/.bin/standard
@@ -34,3 +38,13 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./reports/junit/
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
