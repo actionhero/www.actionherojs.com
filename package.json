@@ -21,7 +21,7 @@
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.5.0",
     "react-ga": "^2.4.1",
-    "react-overlays": "^0.8.3",
+    "react-overlays": "^1.0.0-beta.1",
     "react-syntax-highlighter": "^7.0.1",
     "react-waypoint": "^8.0.1"
   },
