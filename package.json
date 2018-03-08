@@ -23,7 +23,7 @@
     "react-ga": "^2.4.1",
     "react-overlays": "^0.8.3",
     "react-syntax-highlighter": "^7.0.1",
-    "react-waypoint": "^8.0.0"
+    "react-waypoint": "^8.0.1"
   },
   "devDependencies": {
     "babel-jest": "^22.4.1",
