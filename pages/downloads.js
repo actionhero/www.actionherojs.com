@@ -15,7 +15,7 @@ npm start
 let yarn = `# mkdir my_project && cd my_project
 yarn add actionhero
 yarn run actionhero generate
-yarn add ws fakeredis ioredis chai dirty-chai mocha standard
+yarn add ws fakeredis ioredis jest standard
 yarn run actionhero
 `
 
