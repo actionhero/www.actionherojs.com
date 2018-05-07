@@ -211,16 +211,9 @@ export default class extends React.Component {
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
-              <Col md={2} />
-              <Col md={8} style={{textAlign: 'center'}}>
+              <Col md={12} style={{textAlign: 'center'}}>
                 <h1 style={Theme.typeography.h1}>Plays Well With Others</h1>
                 <h2 style={Theme.typeography.h2}>Use ActionHero around <em>your</em> workflow and preferred tools.</h2>
-              </Col>
-              <Col md={1} />
-              <Col md={1} style={{textAlign: 'center'}}>
-                <div className='hidden-md'>
-                  <img style={smallIconStyle} src='/static/images/flying-man.svg' />
-                </div>
               </Col>
             </Row>
 
@@ -260,6 +253,12 @@ export default class extends React.Component {
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/ember.svg' />
               </Col>
               <Col md={2} />
+            </Row>
+
+            <Row>
+              <Col md={12} style={{textAlign: 'center'}}>
+                <img style={smallIconStyle} src='/static/images/flying-man.svg' />
+              </Col>
             </Row>
 
           </Grid>
