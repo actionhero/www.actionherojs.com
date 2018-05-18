@@ -26,7 +26,7 @@
     "react-waypoint": "^8.0.1"
   },
   "devDependencies": {
-    "babel-jest": "22.4.3",
+    "babel-jest": "22.4.4",
     "jest": "22.4.3",
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "16.3.2",
