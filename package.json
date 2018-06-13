@@ -29,7 +29,7 @@
     "babel-jest": "23.0.1",
     "jest": "22.4.3",
     "react-addons-test-utils": "15.6.2",
-    "react-test-renderer": "16.4.0",
+    "react-test-renderer": "16.4.1",
     "request": "^2.85.0",
     "standard": "^11.0.1"
   },
