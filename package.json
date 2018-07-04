@@ -22,7 +22,7 @@
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.5.0",
     "react-overlays": "^0.8.3",
-    "react-syntax-highlighter": "^7.0.3",
+    "react-syntax-highlighter": "^8.0.0",
     "react-waypoint": "^8.0.1"
   },
   "devDependencies": {
