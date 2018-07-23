@@ -93,6 +93,8 @@ export default class extends React.Component {
 
                 <NavItem onClick={this.goTo.bind(this, '/solutions')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
 
+                <NavItem onClick={this.goTo.bind(this, '/plugins')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/plugins') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/plugins')}>Plugins</span></NavItem>
+
                 <NavItem onClick={this.goTo.bind(this, '/community')}><span onMouseEnter={() => { this.onMouseEnter('/community') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/community')}>Community</span></NavItem>
               </Nav>
 
