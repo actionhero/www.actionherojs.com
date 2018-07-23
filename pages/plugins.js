@@ -110,7 +110,7 @@ export default class extends DocsPageWithNav {
         apis: [
           {
             name: 'ah-swagger-plugin',
-            url: 'https://github.com/supamii/ah-swagger-plugin',
+            url: 'https://github.com/walbertoibarra/ah-swagger-plugin',
             description: 'Generate Swagger-UI documentation from Actionhero ',
             versions: '14-19'
           },
