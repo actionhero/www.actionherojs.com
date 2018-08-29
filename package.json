@@ -31,7 +31,7 @@
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "16.4.2",
     "request": "^2.87.0",
-    "standard": "^11.0.1"
+    "standard": "^12.0.0"
   },
   "scripts": {
     "dev": "next dev",
