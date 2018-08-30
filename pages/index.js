@@ -103,7 +103,7 @@ export default class extends React.Component {
       }
     }
 
-    this.setState({error, latestRelease})
+    this.setState({ error, latestRelease })
   }
 
   render () {
@@ -115,13 +115,13 @@ export default class extends React.Component {
           backgroundColor: Theme.colors.blue,
           color: Theme.colors.white
         }}>
-          <Grid style={{paddingTop: 50}}>
+          <Grid style={{ paddingTop: 50 }}>
             <Row>
               <Col md={2} />
-              <Col md={8} style={{textAlign: 'center'}}>
+              <Col md={8} style={{ textAlign: 'center' }}>
                 <a href='https://github.com/actionhero/actionhero'><img src='/static/images/logo-and-wordmark.svg' /></a>
-                <p id='latestRelease' style={{paddingTop: 20}}>{this.state.latestRelease}</p>
-                <h2 style={{fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40}}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
+                <p id='latestRelease' style={{ paddingTop: 20 }}>{this.state.latestRelease}</p>
+                <h2 style={{ fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40 }}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />
             </Row>
@@ -140,10 +140,10 @@ export default class extends React.Component {
               </Col>
               <Col md={1} />
               <Col md={1}>
-                <img style={{marginTop: 30}} src='/static/images/cloud.svg' className='animated-clouds-right' />
+                <img style={{ marginTop: 30 }} src='/static/images/cloud.svg' className='animated-clouds-right' />
               </Col>
               <Col md={1}>
-                <img style={{marginTop: -30}} src='/static/images/cloud.svg' />
+                <img style={{ marginTop: -30 }} src='/static/images/cloud.svg' />
               </Col>
               <Col md={1} />
             </Row>
@@ -162,11 +162,11 @@ export default class extends React.Component {
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={1} />
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img src='/static/images/jetpack-lady.svg' className='animated-hover-jetpack' />
               </Col>
               <Col md={1} />
-              <Col md={6} style={{textAlign: 'center'}}>
+              <Col md={6} style={{ textAlign: 'center' }}>
                 <h1 style={Theme.typeography.h1}>To the Rescue</h1>
                 <h2 style={Theme.typeography.h2}>No matter what you are building,<br /> ActionHero is here to save the day.</h2>
               </Col>
@@ -192,7 +192,7 @@ export default class extends React.Component {
               />
             </Row>
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <h2 style={{
                   fontFamily: 'Roboto, sans-serif',
                   fontWeight: 400,
@@ -211,14 +211,14 @@ export default class extends React.Component {
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <h1 style={Theme.typeography.h1}>Plays Well With Others</h1>
                 <h2 style={Theme.typeography.h2}>Use ActionHero around <em>your</em> workflow and preferred tools.</h2>
               </Col>
             </Row>
 
             <Row className='hidden-xs hidden-sm'>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/angular.svg' />
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/swift.svg' />
@@ -231,32 +231,32 @@ export default class extends React.Component {
 
             <Row className='hidden-md hidden-lg hidden-xl'>
               <Col md={2} />
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/electron.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/angular.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/swift.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/elasticsearch.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/redis.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/npm.svg' />
               </Col>
-              <Col md={2} style={{textAlign: 'center'}}>
+              <Col md={2} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/plays-well-with-others/ember.svg' />
               </Col>
               <Col md={2} />
             </Row>
 
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/flying-man.svg' />
               </Col>
             </Row>
@@ -271,7 +271,7 @@ export default class extends React.Component {
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={3} />
-              <Col md={6} style={{textAlign: 'center'}}>
+              <Col md={6} style={{ textAlign: 'center' }}>
                 <h1 style={Theme.typeography.h1}>You've Got the Power</h1>
                 <h2 style={Theme.typeography.h2}>ActionHero was built from the ground up to include all the features you expect from a modern API framework. It also knows when to get out of the way so you can customize your stack to fit your needs.</h2>
               </Col>
@@ -351,14 +351,14 @@ export default class extends React.Component {
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <h1 style={Theme.typeography.h1}>Trusted by Top Companies and Organizations</h1>
                 <br />
               </Col>
             </Row>
 
             <Row className='hidden-xs hidden-sm'>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
                 <img style={smallIconStyle} src='/static/images/companies/samsung.svg' />
                 <img style={smallIconStyle} src='/static/images/companies/va.svg' />
@@ -369,19 +369,19 @@ export default class extends React.Component {
 
             <Row className='hidden-md hidden-lg hidden-xl'>
               <Col md={1} />
-              <Col md={2} style={{textAlign: 'center'}}>
+              <Col md={2} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/riot-games.svg' />
               </Col>
-              <Col md={2} style={{textAlign: 'center'}}>
+              <Col md={2} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/samsung.svg' />
               </Col>
-              <Col md={1} style={{textAlign: 'center'}}>
+              <Col md={1} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/va.svg' />
               </Col>
-              <Col md={2} style={{textAlign: 'center'}}>
+              <Col md={2} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/madglory.svg' />
               </Col>
-              <Col md={3} style={{textAlign: 'center'}}>
+              <Col md={3} style={{ textAlign: 'center' }}>
                 <img style={smallIconStyle} src='/static/images/companies/taskrabbit.svg' />
               </Col>
               <Col md={1} />
@@ -400,13 +400,13 @@ export default class extends React.Component {
         }}>
           <Grid style={Theme.padding.section}>
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <h1 style={Theme.typeography.h1}>Ready to take your development to the next level?</h1>
               </Col>
             </Row>
 
             <Row>
-              <Col md={12} style={{textAlign: 'center'}}>
+              <Col md={12} style={{ textAlign: 'center' }}>
                 <BigButton href='/get-started' backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Get Started</BigButton>
               </Col>
             </Row>

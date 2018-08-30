@@ -17,11 +17,11 @@ export default class extends React.Component {
   }
 
   showModal () {
-    this.setState({showModal: true})
+    this.setState({ showModal: true })
   }
 
   hideModal () {
-    this.setState({showModal: false})
+    this.setState({ showModal: false })
   }
 
   render () {
@@ -45,7 +45,7 @@ export default class extends React.Component {
             }}>
               <SuccessAlert message={this.state.successMessage} />
               <h1 style={Theme.typeography.h1}>Solutions</h1>
-              <h2 style={Theme.typeography.h2}><span style={{color: Theme.colors.yellow}}>ActionHero was built from the ground up to include all the features you expect from a modern API framework.</span></h2>
+              <h2 style={Theme.typeography.h2}><span style={{ color: Theme.colors.yellow }}>ActionHero was built from the ground up to include all the features you expect from a modern API framework.</span></h2>
             </Col>
             <Col md={2} />
           </Row>
@@ -61,7 +61,7 @@ export default class extends React.Component {
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center', paddingBottom: 10}}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
+                <div style={{ textAlign: 'center', paddingBottom: 10 }}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
                 <RedLine />
                 <p>The ActionHero server is open source, under the Apache-2 license</p>
                 <RedLine />
@@ -82,9 +82,9 @@ export default class extends React.Component {
                 color: Theme.colors.white,
                 boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center'}}>
+                <div style={{ textAlign: 'center' }}>
                   <img src='/static/images/dog.svg' />
-                  <h1 style={Theme.typeography.h1}><span style={{color: Theme.colors.yellow}}>Premium Training & Review</span></h1>
+                  <h1 style={Theme.typeography.h1}><span style={{ color: Theme.colors.yellow }}>Premium Training & Review</span></h1>
                 </div>
                 <RedLine />
                 <p>We provide support for corporate & nonprofit customers starting at a flat rate of $150/hr.  Our services include:</p>
@@ -115,7 +115,7 @@ export default class extends React.Component {
                 marginRight: '-5%',
                 zIndex: 10
               }}>
-                <div style={{textAlign: 'center', paddingBottom: 10}}>
+                <div style={{ textAlign: 'center', paddingBottom: 10 }}>
                   <img src='/static/images/dog.svg' />
                   <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
                 </div>
@@ -145,7 +145,7 @@ export default class extends React.Component {
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
               }}>
-                <div style={{textAlign: 'center', paddingBottom: 10}}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
+                <div style={{ textAlign: 'center', paddingBottom: 10 }}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
                 <RedLine />
                 <p>For larger customers in need of a support contract, we offer an enterprise plan including everything in the Premium plan plus:</p>
                 <RedLine />
@@ -177,12 +177,12 @@ export default class extends React.Component {
                       <p>The ActionHero team is looking forward to working with you.</p>
                       <p>We will respond to your inquiry within 2 busniess days.</p>
 
-                      <div className='hidden-sm hidden-xs' style={{textAlign: 'center', paddingTop: 100}}>
-                        <img style={{padding: 20}} src='/static/images/flying-man.svg' />
+                      <div className='hidden-sm hidden-xs' style={{ textAlign: 'center', paddingTop: 100 }}>
+                        <img style={{ padding: 20 }} src='/static/images/flying-man.svg' />
                       </div>
                     </Col>
                     <Col md={8}>
-                      <div style={{paddingTop: 150}} className='hidden-sm hidden-xs' />
+                      <div style={{ paddingTop: 150 }} className='hidden-sm hidden-xs' />
 
                       <input style={Theme.form.input} name='NAME' id='mce-NAME' type='text' label='Name' placeholder='Your Name' /><br />
                       <input style={Theme.form.input} name='COMPANY' id='mce-COMPANY' type='text' label='Company' placeholder='Company Name' /><br />

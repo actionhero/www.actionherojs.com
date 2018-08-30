@@ -118,7 +118,7 @@ export default class extends DocsPageWithNav {
         'notes': 'Documentation Notes'
       },
       links: [
-        {link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation'}
+        { link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation' }
       ]
     }
   }

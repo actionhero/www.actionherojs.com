@@ -11,11 +11,11 @@ export default class extends React.Component {
   }
 
   onMouseDown () {
-    this.setState({mouseDown: true})
+    this.setState({ mouseDown: true })
   }
 
   onMouseUp () {
-    this.setState({mouseDown: false})
+    this.setState({ mouseDown: false })
   }
 
   render () {
@@ -28,7 +28,7 @@ export default class extends React.Component {
     return (
       <div onMouseDown={() => { this.onMouseDown() }} onMouseUp={() => { this.onMouseUp() }}>
         <Link href={this.props.href}>
-          <a style={{textDecoration: 'none'}}>
+          <a style={{ textDecoration: 'none' }}>
             <Button
               style={style}
               bsSize={(this.props.bsSize || 'large')}

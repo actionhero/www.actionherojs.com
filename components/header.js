@@ -13,16 +13,16 @@ export default class extends React.Component {
 
   componentDidMount () {
     if (!process || process.browser) {
-      this.setState({activeKey: Router.pathname})
+      this.setState({ activeKey: Router.pathname })
     }
   }
 
   onMouseEnter (matchKey) {
-    this.setState({hoverKey: matchKey})
+    this.setState({ hoverKey: matchKey })
   }
 
   onMouseLeave () {
-    this.setState({hoverKey: null})
+    this.setState({ hoverKey: null })
   }
 
   linkStyle (matchKey) {
@@ -65,8 +65,8 @@ export default class extends React.Component {
           }}>
             <Navbar.Header>
               <Navbar.Brand>
-                <a onClick={this.goTo.bind(this, '/')} style={{paddingTop: 0, marginBottom: 15}}>
-                  <img src='/static/images/actionhero-logo-header-wordmark.svg' style={{paddingTop: 14, paddingBottom: 20}} />
+                <a onClick={this.goTo.bind(this, '/')} style={{ paddingTop: 0, marginBottom: 15 }}>
+                  <img src='/static/images/actionhero-logo-header-wordmark.svg' style={{ paddingTop: 14, paddingBottom: 20 }} />
                 </a>
               </Navbar.Brand>
               <Navbar.Toggle />

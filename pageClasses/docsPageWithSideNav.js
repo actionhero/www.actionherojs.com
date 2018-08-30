@@ -33,7 +33,7 @@ export default class extends React.Component {
     while (i < ids.length) {
       id = ids[i]
       if (this.state.currentlyVisableSections.indexOf(id) >= 0) {
-        return this.setState({currentSection: id})
+        return this.setState({ currentSection: id })
       }
       i++
     }

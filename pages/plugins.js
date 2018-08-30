@@ -48,7 +48,7 @@ class PluginTableRow extends React.Component {
   render () {
     return (
       <tr>
-        <td style={{minWidth: 200}}>
+        <td style={{ minWidth: 200 }}>
           <a href={this.props.plugin.url} target={'_blank'}>
             <strong>{this.props.plugin.name}</strong>
           </a>
@@ -77,7 +77,7 @@ export default class extends DocsPageWithNav {
         'integrations': 'Integrations'
       },
       links: [
-        {link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation'}
+        { link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation' }
       ],
       plugins: {
         databases: [

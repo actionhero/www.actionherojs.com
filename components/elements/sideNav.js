@@ -14,9 +14,9 @@ export default class extends React.Component {
     if (!this.props.sideNav) { return null }
 
     return (
-      <div style={{height: this.props.contentHeight}}>
+      <div style={{ height: this.props.contentHeight }}>
         <AutoAffix container={this}>
-          <div style={{paddingTop: 90}}>
+          <div style={{ paddingTop: 90 }}>
 
             <ul style={{
               listStyleType: 'none',
