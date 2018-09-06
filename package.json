@@ -18,7 +18,7 @@
     "next": "^6.1.1",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.4.2",
+    "react-dom": "^16.5.0",
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.5.3",
     "react-overlays": "^0.8.3",
