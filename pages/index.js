@@ -6,10 +6,7 @@ import Theme from './../components/theme.js'
 import BigButton from './../components/buttons/bigButton.js'
 import SolutionsGrid from './../components/solutionsGrid.js'
 import FeatureBox from './../components/elements/homepageFeatureBox.js'
-
-import GitHub from 'github-api'
-const github = new GitHub()
-const repository = github.getRepo('actionhero', 'actionhero')
+import GithubLatestVersion from './../components/githubLatestVersion.js'
 
 const CodeSamples = {
   eastToUseActions: `const {Action} = require('actionhero')
@@ -75,40 +72,7 @@ let smallIconStyle = {
 }
 
 export default class extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      error: props.error || null,
-      latestRelease: props.latestRelease || '~'
-    }
-  }
-
-  componentDidMount () {
-    if (this.state.latestRelease === '~') { this.loadReleases() }
-  }
-
-  async loadReleases () {
-    let latestRelease
-    let error
-
-    try {
-      let response = await repository.listReleases()
-      let releases = response.data
-      latestRelease = releases[0].tag_name
-    } catch (e) {
-      if (e.message) {
-        error = `Cannot load recent releases: ${e.message}`
-      } else {
-        error = e.toString()
-      }
-    }
-
-    this.setState({ error, latestRelease })
-  }
-
   render () {
-    if (this.state.error) { console.error(`Error fetching versions: ${this.state.error}`) }
-
     return (
       <Page>
         <div style={{
@@ -120,7 +84,7 @@ export default class extends React.Component {
               <Col md={2} />
               <Col md={8} style={{ textAlign: 'center' }}>
                 <a href='https://github.com/actionhero/actionhero'><img src='/static/images/logo-and-wordmark.svg' /></a>
-                <p id='latestRelease' style={{ paddingTop: 20 }}>{this.state.latestRelease}</p>
+                <p id='latestRelease' style={{ paddingTop: 20 }}><GithubLatestVersion /></p>
                 <h2 style={{ fontFamily: 'Roboto', fontWeight: 200, paddingTop: 5, paddingBottom: 40 }}>The reusable, scalable, and quick node.js API server for stateless and stateful applications</h2>
               </Col>
               <Col md={2} />
