@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import TestUtils from 'react-dom/test-utils'
 
-import GithubLatestVersion from '../../components/GithubLatestVersion.js'
+import GithubLatestVersion from '../../components/githubLatestVersion.js'
 
 describe('GithubLatestVersion', () => {
   const sleep = (sleep) => {
