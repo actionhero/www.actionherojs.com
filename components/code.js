@@ -1,6 +1,6 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { prism } from 'react-syntax-highlighter/styles/prism'
+import { docco } from 'react-syntax-highlighter/dist/styles/hljs'
 
 export default class extends React.Component {
   render () {
@@ -10,7 +10,7 @@ export default class extends React.Component {
     return (
       <SyntaxHighlighter
         language={language}
-        style={prism.ghcolors}
+        style={docco}
         showLineNumbers={showLineNumbers}
       >
         { this.props.children }
