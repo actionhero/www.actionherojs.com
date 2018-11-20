@@ -1,6 +1,6 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { docco } from 'react-syntax-highlighter/dist/styles/hljs'
+import { docco } from 'react-syntax-highlighter/styles/hljs'
 
 export default class extends React.Component {
   render () {
