@@ -66,8 +66,8 @@ export default class extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: "Let's get Started",
-        icon: '/static/images/get-started.svg'
+        title: 'Plugins',
+        icon: '/static/images/ops-tools.svg'
       },
       sections: {
         'intro': 'Introduction',
