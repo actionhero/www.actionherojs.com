@@ -1,7 +1,7 @@
 import React from 'react'
 import RedLine from './redLine.js'
 import Theme from './../theme.js'
-import Waypoint from 'react-waypoint'
+import { Waypoint } from 'react-waypoint'
 
 export default class extends React.Component {
   render () {
