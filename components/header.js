@@ -44,6 +44,10 @@ export default class extends React.Component {
   }
 
   async goTo (path) {
+    if (path.indexOf('http') === 0) {
+      return (window.location.href = path)
+    }
+
     try {
       await Router.push(path)
     } catch (error) {
