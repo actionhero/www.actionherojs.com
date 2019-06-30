@@ -167,7 +167,7 @@ export default class extends DocsPageWithNav {
                 </ul>
 
                 <p>Visit <code>http://127.0.0.1:8080</code> in your browser to see the ActionHero in action!</p>
-                <p>Do not install ActionHero globally with <code>npm install -g</code></p>
+                <p>Do not install ActionHero globally with <code>npm install -g</code>.  ActionHero does not support running from a global (system) location, and expects to be installed locally per-project.  You can learn more about why <a href='https://github.com/actionhero/actionhero/issues/1141'>here</a></p>
                 <p>You can disable the features of ActionHero which require redis (cache, chat, tasks, etc) from <code>./config/redis.js</code> and set <code>enabled = false</code></p>
               </div>
             )}
