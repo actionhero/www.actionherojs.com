@@ -5,19 +5,9 @@ import TestUtils from 'react-dom/test-utils'
 import GithubLatestVersion from '../../components/githubLatestVersion.js'
 
 describe('GithubLatestVersion', () => {
-  const sleep = (sleep) => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, sleep)
-    })
-  }
-
-  it('loads a version from GitHub', async () => {
-    let page = TestUtils.renderIntoDocument(<GithubLatestVersion />)
+  it('loads a version from GitHub mocked', () => {
+    let page = TestUtils.renderIntoDocument(<GithubLatestVersion latestRelease={'v1.2.3'} />)
     let body = ReactDOM.findDOMNode(page).textContent
-    expect(body).toEqual('~')
-
-    await sleep(4000)
-    // TODO
-    // expect(body).toContain('v')
+    expect(body).toEqual('v1.2.3')
   })
 })

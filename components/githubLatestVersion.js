@@ -10,7 +10,7 @@ export default class extends React.Component {
     this.repo = props.repo || 'ActionHero'
     this.repository = this.github.getRepo(this.org, this.repo)
     this.state = {
-      latestRelease: '~',
+      latestRelease: props.latestRelease || '~',
       error: null
     }
   }
