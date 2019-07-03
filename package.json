@@ -24,7 +24,8 @@
     "react-ga": "^2.6.0",
     "react-overlays": "^1.2.0",
     "react-syntax-highlighter": "^10.3.5",
-    "react-waypoint": "^9.0.2"
+    "react-waypoint": "^9.0.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "babel-jest": "24.8.0",
@@ -39,7 +40,9 @@
     "sitemap": "node ./bin/sitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",
-    "pretest": "standard"
+    "pretest": "standard",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "standard": {
     "ignore": [
@@ -55,5 +58,6 @@
       "expect",
       "it"
     ]
-  }
+  },
+  "snyk": true
 }
