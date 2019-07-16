@@ -70,11 +70,11 @@ export default class extends DocsPageWithNav {
         icon: '/static/images/ops-tools.svg'
       },
       sections: {
-        'intro': 'Introduction',
-        'databases': 'Databases',
-        'apis': 'API tools',
-        'auth': 'Authentication and Auth',
-        'integrations': 'Integrations'
+        intro: 'Introduction',
+        databases: 'Databases',
+        apis: 'API tools',
+        auth: 'Authentication and Auth',
+        integrations: 'Integrations'
       },
       links: [
         { link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation' }

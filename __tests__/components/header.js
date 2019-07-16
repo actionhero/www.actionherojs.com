@@ -6,8 +6,8 @@ import Header from '../../components/header.js'
 
 describe('Header', () => {
   it('renders the nav', () => {
-    let page = TestUtils.renderIntoDocument(<Header />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Header />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('Get Started')
     expect(body).toContain('Documentation')

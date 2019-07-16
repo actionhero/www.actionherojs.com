@@ -6,7 +6,7 @@ import Theme from './../theme.js'
 
 export default class extends React.Component {
   render () {
-    let bottomLinkStyle = {
+    const bottomLinkStyle = {
       fontWeight: 200,
       color: Theme.colors.red
     }
@@ -25,9 +25,9 @@ export default class extends React.Component {
             }}>
               {
                 Object.keys(this.props.sideNav).map((key) => {
-                  let message = this.props.sideNav[key]
+                  const message = this.props.sideNav[key]
 
-                  let aStyle = {
+                  const aStyle = {
                     fontWeight: 300,
                     fontSize: 18,
                     lineHeight: '1.6em'

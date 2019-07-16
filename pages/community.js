@@ -10,7 +10,7 @@ import GitHub from 'github-api'
 const github = new GitHub()
 const repository = github.getRepo('actionhero', 'actionhero')
 
-let maxReleases = 10
+const maxReleases = 10
 
 export default class extends React.Component {
   constructor (props) {
@@ -30,7 +30,7 @@ export default class extends React.Component {
     let releases = []
 
     try {
-      let response = await repository.listReleases()
+      const response = await repository.listReleases()
       releases = response.data
     } catch (e) {
       if (e.message) {
@@ -46,12 +46,12 @@ export default class extends React.Component {
   render () {
     let releaseCounter = 0
 
-    let communityIcon = {
+    const communityIcon = {
       padding: 20,
       float: 'left'
     }
 
-    let communityHeader = {
+    const communityHeader = {
       fontWeight: 200
     }
 
@@ -103,8 +103,8 @@ export default class extends React.Component {
                     {
                       this.state.releases.map((release) => {
                         releaseCounter++
-                        let date = new Date(release.published_at)
-                        let dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                        const date = new Date(release.published_at)
+                        const dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
                         if (releaseCounter > maxReleases) return null
 
@@ -158,7 +158,7 @@ export default class extends React.Component {
               <tbody>
                 {
                   Object.keys(Theme.colors).map((color) => {
-                    let hex = Theme.colors[color]
+                    const hex = Theme.colors[color]
                     return (
                       <tr key={color}>
                         <td width='50%'><div style={{ backgroundColor: hex, margin: 10, height: 30, width: 30, border: '1px solid black' }} /></td>

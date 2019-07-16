@@ -24,8 +24,8 @@ export default class extends React.Component {
     let error
 
     try {
-      let response = await this.repository.listReleases()
-      let releases = response.data
+      const response = await this.repository.listReleases()
+      const releases = response.data
       latestRelease = releases[0].tag_name
     } catch (e) {
       if (e.message) {

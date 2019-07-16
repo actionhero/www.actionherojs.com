@@ -19,7 +19,7 @@ export default class extends React.Component {
   }
 
   render () {
-    let style = Theme.buttons.big(this.props.backgroundColor, this.props.textColor)
+    const style = Theme.buttons.big(this.props.backgroundColor, this.props.textColor)
 
     if (this.state.mouseDown === true) {
       style.filter = 'brightness(85%)'

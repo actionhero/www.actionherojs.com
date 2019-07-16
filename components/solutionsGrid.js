@@ -25,7 +25,7 @@ export default class extends React.Component {
   }
 
   render () {
-    let boxShadow = '0px 2px 4px #003C51'
+    const boxShadow = '0px 2px 4px #003C51'
 
     return (
       <div style={{

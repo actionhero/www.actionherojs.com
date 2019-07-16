@@ -6,8 +6,8 @@ import GetStarted from '../../pages/get-started.js'
 
 describe('GetStarted', () => {
   it('renders the page', () => {
-    let page = TestUtils.renderIntoDocument(<GetStarted />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<GetStarted />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('Who is the ActionHero?')
   })

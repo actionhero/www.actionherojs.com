@@ -6,8 +6,8 @@ import SolutionsGrid from '../../components/solutionsGrid.js'
 
 describe('SolutionsGrid', () => {
   it('renders', () => {
-    let page = TestUtils.renderIntoDocument(<SolutionsGrid />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<SolutionsGrid />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('Enterprise')
     expect(body).toContain('Apache-2 license')

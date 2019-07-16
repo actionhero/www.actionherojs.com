@@ -20,7 +20,7 @@ export default class extends React.Component {
   }
 
   measureContentHeight () {
-    let height = document.getElementById('docPageContent').offsetHeight
+    const height = document.getElementById('docPageContent').offsetHeight
     this.setState({ contentHeight: height })
   }
 

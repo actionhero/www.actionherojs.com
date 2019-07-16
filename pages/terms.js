@@ -12,9 +12,9 @@ export default class extends DocsPageWithNav {
         title: 'Terms & Conditions'
       },
       sections: {
-        'web': 'Terms and Conditions',
-        'privacy': 'Privacy Policy',
-        'code': 'Apache License (v2)'
+        web: 'Terms and Conditions',
+        privacy: 'Privacy Policy',
+        code: 'Apache License (v2)'
       }
     }
   }

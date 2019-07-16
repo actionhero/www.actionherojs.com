@@ -6,8 +6,8 @@ import Solutions from '../../pages/solutions.js'
 
 describe('Solutions', () => {
   it('renders the page', () => {
-    let page = TestUtils.renderIntoDocument(<Solutions />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Solutions />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('Solutions')
   })

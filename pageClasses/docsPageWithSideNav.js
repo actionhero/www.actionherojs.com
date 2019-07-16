@@ -27,7 +27,7 @@ export default class extends React.Component {
   }
 
   highlightSection () {
-    let ids = Object.keys(this.state.sections)
+    const ids = Object.keys(this.state.sections)
     let i = 0
     let id
     while (i < ids.length) {
@@ -40,7 +40,7 @@ export default class extends React.Component {
   }
 
   section (id, content) {
-    let sectionTitle = this.state.sections[id]
+    const sectionTitle = this.state.sections[id]
 
     return (
       <DocSection

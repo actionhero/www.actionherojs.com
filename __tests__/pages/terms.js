@@ -6,8 +6,8 @@ import Solutions from '../../pages/terms.js'
 
 describe('Terms', () => {
   it('renders the page', () => {
-    let page = TestUtils.renderIntoDocument(<Solutions />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Solutions />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('These Terms and Conditions apply to the use of this website.')
   })

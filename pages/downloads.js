@@ -5,14 +5,14 @@ import DocsPage from './../components/layouts/docsPage.js'
 import DocSection from './../components/elements/docSection.js'
 import Code from './../components/code.js'
 
-let npm = `# mkdir my_project && cd my_project
+const npm = `# mkdir my_project && cd my_project
 npm install actionhero --save
 npx actionhero generate
 npm install
 npm start
 `
 
-let yarn = `# mkdir my_project && cd my_project
+const yarn = `# mkdir my_project && cd my_project
 yarn add actionhero
 yarn run actionhero generate
 yarn add ws fakeredis ioredis jest standard

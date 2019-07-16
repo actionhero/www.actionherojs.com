@@ -109,13 +109,13 @@ export default class extends DocsPageWithNav {
         icon: '/static/images/get-started.svg'
       },
       sections: {
-        'who': 'Who is the ActionHero?',
+        who: 'Who is the ActionHero?',
         'getting-started': 'Getting Started',
-        'quickstart': 'Install and Quickstart',
-        'structure': 'Application Structure',
-        'tutorial': 'Tutorial',
-        'contributing': 'Contributing',
-        'notes': 'Documentation Notes'
+        quickstart: 'Install and Quickstart',
+        structure: 'Application Structure',
+        tutorial: 'Tutorial',
+        contributing: 'Contributing',
+        notes: 'Documentation Notes'
       },
       links: [
         { link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation' }

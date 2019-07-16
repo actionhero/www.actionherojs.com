@@ -6,7 +6,7 @@ import Community from '../../pages/community.js'
 
 describe('Community', () => {
   it('renders the page', () => {
-    let releases = [
+    const releases = [
       {
         published_at: 'Thu Apr 27 2017 15:43:47 GMT-0700 (PDT)',
         tag_name: 'v0.0.1',
@@ -15,8 +15,8 @@ describe('Community', () => {
       }
     ]
 
-    let page = TestUtils.renderIntoDocument(<Community releases={releases} />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Community releases={releases} />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('Team Up')
     expect(body).toContain('GitHub')
@@ -27,11 +27,11 @@ describe('Community', () => {
   })
 
   it('renders the errror, should there be one', () => {
-    let releases = []
-    let error = 'Oh No!'
+    const releases = []
+    const error = 'Oh No!'
 
-    let page = TestUtils.renderIntoDocument(<Community releases={releases} error={error} />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Community releases={releases} error={error} />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain(error)
   })

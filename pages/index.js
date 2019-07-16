@@ -67,7 +67,7 @@ client.on('message', (message) => alert(message))
 `
 }
 
-let smallIconStyle = {
+const smallIconStyle = {
   padding: 30
 }
 

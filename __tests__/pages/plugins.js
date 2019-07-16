@@ -6,8 +6,8 @@ import Plugins from '../../pages/plugins.js'
 
 describe('Plugins', () => {
   it('renders the page', () => {
-    let page = TestUtils.renderIntoDocument(<Plugins />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Plugins />)
+    const body = ReactDOM.findDOMNode(page).textContent
 
     expect(body).toContain('robust ecosystem')
   })

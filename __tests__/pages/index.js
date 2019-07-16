@@ -5,8 +5,8 @@ import Home from '../../pages/index.js'
 
 describe('Home', () => {
   it('renders the page', () => {
-    let page = TestUtils.renderIntoDocument(<Home latestRelease={'V0.0.1'} />)
-    let body = ReactDOM.findDOMNode(page).textContent
+    const page = TestUtils.renderIntoDocument(<Home latestRelease={'V0.0.1'} />)
+    const body = ReactDOM.findDOMNode(page).textContent
     expect(body).toContain('reusable, scalable, and quick')
   })
 })
