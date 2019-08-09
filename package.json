@@ -17,7 +17,7 @@
     "github-api": "^3.2.2",
     "glob": "^7.1.4",
     "next": "^9.0.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.8.6",
     "react-fontawesome": "^1.6.1",
