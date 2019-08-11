@@ -23,14 +23,14 @@
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.6.0",
     "react-overlays": "^1.2.0",
-    "react-syntax-highlighter": "^10.3.5",
+    "react-syntax-highlighter": "^11.0.2",
     "react-waypoint": "^9.0.2"
   },
   "devDependencies": {
     "babel-jest": "24.8.0",
     "jest": "24.8.0",
     "react-addons-test-utils": "15.6.2",
-    "react-test-renderer": "16.8.6",
+    "react-test-renderer": "16.9.0",
     "request": "^2.88.0",
     "standard": "^13.1.0"
   },
