@@ -12,14 +12,14 @@
     "node": "10"
   },
   "dependencies": {
-    "acorn": "^6.2.0",
+    "acorn": "^6.2.1",
     "babel-core": "7.0.0-bridge.0",
     "github-api": "^3.2.2",
     "glob": "^7.1.4",
-    "next": "^9.0.2",
-    "react": "^16.8.6",
+    "next": "^9.0.3",
+    "react": "^16.9.0",
     "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.6.0",
     "react-overlays": "^1.2.0",
@@ -32,7 +32,7 @@
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "16.8.6",
     "request": "^2.88.0",
-    "standard": "^13.0.2"
+    "standard": "^13.1.0"
   },
   "scripts": {
     "dev": "next dev",
