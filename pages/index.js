@@ -91,7 +91,7 @@ export default class extends React.Component {
             </Row>
 
             <Row>
-              <Col md={2} />
+              <Col md={1} />
               <Col md={1}>
                 <img src='/static/images/cloud.svg' className='animated-clouds-left' />
               </Col>

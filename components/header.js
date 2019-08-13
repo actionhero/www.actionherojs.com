@@ -103,7 +103,7 @@ export default class extends React.Component {
               </Nav>
 
               <Nav pullRight>
-                <HeaderButton href='/get-started' backgroundColor={Theme.colors.blueGray} textColor={Theme.colors.white}>Get Started</HeaderButton>
+                <HeaderButton href='/get-started' backgroundColor={Theme.colors.red} textColor={Theme.colors.white}>Get Started</HeaderButton>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
