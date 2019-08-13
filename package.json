@@ -12,7 +12,7 @@
     "node": "10"
   },
   "dependencies": {
-    "acorn": "^6.2.1",
+    "acorn": "^7.0.0",
     "babel-core": "7.0.0-bridge.0",
     "github-api": "^3.2.2",
     "glob": "^7.1.4",
