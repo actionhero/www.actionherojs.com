@@ -3,7 +3,7 @@ import DocsPageWithNav from './../pageClasses/docsPageWithSideNav.js'
 import { Row, Col } from 'react-bootstrap'
 import DocsPage from './../components/layouts/docsPage.js'
 
-export default class extends DocsPageWithNav {
+export default class TermsPage extends DocsPageWithNav {
   constructor (props) {
     super(props)
 

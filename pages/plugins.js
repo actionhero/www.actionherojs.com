@@ -60,7 +60,7 @@ class PluginTableRow extends React.Component {
   }
 }
 
-export default class extends DocsPageWithNav {
+export default class PluginsPage extends DocsPageWithNav {
   constructor () {
     super()
 

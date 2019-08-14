@@ -9,7 +9,7 @@
     "url": "https://github.com/actionhero/www.actionherojs.com.git"
   },
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "dependencies": {
     "acorn": "^7.0.0",

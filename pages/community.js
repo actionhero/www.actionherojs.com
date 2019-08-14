@@ -12,7 +12,7 @@ const repository = github.getRepo('actionhero', 'actionhero')
 
 const maxReleases = 10
 
-export default class extends React.Component {
+export default class CommunityPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

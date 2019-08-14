@@ -99,7 +99,7 @@ const Folders = `# ActionHero Project Layout
 readme.md
 package.json (be sure to include 'actionhero':'x')`
 
-export default class extends DocsPageWithNav {
+export default class GetStartedPage extends DocsPageWithNav {
   constructor (props) {
     super(props)
 

@@ -19,7 +19,7 @@ yarn add ws fakeredis ioredis jest standard
 yarn run actionhero
 `
 
-export default class extends React.Component {
+export default class DownloadPage extends React.Component {
   render () {
     return (
       <DocsPage showSolutions titleSection={{

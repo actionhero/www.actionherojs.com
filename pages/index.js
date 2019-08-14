@@ -71,7 +71,7 @@ const smallIconStyle = {
   padding: 30
 }
 
-export default class extends React.Component {
+export default class indexPage extends React.Component {
   render () {
     return (
       <Page>
