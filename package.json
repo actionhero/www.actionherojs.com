@@ -12,8 +12,6 @@
     "node": "12"
   },
   "dependencies": {
-    "acorn": "^7.0.0",
-    "babel-core": "7.0.0-bridge.0",
     "github-api": "^3.2.2",
     "glob": "^7.1.4",
     "next": "^9.0.3",
@@ -21,15 +19,12 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.9.0",
     "react-fontawesome": "^1.6.1",
-    "react-ga": "^2.6.0",
     "react-overlays": "^1.2.0",
     "react-syntax-highlighter": "^11.0.2",
     "react-waypoint": "^9.0.2"
   },
   "devDependencies": {
-    "babel-jest": "24.8.0",
     "jest": "24.8.0",
-    "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "16.9.0",
     "request": "^2.88.0",
     "standard": "^13.1.0"
@@ -43,14 +38,9 @@
   },
   "standard": {
     "ignore": [
-      "static/*",
-      "vendor/*"
+      "static/*"
     ],
     "globals": [
-      "fetch",
-      "FormData",
-      "confirm",
-      "prompt",
       "describe",
       "expect",
       "it"
