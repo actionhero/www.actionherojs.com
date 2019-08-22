@@ -72,6 +72,7 @@ export default class PluginsPage extends DocsPageWithNav {
       sections: {
         intro: 'Introduction',
         databases: 'Databases',
+        tasks: 'Tasks',
         apis: 'API tools',
         auth: 'Authentication and Auth',
         integrations: 'Integrations'
@@ -79,6 +80,7 @@ export default class PluginsPage extends DocsPageWithNav {
       links: [
         { link: 'https://docs.actionherojs.com', title: '» ActionHero Documentation' }
       ],
+
       plugins: {
         databases: [
           {
@@ -104,6 +106,15 @@ export default class PluginsPage extends DocsPageWithNav {
             url: 'https://github.com/eduardogch/ah-rethinkdb-plugin',
             description: 'Actionhero plugin to support RethinkDB',
             versions: '14'
+          }
+        ],
+
+        tasks: [
+          {
+            name: 'ah-resque-ui',
+            url: 'https://github.com/actionhero/ah-resque-ui',
+            description: 'Visualization and Managment tools for Actionhero Tasks & Resque Jobs.',
+            versions: '17+'
           }
         ],
 
@@ -180,6 +191,12 @@ export default class PluginsPage extends DocsPageWithNav {
         <Row>
           <Col md={12}>
             { this.section('databases', <PluginTable plugins={this.state.plugins.databases} />) }
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={12}>
+            { this.section('tasks', <PluginTable plugins={this.state.plugins.tasks} />) }
           </Col>
         </Row>
 
