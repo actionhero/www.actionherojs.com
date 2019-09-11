@@ -12,9 +12,9 @@
     "node": "12"
   },
   "dependencies": {
-    "github-api": "^3.2.2",
+    "github-api": "^3.3.0",
     "glob": "^7.1.4",
-    "next": "^9.0.3",
+    "next": "^9.0.5",
     "react": "^16.9.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.9.0",
@@ -24,10 +24,10 @@
     "react-waypoint": "^9.0.2"
   },
   "devDependencies": {
-    "jest": "24.8.0",
+    "jest": "24.9.0",
     "react-test-renderer": "16.9.0",
     "request": "^2.88.0",
-    "standard": "^13.1.0"
+    "standard": "^14.1.0"
   },
   "scripts": {
     "dev": "next dev",
