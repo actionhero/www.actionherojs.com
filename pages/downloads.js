@@ -32,7 +32,7 @@ export default class DownloadPage extends React.Component {
           <Col md={12}>
             <br />
             <br />
-            <p>ActionHero's source code licence is The V2 Apache Licence, and is distributed with the code.  ActionHero can be installed via a number of methods, but we recommend using NPM or Yarn. <a href='https://nodejs.org' target='_blank'>Version 8.0.0+ of node.js</a> is required.</p>
+            <p>ActionHero's source code licence is The V2 Apache Licence, and is distributed with the code.  ActionHero can be installed via a number of methods, but we recommend using NPM or Yarn. <a href='https://nodejs.org' target='_new'>Version 8.0.0+ of node.js</a> is required.</p>
           </Col>
         </Row>
         <Row>
@@ -61,7 +61,7 @@ export default class DownloadPage extends React.Component {
             </a>
             <br />
             <br />
-            <p>All of ActionHero's source code is hosted on <a target='_blank' href='https://github.com/actionhero/actionhero'>GitHub</a>.</p>
+            <p>All of ActionHero's source code is hosted on <a target='_bew' href='https://github.com/actionhero/actionhero'>GitHub</a>.</p>
             <p>If you are intersetd in forking or contributing to ActionHero, start here!</p>
             <a href='https://github.com/actionhero/actionhero'>
               <div style={{ textAlign: 'center' }}>

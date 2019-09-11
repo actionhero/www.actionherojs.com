@@ -49,7 +49,7 @@ class PluginTableRow extends React.Component {
     return (
       <tr>
         <td style={{ minWidth: 200 }}>
-          <a href={this.props.plugin.url} target='_blank'>
+          <a href={this.props.plugin.url} target='_new'>
             <strong>{this.props.plugin.name}</strong>
           </a>
         </td>

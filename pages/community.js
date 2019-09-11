@@ -114,13 +114,13 @@ export default class CommunityPage extends React.Component {
                             <td><strong>{release.tag_name}</strong></td>
                             <td>{dateString}</td>
                             <td>{release.name}</td>
-                            <td><a target='_blank' href={release.html_url}>Learn More</a></td>
+                            <td><a target='_new' href={release.html_url}>Learn More</a></td>
                           </tr>
                         )
                       })
                     }
                   </tbody>
-                </Table>
+                </Table> //eslint-disable-line
             }
           </Col>
         </Row>

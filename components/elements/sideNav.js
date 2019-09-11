@@ -70,7 +70,7 @@ export default class extends React.Component {
                         )
                       })
                     }
-                  </div>
+                  </div> //eslint-disable-line
                   : null
               }
               <li>

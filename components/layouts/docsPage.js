@@ -50,7 +50,7 @@ export default class extends React.Component {
                   <Col md={3} />
                 </Row>
               </Grid>
-            </div>
+            </div> //eslint-disable-line
             : null
         }
 
@@ -93,7 +93,7 @@ export default class extends React.Component {
                   </Col>
                 </Row>
               </Grid>
-            </div>
+            </div> //eslint-disable-line
             : null
         }
 
