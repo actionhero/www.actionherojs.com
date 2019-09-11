@@ -49,7 +49,7 @@ class PluginTableRow extends React.Component {
     return (
       <tr>
         <td style={{ minWidth: 200 }}>
-          <a href={this.props.plugin.url} target={'_blank'}>
+          <a href={this.props.plugin.url} target='_blank'>
             <strong>{this.props.plugin.name}</strong>
           </a>
         </td>
@@ -177,7 +177,7 @@ export default class PluginsPage extends DocsPageWithNav {
       <DocsPage showSolutions sideNav={this.state.sections} titleSection={this.state.titleSection} currentSection={this.state.currentSection}>
         <Row>
           <Col md={12}>
-            { this.section('intro',
+            {this.section('intro',
               <div>
                 <p>There is a robust ecosystem of ActionHero plugins which you can use to leverage the community's expertise in your applications.</p>
                 <p>To use an ActionHero plugin you usually <code>npm install name-of-plugin</code> and then refrence is in your <code>./config/plugins.js</code> file to load it into your application.</p>
@@ -190,31 +190,31 @@ export default class PluginsPage extends DocsPageWithNav {
 
         <Row>
           <Col md={12}>
-            { this.section('databases', <PluginTable plugins={this.state.plugins.databases} />) }
+            {this.section('databases', <PluginTable plugins={this.state.plugins.databases} />)}
           </Col>
         </Row>
 
         <Row>
           <Col md={12}>
-            { this.section('tasks', <PluginTable plugins={this.state.plugins.tasks} />) }
+            {this.section('tasks', <PluginTable plugins={this.state.plugins.tasks} />)}
           </Col>
         </Row>
 
         <Row>
           <Col md={12}>
-            { this.section('apis', <PluginTable plugins={this.state.plugins.apis} />) }
+            {this.section('apis', <PluginTable plugins={this.state.plugins.apis} />)}
           </Col>
         </Row>
 
         <Row>
           <Col md={12}>
-            { this.section('auth', <PluginTable plugins={this.state.plugins.auth} />) }
+            {this.section('auth', <PluginTable plugins={this.state.plugins.auth} />)}
           </Col>
         </Row>
 
         <Row>
           <Col md={12}>
-            { this.section('integrations', <PluginTable plugins={this.state.plugins.integrations} />) }
+            {this.section('integrations', <PluginTable plugins={this.state.plugins.integrations} />)}
           </Col>
         </Row>
       </DocsPage>

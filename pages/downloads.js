@@ -22,10 +22,12 @@ yarn run actionhero
 export default class DownloadPage extends React.Component {
   render () {
     return (
-      <DocsPage showSolutions titleSection={{
-        title: 'Downloads',
-        icon: '/static/images/downloads.svg'
-      }}>
+      <DocsPage
+        showSolutions titleSection={{
+          title: 'Downloads',
+          icon: '/static/images/downloads.svg'
+        }}
+      >
         <Row>
           <Col md={12}>
             <br />
@@ -64,7 +66,7 @@ export default class DownloadPage extends React.Component {
             <a href='https://github.com/actionhero/actionhero'>
               <div style={{ textAlign: 'center' }}>
                 <Alert bsStyle='success'>
-                  {`https://github.com/actionhero/actionhero`}
+                  {'https://github.com/actionhero/actionhero'}
                 </Alert>
               </div>
             </a>

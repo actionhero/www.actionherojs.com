@@ -59,7 +59,8 @@ export default class CommunityPage extends React.Component {
       <DocsPage titleSection={{
         title: 'Team Up',
         icon: '/static/images/team-up.svg'
-      }}>
+      }}
+      >
         <Row>
           <Col md={5} style={{ paddingTop: 50, paddingBottom: 50 }}>
             <DocSection title='Join the Team' />

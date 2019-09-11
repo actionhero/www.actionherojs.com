@@ -13,7 +13,7 @@ export default class extends React.Component {
         style={docco}
         showLineNumbers={showLineNumbers}
       >
-        { this.props.children }
+        {this.props.children}
       </SyntaxHighlighter>
     )
   }

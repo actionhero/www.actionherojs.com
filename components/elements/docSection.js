@@ -21,7 +21,8 @@ export default class extends React.Component {
           <RedLine />
           <div style={{
             fontFamily: Theme.fonts.docs
-          }}>
+          }}
+          >
             {children}
           </div>
         </div>

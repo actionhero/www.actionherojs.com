@@ -41,7 +41,7 @@ module.exports = class RunAction extends ActionHero.Task {
     await api.sendEmail(params)
   }
 }`,
-  clusterReady: `npx actionhero start cluster --workers 10`,
+  clusterReady: 'npx actionhero start cluster --workers 10',
   localization: `let number = Math.random()
 let response = data.connection.localize(['Your random number is {{number}}', {number: number}])
 data.response.stringRandomNumber = response`,
@@ -78,7 +78,8 @@ export default class indexPage extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.blue,
           color: Theme.colors.white
-        }}>
+        }}
+        >
           <Grid style={{ paddingTop: 50 }}>
             <Row>
               <Col md={2} />
@@ -117,12 +118,14 @@ export default class indexPage extends React.Component {
         <div style={{
           height: 183,
           background: `url("/static/images/clouds.svg") no-repeat center ${Theme.colors.blue}`
-        }} />
+        }}
+        />
 
         <div style={{
           backgroundColor: Theme.colors.yellow,
           color: Theme.colors.blue
-        }}>
+        }}
+        >
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={1} />
@@ -163,7 +166,9 @@ export default class indexPage extends React.Component {
                   fontSize: 20,
                   lineHeight: '1.5em',
                   color: '#3B5D72'
-                }}>... and a whole lot more!</h2>
+                }}
+                >... and a whole lot more!
+                </h2>
               </Col>
             </Row>
           </Grid>
@@ -172,7 +177,8 @@ export default class indexPage extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.white,
           color: Theme.colors.blue
-        }}>
+        }}
+        >
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: 'center' }}>
@@ -231,7 +237,8 @@ export default class indexPage extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.yellow,
           color: Theme.colors.blue
-        }}>
+        }}
+        >
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={3} />
@@ -312,7 +319,8 @@ export default class indexPage extends React.Component {
         <div style={{
           backgroundColor: Theme.colors.white,
           color: Theme.colors.blue
-        }}>
+        }}
+        >
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: 'center' }}>
@@ -361,7 +369,8 @@ export default class indexPage extends React.Component {
           color: Theme.colors.blue,
           backgroundImage: 'url("/static/images/starburst.png")',
           backgroundSize: '100% 100%'
-        }}>
+        }}
+        >
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: 'center' }}>

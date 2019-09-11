@@ -22,7 +22,8 @@ export default class extends React.Component {
               listStyleType: 'none',
               paddingLeft: 0,
               marginLeft: 0
-            }}>
+            }}
+            >
               {
                 Object.keys(this.props.sideNav).map((key) => {
                   const message = this.props.sideNav[key]
@@ -53,7 +54,8 @@ export default class extends React.Component {
               listStyleType: 'none',
               paddingLeft: 0,
               marginLeft: 0
-            }}>
+            }}
+            >
               {
                 this.props.links
                   ? <div>

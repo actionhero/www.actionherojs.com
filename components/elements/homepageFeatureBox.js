@@ -14,13 +14,15 @@ export default class FeatureBox extends React.Component {
           <br />
           {
             this.props.code
-              ? <OverlayTrigger trigger={['hover', 'focus', 'click']} placement='top' overlay={
-                <Popover id={`popover-${this.props.title}`} style={{ maxWidth: 600 }}>
-                  <div style={{ paddingTop: 15, paddingLeft: 10, paddingRight: 10, paddingBottom: 6 }}>
-                    <Code language='javascript'>{this.props.code}</Code>
-                  </div>
-                </Popover>
-              }>
+              ? <OverlayTrigger
+                trigger={['hover', 'focus', 'click']} placement='top' overlay={
+                  <Popover id={`popover-${this.props.title}`} style={{ maxWidth: 600 }}>
+                    <div style={{ paddingTop: 15, paddingLeft: 10, paddingRight: 10, paddingBottom: 6 }}>
+                      <Code language='javascript'>{this.props.code}</Code>
+                    </div>
+                  </Popover>
+                }
+              >
                 <p><strong>View Sample</strong></p>
               </OverlayTrigger>
               : null

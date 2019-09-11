@@ -34,15 +34,18 @@ export default class extends React.Component {
         fontWeight: 300,
         paddingTop: Theme.padding.section.paddingTop,
         paddingBottom: Theme.padding.section.paddingBottom
-      }}>
+      }}
+      >
         <Grid>
           <Row>
             <Col md={2} />
-            <Col md={8} style={{
-              textAlign: 'center',
-              color: Theme.colors.yellow,
-              paddingBottom: 100
-            }}>
+            <Col
+              md={8} style={{
+                textAlign: 'center',
+                color: Theme.colors.yellow,
+                paddingBottom: 100
+              }}
+            >
               <SuccessAlert message={this.state.successMessage} />
               <h1 style={Theme.typeography.h1}>Solutions</h1>
               <h2 style={Theme.typeography.h2}><span style={{ color: Theme.colors.yellow }}>ActionHero was built from the ground up to include all the features you expect from a modern API framework.</span></h2>
@@ -60,7 +63,8 @@ export default class extends React.Component {
                 paddingRight: 50,
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
-              }}>
+              }}
+              >
                 <div style={{ textAlign: 'center', paddingBottom: 10 }}><h1 style={Theme.typeography.h1}>Open Source</h1></div>
                 <RedLine />
                 <p>The ActionHero server is open source, under the Apache-2 license</p>
@@ -81,7 +85,8 @@ export default class extends React.Component {
                 backgroundColor: Theme.colors.blue,
                 color: Theme.colors.white,
                 boxShadow: boxShadow
-              }}>
+              }}
+              >
                 <div style={{ textAlign: 'center' }}>
                   <img src='/static/images/dog.svg' />
                   <h1 style={Theme.typeography.h1}><span style={{ color: Theme.colors.yellow }}>Premium Training & Review</span></h1>
@@ -114,7 +119,8 @@ export default class extends React.Component {
                 marginLeft: '-13%',
                 marginRight: '-5%',
                 zIndex: 10
-              }}>
+              }}
+              >
                 <div style={{ textAlign: 'center', paddingBottom: 10 }}>
                   <img src='/static/images/dog.svg' />
                   <h1 style={Theme.typeography.h1}>Premium Training & Review</h1>
@@ -144,7 +150,8 @@ export default class extends React.Component {
                 paddingLeft: 50,
                 backgroundColor: Theme.colors.yellow,
                 boxShadow: boxShadow
-              }}>
+              }}
+              >
                 <div style={{ textAlign: 'center', paddingBottom: 10 }}><h1 style={Theme.typeography.h1}>Enterprise</h1></div>
                 <RedLine />
                 <p>For larger customers in need of a support contract, we offer an enterprise plan including everything in the Premium plan plus:</p>
@@ -170,7 +177,8 @@ export default class extends React.Component {
                   width: 750,
                   marginLeft: -75,
                   background: `url("/static/images/clouds-white.svg") no-repeat center bottom ${Theme.colors.yellow}`
-                }}>
+                }}
+                >
                   <Row>
                     <Col md={4}>
                       <h1 style={Theme.typeography.h1}>ActionHero Professional Services</h1>
@@ -192,7 +200,8 @@ export default class extends React.Component {
                       <div style={{
                         textAlign: 'center',
                         padding: 20
-                      }}>
+                      }}
+                      >
                         <Button type='submit' style={Theme.buttons.big(Theme.colors.red, Theme.colors.yellow)} bsSize='large' block>Submit</Button>
                         <a onClick={this.hideModal.bind(this)}>Cancel</a>
                       </div>
