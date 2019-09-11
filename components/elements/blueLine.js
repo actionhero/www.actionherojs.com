@@ -9,7 +9,8 @@ export default class extends React.Component {
         backgroundColor: Theme.colors.blue,
         border: 0,
         height: 2
-      }} />
+      }}
+      />
     )
   }
 }

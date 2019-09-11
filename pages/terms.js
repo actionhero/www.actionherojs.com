@@ -24,7 +24,7 @@ export default class TermsPage extends DocsPageWithNav {
       <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} currentSection={this.state.currentSection}>
         <Row>
           <Col md={12}>
-            { this.section('web',
+            {this.section('web',
               <div>
                 <p>These Terms and Conditions apply to the use of this website.</p>
                 <hr />
@@ -79,7 +79,7 @@ export default class TermsPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('privacy',
+            {this.section('privacy',
               <div>
                 <p>These Terms and Conditions apply to the use of this website.</p>
                 <hr />
@@ -102,7 +102,7 @@ export default class TermsPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('code',
+            {this.section('code',
               <div>
                 <p>ActionHero's source code licence is <a href='https://github.com/actionhero/actionhero/blob/master/LICENSE.txt'>The V2 Apache Licence, and is distributed with the code.</a></p>
               </div>

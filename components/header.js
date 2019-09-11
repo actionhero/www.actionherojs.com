@@ -59,14 +59,16 @@ export default class extends React.Component {
     return (
       <header style={{
         backgroundColor: Theme.colors.blue
-      }}>
+      }}
+      >
         <Grid>
           <Navbar style={{
             backgroundColor: Theme.colors.blue,
             paddingTop: 5,
             marginBottom: 10,
             border: 0
-          }}>
+          }}
+          >
             <Navbar.Header>
               <Navbar.Brand>
                 <a onClick={this.goTo.bind(this, '/')} style={{ paddingTop: 0, marginBottom: 15 }}>

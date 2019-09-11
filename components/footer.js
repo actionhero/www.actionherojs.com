@@ -17,12 +17,14 @@ export default class extends React.Component {
 
   render () {
     return (
-      <footer id='footer-container' style={{
-        backgroundColor: '#2F5266',
-        color: Theme.colors.yellow,
-        fontFamily: Theme.fonts.main,
-        fontWeight: 200
-      }}>
+      <footer
+        id='footer-container' style={{
+          backgroundColor: '#2F5266',
+          color: Theme.colors.yellow,
+          fontFamily: Theme.fonts.main,
+          fontWeight: 200
+        }}
+      >
         <Grid>
           <Row style={{ paddingBottom: 50, paddingTop: 50, paddingLeft: columnPadding }}>
             <Col md={12}>
@@ -36,7 +38,7 @@ export default class extends React.Component {
                 <p><Link href='/terms'><a style={footerLinkStyle}>Terms</a></Link></p>
                 <p>Contact us at <a style={{ color: Theme.colors.yellow, fontWeight: 500 }} href='mailto:hello@actionherojs.com'>hello@actionherojs.com</a></p>
                 <p><Link href='https://medium.com/tag/actionherojs/latest'><a target='_new' style={footerLinkStyle}>Blogs</a></Link></p>
-                <p>{ String.fromCharCode(169) + ' ' + this.state.date.getFullYear() } ActionHero</p>
+                <p>{String.fromCharCode(169) + ' ' + this.state.date.getFullYear()} ActionHero</p>
               </div>
             </Col>
             <Col md={4}>

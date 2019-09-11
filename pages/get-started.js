@@ -128,7 +128,7 @@ export default class GetStartedPage extends DocsPageWithNav {
       <DocsPage sideNav={this.state.sections} titleSection={this.state.titleSection} links={this.state.links} currentSection={this.state.currentSection} showSolutions>
         <Row>
           <Col md={12}>
-            { this.section('who',
+            {this.section('who',
               <div>
                 <p>ActionHero is a <a href='http://nodejs.org'>node.js</a> <strong>API framework</strong> for both <strong>tcp sockets</strong>, <strong>web sockets</strong>, and <strong>http clients</strong>.  The goal of ActionHero is to create an easy-to-use toolkit for making <strong>reusable</strong> & <strong>scalable</strong> APIs.  Clients connected to an ActionHero server can <strong>consume the API</strong>, <strong>consume static content</strong>, and <strong>communicate with each other</strong>.</p>
                 <p>ActionHero servers can process both requests and tasks (delayed actions like `send e-mail` or other background jobs).  ActionHero servers can also run in a cluster (on the same or multiple machines) to work in concert to handle your load.</p>
@@ -139,7 +139,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('getting-started',
+            {this.section('getting-started',
               <div>
                 <h3 id='requirements'>Requirements</h3>
 
@@ -153,7 +153,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('quickstart',
+            {this.section('quickstart',
               <div>
                 <p>Get started now:</p>
                 <Code language='bash'>{Quickstart}</Code>
@@ -172,7 +172,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('structure',
+            {this.section('structure',
               <div>
                 <Code language='bash'>{Folders}</Code>
                 <p>The map to the right describes ActionHero's default project layout.</p>
@@ -182,19 +182,19 @@ export default class GetStartedPage extends DocsPageWithNav {
               </div>
             )}
 
-            { this.section('tutorial',
+            {this.section('tutorial',
               <div>
                 <p>Want to see an example application using ActionHero?  You can check out the code and follow the detailed guide <a href='https://github.com/actionhero/actionhero-tutorial'>here (https://github.com/actionhero/actionhero-tutorial)</a>.  This project demonstrates many of the core features of ActionHero in a simple project.</p>
               </div>
             )}
 
-            { this.section('contributing',
+            {this.section('contributing',
               <div>
                 <p>The www.actionherojs.com website and documentation is hosted on Heroku, and built from <a href='https://github.com/actionhero/www.actionherojs.com'>this codebase</a>.  You can submit pull requests to the master branch with any updates or changes.</p>
               </div>
             )}
 
-            { this.section('notes',
+            {this.section('notes',
               <div>
                 <p>This documentation will always reflect the master branch of ActionHero, and therefore may be slightly ahead of the latest release on NPM.</p>
               </div>

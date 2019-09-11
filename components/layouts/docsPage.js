@@ -41,29 +41,30 @@ export default class extends React.Component {
               <Grid>
                 <Row>
                   <Col md={3} style={{ textAlign: 'center' }}>
-                    { this.props.titleSection.icon ? <img src={this.props.titleSection.icon} /> : null }
+                    {this.props.titleSection.icon ? <img src={this.props.titleSection.icon} /> : null}
                   </Col>
                   <Col md={6} style={{ textAlign: 'center' }}>
                     <h1 style={Theme.typeography.h1}><br />{this.props.titleSection.title}</h1>
-                    { this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null }
+                    {this.props.titleSection.subTitle ? <p>{this.props.titleSection.subTitle}</p> : null}
                   </Col>
                   <Col md={3} />
                 </Row>
               </Grid>
-            </div>
+            </div> //eslint-disable-line
             : null
         }
 
         <div style={{
           height: 183,
           background: `url("/static/images/clouds-white.svg") no-repeat center ${Theme.colors.yellow}`
-        }} />
+        }}
+        />
 
         <Grid style={{ paddingBottom: Theme.padding.section.paddingBottom }}>
           <Row>
             <div id='_top' />
             <Col md={contentColWidth} id='docPageContent'>
-              { this.props.children }
+              {this.props.children}
             </Col>
 
             <Col md={3} className='hidden-xs hidden-sm'>
@@ -92,11 +93,11 @@ export default class extends React.Component {
                   </Col>
                 </Row>
               </Grid>
-            </div>
+            </div> //eslint-disable-line
             : null
         }
 
-        { this.props.showSolutions ? <SolutionsGrid /> : null }
+        {this.props.showSolutions ? <SolutionsGrid /> : null}
 
       </Page>
     )
