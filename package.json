@@ -26,7 +26,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "jest": "24.9.0",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.10.0",
     "request": "^2.88.0",
     "standard": "^14.1.0"
   },
