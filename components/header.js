@@ -84,8 +84,6 @@ export default class extends React.Component {
               <Nav pullLeft className='hidden-md hidden-sm hidden-xs'>
                 <NavItem>&nbsp;</NavItem>
                 <NavItem>&nbsp;</NavItem>
-                <NavItem>&nbsp;</NavItem>
-                <NavItem>&nbsp;</NavItem>
               </Nav>
 
               <Nav pullLeft>
@@ -96,6 +94,8 @@ export default class extends React.Component {
                 </NavItem>
 
                 <NavItem onClick={this.goTo.bind(this, 'https://docs.actionherojs.com')}><span onMouseEnter={() => { this.onMouseEnter('/docs') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/docs')}>Documentation</span></NavItem>
+
+                <NavItem onClick={this.goTo.bind(this, '/why')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/why') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/why')}>Why Actionhero</span></NavItem>
 
                 <NavItem onClick={this.goTo.bind(this, '/solutions')} className='hidden-sm'><span onMouseEnter={() => { this.onMouseEnter('/solutions') }} onMouseLeave={() => { this.onMouseLeave() }} style={this.linkStyle('/solutions')}>Solutions</span></NavItem>
 
