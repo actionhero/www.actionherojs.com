@@ -43,6 +43,7 @@ export default class extends React.Component {
             </Col>
             <Col md={4}>
               <div style={{ paddingLeft: columnPadding }}>
+                <p><Link href='/why'><a style={footerLinkStyle}>Why Actionhero</a></Link></p>
                 <p><Link href='/get-started'><a style={footerLinkStyle}>Get Started</a></Link></p>
                 <p><Link href='https://docs.actionherojs.com'><a style={footerLinkStyle}>Documenation</a></Link></p>
                 <p><Link href='/solutions'><a style={footerLinkStyle}>Solutions</a></Link></p>
@@ -56,6 +57,7 @@ export default class extends React.Component {
                 <p><Link href='https://twitter.com/actionherojs'><a target='_new' style={footerLinkStyle}>Twitter</a></Link></p>
                 <p><Link href='https://slack.actionherojs.com/'><a target='_new' style={footerLinkStyle}>Slack</a></Link></p>
                 <p><Link href='https://github.com/actionhero/actionhero'><a target='_new' style={footerLinkStyle}>Github</a></Link></p>
+                <p><Link href='https://actionherojs.threadless.com'><a target='_new' style={footerLinkStyle}>Shop</a></Link></p>
               </div>
             </Col>
           </Row>
