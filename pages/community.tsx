@@ -12,7 +12,10 @@ const repository = github.getRepo("actionhero", "actionhero");
 const maxReleases = 15;
 
 export default class CommunityPage extends Component<
-  {},
+  {
+    releases?: Array<any>;
+    error?: string;
+  },
   {
     error: string;
     releases: Array<any>;

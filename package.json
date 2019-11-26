@@ -34,13 +34,15 @@
     "prettier": "^1.19.1",
     "react-test-renderer": "16.9.0",
     "request": "^2.88.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "ts-jest": "^24.2.0"
   },
   "scripts": {
     "dev": "next dev",
     "sitemap": "node ./bin/sitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",
-    "pretest": "prettier"
+    "pretest": "npm run lint",
+    "lint": "prettier --check pages/*/**.tsx components/*/**.tsx pageClasses/*/**.tsx __tests__/*/**.tsx"
   }
 }

@@ -1,7 +1,9 @@
 import { Component } from "react";
 import GitHub from "github-api";
 
-interface Props {}
+interface Props {
+  latestRelease?: string;
+}
 
 interface State {
   latestRelease: string;
