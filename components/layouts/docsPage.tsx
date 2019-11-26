@@ -70,7 +70,7 @@ export default class extends Component<Props, State> {
                 <Col md={3} />
               </Row>
             </Grid>
-          </div> //eslint-disable-line
+          </div>
         ) : null}
 
         <div
@@ -120,7 +120,7 @@ export default class extends Component<Props, State> {
                 </Col>
               </Row>
             </Grid>
-          </div> //eslint-disable-line
+          </div>
         ) : null}
 
         {this.props.showSolutions ? <SolutionsGrid /> : null}

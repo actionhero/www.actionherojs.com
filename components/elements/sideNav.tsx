@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { AutoAffix } from "react-overlays";
 import Link from "next/link";
 import Theme from "../theme";
+import ReactDOM from "react-dom";
 
 interface Props {
   contentHeight: number;
@@ -13,6 +13,8 @@ interface Props {
 
 export default class extends Component<Props> {
   render() {
+    const { contentHeight, currentSection, sideNav, links } = this.props;
+
     const bottomLinkStyle = {
       fontWeight: 200,
       color: Theme.colors.red
@@ -23,71 +25,63 @@ export default class extends Component<Props> {
     }
 
     return (
-      <div style={{ height: this.props.contentHeight }}>
-        <AutoAffix container={this}>
-          <div style={{ paddingTop: 90 }}>
-            <ul
-              style={{
-                listStyleType: "none",
-                paddingLeft: 0,
-                marginLeft: 0
-              }}
-            >
-              {Object.keys(this.props.sideNav).map(key => {
-                const message = this.props.sideNav[key];
+      <div style={{ height: contentHeight }}>
+        <div style={{ paddingTop: 90 }}>
+          <ul
+            style={{
+              listStyleType: "none",
+              paddingLeft: 0,
+              marginLeft: 0
+            }}
+          >
+            {Object.keys(sideNav).map(key => {
+              const message = sideNav[key];
 
-                const aStyle = {
-                  fontWeight: 300,
-                  fontSize: 18,
-                  lineHeight: "1.6em",
-                  color: null
-                };
+              const aStyle = {
+                fontWeight: 300,
+                fontSize: 18,
+                lineHeight: "1.6em",
+                color: null
+              };
 
-                if (this.props.currentSection === key) {
-                  aStyle.color = Theme.colors.red;
-                  aStyle.fontWeight = 400;
-                }
+              if (this.props.currentSection === key) {
+                aStyle.color = Theme.colors.red;
+                aStyle.fontWeight = 400;
+              }
 
-                return (
-                  <li key={key}>
-                    <a href={`#${key}`} className="text-info" style={aStyle}>
-                      {message}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+              return (
+                <li key={key}>
+                  <a href={`#${key}`} className="text-info" style={aStyle}>
+                    {message}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
 
-            <br />
+          <br />
 
-            <ul
-              style={{
-                listStyleType: "none",
-                paddingLeft: 0,
-                marginLeft: 0
-              }}
-            >
-              {this.props.links ? (
-                <div>
-                  {this.props.links.map(k => {
-                    return (
-                      <li key={`side-nav-link-${k.link}`}>
-                        <Link href={k.link}>
-                          <a style={bottomLinkStyle}>{k.title}</a>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </div> //eslint-disable-line
-              ) : null}
-              <li>
-                <a href="#_top" style={bottomLinkStyle}>
-                  ↑ Back to top
-                </a>
-              </li>
-            </ul>
-          </div>
-        </AutoAffix>
+          <ul
+            style={{
+              listStyleType: "none",
+              paddingLeft: 0,
+              marginLeft: 0
+            }}
+          >
+            {links ? (
+              <div>
+                {links.map(k => {
+                  return <li key={`side-nav-link-${k.link}`}></li>;
+                })}
+              </div>
+            ) : null}
+            <li>
+              <a href="#_top" style={bottomLinkStyle}>
+                ↑ Back to top
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }

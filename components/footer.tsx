@@ -61,11 +61,13 @@ export default class extends Component<{}, State> {
                   </a>
                 </p>
                 <p>
-                  <Link href="https://medium.com/tag/actionherojs/latest">
-                    <a target="_new" style={footerLinkStyle}>
-                      Blogs
-                    </a>
-                  </Link>
+                  <a
+                    href="https://medium.com/tag/actionherojs/latest"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    Blogs
+                  </a>
                 </p>
                 <p>
                   {String.fromCharCode(169) +
@@ -88,9 +90,12 @@ export default class extends Component<{}, State> {
                   </Link>
                 </p>
                 <p>
-                  <Link href="https://docs.actionherojs.com">
-                    <a style={footerLinkStyle}>Documenation</a>
-                  </Link>
+                  <a
+                    href="https://docs.actionherojs.com"
+                    style={footerLinkStyle}
+                  >
+                    Documenation
+                  </a>
                 </p>
                 <p>
                   <Link href="/solutions">
@@ -112,39 +117,49 @@ export default class extends Component<{}, State> {
             <Col md={4}>
               <div style={{ paddingLeft: columnPadding }}>
                 <p>
-                  <Link href="https://www.npmjs.com/package/actionhero">
-                    <a target="_new" style={footerLinkStyle}>
-                      NPM
-                    </a>
-                  </Link>
+                  <a
+                    href="https://www.npmjs.com/package/actionhero"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    NPM
+                  </a>
                 </p>
                 <p>
-                  <Link href="https://twitter.com/actionherojs">
-                    <a target="_new" style={footerLinkStyle}>
-                      Twitter
-                    </a>
-                  </Link>
+                  <a
+                    href="https://twitter.com/actionherojs"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    Twitter
+                  </a>
                 </p>
                 <p>
-                  <Link href="https://slack.actionherojs.com/">
-                    <a target="_new" style={footerLinkStyle}>
-                      Slack
-                    </a>
-                  </Link>
+                  <a
+                    href="https://slack.actionherojs.com/"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    Slack
+                  </a>
                 </p>
                 <p>
-                  <Link href="https://github.com/actionhero/actionhero">
-                    <a target="_new" style={footerLinkStyle}>
-                      Github
-                    </a>
-                  </Link>
+                  <a
+                    href="https://github.com/actionhero/actionhero"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    Github
+                  </a>
                 </p>
                 <p>
-                  <Link href="https://actionherojs.threadless.com">
-                    <a target="_new" style={footerLinkStyle}>
-                      Shop
-                    </a>
-                  </Link>
+                  <a
+                    href="https://actionherojs.threadless.com"
+                    target="_new"
+                    style={footerLinkStyle}
+                  >
+                    Shop
+                  </a>
                 </p>
               </div>
             </Col>
