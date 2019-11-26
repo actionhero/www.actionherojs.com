@@ -18,7 +18,7 @@ export default {
       fontSize: 14,
       fontWeight: 300,
       lineHeight: 26
-    },
+    } as React.CSSProperties,
     h1: {
       fontFamily: 'BebasNeue, Roboto, sans-serif',
       fontWeight: 'bold',
@@ -26,21 +26,21 @@ export default {
       marginBottom: 10,
       letterSpacing: 2,
       fontSize: 36
-    },
+    } as React.CSSProperties,
     h2: {
       fontFamily: 'Roboto, sans-serif',
       fontWeight: 300,
       fontSize: 20,
       lineHeight: '1.5em',
       color: '#3B5D72'
-    },
+    } as React.CSSProperties,
     h2Alt: {
       fontFamily: 'BebasNeue, Roboto, sans-serif',
       fontWeight: 800,
       fontSize: 24,
       letterSpacing: 1,
       color: '#3B5D72'
-    }
+    } as React.CSSProperties
   },
 
   padding: {
@@ -62,7 +62,7 @@ export default {
       width: '100%',
       fontSize: 24,
       fontWeight: 300
-    }
+    } as React.CSSProperties
   },
 
   buttons: {
@@ -82,7 +82,7 @@ export default {
         paddingTop: 15,
         paddingBottom: 15,
         outline: 'none'
-      }
+      } as React.CSSProperties
     },
 
     header: (backgroundColor, color) => {
@@ -103,7 +103,7 @@ export default {
         outline: 'none'
         // paddingTop: 10,
         // paddingBottom: 10
-      }
+      } as React.CSSProperties
     }
   }
 }
