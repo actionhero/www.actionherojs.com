@@ -2,7 +2,7 @@ version: 2
 
 references:
   ignored-branches: &ignored-branches
-     branches:
+    branches:
       ignore:
         - gh-pages
 
@@ -37,7 +37,7 @@ jobs:
           <<: *cache-options
       - run:
           name: linter
-          command: ./node_modules/.bin/standard
+          command: npm run lint
       - run:
           name: test-reporter-setup
           command: mkdir -p ./reports/junit
@@ -65,7 +65,6 @@ jobs:
       - run:
           name: deploy-gh-pages
           command: ./bin/deploy
-
 
 workflows:
   version: 2
