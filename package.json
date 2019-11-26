@@ -13,39 +13,34 @@
   },
   "dependencies": {
     "github-api": "^3.3.0",
-    "glob": "^7.1.4",
-    "next": "^9.0.5",
-    "react": "^16.9.0",
-    "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.9.0",
-    "react-fontawesome": "^1.6.1",
-    "react-overlays": "^1.2.0",
+    "next": "^9.1.4",
+    "raw-loader": "^4.0.0",
+    "react": "^16.12.0",
+    "react-bootstrap": "^0.33.0",
+    "react-dom": "^16.12.0",
+    "react-fontawesome": "^1.7.1",
+    "react-markdown": "^4.2.2",
     "react-syntax-highlighter": "^11.0.2",
     "react-waypoint": "^9.0.2"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "@types/react": "^16.9.13",
     "babel-eslint": "^10.0.3",
     "jest": "24.9.0",
-    "react-test-renderer": "16.9.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "16.12.0",
     "request": "^2.88.0",
-    "standard": "^14.1.0"
+    "typescript": "^3.7.2",
+    "ts-jest": "^24.2.0"
   },
   "scripts": {
     "dev": "next dev",
     "sitemap": "node ./bin/sitemap.js",
     "start": "NODE_ENV=production node server.js",
     "test": "jest",
-    "pretest": "standard"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "static/*"
-    ],
-    "globals": [
-      "describe",
-      "expect",
-      "it"
-    ]
+    "pretest": "npm run lint",
+    "lint": "prettier --check pages/*/**.tsx components/*/**.tsx pageClasses/*/**.tsx __tests__/*/**.tsx"
   }
 }
