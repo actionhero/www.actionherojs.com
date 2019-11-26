@@ -75,11 +75,6 @@ export default class extends Component<Props> {
                 })}
               </div>
             ) : null}
-            <li>
-              <a href="#_top" style={bottomLinkStyle}>
-                ↑ Back to top
-              </a>
-            </li>
           </ul>
         </div>
       </div>
