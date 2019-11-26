@@ -99,6 +99,23 @@ export default class extends Component<{}, State> {
               </Nav>
 
               <Nav pullLeft>
+                <NavItem
+                  onClick={this.goTo.bind(this, "/why")}
+                  className="hidden-sm"
+                >
+                  <span
+                    onMouseEnter={() => {
+                      this.onMouseEnter("/why");
+                    }}
+                    onMouseLeave={() => {
+                      this.onMouseLeave();
+                    }}
+                    style={this.linkStyle("/why")}
+                  >
+                    Why Actionhero
+                  </span>
+                </NavItem>
+
                 <NavItem onClick={this.goTo.bind(this, "/downloads")}>
                   <span
                     onMouseEnter={() => {
@@ -110,6 +127,20 @@ export default class extends Component<{}, State> {
                     style={this.linkStyle("/downloads")}
                   >
                     Downloads
+                  </span>
+                </NavItem>
+
+                <NavItem onClick={this.goTo.bind(this, "/tutorials")}>
+                  <span
+                    onMouseEnter={() => {
+                      this.onMouseEnter("/tutorials");
+                    }}
+                    onMouseLeave={() => {
+                      this.onMouseLeave();
+                    }}
+                    style={this.linkStyle("/tutorials")}
+                  >
+                    Tutorials
                   </span>
                 </NavItem>
 
@@ -129,23 +160,6 @@ export default class extends Component<{}, State> {
                     style={this.linkStyle("/docs")}
                   >
                     Documentation
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  onClick={this.goTo.bind(this, "/why")}
-                  className="hidden-sm"
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/why");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/why")}
-                  >
-                    Why Actionhero
                   </span>
                 </NavItem>
 
