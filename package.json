@@ -28,17 +28,19 @@
     "@types/node": "^12.12.14",
     "@types/react": "^16.9.13",
     "babel-eslint": "^10.0.3",
+    "glob": "^7.1.6",
     "jest": "24.9.0",
     "prettier": "^1.19.1",
     "react-test-renderer": "16.12.0",
     "request": "^2.88.0",
-    "typescript": "^3.7.2",
-    "ts-jest": "^24.2.0"
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "dev": "next dev",
     "sitemap": "node ./bin/sitemap.js",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start -p $PORT",
+    "build": "next build",
     "test": "jest",
     "pretest": "npm run lint",
     "lint": "prettier --check pages/*/**.tsx components/*/**.tsx pageClasses/*/**.tsx __tests__/*/**.tsx"

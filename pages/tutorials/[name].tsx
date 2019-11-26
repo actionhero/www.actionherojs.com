@@ -27,7 +27,6 @@ export default class ToutorialPage extends Component<Props> {
 
   render() {
     const { content, name } = this.props;
-    console.log(name);
 
     return (
       <DocsPage
