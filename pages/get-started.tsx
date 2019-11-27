@@ -5,12 +5,12 @@ import Code from "../components/code";
 
 const ExampleBootCode = `> npm start
 
-> actionhero@12.2.2 start /app/actionhero
-> node ./bin/actionhero
+> Actionhero@12.2.2 start /app/Actionhero
+> node ./bin/Actionhero
 
-info: actionhero >> start
-2015-11-14 16:01:27 - notice: *** starting actionhero ***
-2015-11-14 16:01:27 - info: actionhero member 10.0.1.15 has joined the cluster
+info: Actionhero >> start
+2015-11-14 16:01:27 - notice: *** starting Actionhero ***
+2015-11-14 16:01:27 - info: Actionhero member 10.0.1.15 has joined the cluster
 2015-11-14 16:01:27 - notice: pid: 36087
 2015-11-14 16:01:27 - notice: server ID: 10.0.1.15
 2015-11-14 16:01:27 - info: ensuring the existence of the chatRoom: defaultRoom
@@ -41,13 +41,13 @@ run redis.exe in a bcackground window
 `;
 
 const Quickstart = `mkdir ~/project && cd ~/project
-npm install actionhero
-npx actionhero generate
+npm install Actionhero
+npx Actionhero generate
 npm install
 # ensure redis is running; see above
 npm start`;
 
-const Folders = `# ActionHero Project Layout
+const Folders = `# Actionhero Project Layout
 
 |- config
 | -- api.js
@@ -73,7 +73,7 @@ const Folders = `# ActionHero Project Layout
 |-- (default location for logs)
 |
 |- node_modules
-|-- (your modules, ActionHero should be npm installed in here)
+|-- (your modules, Actionhero should be npm installed in here)
 |
 |- pids
 |-- (pidfiles for your running servers)
@@ -94,7 +94,7 @@ const Folders = `# ActionHero Project Layout
 |-- (tests for your API)
 |
 readme.md
-package.json (be sure to include 'actionhero':'x')`;
+package.json (be sure to include 'Actionhero':'x')`;
 
 export default class GetStartedPage extends DocsPageWithNav {
   constructor(props) {
@@ -106,7 +106,7 @@ export default class GetStartedPage extends DocsPageWithNav {
         icon: "/static/images/get-started.svg"
       },
       sections: {
-        who: "Who is the ActionHero?",
+        who: "Who is the Actionhero?",
         "getting-started": "Getting Started",
         quickstart: "Install and Quickstart",
         structure: "Application Structure",
@@ -117,7 +117,7 @@ export default class GetStartedPage extends DocsPageWithNav {
       links: [
         {
           link: "https://docs.actionherojs.com",
-          title: "» ActionHero Documentation"
+          title: "» Actionhero Documentation"
         }
       ]
     };
@@ -138,36 +138,36 @@ export default class GetStartedPage extends DocsPageWithNav {
               "who",
               <div>
                 <p>
-                  ActionHero is a <a href="http://nodejs.org">node.js</a>{" "}
+                  Actionhero is a <a href="http://nodejs.org">node.js</a>{" "}
                   <strong>API framework</strong> for both{" "}
                   <strong>tcp sockets</strong>, <strong>web sockets</strong>,
-                  and <strong>http clients</strong>. The goal of ActionHero is
+                  and <strong>http clients</strong>. The goal of Actionhero is
                   to create an easy-to-use toolkit for making{" "}
                   <strong>reusable</strong> & <strong>scalable</strong> APIs.
-                  Clients connected to an ActionHero server can{" "}
+                  Clients connected to an Actionhero server can{" "}
                   <strong>consume the API</strong>,{" "}
                   <strong>consume static content</strong>, and{" "}
                   <strong>communicate with each other</strong>.
                 </p>
                 <p>
-                  ActionHero servers can process both requests and tasks
+                  Actionhero servers can process both requests and tasks
                   (delayed actions like `send e-mail` or other background jobs).
-                  ActionHero servers can also run in a cluster (on the same or
+                  Actionhero servers can also run in a cluster (on the same or
                   multiple machines) to work in concert to handle your load.
                 </p>
                 <p>
-                  The ActionHero API defines a single access point and accepts
+                  The Actionhero API defines a single access point and accepts
                   GET, POST, PUT and DELETE input along with persistent
                   connection via TCP or web sockets. You define{" "}
                   <strong>Actions</strong> which handle input and response, such
                   as `userAdd` or `geoLocate`. HTTP, HTTPS, and TCP clients can
-                  all use these actions. The ActionHero API is not inherently
+                  all use these actions. The Actionhero API is not inherently
                   'RESTful' (which is meaningless for persistent socket
                   connections) but can be extended to be so if you wish.
                 </p>
                 <p>
-                  ActionHero will also serve static files for you, but
-                  ActionHero is not a 'rendering' server (like express or
+                  Actionhero will also serve static files for you, but
+                  Actionhero is not a 'rendering' server (like express or
                   rails).
                 </p>
 
@@ -205,12 +205,12 @@ export default class GetStartedPage extends DocsPageWithNav {
                     <code>mkdir ~/project && cd ~/project</code>
                   </li>
                   <li>
-                    Checkout the ActionHero source{" "}
-                    <code>npm install actionhero</code>
+                    Checkout the Actionhero source{" "}
+                    <code>npm install Actionhero</code>
                   </li>
                   <li>
                     Use the generator to create a template project{" "}
-                    <code>npx actionhero generate</code>
+                    <code>npx Actionhero generate</code>
                   </li>
                   <li>
                     <code>npm install</code> to install dependencies
@@ -222,19 +222,19 @@ export default class GetStartedPage extends DocsPageWithNav {
 
                 <p>
                   Visit <code>http://127.0.0.1:8080</code> in your browser to
-                  see the ActionHero in action!
+                  see the Actionhero in action!
                 </p>
                 <p>
-                  Do not install ActionHero globally with{" "}
-                  <code>npm install -g</code>. ActionHero does not support
+                  Do not install Actionhero globally with{" "}
+                  <code>npm install -g</code>. Actionhero does not support
                   running from a global (system) location, and expects to be
                   installed locally per-project. You can learn more about why{" "}
-                  <a href="https://github.com/actionhero/actionhero/issues/1141">
+                  <a href="https://github.com/Actionhero/Actionhero/issues/1141">
                     here
                   </a>
                 </p>
                 <p>
-                  You can disable the features of ActionHero which require redis
+                  You can disable the features of Actionhero which require redis
                   (cache, chat, tasks, etc) from <code>./config/redis.js</code>{" "}
                   and set <code>enabled = false</code>
                 </p>
@@ -246,7 +246,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               <div>
                 <Code language="bash">{Folders}</Code>
                 <p>
-                  The map to the right describes ActionHero's default project
+                  The map to the right describes Actionhero's default project
                   layout.
                 </p>
                 <p>
@@ -270,13 +270,13 @@ export default class GetStartedPage extends DocsPageWithNav {
               "tutorial",
               <div>
                 <p>
-                  Want to see an example application using ActionHero? You can
+                  Want to see an example application using Actionhero? You can
                   check out the code and follow the detailed guide{" "}
-                  <a href="https://github.com/actionhero/actionhero-tutorial">
-                    here (https://github.com/actionhero/actionhero-tutorial)
+                  <a href="https://github.com/Actionhero/Actionhero-tutorial">
+                    here (https://github.com/Actionhero/Actionhero-tutorial)
                   </a>
                   . This project demonstrates many of the core features of
-                  ActionHero in a simple project.
+                  Actionhero in a simple project.
                 </p>
               </div>
             )}
@@ -287,7 +287,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                 <p>
                   The www.actionherojs.com website and documentation is hosted
                   on Heroku, and built from{" "}
-                  <a href="https://github.com/actionhero/www.actionherojs.com">
+                  <a href="https://github.com/Actionhero/www.actionherojs.com">
                     this codebase
                   </a>
                   . You can submit pull requests to the master branch with any
@@ -301,7 +301,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               <div>
                 <p>
                   This documentation will always reflect the master branch of
-                  ActionHero, and therefore may be slightly ahead of the latest
+                  Actionhero, and therefore may be slightly ahead of the latest
                   release on NPM.
                 </p>
               </div>

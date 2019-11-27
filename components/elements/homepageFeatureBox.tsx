@@ -46,14 +46,15 @@ interface FeatureBoxProps {
   code?: string;
   body: string;
   image: string;
+  colSpan?: number;
 }
 
 export default class FeatureBox extends Component<FeatureBoxProps> {
   render() {
-    const { code, title } = this.props;
+    const { code, title, colSpan } = this.props;
 
     return (
-      <Col md={4} style={{ textAlign: "center" }}>
+      <Col md={colSpan || 4} style={{ textAlign: "center" }}>
         <div
           style={{
             paddingLeft: 20,

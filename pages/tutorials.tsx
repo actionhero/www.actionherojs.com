@@ -331,12 +331,12 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src={`/static/images/${Theme.icons["running-actionhero"]}`}
+                      src={`/static/images/${Theme.icons["running-Actionhero"]}`}
                     />
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/running-actionhero">
+                      <Link href="/tutorials/running-Actionhero">
                         <a>Running Actionhero</a>
                       </Link>
                     </h3>
@@ -406,7 +406,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      ActionHero comes with a file server which makes it easy
+                      Actionhero comes with a file server which makes it easy
                       for you to integrate assets with your API responses, and
                       serve up API playgrounds and documentation.
                     </p>
@@ -427,7 +427,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      ActionHero uses Winston to create multi faceted logs for
+                      Actionhero uses Winston to create multi faceted logs for
                       your applicaiton.
                     </p>
                   </Col>
@@ -474,7 +474,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      ActionHero can be run either as a solitary server or as
+                      Actionhero can be run either as a solitary server or as
                       part of a cluster. The goal of these cluster helpers is to
                       allow you to create a group of servers which will share
                       state and each be able to handle requests and run tasks.
@@ -498,7 +498,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      ActionHero has been used by many compines in both large
+                      Actionhero has been used by many compines in both large
                       and small deployments. Let us share some best practices
                       with you to design your Actionhero deployment in the best
                       possible way.
@@ -520,10 +520,10 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Upgrading big ActionHero projects to a new major might
-                      require some effort. Every ActionHero version has it's own
+                      Upgrading big Actionhero projects to a new major might
+                      require some effort. Every Actionhero version has it's own
                       specific project files which you generate using
-                      `actionhero generate` command... but this guide helps you
+                      `Actionhero generate` command... but this guide helps you
                       move from one version to the next.
                     </p>
                   </Col>

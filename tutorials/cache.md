@@ -7,7 +7,7 @@ Actionhero includes a powerful cache system based on Redis. It can be used to st
 [The cache methods are docuemnted in detail with annotations here](https://docs.actionherojs.com/modules/cache.html). There are methods fall into 3 categories:
 
 - **data**: read, write, check, delete
-- **locks** you can lock and unlock objects in the cache so that only one actionhero node can claim it
+- **locks** you can lock and unlock objects in the cache so that only one Actionhero node can claim it
 - **queues** you can share a distributed array and access it via push and pop methods
 
 ## Example Usage
@@ -15,7 +15,7 @@ Actionhero includes a powerful cache system based on Redis. It can be used to st
 An Action:
 
 ```ts
-import { cache, Action } from "actionhero";
+import { cache, Action } from "Actionhero";
 
 export class CacheTest extends Action {
   constructor() {

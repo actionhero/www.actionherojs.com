@@ -21,8 +21,8 @@ export default class extends Component<Props, State> {
     this.state = {
       latestRelease: props.latestRelease || "~",
       github: new GitHub(),
-      org: props.org || "ActionHero",
-      repo: props.repo || "ActionHero",
+      org: props.org || "Actionhero",
+      repo: props.repo || "Actionhero",
       error: null
     };
   }

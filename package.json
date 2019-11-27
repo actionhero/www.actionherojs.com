@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/actionhero/www.actionherojs.com.git"
+    "url": "https://github.com/Actionhero/www.actionherojs.com.git"
   },
   "engines": {
     "node": "12"

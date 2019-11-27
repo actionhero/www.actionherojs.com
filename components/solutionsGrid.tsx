@@ -56,7 +56,7 @@ export default class extends Component<{}, State> {
               <h1 style={Theme.typeography.h1}>Solutions</h1>
               <h2 style={Theme.typeography.h2}>
                 <span style={{ color: Theme.colors.yellow }}>
-                  ActionHero was built from the ground up to include all the
+                  Actionhero was built from the ground up to include all the
                   features you expect from a modern API framework.
                 </span>
               </h2>
@@ -82,14 +82,14 @@ export default class extends Component<{}, State> {
                 </div>
                 <RedLine />
                 <p>
-                  The ActionHero server is open source, under the Apache-2
+                  The Actionhero server is open source, under the Apache-2
                   license
                 </p>
                 <RedLine />
-                <p>ActionHero runs on Linux, OS X, and Windows</p>
+                <p>Actionhero runs on Linux, OS X, and Windows</p>
                 <RedLine />
                 <p>
-                  You always have access to the ActionHero team via{" "}
+                  You always have access to the Actionhero team via{" "}
                   <Link href="/community">
                     <a>Slack and Github</a>
                   </Link>
@@ -242,7 +242,7 @@ export default class extends Component<{}, State> {
                 <ul>
                   <li>
                     <strong>
-                      24/7 access to core members of the ActionHero Team
+                      24/7 access to core members of the Actionhero Team
                     </strong>
                   </li>
                   <li>
@@ -296,10 +296,10 @@ export default class extends Component<{}, State> {
                   <Row>
                     <Col md={4}>
                       <h1 style={Theme.typeography.h1}>
-                        ActionHero Professional Services
+                        Actionhero Professional Services
                       </h1>
                       <p>
-                        The ActionHero team is looking forward to working with
+                        The Actionhero team is looking forward to working with
                         you.
                       </p>
                       <p>

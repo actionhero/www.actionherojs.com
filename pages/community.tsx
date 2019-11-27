@@ -7,7 +7,7 @@ import Theme from "../components/theme";
 import GitHub from "github-api";
 
 const github = new GitHub();
-const repository = github.getRepo("actionhero", "actionhero");
+const repository = github.getRepo("Actionhero", "Actionhero");
 
 const maxReleases = 15;
 
@@ -99,7 +99,7 @@ export default class CommunityPage extends Component<
 
             <Clearfix />
 
-            <a href="https://www.github.com/actionhero/actionhero">
+            <a href="https://www.github.com/Actionhero/Actionhero">
               <img
                 style={communityIcon}
                 src="/static/images/community/github.svg"
@@ -109,7 +109,7 @@ export default class CommunityPage extends Component<
 
             <Clearfix />
 
-            <a href="https://www.github.com/actionhero/actionhero/issues">
+            <a href="https://www.github.com/Actionhero/Actionhero/issues">
               <img
                 style={communityIcon}
                 src="/static/images/community/issues.svg"

@@ -117,7 +117,7 @@ export default class extends Component {
             rel="stylesheet"
           />
 
-          <title>ActionHero</title>
+          <title>Actionhero</title>
 
           <script src="/static/js/googleAnalytics.js" />
         </Head>

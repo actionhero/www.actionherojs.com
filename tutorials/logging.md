@@ -1,11 +1,11 @@
 ## Overview
 
-ActionHero uses the **[Winston logger](https://github.com/flatiron/winston)**. This allows for better, more customizable logging. With one simple `log` command provided by Actionhero, you can log to files, the console, and more!
+Actionhero uses the **[Winston logger](https://github.com/flatiron/winston)**. This allows for better, more customizable logging. With one simple `log` command provided by Actionhero, you can log to files, the console, and more!
 
 ## Levels
 
 ```ts
-import { log } form 'actionhero'
+import { log } form 'Actionhero'
 
 log("hello"); // will use the default, 'info' level
 log("debug message", "debug"); // will not show up unless you have configured your logger in this NODE_ENV to be debug

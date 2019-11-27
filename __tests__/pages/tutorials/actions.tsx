@@ -6,7 +6,7 @@ import TutorialContainer from "../../../pages/tutorials/[name]";
 
 const markdown = `
 ## Hello World
-The core of ActionHero is the Action framework
+The core of Actionhero is the Action framework
 `;
 
 describe("Terms", () => {
@@ -17,6 +17,6 @@ describe("Terms", () => {
     const body = ReactDOM.findDOMNode(page).textContent;
 
     expect(body).toContain("Hello World");
-    expect(body).toContain("The core of ActionHero is the Action framework");
+    expect(body).toContain("The core of Actionhero is the Action framework");
   });
 });

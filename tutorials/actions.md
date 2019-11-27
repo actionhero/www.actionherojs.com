@@ -3,7 +3,7 @@
 ```ts
 // A simple Action
 
-import { Action } from "actionhero";
+import { Action } from "Actionhero";
 
 export class RandomNumber extends Action {
   constructor() {
@@ -19,18 +19,18 @@ export class RandomNumber extends Action {
 }
 ```
 
-The core of ActionHero is the Action framework, and **actions** are the basic units of work. All connection types from all servers can use actions. This means that you only need to write an action once, and both HTTP clients and websocket clients can consume it!
+The core of Actionhero is the Action framework, and **actions** are the basic units of work. All connection types from all servers can use actions. This means that you only need to write an action once, and both HTTP clients and websocket clients can consume it!
 
 The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and set the `data.response` (and `data.response.error` when needed) values to build the response to the client.
 
-You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate action --name=myAction`
+You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `Actionhero generate action --name=myAction`
 
 You can also define more than one action per file if you would like, and extend classes to share common methods and components (like input parsers).
 
 ```js
 // A compound Action with Shared Inputs
 
-import { Action } from "actionhero";
+import { Action } from "Actionhero";
 
 class ValidatedAction extends Action {
   constructor() {
@@ -89,10 +89,10 @@ export class UserDelete extends ValidatedAction {
 
 ## Versions
 
-ActionHero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` paramiter.
+Actionhero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` paramiter.
 
 ```js
-import { Action } from "actionhero";
+import { Action } from "Actionhero";
 
 export class ActionVersion1 extends Action {
   constructor() {
@@ -134,7 +134,7 @@ exports class ActionVersion2 extends Action {
 
 You can optionally create routes to handle your API versioning:
 
-_As a note, if a client accessing ActionHero via routes does not provide an apiVersion and it is explicitly defined in the route, the highest number will not be assigned automatically, and will be seen as a routing error._
+_As a note, if a client accessing Actionhero via routes does not provide an apiVersion and it is explicitly defined in the route, the highest number will not be assigned automatically, and will be seen as a routing error._
 
 ```js
 exports.routes = {
@@ -155,7 +155,7 @@ We go into more detail about routes when discussing the [web server](/tutorials/
 The complete set of options an action can have are:
 
 ```js
-import { Action } from "actionhero";
+import { Action } from "Actionhero";
 
 class ValidatedAction extends Action {
   constructor () {
@@ -389,6 +389,6 @@ You can [learn more about middleware here](/tutorials/middleware).
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `api.config.general.simultaneousActions`
 - `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `api.config.general.disableParamScrubbing`. Note that [Middleware](tutorial-middleware.html) preProcessors will always have access to all params pre-scrubbing.
 - `matchExtensionMimeType` is currently only used by the `web` server, and it indicates that if this action is successfully called by a client with `connection.extension` set, the headers of the response should be changed to match that file type. This is useful when creating actions that download files.
-- ActionHero strives to keep the `data.connection` object uniform among various client types, and more importantly, present `data.params` in a homogeneous way to actions. You can inspect `data.connection.type` to learn more about the connection. The gory details of the connection (which vary on its type) are stored in `data.connection.rawConnection` which will contain the websocket, tcp connection, etc. For web clients, `{`data.connection.rawConnection = {req: req, res: res}`}` for example.
+- Actionhero strives to keep the `data.connection` object uniform among various client types, and more importantly, present `data.params` in a homogeneous way to actions. You can inspect `data.connection.type` to learn more about the connection. The gory details of the connection (which vary on its type) are stored in `data.connection.rawConnection` which will contain the websocket, tcp connection, etc. For web clients, `{`data.connection.rawConnection = {req: req, res: res}`}` for example.
 
 [You can learn more about handling HTTP verbs and file uploads here](/tutorials/web-server) and [Web-Socket Clients](/tutorials/websocket-server).

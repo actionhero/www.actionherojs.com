@@ -39,7 +39,7 @@ export default class extends Component<{}, State> {
             }}
           >
             <Col md={12}>
-              <img src="/static/images/actionhero-logo-header-wordmark.svg" />
+              <img src="/static/images/Actionhero-logo-header-wordmark.svg" />
             </Col>
           </Row>
 
@@ -73,7 +73,7 @@ export default class extends Component<{}, State> {
                   {String.fromCharCode(169) +
                     " " +
                     this.state.date.getFullYear()}{" "}
-                  ActionHero
+                  Actionhero
                 </p>
               </div>
             </Col>
@@ -118,7 +118,7 @@ export default class extends Component<{}, State> {
               <div style={{ paddingLeft: columnPadding }}>
                 <p>
                   <a
-                    href="https://www.npmjs.com/package/actionhero"
+                    href="https://www.npmjs.com/package/Actionhero"
                     target="_new"
                     style={footerLinkStyle}
                   >
@@ -145,7 +145,7 @@ export default class extends Component<{}, State> {
                 </p>
                 <p>
                   <a
-                    href="https://github.com/actionhero/actionhero"
+                    href="https://github.com/Actionhero/Actionhero"
                     target="_new"
                     style={footerLinkStyle}
                   >

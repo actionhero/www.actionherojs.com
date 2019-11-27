@@ -78,7 +78,7 @@ export default {
     servers: "internet-of-things.svg",
     "web-server": "documentation.svg",
     "websocket-server": "documentation.svg",
-    "running-actionhero": "ops-tools.svg",
+    "running-Actionhero": "ops-tools.svg",
     config: "video-game-servers.svg",
     repl: "ops-tools.svg",
     "file-server": "file-server.svg",

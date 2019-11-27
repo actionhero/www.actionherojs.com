@@ -1,15 +1,15 @@
 ## Overview
 
-In ActionHero we have introduced a modular server system which allows you to create your own servers. Servers should be thought of as any type of listener to remote connections, streams, or event your server.
+In Actionhero we have introduced a modular server system which allows you to create your own servers. Servers should be thought of as any type of listener to remote connections, streams, or event your server.
 
-In ActionHero, the goal of each server is to ingest a specific type of connection and transform each client into a generic `connection` object which can be operated on by the rest of ActionHero. To help with this, all servers extend `ActionHero.Server` and fill in the required methods.
+In Actionhero, the goal of each server is to ingest a specific type of connection and transform each client into a generic `connection` object which can be operated on by the rest of Actionhero. To help with this, all servers extend `Actionhero.Server` and fill in the required methods.
 
-To get started, you can use the `actionhero generate server --name=myServer`. This will generate a template server which looks like the below.
+To get started, you can use the `Actionhero generate server --name=myServer`. This will generate a template server which looks like the below.
 
-Like initializers, the `start()` and `stop()` methods will be called when the server is to boot up in ActionHero's lifecycle, but before any clients are permitted into the system. Here is where you should actually initialize your server (IE: `https.createServer.listen`, etc).
+Like initializers, the `start()` and `stop()` methods will be called when the server is to boot up in Actionhero's lifecycle, but before any clients are permitted into the system. Here is where you should actually initialize your server (IE: `https.createServer.listen`, etc).
 
 ```ts
-import { Server } from "actionhero";
+import { Server } from "Actionhero";
 
 module.exports = class MyServer extends Server {
   constructor() {
@@ -106,7 +106,7 @@ allowedVerbs: [
 ];
 ```
 
-When an incoming message is detected, it is the server's job to build `connection.params`. In the `web` server, this is accomplished by reading GET, POST, and form data. For `websocket` clients, that information is expected to be emitted as part of the action's request. For other clients, like `socket`, ActionHero provides helpers for long-lasting clients to operate on themselves. These are called connection `verbs`.
+When an incoming message is detected, it is the server's job to build `connection.params`. In the `web` server, this is accomplished by reading GET, POST, and form data. For `websocket` clients, that information is expected to be emitted as part of the action's request. For other clients, like `socket`, Actionhero provides helpers for long-lasting clients to operate on themselves. These are called connection `verbs`.
 
 Clients use verbs to add params to themselves, update the chat room they are in, and more. The list of verbs currently supported is listed above.
 
@@ -157,7 +157,7 @@ The `attribute` "canChat" defines if clients of this server can chat. If clients
 
 ## Sending Responses
 
-All servers need to implement the `server.sendMessage = function(connection, message, messageId)` method so ActionHero knows how to talk to each client. This is likely to make use of `connection.rawConnection`. If you are writing a server for a persistent connection, it is likely you will need to respond with `messageId` so that the client knows which request your response is about (as they are not always going to get the responses in order).
+All servers need to implement the `server.sendMessage = function(connection, message, messageId)` method so Actionhero knows how to talk to each client. This is likely to make use of `connection.rawConnection`. If you are writing a server for a persistent connection, it is likely you will need to respond with `messageId` so that the client knows which request your response is about (as they are not always going to get the responses in order).
 
 ## Sending Files
 

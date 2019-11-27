@@ -1,12 +1,12 @@
 ## Overview
 
-Upgrading big ActionHero projects to a new major might require some effort. Every ActionHero version has it's own specific project files which you generate using `actionhero generate` command.
+Upgrading big Actionhero projects to a new major might require some effort. Every Actionhero version has it's own specific project files which you generate using `Actionhero generate` command.
 
-One of the ways to upgrade your project is to generate a new project using the latest ActionHero framework (`npm install actionhero && npx actionhero generate`). Using that as your starting point you can then carefully copy all your `configs`, `initializers`, `servers`, `tasks`, `actions`, and other custom code from your old project, making sure that you are at the same working state as before. It's a good practice to make tests for your actions (or any other component) before you plan to upgrade your ActionHero project.
+One of the ways to upgrade your project is to generate a new project using the latest Actionhero framework (`npm install Actionhero && npx Actionhero generate`). Using that as your starting point you can then carefully copy all your `configs`, `initializers`, `servers`, `tasks`, `actions`, and other custom code from your old project, making sure that you are at the same working state as before. It's a good practice to make tests for your actions (or any other component) before you plan to upgrade your Actionhero project.
 
 With good [test coverage](tutorial-testing.html) you can make sure that you have successfully upgraded your project.
 
-ActionHero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
+Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
 ## Upgrading from v20 to v21
 
@@ -14,53 +14,53 @@ WIP: This is a large change to Typescript. Detailed notes can be found on the Ty
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v20.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v20.0.0)**
 
-The only change to take note of is that you must now ensure that the working directory (CWD/PWD) in use when you start your actionhero project is the root. (where /config, /actions, etc) are visable.
+The only change to take note of is that you must now ensure that the working directory (CWD/PWD) in use when you start your Actionhero project is the root. (where /config, /actions, etc) are visable.
 
 ## Upgrading from v18 to v19
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v19.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v19.0.0)**
 
 **Configuration**
 
 - in `config/tasks.js` `add api.config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
-- in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the ActionHero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/web.js) for more information
+- in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/Actionhero/Actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/web.js) for more information
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v20.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v20.0.0)**
 
 - In `config/api.js` add `api.config.general.paths.test = [path.join(__dirname, '/../__tests__')]` so that when you generate a new action or task, the related test file can be generated as well.
-- However you run actionhero, be sure to `cd` into the root directory of the project before starting the server.
+- However you run Actionhero, be sure to `cd` into the root directory of the project before starting the server.
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v19.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v19.0.0)**
 
 - in `config/tasks.js` `add api.config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
-- in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the ActionHero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/web.js) for more information
+- in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/Actionhero/Actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/web.js) for more information
 
 ## Upgrading from v17 to v18
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v18.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v18.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
-There are _many_ changes to the APIs actionhero exposes. You can read up on the new syntax on our [new documentation website, docs.actionherojs.com](https://docs.actionherojs.com)
+There are _many_ changes to the APIs Actionhero exposes. You can read up on the new syntax on our [new documentation website, docs.actionherojs.com](https://docs.actionherojs.com)
 
 - **Node.js version**
 
   - Node.js v8 and higher is now required. You must update your projects.
 
 - **Actions**
-  - Actions are now ES6 classes, which extend `require('actionhero').Action`.
+  - Actions are now ES6 classes, which extend `require('Actionhero').Action`.
   - The `run` method only has one argument now, `data` and becomes a `async` method. `api` can be required globally to your file.
 
 ```js
-const { Action, api } = require("actionhero");
+const { Action, api } = require("Actionhero");
 
 module.exports = class MyAction extends Action {
   constructor() {
@@ -77,11 +77,11 @@ module.exports = class MyAction extends Action {
 ```
 
 - **Tasks**
-  - Tasks are now ES6 classes, which extend `require('actionhero').Task`.
+  - Tasks are now ES6 classes, which extend `require('Actionhero').Task`.
   - The `run` method only has one argument now, `data` and becomes a `async` method. `api` can be required globally to your file.
 
 ```js
-const { api, Task } = require("actionhero");
+const { api, Task } = require("Actionhero");
 
 module.exports = class SendWelcomeMessage extends Task {
   constructor() {
@@ -101,13 +101,13 @@ module.exports = class SendWelcomeMessage extends Task {
 ```
 
 - **Initializers**
-  - Initializers are now ES6 classes, which extend `require('actionhero').Initializer`.
+  - Initializers are now ES6 classes, which extend `require('Actionhero').Initializer`.
   - The `initialize`, `start`, and `stop` methods now have no arguments and become a `async` methods. `api` can be required globally to your file.
 
 ```js
-const { ActionHero, api } = require("actionhero");
+const { Actionhero, api } = require("Actionhero");
 
-module.exports = class StuffInit extends ActionHero.Initializer {
+module.exports = class StuffInit extends Actionhero.Initializer {
   constructor() {
     super();
     this.name = "StuffInit";
@@ -136,13 +136,13 @@ module.exports = class StuffInit extends ActionHero.Initializer {
 ```
 
 - **Servers**
-  - Servers are now ES6 classes, which extend `require('actionhero').Server`.
+  - Servers are now ES6 classes, which extend `require('Actionhero').Server`.
   - The `initialize`, `start`, and `stop` methods now have no arguments and become a `async` methods. `api` can be required globally to your file.
 
 ```js
-const ActionHero = require("actionhero");
+const Actionhero = require("Actionhero");
 
-module.exports = class MyServer extends ActionHero.Server {
+module.exports = class MyServer extends Actionhero.Server {
   constructor() {
     super();
     this.type = "%%name%%";
@@ -180,25 +180,25 @@ module.exports = class MyServer extends ActionHero.Server {
 ```
 
 - **CLI Commands**
-  - CLI Commands are now ES6 classes, which extend `require('actionhero').CLI`.
+  - CLI Commands are now ES6 classes, which extend `require('Actionhero').CLI`.
   - The `run` method now has one argument, `data` and becomes a `async` method. `api` can be required globally to your file.
 
 ```js
-const {api, CLI} = require('actionhero')
+const {api, CLI} = require('Actionhero')
 
 module.exports = class RedisKeys extends CLI {
   constructor () {
     super()
     this.name = 'redis keys'
     this.description = 'I list all the keys in redis'
-    this.example = 'actionhero keys --prefix actionhero'
+    this.example = 'Actionhero keys --prefix Actionhero'
   }
 
   inputs () {
     return {
       prefix: {
         requried: true,
-        default: 'actionhero',
+        default: 'Actionhero',
         note: 'the redis prefix for searching keys'
       }
     }
@@ -234,16 +234,16 @@ const expect = chai.expect;
 chai.use(dirtyChai);
 
 const path = require("path");
-const ActionHero = require("actionhero");
-const actionhero = new ActionHero.Process();
+const Actionhero = require("Actionhero");
+const Actionhero = new Actionhero.Process();
 let api;
 
 describe("Action: RandomNumber", () => {
   before(async () => {
-    api = await actionhero.start();
+    api = await Actionhero.start();
   });
   after(async () => {
-    await actionhero.stop();
+    await Actionhero.stop();
   });
 
   let firstNumber = null;
@@ -270,34 +270,34 @@ describe("Action: RandomNumber", () => {
 
 - **Plugins**
 
-  - ActionHero no longer uses linkfiles to find plugins. If you have any in a `plugins` directory in your actions, tasks, config, or public folders, delete them.
-  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/actionhero/actionhero/blob/master/config/plugins.js)
-  - Removed `actionhero link` and `actionhero unlink` per the above.
-  - Added `actionhero generate plugin`, a helper which you can use in an empty directory which will create a template plugin project
+  - Actionhero no longer uses linkfiles to find plugins. If you have any in a `plugins` directory in your actions, tasks, config, or public folders, delete them.
+  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/Actionhero/Actionhero/blob/master/config/plugins.js)
+  - Removed `Actionhero link` and `Actionhero unlink` per the above.
+  - Added `Actionhero generate plugin`, a helper which you can use in an empty directory which will create a template plugin project
   - Testing plugins is now simpler. [Read more about this on docs.actionherojs.com](https://docs.actionherojs.com/tutorial-plugins.html)
 
 - **Clients**
   - `ActionheroClient` (the included client library for browser websocket clients) as been named a more clear `ActionheroWebsocketClient` to avoid ambiguity.
-  - The node sever-sever package has been renamed `actionhero-node-client` to help clear up any confusion.
+  - The node sever-sever package has been renamed `Actionhero-node-client` to help clear up any confusion.
 
 ## Upgrading from v16 to v17
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v17.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v17.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
 - **Localization (i18n)**
 
-- In `./config/i18n.js` be sure to enable `objectNotation`, or else the new locale file will be gibberish to ActionHero
-- As of this release, ActionHero no longer localizes its log messages. This is done to simplify and speed up the logger methods. There is not mitigation path here without overwriting the `api.log()` method.
+- In `./config/i18n.js` be sure to enable `objectNotation`, or else the new locale file will be gibberish to Actionhero
+- As of this release, Actionhero no longer localizes its log messages. This is done to simplify and speed up the logger methods. There is not mitigation path here without overwriting the `api.log()` method.
 
 - Any use of `%` interpolation should be removed from your logger strings. Favor native JS string templates.
 
-- ActionHero now ships with locale files by default.
+- Actionhero now ships with locale files by default.
 
-- You will need to acquire the [default locale file](https://github.com/actionhero/actionhero/blob/master/locales/en.json) and copy it into `./locales/en.json` within your project.
-- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/actionhero/actionhero/blob/master/config/errors.js)
-- The `welcomeMessage` and `goodbyeMessage` are removed from the config files and ActionHero now refrences the locale files for these strings. Update yours accodingly.
+- You will need to acquire the [default locale file](https://github.com/Actionhero/Actionhero/blob/master/locales/en.json) and copy it into `./locales/en.json` within your project.
+- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/Actionhero/Actionhero/blob/master/config/errors.js)
+- The `welcomeMessage` and `goodbyeMessage` are removed from the config files and Actionhero now refrences the locale files for these strings. Update yours accodingly.
 
 - **utils**
 
@@ -305,7 +305,7 @@ describe("Action: RandomNumber", () => {
 
 ## Upgrading from v15 to v16
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v16.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v16.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -314,61 +314,61 @@ The only breaking changes are related to the capilization of internal methods:
 - `api.Connecton()` rather than `api.connection()`
 - `api.GenericServer()` rather than `api.genericServer()`
 - `api.ActionProcessor()` rather than `api.actionProcessor()`
-- `require('actionhero')` not `require('actionhero').actionheroPrototype` should you be using ActionHero programatically.
+- `require('Actionhero')` not `require('Actionhero').actionheroPrototype` should you be using Actionhero programatically.
 
 ## Upgrading from v14 to v15
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v15.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v15.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
 ```bash
-\`actionhero generateAction --name=[name]\`      -> \`actionhero generate action --name=[name]\`
-\`actionhero generateInitializer --name=[name]\` -> \`actionhero generate initializer --name=[name]\`
-\`actionhero generateServer --name=[name]\`      -> \`actionhero generate server --name=[name]\`
-\`actionhero generateTask --name=[name]\`        -> \`actionhero generate task --name=[name]\`
+\`Actionhero generateAction --name=[name]\`      -> \`Actionhero generate action --name=[name]\`
+\`Actionhero generateInitializer --name=[name]\` -> \`Actionhero generate initializer --name=[name]\`
+\`Actionhero generateServer --name=[name]\`      -> \`Actionhero generate server --name=[name]\`
+\`Actionhero generateTask --name=[name]\`        -> \`Actionhero generate task --name=[name]\`
 ```
 
-- The ActionHero binary has had it's commands changed.
+- The Actionhero binary has had it's commands changed.
   - Any deployment or automation tools you use will need to be updated accordingly.
 - Tasks now use middleware instead of plugins.
   - You will need to convert all uses of task plugins to task middleware.
 
 ## Upgrading from v13 to v14
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v14.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v14.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
 - Redis Client Configurations have changed drastically. This allows for greater configuration, but at a complexity cost.
-  - The easiest way to upgrade your `config/redis.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/redis.js) directly and re-apply your configuration.
+  - The easiest way to upgrade your `config/redis.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js) directly and re-apply your configuration.
   - Move `api.config.redis.channel` to `api.config.general.channel`
   - Move `api.config.redis. rpcTimeout` to `api.config.general.rpcTimeout`
   - Throughout the code, use `api.config.redis.client` rather than `api.redis.client`
 
 ## Upgrading from v12 to v13
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v13.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v13.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
 - Pluggins
   - `config/plugins.js` is removed. Delete yours.
-  - Use the new binary command, `actionhero link --name=NameOfPlugin` to link your plugins in the new method.
+  - Use the new binary command, `Actionhero link --name=NameOfPlugin` to link your plugins in the new method.
   - Linking plugins will likley create new config files you may need to customize.
 - Locales
-  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/i18n.js).
+  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/i18n.js).
   - Ensure that `api.config.i18n.updateFiles` is `true` so that your locale files can be generated for the first time.
 - Errors
-  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/errors.js).
+  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/errors.js).
 - Grunt Removed
-  - Grunt is removed from the project. The old ActionHero grunt commands have been moved into the ActionHero binary.
+  - Grunt is removed from the project. The old Actionhero grunt commands have been moved into the Actionhero binary.
 - Redis configuration
   - `package` is a reserved keyword in JavaScript. We now use the key `pkg` in the redis config.
 
 ## Upgrading from v11 to v12
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v12.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v12.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -376,12 +376,12 @@ The only breaking changes are related to the capilization of internal methods:
   - Switch from using the `redis` npm pacakge to `ioredis`. Change this in your package.json.
 - `ioredis` handles passwords slightly differently. Read the [ioredis](https://github.com/luin/ioredis) documentation to learn more.
 - Stats Removed
-  - The `api.stats` subsection has been removed from actionhero
-  - If you need the stats subsection, you can get get it [via plugin](https://github.com/actionhero/ah-stats-plugin)
+  - The `api.stats` subsection has been removed from Actionhero
+  - If you need the stats subsection, you can get get it [via plugin](https://github.com/Actionhero/ah-stats-plugin)
 
 ## Upgrading from v10 to v11
 
-**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v11.0.0)**
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v11.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 

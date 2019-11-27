@@ -8,9 +8,9 @@ import FeatureBox from "./../components/elements/homepageFeatureBox";
 import GithubLatestVersion from "./../components/githubLatestVersion";
 
 const CodeSamples = {
-  eastToUseActions: `const {Action} = require('actionhero')
+  eastToUseActions: `import { Action } from 'Actionhero'
 
-module.exports = class RandomNumber extends Action {
+export class RandomNumber extends Action {
   constructor () {
     super()
     this.name = 'randomNumber'
@@ -18,16 +18,19 @@ module.exports = class RandomNumber extends Action {
     this.outputExample = { randomNumber: 0.123 }
   }
 
-  async run ({connection, response}) {
+  async run ({ response }) {
     response.randomNumber = Math.random()
   }
 }`,
-  backgroundTasks: `await api.tasks.enqueue(
+  backgroundTasks: `
+import { task, Task} from 'actionhero'
+
+  await task.enqueue(
     "sendWelcomeEmail",
     {to: 'evan@evantahler.com'},
     'default');
 
-module.exports = class RunAction extends ActionHero.Task {
+export class RunAction extends Task {
   constructor () {
     super()
     this.name = 'sendWelcomeEmail'
@@ -40,10 +43,10 @@ module.exports = class RunAction extends ActionHero.Task {
     await api.sendEmail(params)
   }
 }`,
-  clusterReady: "npx actionhero start cluster --workers 10",
+  clusterReady: "npx Actionhero start cluster --workers 10",
   localization: `let number = Math.random()
-let response = data.connection.localize(['Your random number is {{number}}', {number: number}])
-data.response.stringRandomNumber = response`,
+let response = connection.localize(['Your random number is {{number}}', {number: number}])
+response.stringRandomNumber = response`,
   routing: `{
   get: [
     { path: '/users', action: 'usersList' },
@@ -59,7 +62,7 @@ data.response.stringRandomNumber = response`,
   ]
 }`,
   chat: `//server
-await api.chatRoom.broadcast(null, 'myRoom', 'Hello!')
+await chatRoom.broadcast(null, 'myRoom', 'Hello!')
 
 //client
 client.on('message', (message) => alert(message))
@@ -84,7 +87,7 @@ export default class indexPage extends Component {
             <Row>
               <Col md={2} />
               <Col md={8} style={{ textAlign: "center" }}>
-                <a href="https://github.com/actionhero/actionhero">
+                <a href="https://github.com/Actionhero/Actionhero">
                   {" "}
                   <img src="/static/images/logo-and-wordmark.svg" />{" "}
                 </a>
@@ -183,7 +186,7 @@ export default class indexPage extends Component {
                 <h1 style={Theme.typeography.h1}> To the Rescue </h1>
                 <h2 style={Theme.typeography.h2}>
                   {" "}
-                  No matter what you are building, <br /> ActionHero is here to
+                  No matter what you are building, <br /> Actionhero is here to
                   save the day.
                 </h2>
               </Col>
@@ -191,21 +194,31 @@ export default class indexPage extends Component {
             </Row>
             <Row>
               <FeatureBox
+                colSpan={3}
+                title="APIs"
+                image="/static/images/documentation.svg"
+                body="The actionhero framework is one of the fastest ways to get started with a REST API - Routes, Versions, Testing and Translation tool are all included."
+              />
+
+              <FeatureBox
+                colSpan={3}
                 title="Internet of Things"
                 image="/static/images/internet-of-things.svg"
-                body="ActionHero's small footprint and stateful server options make it ideal for IOT applications where as much logic as possible is offloaded to the server."
+                body="Actionhero's small footprint and stateful server options make it ideal for IOT applications where as much logic as possible is offloaded to the server."
               />
 
               <FeatureBox
+                colSpan={3}
                 title="Real Time Chat"
                 image="/static/images/real-time-chat.svg"
-                body="ActionHero works with both stateless and statefull clients, making it ideal for chat applications.  ActionHero can work in a cluster to handle all the clients you can throw at it."
+                body="Actionhero includes all the modern tools you need for a highly-availabile realtime applications.  Actionhero can work in a cluster to handle all the clients you can throw at it."
               />
 
               <FeatureBox
-                title="Video Games & Apps"
+                colSpan={3}
+                title="Games & Apps"
                 image="/static/images/video-game-servers.svg"
-                body="ActionHero was built to serve the same APIs across multiple protocols.  Do your games speak both HTTP and Socket?  ActionHero has got you covered."
+                body="Actionhero was built to serve the same APIs across multiple protocols.  Do your games speak both HTTP and Websockets?  Actionhero has got you covered."
               />
             </Row>
             <Row>
@@ -238,7 +251,7 @@ export default class indexPage extends Component {
                 <h1 style={Theme.typeography.h1}> Plays Well With Others </h1>
                 <h2 style={Theme.typeography.h2}>
                   {" "}
-                  Use ActionHero around <em> your </em> workflow and preferred
+                  Use Actionhero around <em> your </em> workflow and preferred
                   tools.
                 </h2>
               </Col>
@@ -348,7 +361,7 @@ export default class indexPage extends Component {
                 <h1 style={Theme.typeography.h1}> You've Got the Power</h1>
                 <h2 style={Theme.typeography.h2}>
                   {" "}
-                  ActionHero was built from the ground up to include all the
+                  Actionhero was built from the ground up to include all the
                   features you expect from a modern API framework.It also knows
                   when to get out of the way so you can customize your stack to
                   fit your needs.
@@ -360,21 +373,21 @@ export default class indexPage extends Component {
               <FeatureBox
                 title="Easy-to-Use Actions"
                 image="/static/images/easy-to-use-actions.svg"
-                body="With ActionHero, you create Actions which can respond to any type of connection. They process incoming parameters and offer a response to the client. ActionHero takes care of routing and responding to each connection type for you."
+                body="With Actionhero, you create Actions which can respond to any type of connection. They process incoming parameters and offer a response to the client. Actionhero takes care of routing and responding to each connection type for you."
                 code={CodeSamples.eastToUseActions}
               />
 
               <FeatureBox
                 title="Built-in Tasks"
                 image="/static/images/built-in-tasks.svg"
-                body="Background tasks are first-class in ActionHero. You can enqueue a task from anywhere in the application. Tasks can be recurring or single-run. The ActionHero task system is powered by Resque, so it is compatible with a number of other applications and frameworks."
+                body="Background tasks are first-class in Actionhero. You can enqueue a task from anywhere in the application. Tasks can be recurring or single-run. The Actionhero task system is powered by Resque, so it is compatible with a number of other applications and frameworks."
                 code={CodeSamples.backgroundTasks}
               />
 
               <FeatureBox
                 title="Cluster-Ready"
                 image="/static/images/cluster-ready.svg"
-                body="ActionHero uses Redis to store and share data. With first-class cache functions, decentralized communications, and distributed workers, you can be sure that your application is able to scale from 1 worker on one server, to as big of a cluster as you need."
+                body="Actionhero uses Redis to store and share data. With first-class cache functions, decentralized communications, and distributed workers, you can be sure that your application is able to scale from 1 worker on one server, to as big of a cluster as you need."
                 code={CodeSamples.clusterReady}
               />
             </Row>
@@ -383,21 +396,21 @@ export default class indexPage extends Component {
               <FeatureBox
                 title="Localization"
                 image="/static/images/localization.svg"
-                body="The ActionHero API makes is simple to create a traditional HTTP(S) API, but it also lets you easily extend your API to TCP and websocket clients (all included). ActionHero also easily lets you write your own servers to handle custom transports."
+                body="The Actionhero API makes is simple to create a traditional HTTP(S) API, but it also lets you easily extend your API to TCP and websocket clients (all included). Actionhero also easily lets you write your own servers to handle custom transports."
                 code={CodeSamples.localization}
               />
 
               <FeatureBox
                 title="Routing"
                 image="/static/images/routing.svg"
-                body="ActionHero ships with a robust router to make mapping HTTP requests to your actions a breeze."
+                body="Actionhero ships with a robust router to make mapping HTTP requests to your actions a breeze."
                 code={CodeSamples.routing}
               />
 
               <FeatureBox
                 title="API-First Development"
                 image="/static/images/api-first-development.svg"
-                body="ActionHero makes API-First development easy by enforcing a strict separation of views and application logic and removing barriers to API creation. Versioning your actions is simple and integrates well with Agile or XP team workflows."
+                body="Actionhero makes API-First development easy by enforcing a strict separation of views and application logic and removing barriers to API creation. Versioning your actions is simple and integrates well with Agile or XP team workflows."
               />
             </Row>
 
@@ -405,20 +418,20 @@ export default class indexPage extends Component {
               <FeatureBox
                 title="Chat"
                 image="/static/images/chat.svg"
-                body="The ActionHero API makes it simple to create a ActionHero (optionally) facilitates real-time communication not only from server-to-client, but also client-to-client! ActionHero's chat sub-system allows for streaming of both public and private messages between clients. Complete with middleware and extensions, you can create chat services, multi-player games, and more!"
+                body="The Actionhero API makes it simple to create a Actionhero (optionally) facilitates real-time communication not only from server-to-client, but also client-to-client! Actionhero's chat sub-system allows for streaming of both public and private messages between clients. Complete with middleware and extensions, you can create chat services, multi-player games, and more!"
                 code={CodeSamples.chat}
               />
 
               <FeatureBox
                 title="Operations Tools"
                 image="/static/images/ops-tools.svg"
-                body="It is simple to deploy ActionHero with our included CLI tools. You can launch your server as a single instance or as part of a larger deployment cluster. Tools for 0-downtime deployments and robust monitoring and logging hooks make ActionHero a dream platform for your operations team."
+                body="It is simple to deploy Actionhero with our included CLI tools. You can launch your server as a single instance or as part of a larger deployment cluster. Tools for 0-downtime deployments and robust monitoring and logging hooks make Actionhero a dream platform for your operations team."
               />
 
               <FeatureBox
                 title="File Server"
                 image="/static/images/file-server.svg"
-                body="Every server needs to serve files to its clients (even those that don't speak HTTP), and ActionHero is no exception. Configured to asynchronously stream file contents, ActionHero provides an robust file server which can live in parallel with your API, allowing for a fully featured server."
+                body="Every server needs to serve files to its clients (even those that don't speak HTTP), and Actionhero is no exception. Configured to asynchronously stream file contents, Actionhero provides an robust file server which can live in parallel with your API, allowing for a fully featured server."
               />
             </Row>
           </Grid>

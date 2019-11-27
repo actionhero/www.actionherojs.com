@@ -27,15 +27,15 @@ const plugins = {
   databases: [
     {
       name: "ah-sequelize-plugin",
-      url: "https://github.com/actionhero/ah-sequelize-plugin",
-      description: "Sequelize.js plugin for ActionHero",
+      url: "https://github.com/Actionhero/ah-sequelize-plugin",
+      description: "Sequelize.js plugin for Actionhero",
       versions: "14-19"
     },
     {
       name: "ah-elasticsearch-orm",
       url: "https://github.com/messagebot/ah-elasticsearch-orm",
       description:
-        "An Elasticsearch ORM for ActionHero Projects. Provides CRUD instance methods, finders, updates, and collection abstractions",
+        "An Elasticsearch ORM for Actionhero Projects. Provides CRUD instance methods, finders, updates, and collection abstractions",
       versions: "14-16"
     },
     {
@@ -55,7 +55,7 @@ const plugins = {
   tasks: [
     {
       name: "ah-resque-ui",
-      url: "https://github.com/actionhero/ah-resque-ui",
+      url: "https://github.com/Actionhero/ah-resque-ui",
       description:
         "Visualization and Managment tools for Actionhero Tasks & Resque Jobs.",
       versions: "17+"
@@ -73,7 +73,7 @@ const plugins = {
       name: "ah-ratelimit-plugin",
       url: "https://github.com/innerdvations/ah-ratelimit-plugin",
       description:
-        "Allows limits to be set on the number of time actions can be called in a time period, based on some identifier. Has been tested to work with both actionhero 8 and actionhero 9.",
+        "Allows limits to be set on the number of time actions can be called in a time period, based on some identifier. Has been tested to work with both Actionhero 8 and Actionhero 9.",
       versions: "8-9"
     }
   ],
@@ -90,7 +90,7 @@ const plugins = {
       name: "ah-passport-plugin",
       url: "https://github.com/neilstuartcraig/ah-passport-plugin",
       description:
-        "An ActionHero plugin for the passport authentication middleware",
+        "An Actionhero plugin for the passport authentication middleware",
       versions: "14-16"
     }
   ],
@@ -98,20 +98,20 @@ const plugins = {
   integrations: [
     {
       name: "ah-newrelic-plugin",
-      url: "https://github.com/actionhero/ah-newrelic-plugin",
-      description: "ActionHero plugin for New Relic",
+      url: "https://github.com/Actionhero/ah-newrelic-plugin",
+      description: "Actionhero plugin for New Relic",
       versions: "14-19"
     },
     {
       name: "ah-airbrake-plugin",
-      url: "https://github.com/actionhero/ah-airbrake-plugin",
-      description: "ActionHero plugin for airbrake",
+      url: "https://github.com/Actionhero/ah-airbrake-plugin",
+      description: "Actionhero plugin for airbrake",
       versions: "14-17"
     },
     {
       name: "ah-nodemailer-plugin",
       url: "https://github.com/panjiesw/ah-nodemailer-plugin",
-      description: "ActionHero plugin for Node Mailer",
+      description: "Actionhero plugin for Node Mailer",
       versions: "14-16"
     }
   ]
@@ -177,7 +177,7 @@ export default class PluginsPage extends DocsPageWithNav {
       links: [
         {
           link: "https://docs.actionherojs.com",
-          title: "» ActionHero Documentation"
+          title: "» Actionhero Documentation"
         }
       ]
     };
@@ -197,12 +197,12 @@ export default class PluginsPage extends DocsPageWithNav {
               "intro",
               <div>
                 <p>
-                  There is a robust ecosystem of ActionHero plugins which you
+                  There is a robust ecosystem of Actionhero plugins which you
                   can use to leverage the community's expertise in your
                   applications.
                 </p>
                 <p>
-                  To use an ActionHero plugin you usually{" "}
+                  To use an Actionhero plugin you usually{" "}
                   <code>npm install name-of-plugin</code> and then refrence is
                   in your <code>./config/plugins.js</code> file to load it into
                   your application.
@@ -211,7 +211,7 @@ export default class PluginsPage extends DocsPageWithNav {
                 <p>
                   You can learn more about plugins in the{" "}
                   <a href="https://docs.actionherojs.com/tutorial-plugins.html">
-                    ActionHero documentation
+                    Actionhero documentation
                   </a>
                   .
                 </p>

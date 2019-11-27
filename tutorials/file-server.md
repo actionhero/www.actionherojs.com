@@ -20,7 +20,7 @@
 < Access-Control-Allow-Headers: Content-Type
 < Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS, TRACE
 < Access-Control-Allow-Origin: *
-< X-Powered-By: actionhero API
+< X-Powered-By: Actionhero API
 < Set-Cookie: sessionID=d4453f54ff066a2ef078e5c80f18dc78a81f44ff;path=/;expires=Sun, 15 Nov 2015 03:06:46 GMT;
 < Content-Length: 101
 < Date: Sun, 15 Nov 2015 02:06:46 GMT
@@ -28,12 +28,12 @@
 <
 * Connection #0 to host localhost left intact
 
-<h1>ActionHero</h1>\nI am a flat file being served to you via the API from ./public/simple.html<br />
+<h1>Actionhero</h1>\nI am a flat file being served to you via the API from ./public/simple.html<br />
 ```
 
-ActionHero comes with a file server which clients can make use of to request files from the ActionHero server. ActionHero is not meant to be a 'rendering' server, but can serve static files.
+Actionhero comes with a file server which clients can make use of to request files from the Actionhero server. Actionhero is not meant to be a 'rendering' server, but can serve static files.
 
-If a directory is requested rather than a file, ActionHero will look for the file in that directory defined by `config.commonWeb.directoryFileType` (which defaults to `index.html`). Failing to find this file, an error will be returned defined in `config.general.flatFileIndexPageNotFoundMessage`
+If a directory is requested rather than a file, Actionhero will look for the file in that directory defined by `config.commonWeb.directoryFileType` (which defaults to `index.html`). Failing to find this file, an error will be returned defined in `config.general.flatFileIndexPageNotFoundMessage`
 
 You can use the `await staticFile.get(connection)` in your actions (where the response object contains `error`, `fileStream`, `mime`, and `length`). Note that fileStream is a stream which can be pipe'd to a client. You can use this in actions if you wish.
 
@@ -73,4 +73,4 @@ Note that you can optionally modify responseCodes (for HTTP clients only). Be su
 
 ## File Locations
 
-ActionHero will check all paths defined by `api.config.general.paths.public` for files, in the order they are specified via that option, then check any public paths of your [plugins](/tutorials/plugins).
+Actionhero will check all paths defined by `api.config.general.paths.public` for files, in the order they are specified via that option, then check any public paths of your [plugins](/tutorials/plugins).

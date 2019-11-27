@@ -1,8 +1,8 @@
 ## Overview
 
-ActionHero uses [Primus](https://github.com/primus/primus) for web socket connections. The Primus project allows you to choose from many websocket backends, including `ws`, `engine.io`, `socket.io`, and more. Within ActionHero, web sockets are bound to the web server (either http or https).
+Actionhero uses [Primus](https://github.com/primus/primus) for web socket connections. The Primus project allows you to choose from many websocket backends, including `ws`, `engine.io`, `socket.io`, and more. Within Actionhero, web sockets are bound to the web server (either http or https).
 
-ActionHero will generate the client-side javascript needed for you (based on the ActionheroWebsocketClient library, primus, and the underlying ws transport). This file is regenerated each time you boot the application.
+Actionhero will generate the client-side javascript needed for you (based on the ActionheroWebsocketClient library, primus, and the underlying ws transport). This file is regenerated each time you boot the application.
 
 ## Connection Details
 
@@ -75,7 +75,7 @@ If you want to communicate with a websocket client outside of an action, you can
 
 ## Linking WebSockets to Web Clients
 
-ActionHero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `api.config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
+Actionhero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `api.config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
 
 You can read more about using a value like `connection.fingerprint` in an [authentication middleware](tutorials/middleware) or using it as a key for session information.
 
@@ -116,7 +116,7 @@ export const DEFAULT = {
 
         // websocket Client Options:
         client: {
-          apiPath: "/api", // the api base endpoint on your actionhero server
+          apiPath: "/api", // the api base endpoint on your Actionhero server
           // the cookie name we should use for shared authentication between WS and web connections
           cookieKey: config.servers.web.fingerprintOptions.cookieKey
           // reconnect:        {},

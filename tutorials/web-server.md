@@ -8,7 +8,7 @@ HTTP responses are always JSON and follow the following format:
 {
   hello: "world",
   serverInformation: {
-    serverName: "actionhero API",
+    serverName: "Actionhero API",
     apiVersion: 1,
     requestDuration: 14
   },
@@ -37,7 +37,7 @@ HTTP responses are always JSON and follow the following format:
 >
 < HTTP/1.1 200 OK
 < Content-Type: application/json
-< X-Powered-By: actionhero API
+< X-Powered-By: Actionhero API
 < Date: Sun, 29 Jul 2012 23:25:53 GMT
 < Connection: keep-alive
 < Transfer-Encoding: chunked
@@ -57,7 +57,7 @@ HTTP responses are always JSON and follow the following format:
         "apiVersion": "3.0.0",
         "currentTime": 1343604353551,
         "requestDuration": 1,
-        "serverName": "actionhero API"
+        "serverName": "Actionhero API"
     },
     "stats":
         "id": "10.0.1.12:8080:4443:5000",
@@ -80,7 +80,7 @@ export const DEFAULT = {
     web: config => {
       return {
         enabled: true,
-        // HTTP or HTTPS?  This setting is to enable SSL termination directly in the actionhero app, not set redirection host headers
+        // HTTP or HTTPS?  This setting is to enable SSL termination directly in the Actionhero app, not set redirection host headers
         secure: false,
         // Passed to https.createServer if secure=true. Should contain SSL certificates
         serverOptions: {},
@@ -94,7 +94,7 @@ export const DEFAULT = {
         // Which IP to listen on (use '0.0.0.0' for all; '::' for all on ipv4 and ipv6)
         // Set to `null` when listening to socket
         bindIP: "0.0.0.0",
-        // Any additional headers you want actionhero to respond with
+        // Any additional headers you want Actionhero to respond with
         httpHeaders: {
           "X-Powered-By": config.general.serverName,
           "Access-Control-Allow-Origin": "*",
@@ -158,7 +158,7 @@ export const DEFAULT = {
         // You can also set connection.rawConnection.responseHttpCode to specify a code per request.
         returnErrorCodes: true,
         // should this node server attempt to gzip responses if the client can accept them?
-        // this will slow down the performance of actionhero, and if you need this funcionality, it is recommended that you do this upstream with nginx or your load balancer
+        // this will slow down the performance of Actionhero, and if you need this funcionality, it is recommended that you do this upstream with nginx or your load balancer
         compress: false,
         // options to pass to the query parser
         // learn more about the options @ https://github.com/hapijs/qs
@@ -231,13 +231,13 @@ data.toRender = false;
 next();
 ```
 
-ActionHero can also serve up flat files. ActionHero will not cache these files and each request to `file` will re-read the file from disk (like the nginx web server).
+Actionhero can also serve up flat files. Actionhero will not cache these files and each request to `file` will re-read the file from disk (like the nginx web server).
 
 There are helpers you can use in your actions to send files:
 
 - `/public` and `/api` are routes which expose the directories of those types. These top level path can be configured in `/config/servers/web.js` with `api.config.servers.web.urlPathForActions` and `api.config.servers.web.urlPathForFiles`.
 - the root of the web server "/" can be toggled to serve the content between /file or /api actions per your needs `config.servers.web.rootEndpointType`. The default is `api`.
-- ActionHero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}?action=file&fileName={pathToFile}` and `http://{baseUrl}/file/{pathToFile}`.
+- Actionhero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}?action=file&fileName={pathToFile}` and `http://{baseUrl}/file/{pathToFile}`.
 - Errors will result in a 404 (file not found) with a message you can customize.
 - Proper mime-type headers will be set when possible via the `mime` package.
 
@@ -253,7 +253,7 @@ This variables in play here are:
 - `config.servers.web.rootEndpointType`
 - and of course the content of `config/routes.js`
 
-Say you have an action called ‘status' (like in a freshly generated ActionHero project). Lets start with ActionHero's default config:
+Say you have an action called ‘status' (like in a freshly generated Actionhero project). Lets start with Actionhero's default config:
 
 ```ts
 config.servers.web.urlPathForActions = "api";
@@ -397,7 +397,7 @@ export const DEFAULT = function(api) {
 
 ## Hosts
 
-ActionHero allows you to define a collection of host headers which this API server will allow access from. You can set these via `api.config.servers.web.allowedRequestHosts`. If the `Host` header of a client does not match one of those listed (protocol counts!), they will be redirected to the first one present.
+Actionhero allows you to define a collection of host headers which this API server will allow access from. You can set these via `api.config.servers.web.allowedRequestHosts`. If the `Host` header of a client does not match one of those listed (protocol counts!), they will be redirected to the first one present.
 
 You can also set `process.env.ALLOWED_HOSTS` which will be parsed as a comma-separated list of Hosts which will set `api.config.servers.web.allowedRequestHosts`
 
@@ -420,7 +420,7 @@ File uploads from forms will also appear in `connection.params`, but will be an 
 
 A note on JSON payloads:
 
-You can post BODY json paylaods to actionHero in the form of a hash or array.
+You can post BODY json paylaods to Actionhero in the form of a hash or array.
 
 **Hash**: `curl -X POST -d '{"key":"something", "value":{"a":1, "b":2}}' http://localhost:8080/api/cacheTest`. This will result in:
 
@@ -452,11 +452,11 @@ connection.params = {
 
 ### Uploading Files
 
-ActionHero uses the [formidable](https://github.com/felixge/node-formidable) form parsing library. You can set options for it via `api.config.servers.web.formOptions`. You can upload multiple files to an action and they will be available within `connection.params` as formidable response objects containing references to the original file name, where the uploaded file was stored temporarily, etc. Here is an example:
+Actionhero uses the [formidable](https://github.com/felixge/node-formidable) form parsing library. You can set options for it via `api.config.servers.web.formOptions`. You can upload multiple files to an action and they will be available within `connection.params` as formidable response objects containing references to the original file name, where the uploaded file was stored temporarily, etc. Here is an example:
 
 ```ts
 // actions/uploader.js
-import { Action } from "actionhero";
+import { Action } from "Actionhero";
 
 export class Uploader extends Action {
   constructor() {
@@ -509,7 +509,7 @@ export class Uploader extends Action {
      _events: null,
      _maxListeners: 10,
      size: 5477608,
-     path: '/app/actionhero/tmp/86b2aa018a9785e20b3f6cea95babcca',
+     path: '/app/Actionhero/tmp/86b2aa018a9785e20b3f6cea95babcca',
      name: '1-02 Concentration Enhancing Menu Initialiser.mp3',
      type: 'audio/mp3',
      hash: false,
@@ -524,7 +524,7 @@ export class Uploader extends Action {
      _events: null,
      _maxListeners: 10,
      size: 10439802,
-     path: '/app/actionhero/tmp/6052010f1d75ceaeb9197a9a759124dc',
+     path: '/app/Actionhero/tmp/6052010f1d75ceaeb9197a9a759124dc',
      name: '1-10 There She Is.mp3',
      type: 'audio/mp3',
      hash: false,

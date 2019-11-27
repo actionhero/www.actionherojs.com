@@ -1,6 +1,6 @@
 ## Overview
 
-There are 4 types of middleware in ActionHero:
+There are 4 types of middleware in Actionhero:
 
 - **Action**
 - **Connection**
@@ -38,7 +38,7 @@ Each type of middleware is distinct from the others, and operates on distinct pa
 ![/static/images/tutorials/connection_flow_actions.png](/static/images/tutorials/connection_flow_actions.png)
 
 ```ts
-import { action } from "actionhero";
+import { action } from "Actionhero";
 
 const middleware = {
   name: "userId checker",
@@ -59,7 +59,7 @@ const middleware = {
 action.addMiddleware(middleware);
 ```
 
-ActionHero provides hooks for you to execute custom code both before and after the execution of all or some actions. This is a great place to write authentication logic or custom loggers.
+Actionhero provides hooks for you to execute custom code both before and after the execution of all or some actions. This is a great place to write authentication logic or custom loggers.
 
 Action middleware requires a `name` and at least one of `preProcessor` or `postProcessor`. Middleware can be `global`, or you can choose to apply each middleware to an action specifically via `action.middleware = []` in the action's definition. You supply a list of middleware names, like `action.middleware = ['userId checker']` in the example above.
 
@@ -88,7 +88,7 @@ data = {
 If your middleware wants to pass information about the connection to the action, place that data withinin the `session` object. For example, you might have a middleware that sets `session.user` for use in your actions:
 
 ```ts
-import { action } from "actionhero";
+import { action } from "Actionhero";
 import { Team, TeamMember } from "./../models"; // defined in your project
 
 const authenticatedUserMiddleware = {
@@ -120,7 +120,7 @@ action.addMiddleware(authenticatedUserMiddleware);
 ## Connection Middleware
 
 ```ts
-import { log, connection } from "actionhero";
+import { log, connection } from "Actionhero";
 
 const connectionMiddleware = {
   name: "connection middleware",
@@ -145,7 +145,7 @@ Any modification made to the connection at this stage may happen either before o
 ## Chat Middleware
 
 ```ts
-import { log, chatRoom, connection } from "actionhero";
+import { log, chatRoom, connection } from "Actionhero";
 
 var chatMiddleware = {
   name: "chat middleware",
@@ -205,7 +205,7 @@ More detail and nuance on chat middleware can be found in the [chat tutorial](tu
 - `onSayReceiveCallbacks` are executed only once, when the message is sent to the server.
 
 ```ts
-import {chatRoom, connection} from 'actionhero';
+import {chatRoom, connection} from 'Actionhero';
 
 // in this example no one will be able to join any room, and the \`say\` middleware will never be invoked.
 chatRoom.addMiddleware({
@@ -237,7 +237,7 @@ In the `preProcessor`, you can access the original task `params` through `this.a
 The following example is a simplistic implementation of a task execution timer middleware.
 
 ```ts
-import {task, log, Initializer} from 'actionhero';
+import {task, log, Initializer} from 'Actionhero';
 
 export class taskMiddleware extends Initializer {
   constructor () {

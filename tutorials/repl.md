@@ -4,19 +4,19 @@
 
 Modern versions of node.js have built-in inspector capabilities.
 
-Run ActionHero with node's `--inspect` flag, ie: `node ./node_modules/.bin/actionhero --inspect start`
+Run Actionhero with node's `--inspect` flag, ie: `node ./node_modules/.bin/Actionhero --inspect start`
 
 More info about new [node inspector](https://nodejs.org/en/docs/inspector)
 
 ### REPL
 
 ```bash
-actionhero console
+Actionhero console
 
 Running "console" task
-2015-11-14 17:48:01 - notice: *** starting actionhero ***
+2015-11-14 17:48:01 - notice: *** starting Actionhero ***
 2015-11-14 17:48:01 - warning: running with fakeredis
-2015-11-14 17:48:01 - info: actionhero member 10.0.1.15 has joined the cluster
+2015-11-14 17:48:01 - info: Actionhero member 10.0.1.15 has joined the cluster
 2015-11-14 17:48:01 - notice: pid: 38464
 2015-11-14 17:48:01 - notice: server ID: 10.0.1.15
 2015-11-14 17:48:01 - info: ensuring the existence of the chatRoom: defaultRoom
@@ -34,7 +34,7 @@ Running "console" task
 ‘status' ]
 ```
 
-ActionHero has a command-line interface called a REPL! This means you can spin up a new instance of ActionHero and manually call all the methods on the `api` namespace. This combined with the new RPC tools make this a powerful debugging and development tool. Running `actionhero console` will load up a version of ActionHero in your terminal where you have access to the `api` object. This version of the server will `boot`, `initialize`, and `start`, but will skip booting any `servers`. You will be connected to any databases per your initializers.
+Actionhero has a command-line interface called a REPL! This means you can spin up a new instance of Actionhero and manually call all the methods on the `api` namespace. This combined with the new RPC tools make this a powerful debugging and development tool. Running `Actionhero console` will load up a version of Actionhero in your terminal where you have access to the `api` object. This version of the server will `boot`, `initialize`, and `start`, but will skip booting any `servers`. You will be connected to any databases per your initializers.
 
 The REPL will:
 

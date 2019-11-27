@@ -3,7 +3,7 @@
 ## Packages & Package.json
 
 ```sh
-npm install --save actionhero@next
+npm install --save Actionhero@next
 npm install --save-dev @types/node prettier
 npm uninstall standard
 ```
@@ -11,8 +11,8 @@ npm uninstall standard
 ```json
   "scripts": {
     "postinstall": "yarn run build",
-    "dev": "ts-node ./node_modules/.bin/actionhero",
-    "start": "actionhero start",
+    "dev": "ts-node ./node_modules/.bin/Actionhero",
+    "start": "Actionhero start",
     "build": "tsc --declaration",
     "pretest": "yarn run lint",
     "lint": "prettier --check src/*/**.ts __tests__/*/**.ts",
@@ -120,13 +120,13 @@ const authenticatedTeamMemberMiddleware = {
 
 A number of things have been moved off of the API object to simlify thier use by creating import/export modules you can require directly. In this way, you can get type hinting for various parts of actionhro! This is a logical seperation between `initailziers` - code that excecutes when your server boots up and loads or connects vs `modules` which provide an API for you to use in your code.
 
-For example, the `task` system has been split into 2 parts - both a `module` and `initializer`. The initializer continues to load your tasks into `api.tasks.tasks`, but doesn’t expose any methods for you to use. Now, when you wan to call `task.enqueue()` you load it from the module via `import {task} from 'actionhero'`
+For example, the `task` system has been split into 2 parts - both a `module` and `initializer`. The initializer continues to load your tasks into `api.tasks.tasks`, but doesn’t expose any methods for you to use. Now, when you wan to call `task.enqueue()` you load it from the module via `import {task} from 'Actionhero'`
 
 The `initialize`, `start`, and `stop` methods of your initializers will now be passed `config`. This is helpful in the off chance you are modifying `config` and cannot rely on the static export of that information (this is rare).
 
 **Removed from the API object and are now directly exported by Actionhero as modules:**
 
-ie: `import { log, config } from 'actionhero'`
+ie: `import { log, config } from 'Actionhero'`
 
 - log (the method to write to the logs)
 - config (the config object hash)
@@ -146,14 +146,14 @@ what remains on the API object are truly things about your API - actions, tasks,
 
 **Polyfill**
 
-A polyfill will be included in the first few releases of actionhero in typescript to port the new exports back to the `api` object. A warning will be displayed.
+A polyfill will be included in the first few releases of Actionhero in typescript to port the new exports back to the `api` object. A warning will be displayed.
 
 A new config setting to enable or disable the plyfill is located at `config.general.legacyApiPolyfill`
 
 ## Config
 
 - `config.general.id`: can no longer be set
-- `config.i18n.determineConnectionLocale`: this method should be set on the `i18n` object exported by actionhero.
+- `config.i18n.determineConnectionLocale`: this method should be set on the `i18n` object exported by Actionhero.
 
 ## Chat
 
