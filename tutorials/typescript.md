@@ -53,7 +53,7 @@ Remember - you will be using `npm run dev` now when developing locally.
 - Move Actions, Tasks, Initializers, Servers, and Config into it
 - Create a new `modules` directory
 
-## Change all of your _.js files to _.ts
+## Change all of your .js files to .ts
 
 - All the files you just moved into `src`
   - Helpful rename command for _nix -> `for f in _.js; do mv -- "$f" "${f%.js}.ts"; done`
@@ -124,7 +124,7 @@ For example, the `task` system has been split into 2 parts - both a `module` and
 
 The `initialize`, `start`, and `stop` methods of your initializers will now be passed `config`. This is helpful in the off chance you are modifying `config` and cannot rely on the static export of that information (this is rare).
 
-### Removed from the API object and are now directly exported by Actionhero as modules:
+**Removed from the API object and are now directly exported by Actionhero as modules:**
 
 ie: `import { log, config } from 'actionhero'`
 
@@ -140,11 +140,11 @@ ie: `import { log, config } from 'actionhero'`
 - env (development, staging, production)
 - localize (method that accepts a string and a connection)
 
-### The API object
+**The API object**
 
 what remains on the API object are truly things about your API - actions, tasks, servers, initializers. And now these elements are very typesafe. **_You can no longer add and remove things randomly to the API object_**. This means that in your project, you should create imports/and exorts directly and share them with your actions and tasks.
 
-### Polyfill
+**Polyfill**
 
 A polyfill will be included in the first few releases of actionhero in typescript to port the new exports back to the `api` object. A warning will be displayed.
 

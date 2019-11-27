@@ -8,13 +8,13 @@ To get started, you can use the `actionhero generate server --name=myServer`. Th
 
 Like initializers, the `start()` and `stop()` methods will be called when the server is to boot up in ActionHero's lifecycle, but before any clients are permitted into the system. Here is where you should actually initialize your server (IE: `https.createServer.listen`, etc).
 
-```js
-const ActionHero = require("actionhero");
+```ts
+import { Server } from "actionhero";
 
-module.exports = class MyServer extends ActionHero.Server {
+module.exports = class MyServer extends Server {
   constructor() {
     super();
-    this.type = "%%name%%";
+    this.type = "my-server";
 
     this.attributes = {
       canChat: false,
@@ -23,7 +23,7 @@ module.exports = class MyServer extends ActionHero.Server {
       sendWelcomeMessage: false,
       verbs: []
     };
-    // this.config will be set to equal api.config.servers[this.type]
+    // this.config will be set to equal config.servers[this.type]
   }
 
   initialize() {
@@ -52,7 +52,7 @@ module.exports = class MyServer extends ActionHero.Server {
 
 Your job, as a server designer, is to coerce every client's connection into a connection object. This is done with the `sever.buildConnection` helper. Here is an example from the `web` server:
 
-```js
+```ts
 server.buildConnection({
   rawConnection: {
     req: req,
@@ -88,7 +88,7 @@ The required attributes are provided in a generated server.
 
 ## Verbs
 
-```js
+```ts
 allowedVerbs: [
   "quit",
   "exit",
@@ -112,7 +112,7 @@ Clients use verbs to add params to themselves, update the chat room they are in,
 
 Your server should be smart enough to tell when a client is trying to run an action, request a file, or use a verb. One of the attributes of each server is `allowedVerbs`, which defines what verbs a client is allowed to preform. A simplified example of how the `socket` server does this:
 
-```js
+```ts
 async parseRequest (connection, line) {
   let words = line.split(' ')
   let verb = words.shift()
@@ -165,7 +165,7 @@ Servers can optionally implement the `server.sendFile = function(connection, err
 
 ## Customizing Servers
 
-```js
+```ts
 //Initializer
  module.exports = {
    startPriority: 1000,

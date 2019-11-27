@@ -5,8 +5,8 @@ There are 2 ways to manage actionHero configuration: configuration files and ove
 The normal way to deal with configuration changes is to use the files in `/config/` and to have changed options for each environment, based on NODE_ENV. First we load in all settings from the `default` config block, and then we replace those with anything defined in the relevant `environment` section. ActionHero uses the standard node environment variable `NODE_ENV` to determine environment, and defaults to ‘development' when one isn't found. This pattern is very similar the Rails and Sails frameworks. A good way to visualize this is to note that, by default, the server will return metadata in response JSON, but we change that in the production NODE_ENV and disable it.
 
 ```js
-exports.default = {
-  general: api => {
+export const DEFAULT = {
+  general: config => {
     return {
       //...
       developmentMode: true
@@ -15,16 +15,14 @@ exports.default = {
   }
 };
 
-exports.production = {
-  general: api => {
+export const production = {
+  general: config => {
     return {
       developmentMode: false
     };
   }
 };
 ```
-
-The other way to modify the config is to pass a "changes" hash to the server directly at boot. You can do things like: `actionhero.start({configChanges: configChanges})`. This should only bse used in special cases or [tests](tutorial-testing.html).
 
 The priority order of configs is:
 
@@ -33,25 +31,6 @@ The priority order of configs is:
 3.  default values in `/config`
 
 When building config files of your own, note that an `exports.default` is always required, and any environment overrides are optional. What is exported is a hash which eventually resolves a synchronous function which accepts the `api` variable.
-
-## Config Changes
-
-A configChanges example:
-
-```js
-const ActionHero = require("actionhero");
-const actionhero = new ActionHero.Process();
-
-const configChanges = {
-  general: {
-    developmentMode: true
-  }
-};
-
-// start the server!
-await actionhero.start({ configChanges });
-api.log("Boot Successful!");
-```
 
 ## Boot Options to find the Config Directory
 

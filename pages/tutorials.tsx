@@ -3,6 +3,7 @@ import DocsPageWithNav from "../pageClasses/docsPageWithSideNav";
 import { Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import DocsPage from "../components/layouts/docsPage";
+import Theme from "./../components/theme";
 
 const imageStyle = {
   maxWidth: 150,
@@ -61,7 +62,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/easy-to-use-actions.svg"
+                      src={`/static/images/${Theme.icons.actions}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -81,7 +82,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/built-in-tasks.svg"
+                      src={`/static/images/${Theme.icons.tasks}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -102,7 +103,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/internet-of-things.svg"
+                      src={`/static/images/${Theme.icons.initializers}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -124,7 +125,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/localization.svg"
+                      src={`/static/images/${Theme.icons.localization}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -146,7 +147,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/api-first-development.svg"
+                      src={`/static/images/${Theme.icons.middleware}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -167,7 +168,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/flying-man.svg"
+                      src={`/static/images/${Theme.icons.testing}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -187,7 +188,10 @@ export default class WhyPage extends DocsPageWithNav {
 
                 <Row>
                   <Col md={3} style={{ textAlign: "center" }}>
-                    <img style={imageStyle} src="/static/images/chat.svg" />
+                    <img
+                      style={imageStyle}
+                      src={`/static/images/${Theme.icons.chat}`}
+                    />
                   </Col>
                   <Col md={9}>
                     <h3>
@@ -209,7 +213,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons.cli}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -236,7 +240,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/internet-of-things.svg"
+                      src={`/static/images/${Theme.icons.servers}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -259,7 +263,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/documentation.svg"
+                      src={`/static/images/${Theme.icons["web-server"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -279,7 +283,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/api-first-development.svg"
+                      src={`/static/images/${Theme.icons["websocket-server"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -305,7 +309,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons["running-actionhero"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -326,7 +330,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/video-game-servers.svg"
+                      src={`/static/images/${Theme.icons.config}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -350,7 +354,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons.repl}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -370,7 +374,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/file-server.svg"
+                      src={`/static/images/${Theme.icons["file-server"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -391,7 +395,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons.logging}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -416,7 +420,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons.plugins}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -438,7 +442,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/cluster-ready.svg"
+                      src={`/static/images/${Theme.icons.cluster}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -462,7 +466,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/ops-tools.svg"
+                      src={`/static/images/${Theme.icons["production-notes"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -484,7 +488,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src="/static/images/documentation.svg"
+                      src={`/static/images/${Theme.icons["upgrade-path"]}`}
                     />
                   </Col>
                   <Col md={9}>
@@ -505,7 +509,10 @@ export default class WhyPage extends DocsPageWithNav {
 
                 <Row>
                   <Col md={3} style={{ textAlign: "center" }}>
-                    <img style={imageStyle} src="/static/images/dog.svg" />
+                    <img
+                      style={imageStyle}
+                      src={`/static/images/${Theme.icons.typescript}`}
+                    />
                   </Col>
                   <Col md={9}>
                     <h3>

@@ -138,8 +138,8 @@ ActionHero is not designed to function when installed globally. Do not install A
   "name": "my ActionHero project",
   "scripts": {
     "start" : "actionhero start",
-    "dev" : "ts-node ./node_modules/.bin actionhero start",
-    "pretest": "prettier",
+    "dev" : "ts-node-dev ./node_modules/.bin actionhero start",
+    "pretest": "prettier ...",
     "test" : "jest"
   }
 }
@@ -158,9 +158,9 @@ The load order of configs is:
 
 You can `{configChanges: {}}` to a new ActionHero.Process' `start` or `initialize` methods. This can be helpful when creating tests. When using CLI commands, you can also set `process.env.configChanges` or pass `--configChanges` on the command line. In these cases, `configChanges` should be stringified JSON.
 
-```js
+```ts
 // from ./config/namespace.js
-exports["default"] = {
+export const DEFAULT = {
   namespace: function(api) {
     return {
       enabled: true,
@@ -169,7 +169,7 @@ exports["default"] = {
   }
 };
 
-exports.production = {
+export const production = {
   namespace: function(api) {
     return {
       safe: true
@@ -178,20 +178,17 @@ exports.production = {
 };
 ```
 
-In the example above, we are defining `api.config.namespace.enabled` and `api.config.namespace.safe`. In all environments (NODE_ENV) `api.config.namespace.enabled = true` Only in production would `api.config.namespace.safe = true`, it is `false` everywhere else.
+In the example above, we are defining `config.namespace.enabled` and `config.namespace.safe`. In all environments (NODE_ENV) `config.namespace.enabled = true` Only in production would `config.namespace.safe = true`, it is `false` everywhere else.
 
 ## Programatic Use of ActionHero
 
 While **NOT** encouraged, you can always instantiate an ActionHero process yourself. Perhaps you wish to combine ActionHero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
 
-```js
-const { Process } = require("actionhero");
+```ts
+import { Process } from "actionhero";
 const actionhero = new Process();
 
-const sleep = time => {
-  if (!time) {
-    time = 5000;
-  }
+const sleep = (time = 5000) => {
   return new Promise(resolve => {
     setTimeout(resolve, time);
   });
@@ -204,6 +201,7 @@ await sleep();
 
 api.log(" >> restarting server...");
 await actionhero.restart();
+
 api.log(" >> Restarted!");
 await sleep();
 

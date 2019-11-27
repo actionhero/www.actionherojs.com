@@ -1,6 +1,6 @@
 ## Overview
 
-Initializers are the main way you expand your ActionHero server. This is where you connect to databases, modify the global `api` object with new classes and helper methods, and set up your [middleware](tutorial-middleware.html).
+Initializers are the main way you expand your ActionHero server. This is where you connect to databases, modify the global `api` object with new classes and helper methods, and set up your [middleware](/tutorials/middleware).
 
 Initializers run in 3 phases coinciding with the lifecycles of the application: `initialize`, `start`, and `stop`. All `initialize` steps happen before all `start` steps. Initializers can define both methods and priorities which will happen at each phase of the server's lifecycle.
 
@@ -10,24 +10,26 @@ In general, `initialize()` methods should create prototypes and new objects, and
 
 ## Format
 
-```js
-// initializers/stuffInit.js
+```ts
+// initializers/myInitializer.ts
 
-const { Initializer, api } = require("actionhero");
+import { Initializer, api } from "actionhero";
 
-module.exports = class StuffInit extends Initializer {
+export class myInitializer extends Initializer {
   constructor() {
     super();
-    this.name = "StuffInit";
+    this.name = "myInitializer";
     this.loadPriority = 1000;
     this.startPriority = 1000;
     this.stopPriority = 1000;
   }
 
   async initialize() {
-    api.StuffInit = {};
-    api.StuffInit.doAThing = async () => {};
-    api.StuffInit.stopStuff = async () => {};
+    api.StuffInit = {
+      doAThing: async () => {},
+      stopStuff: async () => {}
+    };
+
     api.log("I initialized", "debug", this.name);
   }
 
@@ -40,7 +42,7 @@ module.exports = class StuffInit extends Initializer {
     await api.StuffInit.stopStuff();
     api.log("I stopped", "debug", this.name);
   }
-};
+}
 ```
 
 To use a custom initializer, create a `initializers` directory in your project. Export a class that extends `ActionHero.Initializer` and implements at least one of `start`, `stop` or `initialize` and specify your priorities.

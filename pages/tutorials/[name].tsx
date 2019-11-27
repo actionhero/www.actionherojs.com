@@ -89,7 +89,7 @@ export default class ToutorialPage extends Component<Props, State> {
         showSolutions
         titleSection={{
           title: name.charAt(0).toUpperCase() + name.slice(1),
-          icon: "/static/images/team-up.svg"
+          icon: `/static/images/${Theme.icons[name]}`
         }}
       >
         <Row>

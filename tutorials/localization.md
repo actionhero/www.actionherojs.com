@@ -4,10 +4,10 @@ ActionHero uses the [i18n](https://github.com/mashpie/i18n-node) module to local
 
 ## Locale Files
 
-- When running ActionHero with `api.config.i18n.updateFiles = true`, you will see ActionHero generate a 'locales' folder at the top level of your project which will contain translations of all strings in your project with are passed though the new localization system. This includes all uses of `api.i18n.localize` and `connection.localize`.
-  - We use mustache-style localization
+- When running ActionHero with `config.i18n.updateFiles = true`, you will see ActionHero generate a 'locales' folder at the top level of your project which will contain translations of all strings in your project with are passed though the new localization system. This includes all uses of `i18n.localize` and `connection.localize`.
+- We use mustache-style localization
 - From here, it is an easy matter to change the strings, per locale, to how you would like them presented back in your application. The next time you restart the server, the values you've updated in your locale strings file will be used.
-- disable `api.config.i18n.updateFiles` if you do not want this behavior.
+- disable `config.i18n.updateFiles` if you do not want this behavior.
 
 ## Connection Locale
 
@@ -15,10 +15,10 @@ Since every ActionHero implementation is unique, we do not ship with a "guess" a
 
 For example, I may have an initializer in my project like this:
 
-```js
+```ts
 const { Initializer } = require("actionhero");
 
-module.exports = class DetermineConnectionLocale extends Initializer {
+export class DetermineConnectionLocale extends Initializer {
   constructor() {
     super();
     this.name = "determineConnectionLocale";
@@ -49,15 +49,15 @@ module.exports = class DetermineConnectionLocale extends Initializer {
       }
     };
   }
-};
+}
 ```
 
-To tell i18n to use this method with a new connection, set `api.config.i18n.determineConnectionLocale = 'api.customLocalization.lookup'`. Now you can localize responses in actions, based on which hostname a connection uses.
+To tell i18n to use this method with a new connection, set `config.i18n.determineConnectionLocale = 'api.customLocalization.lookup'`. Now you can localize responses in actions, based on which hostname a connection uses.
 
-```js
-const { Action } = require("actionhero");
+```ts
+import { Action } from "actionhero";
 
-module.exports = class RandomNumber extends Action {
+export class RandomNumber extends Action {
   constructor() {
     super();
     this.name = "randomNumber";
@@ -78,7 +78,7 @@ module.exports = class RandomNumber extends Action {
     response.message = localizedResponse;
     response.number = number;
   }
-};
+}
 ```
 
 ## Connection Methods

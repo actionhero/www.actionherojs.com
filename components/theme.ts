@@ -1,16 +1,16 @@
 export default {
   colors: {
-    red: '#E14E3A',
-    blue: '#2F5266',
-    blueGray: '#6E8898',
-    yellow: '#FBF9E4',
-    white: '#FFFFFF'
+    red: "#E14E3A",
+    blue: "#2F5266",
+    blueGray: "#6E8898",
+    yellow: "#FBF9E4",
+    white: "#FFFFFF"
   },
 
   fonts: {
-    main: 'Roboto, sans-serif',
-    title: 'BebasNeue, Roboto, sans-serif',
-    docs: 'Open Sans, sans-serif'
+    main: "Roboto, sans-serif",
+    title: "BebasNeue, Roboto, sans-serif",
+    docs: "Open Sans, sans-serif"
   },
 
   typeography: {
@@ -20,26 +20,26 @@ export default {
       lineHeight: 26
     } as React.CSSProperties,
     h1: {
-      fontFamily: 'BebasNeue, Roboto, sans-serif',
-      fontWeight: 'bold',
+      fontFamily: "BebasNeue, Roboto, sans-serif",
+      fontWeight: "bold",
       marginTop: 20,
       marginBottom: 10,
       letterSpacing: 2,
       fontSize: 36
     } as React.CSSProperties,
     h2: {
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: "Roboto, sans-serif",
       fontWeight: 300,
       fontSize: 20,
-      lineHeight: '1.5em',
-      color: '#3B5D72'
+      lineHeight: "1.5em",
+      color: "#3B5D72"
     } as React.CSSProperties,
     h2Alt: {
-      fontFamily: 'BebasNeue, Roboto, sans-serif',
+      fontFamily: "BebasNeue, Roboto, sans-serif",
       fontWeight: 800,
       fontSize: 24,
       letterSpacing: 1,
-      color: '#3B5D72'
+      color: "#3B5D72"
     } as React.CSSProperties
   },
 
@@ -55,25 +55,49 @@ export default {
     input: {
       border: 0,
       outline: 0,
-      background: 'transparent',
-      borderBottom: '2px solid #2F5266',
+      background: "transparent",
+      borderBottom: "2px solid #2F5266",
       marginBottom: 20,
       paddingBottom: 10,
-      width: '100%',
+      width: "100%",
       fontSize: 24,
       fontWeight: 300
     } as React.CSSProperties
   },
 
+  icons: {
+    actions: "easy-to-use-actions.svg",
+    tasks: "built-in-tasks.svg",
+    initializers: "internet-of-things.svg",
+    localization: "localization.svg",
+    middleware: "api-first-development.svg",
+    testing: "flying-man.svg",
+    chat: "chat.svg",
+    cli: "ops-tools.svg",
+    servers: "internet-of-things.svg",
+    "web-server": "documentation.svg",
+    "websocket-server": "documentation.svg",
+    "running-actionhero": "ops-tools.svg",
+    config: "video-game-servers.svg",
+    repl: "ops-tools.svg",
+    "file-server": "file-server.svg",
+    logging: "ops-tools.svg",
+    plugins: "ops-tools.svg",
+    cluster: "cluster-ready.svg",
+    "production-notes": "ops-tools.svg",
+    "upgrade-path": "documentation.svg",
+    typescript: "dog.svg"
+  },
+
   buttons: {
     big: (backgroundColor, color) => {
       return {
-        fontFamily: 'Roboto, sans-serif',
+        fontFamily: "Roboto, sans-serif",
         fontWeight: 300,
         fontSize: 14,
         maxWidth: 200,
         borderRadius: 50,
-        margin: '0 auto',
+        margin: "0 auto",
         color: color,
         backgroundColor: backgroundColor,
         borderColor: backgroundColor,
@@ -81,17 +105,17 @@ export default {
         marginBottom: 20,
         paddingTop: 15,
         paddingBottom: 15,
-        outline: 'none'
-      } as React.CSSProperties
+        outline: "none"
+      } as React.CSSProperties;
     },
 
     header: (backgroundColor, color) => {
       return {
-        fontFamily: 'Roboto, sans-serif',
+        fontFamily: "Roboto, sans-serif",
         fontSize: 14,
         maxWidth: 200,
         borderRadius: 50,
-        margin: '0 auto',
+        margin: "0 auto",
         color: color,
         backgroundColor: backgroundColor,
         borderColor: backgroundColor,
@@ -100,10 +124,10 @@ export default {
         marginBottom: 0,
         marginLeft: 10,
         marginRight: 10,
-        outline: 'none'
+        outline: "none"
         // paddingTop: 10,
         // paddingBottom: 10
-      } as React.CSSProperties
+      } as React.CSSProperties;
     }
   }
-}
+};

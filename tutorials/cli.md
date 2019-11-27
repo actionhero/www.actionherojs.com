@@ -4,10 +4,10 @@ Allow actionhero developers to create new files in `./bin` which can be run via 
 
 You can create namespaces for commands by using folders. For example, a file in `./bin/redis/keys` would be run via `npx actionhero redis keys`
 
-```js
-const { api, CLI } = require("actionhero");
+```ts
+import { api, log, CLI } from "actionhero";
 
-module.exports = class RedisKeys extends CLI {
+export class RedisKeys extends CLI {
   constructor() {
     super();
     this.name = "redis keys";
@@ -27,12 +27,12 @@ module.exports = class RedisKeys extends CLI {
 
   async run({ params }) {
     let keys = await api.redis.clients.client.keys(params.prefix);
-    api.log("Found " + keys.length + "keys:");
+    log("Found " + keys.length + "keys:");
     keys.forEach(k => {
-      api.log(k);
+      log(k);
     });
   }
-};
+}
 ```
 
 ## Syntax

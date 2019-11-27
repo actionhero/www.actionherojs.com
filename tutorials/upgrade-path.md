@@ -22,7 +22,7 @@ The only change to take note of is that you must now ensure that the working dir
 
 **Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v19.0.0)**
 
-### Configuration
+**Configuration**
 
 - in `config/tasks.js` `add api.config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
 - in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the ActionHero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.

@@ -73,22 +73,18 @@ You can also inspect `client.state` (‘connected', ‘disconnected', etc). The 
 
 If you want to communicate with a websocket client outside of an action, you can call `connection.send(message)` on the server. In the client lib, the event message will be fired. So, client.on('message, function(m){ ... })`. Be sure to add some descriptive content to the message you send from the sever (like perhaps {"type": 'message type'}`) so you can route message types on the client.
 
-## Client Methods
-
-The clent API can be viewed here: [WebSocket Client API](ActionHero.ActionheroWebsocketClient.html)
-
 ## Linking WebSockets to Web Clients
 
 ActionHero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `api.config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
 
-You can read more about using a value like `connection.fingerprint` in an [authentication middleware](tutorial-middleware.html) or using it as a key for session information.
+You can read more about using a value like `connection.fingerprint` in an [authentication middleware](tutorials/middleware) or using it as a key for session information.
 
 ## Config Options
 
-```js
-exports["default"] = {
+```ts
+export const DEFAULT = {
   servers: {
-    websocket: function(api) {
+    websocket: config => {
       return {
         enabled: true,
         // you can pass a FQDN (string) here or 'window.location.origin'
@@ -96,9 +92,9 @@ exports["default"] = {
         // Directory to render client-side JS.
         // Path should start with "/" and will be built starting from api.config..general.paths.public
         clientJsPath: "javascript/",
-        // the name of the client-side JS file to render.  Both \`.js\` and \`.min.js\` versions will be created
+        // the name of the client-side JS file to render.  Both `.js` and `.min.js` versions will be created
         // do not include the file exension
-        // set to \`undefined\` to not render the client-side JS on boot
+        // set to `undefined` to not render the client-side JS on boot
         clientJsName: "ActionheroWebsocketClient",
         // should the server signal clients to not reconnect when the server is shutdown/reboot
         destroyClientsOnShutdown: false,
@@ -120,7 +116,9 @@ exports["default"] = {
 
         // websocket Client Options:
         client: {
-          apiPath: "/api" // the api base endpoint on your actionhero server
+          apiPath: "/api", // the api base endpoint on your actionhero server
+          // the cookie name we should use for shared authentication between WS and web connections
+          cookieKey: config.servers.web.fingerprintOptions.cookieKey
           // reconnect:        {},
           // timeout:          10000,
           // ping:             25000,
@@ -138,4 +136,4 @@ exports["default"] = {
 };
 ```
 
-You can create your client with options. Options for both the server and client are stored in `/config/servers/websocket.js`. Note there are 2 sections: `server` and `client`.
+You can create your client with options. Options for both the server and client are stored in `/config/servers/websocket.ts`. Note there are 2 sections: `server` and `client`.

@@ -146,7 +146,7 @@ export class SendWelcomeMessage extends Task {
 
 You can also define more than one task in a file, exporting each with a separate `exports` directive, ie:.
 
-```js
+```ts
 import { Task } from "actionhero";
 
 export class SayHello extends Task {
@@ -217,7 +217,7 @@ You may want to schedule jobs every minute/hour/day, like a distributed CRON job
 
 Assuming you are running ActionHero across multiple machines, you will need to ensure that only one of your processes is actually scheduling the jobs. To help you with this, you can inspect which of the scheduler processes is correctly acting as master, and flag only the master scheduler process to run the schedule. An [initializer for this](tutorial-initializers.html) would look like:
 
-```js
+```ts
 // file: initializers/node_schedule.js
 
 import * as schedule from "node-schedule";
@@ -268,7 +268,7 @@ Because there are no 'heartbeats' in resque, it is impossible for the applicatio
 
 You can handle this with an own initializer and the following logic:
 
-```js
+```ts
 import { log, task } from "actionhero";
 
 const removeStuckWorkersOlderThan = 10000; // 10000ms
@@ -291,7 +291,7 @@ Taks are expected to be as lean as possible, with most of thier logic living in 
 
 Actionhero ships with a method to help you check if a task is enqueued, `api.specHelper.findEnqueuedTasks(taskName)`:
 
-```js
+```ts
 import { api, task } from "actionhero";
 
 describe("task testing", () => {

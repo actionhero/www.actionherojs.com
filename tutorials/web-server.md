@@ -4,7 +4,7 @@ The web server exposes actions and files over http or https. You can visit the A
 
 HTTP responses are always JSON and follow the following format:
 
-```js
+```ts
 {
   hello: "world",
   serverInformation: {
@@ -74,17 +74,17 @@ HTTP responses are always JSON and follow the following format:
 
 `/config/servers/web.js` contains the settings for the web server. The relevant options are:
 
-```js
-exports["default"] = {
+```ts
+export const DEFAULT = {
   servers: {
-    web: function(api) {
+    web: config => {
       return {
         enabled: true,
-        // HTTP or HTTPS?
+        // HTTP or HTTPS?  This setting is to enable SSL termination directly in the actionhero app, not set redirection host headers
         secure: false,
         // Passed to https.createServer if secure=true. Should contain SSL certificates
         serverOptions: {},
-        // Should we redirect all traffic to the first host in this array if the request header doesn't match?
+        // Should we redirect all traffic to the first host in this array if hte request header doesn't match?
         // i.e.: [ 'https://www.site.com' ]
         allowedRequestHosts: process.env.ALLOWED_HOSTS
           ? process.env.ALLOWED_HOSTS.split(",")
@@ -92,22 +92,23 @@ exports["default"] = {
         // Port or Socket Path
         port: process.env.PORT || 8080,
         // Which IP to listen on (use '0.0.0.0' for all; '::' for all on ipv4 and ipv6)
-        // Set to \`null\` when listening to socket
+        // Set to `null` when listening to socket
         bindIP: "0.0.0.0",
         // Any additional headers you want actionhero to respond with
         httpHeaders: {
-          "X-Powered-By": api.config.general.serverName,
+          "X-Powered-By": config.general.serverName,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods":
             "HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS, TRACE",
-          "Access-Control-Allow-Headers": "Content-Type"
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
         },
         // Route that actions will be served from; secondary route against this route will be treated as actions,
         //  IE: /api/?action=test == /api/test/
         urlPathForActions: "api",
         // Route that static files will be served from;
         //  path (relative to your project root) to serve static content from
-        //  set to \`null\` to disable the file server entirely
+        //  set to `null` to disable the file server entirely
         urlPathForFiles: "public",
         // When visiting the root URL, should visitors see 'api' or 'file'?
         //  Visitors can always visit /api and /public as normal
@@ -122,6 +123,8 @@ exports["default"] = {
         // Client will revalidate the fingerprint at latest after flatFileCacheDuration and reload it if the etag (and therfore the file) changed
         // or continue to use the cached file if it's still valid
         enableEtag: true,
+        // should we save the un-parsed HTTP POST/PUT payload to connection.rawConnection.params.rawBody?
+        saveRawBody: false,
         // How many times should we try to boot the server?
         // This might happen if the port is in use by another process or the socketfile is claimed
         bootAttempts: 1,
@@ -140,7 +143,8 @@ exports["default"] = {
         formOptions: {
           uploadDir: os.tmpdir(),
           keepExtensions: false,
-          maxFieldsSize: 1024 * 1024 * 100
+          maxFieldsSize: 1024 * 1024 * 20,
+          maxFileSize: 1024 * 1024 * 200
         },
         // Should we pad JSON responses with whitespace to make them more human-readable?
         // set to null to disable
@@ -152,31 +156,6 @@ exports["default"] = {
         },
         // When true, returnErrorCodes will modify the response header for http(s) clients if connection.error is not null.
         // You can also set connection.rawConnection.responseHttpCode to specify a code per request.
-        /**
-         *  To create custom Error objects with custom response code you need to add the your response status code in the error object.
-         *  // Note: Error code in error object will overwrite the response's status code.
-         *  @example
-         *
-         *       // Your action
-         *         {
-         *          ...
-         *          const raiseNotFound = <your-condition>
-         *          if(raiseNotFound) {
-         *            const notFoundError = new Error(<msg>)
-         *            notFoundError.code = 404
-         *            throw notFoundError
-         *          }
-         *          ...
-         *          const raiseSuspiciousActivity = <your-condition>
-         *          if(raiseSuspiciousActivity) {
-         *              const suspiciousActivity = new Error(<msg>)
-         *              suspiciousActivity.code = 402
-         *              throw suspiciousActivity
-         *          }
-         *          ...
-         *        }
-         *        // Only the values between 100 and 599 are accepted for status code, otherwise, it will be ignored.
-         *  */
         returnErrorCodes: true,
         // should this node server attempt to gzip responses if the client can accept them?
         // this will slow down the performance of actionhero, and if you need this funcionality, it is recommended that you do this upstream with nginx or your load balancer
@@ -201,7 +180,7 @@ config.server.web.serverOptions: {
 
 ## The Connection Object
 
-```js
+```ts
 { id: '3e55b464fd34708eba26f609f44481a120e094a8-a6dfb60b-9562-4cc0-9d92-bc6cc1b622ba',
   connectedAt: 1447554153233,
   type: 'web',
@@ -244,7 +223,9 @@ when inspecting `data.connection` in actions or action middleware from web clien
 
 ## Sending Files
 
-```js
+```ts
+// in your action's run method
+
 data.connection.sendFile("/path/to/file.mp3");
 data.toRender = false;
 next();
@@ -255,12 +236,12 @@ ActionHero can also serve up flat files. ActionHero will not cache these files a
 There are helpers you can use in your actions to send files:
 
 - `/public` and `/api` are routes which expose the directories of those types. These top level path can be configured in `/config/servers/web.js` with `api.config.servers.web.urlPathForActions` and `api.config.servers.web.urlPathForFiles`.
-- the root of the web server "/" can be toggled to serve the content between /file or /api actions per your needs `api.config.servers.web.rootEndpointType`. The default is `api`.
+- the root of the web server "/" can be toggled to serve the content between /file or /api actions per your needs `config.servers.web.rootEndpointType`. The default is `api`.
 - ActionHero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}?action=file&fileName={pathToFile}` and `http://{baseUrl}/file/{pathToFile}`.
 - Errors will result in a 404 (file not found) with a message you can customize.
 - Proper mime-type headers will be set when possible via the `mime` package.
 
-See the [file server](tutorial-file-server.html) page for more documentation
+See the [file server](tutorials/file-server) page for more documentation
 
 ## Routes
 
@@ -268,16 +249,16 @@ For web clients, you can define an optional RESTful mapping to help route reques
 
 This variables in play here are:
 
-- `api.config.servers.web.urlPathForActions`
-- `api.config.servers.web.rootEndpointType`
+- `config.servers.web.urlPathForActions`
+- `config.servers.web.rootEndpointType`
 - and of course the content of `config/routes.js`
 
 Say you have an action called ‘status' (like in a freshly generated ActionHero project). Lets start with ActionHero's default config:
 
-```js
-api.config.servers.web.urlPathForActions = ‘api';
-api.config.servers.web.urlPathForFiles = ‘public';
-api.config.servers.web.rootEndpointType = ‘file';
+```ts
+config.servers.web.urlPathForActions = "api";
+config.servers.web.urlPathForFiles = "public";
+config.servers.web.rootEndpointType = "file";
 ```
 
 There are 3 ways a client can access actions via the web server.
@@ -286,11 +267,11 @@ There are 3 ways a client can access actions via the web server.
 - with ‘basic' routing, where the action's name will respond after the /api path: `server.com/api/status`
 - or you can modify this with routes. Say you want `server.com/api/stuff/statusPage`
 
-```js
-exports.default = function(api) {
+```ts
+export const DEFAULT = function(api) {
   return {
     get: [
-      { path: ‘/stuff/statusPage', action: ‘status' }
+      { path: ‘/stuff/statusPage', action: 'status' }
     ]
   };
 }
@@ -300,8 +281,8 @@ If the `api.config.servers.web.rootEndpointType` is `"file"` which means that th
 
 For a route to match, all params must be satisfied. So, if you expect a route to provide `api/:a/:b/:c` and the request is only for `api/:a/:c`, the route won't match. This holds for any variable, including `:apiVersion`. If you want to match both with and without apiVersion, just define the rote 2x, IE:
 
-```js
-exports.default = function(api) {
+```ts
+export const DEFAULT = function(api) {
   return {
     all: [
       { path: "/cache/:key/:value", action: "cacheTest" },
@@ -315,8 +296,8 @@ If you want to shut off access to your action at `server.com/api/stuff/statusPag
 
 Routes will match the newest version of `apiVersion`. If you want to have a specific route match a specific version of an action, you can provide the `apiVersion` param in your route definitions:
 
-```js
-exports.default = function(api) {
+```ts
+export const DEFAULT = function(api) {
   return {
     get: [
       { path: "/myAction/old", action: "myAction", apiVersion: 1 },
@@ -332,7 +313,7 @@ In your actions and middleware, if a route was matched, you can see the details 
 
 Finally, you can toggle an option, `matchTrailingPathParts`, which allows the final segment of your route to absorb all trailing path parts in a matched variable.
 
-```js
+```ts
 post: [
   // yes match: site.com/api/123
   // no match: site.com/api/123/admin
@@ -348,7 +329,7 @@ post: [
 
 This also enables "catch all" routes, like:
 
-```js
+```ts
 get: [
   { path: ‘:path(.*)', action: ‘catchAll', matchTrailingPathParts: true }
 ],
@@ -356,7 +337,7 @@ get: [
 
 If you have a route with multiple variables defined and `matchTrailingPathParts` is true, only the final segment will match the trailing sections:
 
-```js
+```ts
 get: [
   // the route site.com/users/123/should/do/a/thing would become {userId: 123, path: ‘/should/do/a/thing'}
   { path: ‘/users/:userId/:path(.*)', action: ‘catchAll', matchTrailingPathParts: true }
@@ -369,7 +350,7 @@ get: [
 
 If you want map a special public folder to a given route you can use the "dir" parameter in your "get" routes in the routes.js file:
 
-```js
+```ts
 get: [
   { path: ‘/my/special/folder', dir: __dirname + ‘/…/public/my/special/folder', matchTrailingPathParts: true }
 ],
@@ -395,8 +376,8 @@ You have to map the specified public folder within the "dir" parameter, relative
   - be sure to double-escape when needed: `{` path: "/login/:userID(^\\d{3}\$)", action: "login" }`}`
 - The HTTP verbs which you can route against are: `api.routes.verbs = ['head', 'get', 'post', 'put', 'patch', 'delete']`
 
-```js
-exports.default = function(api) {
+```ts
+export const DEFAULT = function(api) {
   return {
     get: [
       { path: "/users", action: "usersList" }, // (GET) /api/users
@@ -424,7 +405,7 @@ You can also set `process.env.ALLOWED_HOSTS` which will be parsed as a comma-sep
 
 Params provided by the user (GET, POST, etc for http and https servers, setParam for TCP clients, and passed to action calls from a web socket client) will be checked against a whitelist defined by your action (can be disabled in `/config/servers/web.js`). Variables defined in your actions by `action.inputs` will be added to your whitelist. Special params which the api will always accept are:
 
-```js
+```ts
 [
   ‘file',
   ‘apiVersion',
@@ -443,7 +424,7 @@ You can post BODY json paylaods to actionHero in the form of a hash or array.
 
 **Hash**: `curl -X POST -d '{"key":"something", "value":{"a":1, "b":2}}' http://localhost:8080/api/cacheTest`. This will result in:
 
-```js
+```ts
 connection.params = {
   key: ‘something',
   value: {
@@ -455,11 +436,11 @@ connection.params = {
 
 **Array**: `curl -X POST -d '[{"key":"something", "value":{"a":1, "b":2}}]' http://localhost:8080/api/cacheTest`. In this case, we set the array to the param key `payload`:
 
-```js
+```ts
 connection.params = {
   payload: [
     {
-      key: ‘something'
+      key: 'something'
       value: {
         a: 1,
         b: 2
@@ -473,11 +454,11 @@ connection.params = {
 
 ActionHero uses the [formidable](https://github.com/felixge/node-formidable) form parsing library. You can set options for it via `api.config.servers.web.formOptions`. You can upload multiple files to an action and they will be available within `connection.params` as formidable response objects containing references to the original file name, where the uploaded file was stored temporarily, etc. Here is an example:
 
-```js
+```ts
 // actions/uploader.js
-const ActionHero = require("actionhero");
+import { Action } from "actionhero";
 
-module.exports = class MyAction extends ActionHero.Action {
+export class Uploader extends Action {
   constructor() {
     super();
     this.name = "uploader";
@@ -493,7 +474,7 @@ module.exports = class MyAction extends ActionHero.Action {
   async run(data) {
     console.log(data);
   }
-};
+}
 ```
 
 ```html
@@ -519,7 +500,7 @@ module.exports = class MyAction extends ActionHero.Action {
 </html>
 ```
 
-```js
+```ts
 // what the params look like to an action
 
 { action: 'uploader',

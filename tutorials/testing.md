@@ -10,27 +10,46 @@ You also don't need to use these test helpers, and you may want to make a real h
 
 ```js
 // package.json from a new actionhero project with \`jest\`included
+
 {
-  "author"      : "YOU <YOU@example.com>",
-  "name"        : "my_actionhero_project",
-  "description" : "my actionhero project",
-  "version"     : "0.1.0",
-  "engines"     : {
+  "author": "YOU <YOU@example.com>",
+  "name": "my_actionhero_project",
+  "description": "my actionhero project",
+  "version": "0.1.0",
+  "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies" : {
-    "actionhero" : "^14.0.0",
-    "ws"         : "latest"
+  "dependencies": {
+
+    "actionhero": "21.x.x",
+    "ws": "latest",
+    "ioredis": "latest",
+    "winston": "latest"
   },
-  "devDependencies" : {
-    "jest" : "latest"
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/jest": "latest",
+    "jest": "latest",
+    "prettier": "latest",
+    "ts-jest": "latest",
+    "ts-node-dev": "latest",
+    "typescript": "latest"
   },
-  "scripts" : {
-    "help"         : "actionhero help",
-    "start"        : "actionhero start",
-    "actionhero"   : "actionhero",
-    "start cluster": "actionhero start cluster",
-    "test"         : "jest"
+  "scripts": {
+    "dev": "ts-node-dev --transpile-only ./node_modules/.bin/actionhero start",
+    "start": "actionhero start",
+    "actionhero": "actionhero",
+    "test": "jest",
+    "pretest": "npm run build && npm run lint",
+    "build": "tsc --declaration",
+    "lint": "prettier --check src/*/** __test__/*/**",
+    "pretty": "prettier --write src/*/** __test__/*/**"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
   }
 }
 ```
@@ -46,15 +65,17 @@ ActionHero comes with a `specHelper` to make it easier to test tasks and actions
 Say you had an action that was supposed to respond with a `randomNumber`, and you wanted to write a test for it.
 
 ```js
-const ActionHero = require("actionhero");
-const actionhero = new ActionHero.Process();
-let api;
+// from __tests__/actions/randomNumber.ts
+import { Process, specHelper } from "actionhero";
+
+const actionhero = new Process();
 
 describe("Action", () => {
   describe("randomNumber", () => {
     beforeAll(async () => {
-      api = await actionhero.start();
+      await actionhero.start();
     });
+
     afterAll(async () => {
       await actionhero.stop();
     });
@@ -62,14 +83,14 @@ describe("Action", () => {
     let firstNumber = null;
 
     test("generates random numbers", async () => {
-      const { randomNumber } = await api.specHelper.runAction("randomNumber");
+      const { randomNumber } = await specHelper.runAction("randomNumber");
       expect(randomNumber).toBeGreaterThan(0);
       expect(randomNumber).toBeLessThan(1);
       firstNumber = randomNumber;
     });
 
-    test("is unique", async () => {
-      const { randomNumber } = await api.specHelper.runAction("randomNumber");
+    test("is unique / random", async () => {
+      const { randomNumber } = await specHelper.runAction("randomNumber");
       expect(randomNumber).toBeGreaterThan(0);
       expect(randomNumber).toBeLessThan(1);
       expect(randomNumber).not.toEqual(firstNumber);
@@ -78,10 +99,13 @@ describe("Action", () => {
 });
 ```
 
-More details on the specHelper methods [can be found here](api.specHelper.html)
+More details on the specHelper methods [can be found here](https://docs.actionherojs.com/modules/spechelper.html). Methods include:
+
+- `buildConnection`
+- `findEnqueuedTasks`
+- `getStaticFile`
+- `runAction`
+- `runFullTask`
+- `runTask`
 
 If you want to see fuller example of how to create an integration test within ActionHero, please [check out the tutorial](https://github.com/actionhero/actionhero-tutorial#testing)
-
-## Notes
-
-If you do not want the `specHelper` actions to include metadata (`data.response.serverInformation`, `data.response.requesterInformation`, and `data.response.messageId`) from the server, you can configure `api.specHelper.returnMetadata = false` in your tests.

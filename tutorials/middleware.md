@@ -37,7 +37,9 @@ Each type of middleware is distinct from the others, and operates on distinct pa
 
 ![/static/images/tutorials/connection_flow_actions.png](/static/images/tutorials/connection_flow_actions.png)
 
-```js
+```ts
+import { action } from "actionhero";
+
 const middleware = {
   name: "userId checker",
   global: false,
@@ -54,7 +56,7 @@ const middleware = {
   }
 };
 
-api.actions.addMiddleware(middleware);
+action.addMiddleware(middleware);
 ```
 
 ActionHero provides hooks for you to execute custom code both before and after the execution of all or some actions. This is a great place to write authentication logic or custom loggers.
@@ -69,7 +71,7 @@ The priority of a middleware orders it with all other middleware which might fir
 
 `data` contains the same information as would be passed to an action:
 
-```js
+```ts
 data = {
   connection: {},
   action: "randomNumber",
@@ -86,12 +88,14 @@ data = {
 If your middleware wants to pass information about the connection to the action, place that data withinin the `session` object. For example, you might have a middleware that sets `session.user` for use in your actions:
 
 ```ts
+import { action } from "actionhero";
+import { Team, TeamMember } from "./../models"; // defined in your project
+
 const authenticatedUserMiddleware = {
   name: "authenticated-team-member",
   global: false,
   priority: 1000,
   preProcessor: async data => {
-    const { Team, TeamMember } = api.models;
     const sessionData = await api.session.load(data.connection);
     if (!sessionData) {
       throw new Error("Please log in to continue");
@@ -110,24 +114,26 @@ const authenticatedUserMiddleware = {
   }
 };
 
-api.actions.addMiddleware(authenticatedUserMiddleware);
+action.addMiddleware(authenticatedUserMiddleware);
 ```
 
 ## Connection Middleware
 
-```js
+```ts
+import { log, connection } from "actionhero";
+
 const connectionMiddleware = {
   name: "connection middleware",
   priority: 1000,
   create: async connection => {
-    api.log("connection joined");
+    log("connection joined");
   },
   destroy: async connection => {
-    api.log("connection left");
+    log("connection left");
   }
 };
 
-api.connections.addMiddleware(connectionMiddleware);
+connection.addMiddleware(connectionMiddleware);
 ```
 
 Like the action middleware above, you can also create middleware to react to the creation or destruction of all connections.
@@ -138,39 +144,49 @@ Any modification made to the connection at this stage may happen either before o
 
 ## Chat Middleware
 
-```js
+```ts
+import { log, chatRoom, connection } from "actionhero";
+
 var chatMiddleware = {
-  name: 'chat middleware',
+  name: "chat middleware",
   priority: 1000,
   join: (connection, room) => {
     // announce all connections entering a room
-    await api.chatRoom.broadcast({}, room, 'I have joined the room: ' + connection.id)
+    await chatRoom.broadcast(
+      {},
+      room,
+      "I have joined the room: " + connection.id
+    );
   },
   leave: (connection, room) => {
     // announce all connections leaving a room
-    await api.chatRoom.broadcast({}, room, 'I have left the room: ' + connection.id)
+    await chatRoom.broadcast(
+      {},
+      room,
+      "I have left the room: " + connection.id
+    );
   },
   /**
    * Will be executed once per client connection before delivering the message.
    */
   say: (connection, room, messagePayload) => {
     // do stuff
-    api.log(messagePayload)
-    messagePayload.cool = true
-    return messagePayload
+    log(messagePayload);
+    messagePayload.cool = true;
+    return messagePayload;
   },
   /**
    * Will be executed only once, when the message is sent to the server.
    */
-  onSayReceive: function(connection, room, messagePayload){
+  onSayReceive: function(connection, room, messagePayload) {
     // do stuff
-    api.log(messagePayload)
-    messagePayload.recievedAt = (new Date()).getTime()
-    return messagePayload
+    log(messagePayload);
+    messagePayload.recievedAt = new Date().getTime();
+    return messagePayload;
   }
 };
 
-api.chatRoom.addMiddleware(chatMiddleware)
+chatRoom.addMiddleware(chatMiddleware);
 ```
 
 The last type of middleware is used to act when a connection joins, leaves, or communicates within a chat room. We have 4 types of middleware for each step: `say`, `onSayReceive`, `join`, and `leave`.
@@ -188,17 +204,18 @@ More detail and nuance on chat middleware can be found in the [chat tutorial](tu
 - `sayCallbacks` are executed once per client connection. This makes it suitable for customizing the message based on the individual client.
 - `onSayReceiveCallbacks` are executed only once, when the message is sent to the server.
 
-```js
-// in this example no one will be able to join any room, and the \`say\` middleware will never be invoked.
+```ts
+import {chatRoom, connection} from 'actionhero';
 
-api.chatRoom.addMiddleware({
+// in this example no one will be able to join any room, and the \`say\` middleware will never be invoked.
+chatRoom.addMiddleware({
   name: 'blocking chat middleware',
   join: (connection, room) => {
     throw new Error('blocked from joining the room')
   }),
 
   say: (connection, room, messagePayload) => {
-    api.chatRoom.broadcast({}, room, 'I have entered the room: ' + connection.id)
+    chatRoom.broadcast({}, room, 'I have entered the room: ' + connection.id)
   },
 });
 ```
@@ -219,10 +236,10 @@ In the `preProcessor`, you can access the original task `params` through `this.a
 
 The following example is a simplistic implementation of a task execution timer middleware.
 
-```js
-const {api, Initializer} = require('actionhero')
+```ts
+import {task, log, Initializer} from 'actionhero';
 
-module.exports = new Class extends Initializer {
+export class taskMiddleware extends Initializer {
   constructor () {
     super()
     this.name = 'task middleware'
@@ -233,27 +250,31 @@ module.exports = new Class extends Initializer {
       name: 'timer',
       global: true,
       priority: 90,
+
       preProcessor: async function () {
         const worker = this.worker
         worker.startTime = process.hrtime()
       },
+
       postProcessor: async function () {
         const worker = this.worker
         const elapsed = process.hrtime(worker.startTime)
         const seconds = elapsed[0]
         const millis = elapsed[1] / 1000000
-        api.log(worker.job.class + ' done in ' + seconds + ' s and ' + millis + ' ms.', 'info')
+        log(worker.job.class + ' done in ' + seconds + ' s and ' + millis + ' ms.', 'info')
       },
+
       preEnqueue: async function () {
         const arg = this.args[0]
-        return (arg === 'ok') // returing `false` will prevent the task from enqueing
+        return true // returing `false` will prevent the task from enqueing
       },
+
       postEnqueue: async function () {
         api.log("Task successfully enqueued!")
       }
     }
 
-    api.tasks.addMiddleware(middleware)
+    task.addMiddleware(middleware)
   }
 }
 ```
