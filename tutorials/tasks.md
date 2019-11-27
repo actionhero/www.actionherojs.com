@@ -13,18 +13,18 @@ There are 3 types of tasks ActionHero can process: `normal`, `delayed`, and `per
 
 Here are examples of the 3 ways to programmatically enqueue a task:
 
-```js
+```ts
+improt { task } from 'actionhero'
+
 // Enqueue the task now, and process it ASAP
-// api.tasks.enqueue(nameOfTask, args, queue)
-await api.tasks.enqueue(
+await task.enqueue(
   "sendWelcomeEmail",
   { to: "evan@evantahler.com" },
   "default"
 );
 
 // Enqueue the task now, and process it once \`timestamp\` has arrived
-// api.tasks.enqueueAt(timestamp, nameOfTask, args, queue)
-await api.tasks.enqueueAt(
+await task.enqueueAt(
   1234556,
   "sendWelcomeEmail",
   { to: "evan@evantahler.com" },
@@ -32,8 +32,7 @@ await api.tasks.enqueueAt(
 );
 
 // Enqueue the task now, and process it once \`delay\` (ms) has passed
-// api.tasks.enqueueIn(delay, nameOfTask, args, queue)
-await api.tasks.enqueueIn(
+await task.enqueueIn(
   10000,
   "sendWelcomeEmail",
   { to: "evan@evantahler.com" },
@@ -41,7 +40,7 @@ await api.tasks.enqueueIn(
 );
 ```
 
-"sendWelcomeEmail" should be a task defined in the project, and `{to: 'evan@evantahler.com'}` are arguments to that task. This task will be processed by TaskProcessors assigned to the "default" queue.
+`sendWelcomeEmail` should be a task defined in the project, and `{to: 'evan@evantahler.com'}` are arguments to that task. This task will be processed by TaskProcessors assigned to the "default" queue.
 
 You can also enqueue tasks to be run at some time in the future (timestamp is in ms): `enqueueAt` asks for a timestamp (in ms) to run at, and `enqueueIn` asks for the number of ms from now to run.
 
@@ -49,15 +48,15 @@ The final type of task, periodic tasks, are defined with a `task.frequency` of g
 
 ## Processing Tasks
 
-```js
+```ts
 // From /config/tasks.js:
 
-exports.default = {
-  tasks: function(api) {
+export const DEFAULT = {
+  tasks: config => {
     return {
       // Should this node run a scheduler to promote delayed tasks?
       scheduler: false,
-      // what queues should the TaskProcessors work?
+      // what queues should the taskProcessors work?
       queues: ["*"],
       // Logging levels of task workers
       workerLogging: {
@@ -89,22 +88,27 @@ exports.default = {
       minTaskProcessors: 0,
       // at maximum, how many parallel taskProcessors should this node spawn?
       maxTaskProcessors: 0,
-      // how often should we check the event loop to spawn more TaskProcessors?
+      // how often should we check the event loop to spawn more taskProcessors?
       checkTimeout: 500,
-      // how many ms would constitue an event loop delay to halt TaskProcessors spawning?
+      // how many ms would constitue an event loop delay to halt taskProcessors spawning?
       maxEventLoopDelay: 5,
+      // how long before we mark a resque worker / task processor as stuck/dead?
+      stuckWorkerTimeout: 1000 * 60 * 60,
       // Customize Resque primitives, replace null with required replacement.
       resque_overrides: {
         queue: null,
         multiWorker: null,
         scheduler: null
+      },
+      connectionOptions: {
+        tasks: {}
       }
     };
   }
 };
 ```
 
-To work these tasks, you need to run ActionHero with at least one `taskProcessor`. `TaskProcessor`s run in-line with the rest of your server and process jobs. This is controlled by settings in [/config/tasks.js](https://github.com/actionhero/actionhero/blob/master/config/tasks.js).
+To work these tasks, you need to run ActionHero with at least one `taskProcessor`. `TaskProcessor`s run in-line with the rest of your server and process jobs. This is controlled by settings in [/config/tasks.js](https://github.com/actionhero/actionhero/blob/master/src/config/tasks.ts).
 
 If you are enqueuing delayed or periodic tasks, you also need to enable the scheduler. This is a part of ActionHero that will periodically check the delayed queues for jobs that are ready to work now, and move them to the normal queues when the time comes.
 
@@ -118,11 +122,12 @@ As you noticed above, when you enqueue a task, you tell it which queue to be enq
 
 An few ways to define a task:
 
-```js
+```ts
 // define a single task in a file
-const { api, Task } = require("actionhero");
+import { Task } from "actionhero";
+import { sendWelcomeEamail } from "./../modules/email";
 
-module.exports = class SendWelcomeMessage extends Task {
+export class SendWelcomeMessage extends Task {
   constructor() {
     super();
     this.name = "SendWelcomeEmail";
@@ -133,16 +138,18 @@ module.exports = class SendWelcomeMessage extends Task {
   }
 
   async run(data) {
-    await api.sendWelcomeEamail({ address: data.email });
+    await sendWelcomeEamail({ address: data.email });
     return true;
   }
-};
+}
 ```
 
 You can also define more than one task in a file, exporting each with a separate `exports` directive, ie:.
 
 ```js
-exports.SayHello = class SayHello extends Task {
+import { Task } from "actionhero";
+
+export class SayHello extends Task {
   constructor() {
     super();
     this.name = "sayHello";
@@ -155,9 +162,9 @@ exports.SayHello = class SayHello extends Task {
   async run() {
     api.log("hello");
   }
-};
+}
 
-exports.SayGoodbye = class SayGoodbye extends Task {
+export class SayGoodbye extends Task {
   constructor() {
     super();
     this.name = "sayGoodbye";
@@ -170,7 +177,7 @@ exports.SayGoodbye = class SayGoodbye extends Task {
   async run() {
     api.log("goodbye");
   }
-};
+}
 ```
 
 Output of the above:
@@ -213,17 +220,17 @@ Assuming you are running ActionHero across multiple machines, you will need to e
 ```js
 // file: initializers/node_schedule.js
 
-const schedule = require("node-schedule");
-const { api, Initializer } = require("actionhero");
+import * as schedule from "node-schedule";
+import { api, task, Initializer } from "actionhero";
 
-module.exports = class Scheduler extends Initializer {
+export class Scheduler extends Initializer {
   constructor() {
     super();
     this.name = "scheduler";
   }
 
   initialize() {
-    api.scheduledJobs = [];
+    this.scheduledJobs = [];
   }
 
   start() {
@@ -232,7 +239,7 @@ module.exports = class Scheduler extends Initializer {
       // we want to ensure that only one instance of this job is scheduled in our environment at once,
       // no matter how many schedulers we have running
       if (api.resque.scheduler && api.resque.scheduler.master) {
-        await api.tasks.enqueue(
+        await task.enqueue(
           "sayHello",
           { time: new Date().toString() },
           "default"
@@ -240,15 +247,15 @@ module.exports = class Scheduler extends Initializer {
       }
     });
 
-    api.scheduledJobs.push(job);
+    this.scheduledJobs.push(job);
   }
 
   stop() {
-    api.scheduledJobs.forEach(job => {
+    this.scheduledJobs.forEach(job => {
       job.cancel();
     });
   }
-};
+}
 ```
 
 Be sure to have the scheduler enabled on at least one of your ActionHero servers!
@@ -262,14 +269,19 @@ Because there are no 'heartbeats' in resque, it is impossible for the applicatio
 You can handle this with an own initializer and the following logic:
 
 ```js
+import { log, task } from "actionhero";
+
 const removeStuckWorkersOlderThan = 10000; // 10000ms
-api.log(
+
+log(
   `removing stuck workers solder than ${removeStuckWorkersOlderThan}ms`,
   "info"
 );
-const result = api.tasks.cleanOldWorkers(removeStuckWorkersOlderThan);
+
+const result = task.cleanOldWorkers(removeStuckWorkersOlderThan);
+
 if (Object.keys(result).length > 0) {
-  api.log("removed stuck workers with errors: ", "info", result);
+  log("removed stuck workers with errors: ", "info", result);
 }
 ```
 
@@ -280,6 +292,8 @@ Taks are expected to be as lean as possible, with most of thier logic living in 
 Actionhero ships with a method to help you check if a task is enqueued, `api.specHelper.findEnqueuedTasks(taskName)`:
 
 ```js
+import { api, task } from "actionhero";
+
 describe("task testing", () => {
   beforeEach(async () => {
     // if you are testing taks, you likely want to start each test with an empty test redis
@@ -287,7 +301,7 @@ describe("task testing", () => {
   });
 
   test("detect that a task was enqueued to run now", async () => {
-    await api.tasks.enqueue("regularTask", { word: "testing" });
+    await task.enqueue("regularTask", { word: "testing" });
     const found = await api.specHelper.findEnqueuedTasks("regularTask");
     expect(found.length).toEqual(1);
     expect(found[0].args[0].word).toEqual("testing");
