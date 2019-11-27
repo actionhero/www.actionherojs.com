@@ -19,7 +19,10 @@ module.exports = {
     tutorialPages = {};
     tutorials.forEach(file => {
       const name = path.parse(file).name;
-      tutorialPages[`/tutorials/${name}`] = { page: `/tutorials/[name]` };
+      tutorialPages[`/tutorials/${name}`] = {
+        page: `/tutorials/[name]`,
+        query: { name }
+      };
     });
 
     const pages = glob.sync(path.join(__dirname, "pages", "**", "*.tsx"));
@@ -34,7 +37,6 @@ module.exports = {
     });
 
     routes = Object.assign({}, tutorialPages, staticPages);
-    console.log(routes);
     return routes;
   }
 };
