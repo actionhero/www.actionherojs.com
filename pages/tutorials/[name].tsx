@@ -74,7 +74,7 @@ export default class ToutorialPage extends Component<Props, State> {
   }
 
   render() {
-    const { name, markdown } = this.props;
+    const { name } = this.props;
     const { sectionHeadings, renderedContent } = this.state;
 
     const aStyle = {
