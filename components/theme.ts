@@ -72,6 +72,7 @@ export default {
     localization: "localization.svg",
     middleware: "api-first-development.svg",
     testing: "flying-man.svg",
+    cache: "api-first-development.svg",
     chat: "chat.svg",
     cli: "ops-tools.svg",
     servers: "internet-of-things.svg",

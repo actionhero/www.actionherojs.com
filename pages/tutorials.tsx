@@ -190,6 +190,28 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
+                      src={`/static/images/${Theme.icons.cache}`}
+                    />
+                  </Col>
+                  <Col md={9}>
+                    <h3>
+                      <Link href="/tutorials/cache">
+                        <a>Cache</a>
+                      </Link>
+                    </h3>
+                    <p>
+                      Actionhero includes a powerful cache system based on
+                      Redis. It can be used to store and retrive data, but also
+                      to create more complext data structures based on queues
+                      and epiring object.
+                    </p>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={3} style={{ textAlign: "center" }}>
+                    <img
+                      style={imageStyle}
                       src={`/static/images/${Theme.icons.chat}`}
                     />
                   </Col>
