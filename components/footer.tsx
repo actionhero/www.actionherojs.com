@@ -39,7 +39,7 @@ export default class extends Component<{}, State> {
             }}
           >
             <Col md={12}>
-              <img src="/static/images/Actionhero-logo-header-wordmark.svg" />
+              <img src="/static/images/actionhero-logo-header-wordmark.svg" />
             </Col>
           </Row>
 

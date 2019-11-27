@@ -82,7 +82,7 @@ export default class extends Component<{}, State> {
                   style={{ paddingTop: 0, marginBottom: 15 }}
                 >
                   <img
-                    src="/static/images/Actionhero-logo-header-wordmark.svg"
+                    src="/static/images/actionhero-logo-header-wordmark.svg"
                     style={{ paddingTop: 14, paddingBottom: 20 }}
                   />
                 </a>
