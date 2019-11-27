@@ -1,11 +1,11 @@
 ## Overview
 
-```js
+```ts
 // A simple Action
 
-const { Action, api } = require("actionhero");
+import { Action } from "actionhero";
 
-module.exports = class MyAction extends Action {
+export class RandomNumber extends Action {
   constructor() {
     super();
     this.name = "randomNumber";
@@ -13,27 +13,29 @@ module.exports = class MyAction extends Action {
     this.outputExample = { randomNumber: 0.1234 };
   }
 
-  async run(data) {
-    data.response.randomNumber = Math.random();
+  async run({ response }) {
+    response.randomNumber = Math.random();
   }
-};
+}
 ```
 
-The core of ActionHero is the Action framework, and **actions** are the basic units of work. All connection types from all servers can use actions. This means that you only need to write an action once, and both HTTP clients and websocket clients can consume it.
+The core of ActionHero is the Action framework, and **actions** are the basic units of work. All connection types from all servers can use actions. This means that you only need to write an action once, and both HTTP clients and websocket clients can consume it!
 
 The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and set the `data.response` (and `data.response.error` when needed) values to build the response to the client.
 
-You can create you own actions by placing them in a `./actions/` folder at the root of your application. You can use the generator with `actionhero generate action --name=myAction`
+You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate action --name=myAction`
 
 You can also define more than one action per file if you would like, and extend classes to share common methods and components (like input parsers).
 
 ```js
-// Compound Action with Shared Inputs//
-const { Action } = require("actionhero");
+// A compound Action with Shared Inputs
+
+import { Action } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor() {
     super();
+
     this.inputs = {
       email: {
         required: true,
@@ -53,14 +55,14 @@ class ValidatedAction extends Action {
   }
 
   passwordValidator(param) {
-    if (param.length < 4) {
-      throw new Error("password should be at least 3 letters long");
+    if (param.length <= 4) {
+      throw new Error("password should be at least 4 letters long");
     }
   }
 }
 
 // the actions
-exports.UserAdd = class UserAdd extends ValidatedAction {
+export class UserAdd extends ValidatedAction {
   constructor() {
     super();
     this.name = "userAdd";
@@ -70,9 +72,9 @@ exports.UserAdd = class UserAdd extends ValidatedAction {
   run(data) {
     // your code here
   }
-};
+}
 
-exports.UserDelete = class UserDelete extends ValidatedAction {
+export class UserDelete extends ValidatedAction {
   constructor() {
     super();
     this.name = "userDelete";
@@ -82,17 +84,17 @@ exports.UserDelete = class UserDelete extends ValidatedAction {
   run(data) {
     // your code here
   }
-};
+}
 ```
 
 ## Versions
 
-ActionHero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality.
+ActionHero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` paramiter.
 
 ```js
-const { Action } = require("./../index.js");
+import { Action } from "actionhero";
 
-exports.ActionVersion1 = class ActionVersion1 extends Action {
+export class ActionVersion1 extends Action {
   constructor() {
     super();
     this.name = "randomNumber";
@@ -107,7 +109,7 @@ exports.ActionVersion1 = class ActionVersion1 extends Action {
   }
 };
 
-exports.ActionVersion2 = class ActionVersion2 extends Action {
+exports class ActionVersion2 extends Action {
   constructor() {
     super();
     this.name = "randomNumber";
@@ -118,17 +120,16 @@ exports.ActionVersion2 = class ActionVersion2 extends Action {
 
   async run({ connection, response }) {
     response.version = 2;
-    response.randomNumber = Math.random();
+    const number = Math.random();
     response.randomNumber = connection.localize([
-      "Your random number is {{randomNumber}}",
-      response
+      "Your random number is {{number}}", { number }
     ]);
   }
 };
 ```
 
 - actions optionally have the `this.version` attribute, which defaults to `1`.
-- a reserved param, `apiVersion` is used to directly specify the version of an action a client may request.
+- a reserved param, `apiVersion` is used to directly specify the version of an action a client may request. You will likely want to check this in your `routes` file
 - if a client doesn't specify an `apiVersion`, they will be directed to the highest numerical version of that action.
 
 You can optionally create routes to handle your API versioning:
@@ -139,24 +140,22 @@ _As a note, if a client accessing ActionHero via routes does not provide an apiV
 exports.routes = {
   all: [
     // creates routes like \`/api/myAction/1/\` and \`/api/myAction/2/\`
-    // will also default \`/api/myAction\` to the latest version
     { path: "/myAction/:apiVersion", action: "myAction" },
 
-    // creates routes like \`/api/1/myAction/\` and \`/api/2/myAction/\`
-    // will also default \`/api/myAction\` to the latest version
-    { path: "/:apiVersion/myAction", action: "myAction" }
+    // creates routes like \`/api/v1/myAction/\` and \`/api/v2/myAction/\`
+    { path: "/v:apiVersion/myAction", action: "myAction" }
   ]
 };
 ```
 
-We go into more detail about routes when discussing the [web server](tutorial-web-server.html)
+We go into more detail about routes when discussing the [web server](/tutorials/web-server)
 
 ## Options
 
 The complete set of options an action can have are:
 
 ```js
-const {Action, api} = require('actionhero')
+import { Action } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor () {
@@ -206,7 +205,7 @@ class ValidatedAction extends Action {
     // default: true
     this.matchExtensionMimeType = true
 
-    // should this action appear within \`api.documentation.documentation\`
+    // should this action appear within \`api.documentation\`
     // default: true
     this.toDocument = true
 
@@ -217,8 +216,6 @@ class ValidatedAction extends Action {
   }
 }
 ```
-
-Note that for many of these, you can define them as a scalar in the constructor or as a method which returns the proper response.
 
 ## Inputs
 
@@ -283,7 +280,7 @@ The properties of an input are:
   - accept `object` similar to regular input
   - nested input also have properties: `required`, `formatter`, `default` and `validator`
 
-You can define `api.config.general.missingParamChecks = [null, '', undefined]` to choose explicitly how you want un-set params to be handled in your actions. For example, if you want to allow explicit `null` values in a JSON payload but not `undefined`, you can now opt-in to that behavior. This is what `action.inputs.x.required = true` will check against.</p>
+You can define `config.general.missingParamChecks = [null, '', undefined]` to choose explicitly how you want un-set params to be handled in your actions. For example, if you want to allow explicit `null` values in a JSON payload but not `undefined`, you can now opt-in to that behavior. This is what `action.inputs.x.required = true` will check against.</p>
 
 Since all properties of an input are optional, the smallest possible definition of an input is: `name : {}`. However, you should usually specify that an input is required (or not), ie: `{`name: {required: false}`}`.</p>
 
@@ -335,17 +332,17 @@ inputs = {
     schema: {
       country: {
         required: true,
-        default: 'USA'
+        default: "USA"
       },
       state: { required: false },
       city: {
         required: true,
-        formatter: (val) => \`City:\${val}\`,
-        validator: (val) => val.length > 10,
+        formatter: val => `City:\${val}`,
+        validator: val => val.length > 10
       }
     }
   }
-}
+};
 ```
 
 ## The Data Object
@@ -372,7 +369,7 @@ You can also modify properties of the connection by accessing `data.connection`,
 
 If you don't want your action to respond to the client, or you have already sent data to the client (perhaps you already rendered a file to them or sent an error HTTP header), you can set `data.toRender = false;`
 
-If you are certain that your action is only going to be handled by a web server, then a convenience method has been provided to you via `data.connection.setHeader()`. This function is a proxy to the <a href='https://nodejs.org/api/http.html#http_response_setheader_name_value'>Node HTTP Response setHeader</a> function and allows you to set response headers without having to drill into the `data.connection.rawConnection` object. Please be aware, the `data.connection.setHeader()` function will only be available if your action is being handled by a web server. Other server types will throw an exception. See [Servers: Customizing the Connection](tutorial-servers.html) for more details.
+If you are certain that your action is only going to be handled by a web server, then a convenience method has been provided to you via `data.connection.setHeader()`. This function is a proxy to the <a href='https://nodejs.org/api/http.html#http_response_setheader_name_value'>Node HTTP Response setHeader</a> function and allows you to set response headers without having to drill into the `data.connection.rawConnection` object. Please be aware, the `data.connection.setHeader()` function will only be available if your action is being handled by a web server. Other server types will throw an exception. See [Servers: Customizing the Connection](/tutorial/servers) for more details.
 
 Similarly to the above, the web server also exposes `data.connection.setStatusCode()`, again only for actions in use by the web server. This can be used as a helper to set the HTTP responses' status code, ie: 404, 200, etc.
 
@@ -382,11 +379,11 @@ Finally, if your action is again only for the web server, you can send a string 
 
 You can create middlware which would apply to the connection both before and after an action. Middleware can be either global (applied to all actions) or local, specified in each action via `action.middleware = []`. Supply the `names` of any middleware you want to use.
 
-You can [learn more about middleware here](tutorial-middleware.html).
+You can [learn more about middleware here](/tutorials/middleware).
 
 ## Notes
 
-- Actions' run method are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
+- Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
 - If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client in `response.error`. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
 - The metadata `outputExample` is used in reflexive and self-documenting actions in the API, available via the `documentation` verb (and showDocumenation action).
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `api.config.general.simultaneousActions`
@@ -394,4 +391,4 @@ You can [learn more about middleware here](tutorial-middleware.html).
 - `matchExtensionMimeType` is currently only used by the `web` server, and it indicates that if this action is successfully called by a client with `connection.extension` set, the headers of the response should be changed to match that file type. This is useful when creating actions that download files.
 - ActionHero strives to keep the `data.connection` object uniform among various client types, and more importantly, present `data.params` in a homogeneous way to actions. You can inspect `data.connection.type` to learn more about the connection. The gory details of the connection (which vary on its type) are stored in `data.connection.rawConnection` which will contain the websocket, tcp connection, etc. For web clients, `{`data.connection.rawConnection = {req: req, res: res}`}` for example.
 
-[You can learn more about handling HTTP verbs and file uploads here](tutorial-web-server.html) and [TCP Clients](tutorial-socket-server.html) and [Web-Socket Clients](tutorial-websocket-server.html).
+[You can learn more about handling HTTP verbs and file uploads here](/tutorials/web-server) and [Web-Socket Clients](/tutorials/websocket-server).
