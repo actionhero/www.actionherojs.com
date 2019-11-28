@@ -2,26 +2,30 @@
 
 ## Why Typescript?
 
-Actionhero is moving to [Typescript](https://www.typescriptlang.org). Typescript is a language that `compiles` to javascript that makes the developer experince much nicer. It includes features like type checking, sharing inerfaces and modules, and generally other features found to help you write code. For actionhero, that means we can not provide:
+Actionhero is moving to [Typescript](https://www.typescriptlang.org).
 
-**Type Hinting**
+Typescript is a language that `compiles` to javascript that makes the developer experince much nicer. It includes features like type checking, sharing inerfaces and modules, and generally other "quality of life" features found in other languages to help you write better javascript code.
+
+For Actionhero, that means we can not provide:
+
+<h4>Type Hinting</h4>
 
 <img style="width:90%" src='/static/images/tutorials/ts-actions.png' />
 
-**Module definitions**
+<h4>Module definitions</h4>
 
 <img style="width:90%" src='/static/images/tutorials/ts-cache.png' />
 
-**Autotmatic Documentaion directly from the code**
+<h4>Autotmatic Documentaion directly from the code</h4>
 
 Visit [docs.actionherojs.com](https://docs.actionherojs.com/) to see this live!
 <img style="width:90%" src='/static/images/tutorials/docs.png' />
 
-And an overal more pelasant developer experince!
+...and an overal more pelasant developer experince!
 
 **Note**: You do not have to use Typescript to use Actionhero! Other than some layout chagnes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javavascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generartors will favor Typescript projects moving forward, creating Typescript files
 
-For now, the `latest` Actionhero tag on NPM is still v20, the last javascript version of Actionhero. You can start using the Typescript version of Actionhero today by:
+For now, the `latest` Actionhero tag on NPM is still v20, the last javascript version of Actionhero. You can start using the Typescript version of Actionhero today by opting into the `next` tag:
 
 ```bash
 npm install actionhero@next
