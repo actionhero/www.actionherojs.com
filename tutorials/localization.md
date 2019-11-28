@@ -16,7 +16,7 @@ Since every Actionhero implementation is unique, we do not ship with a "guess" a
 For example, I may have an initializer in my project like this:
 
 ```ts
-const { Initializer } = require("Actionhero");
+const { Initializer } = require("actionhero");
 
 export class DetermineConnectionLocale extends Initializer {
   constructor() {
@@ -55,7 +55,7 @@ export class DetermineConnectionLocale extends Initializer {
 To tell i18n to use this method with a new connection, set `config.i18n.determineConnectionLocale = 'api.customLocalization.lookup'`. Now you can localize responses in actions, based on which hostname a connection uses.
 
 ```ts
-import { Action } from "Actionhero";
+import { Action } from "actionhero";
 
 export class RandomNumber extends Action {
   constructor() {

@@ -26,26 +26,26 @@ The only change to take note of is that you must now ensure that the working dir
 
 - in `config/tasks.js` `add api.config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
 - in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/Actionhero/Actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/web.js) for more information
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/web.js) for more information
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v20.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v20.0.0)**
 
 - In `config/api.js` add `api.config.general.paths.test = [path.join(__dirname, '/../__tests__')]` so that when you generate a new action or task, the related test file can be generated as well.
 - However you run Actionhero, be sure to `cd` into the root directory of the project before starting the server.
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v19.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v19.0.0)**
 
 - in `config/tasks.js` `add api.config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
 - in `config/servers/websocket.js` `add api.config.servers.websocket.client.cookieKey = api.config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/Actionhero/Actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/Actionhero/Actionhero/blob/master/config/servers/web.js) for more information
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/master/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/master/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/master/config/servers/web.js) for more information
 
 ## Upgrading from v17 to v18
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v18.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v18.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -60,7 +60,7 @@ There are _many_ changes to the APIs Actionhero exposes. You can read up on the 
   - The `run` method only has one argument now, `data` and becomes a `async` method. `api` can be required globally to your file.
 
 ```js
-const { Action, api } = require("Actionhero");
+const { Action, api } = require("actionhero");
 
 module.exports = class MyAction extends Action {
   constructor() {
@@ -81,7 +81,7 @@ module.exports = class MyAction extends Action {
   - The `run` method only has one argument now, `data` and becomes a `async` method. `api` can be required globally to your file.
 
 ```js
-const { api, Task } = require("Actionhero");
+const { api, Task } = require("actionhero");
 
 module.exports = class SendWelcomeMessage extends Task {
   constructor() {
@@ -101,11 +101,11 @@ module.exports = class SendWelcomeMessage extends Task {
 ```
 
 - **Initializers**
-  - Initializers are now ES6 classes, which extend `require('Actionhero').Initializer`.
+  - Initializers are now ES6 classes, which extend `require('actionhero').Initializer`.
   - The `initialize`, `start`, and `stop` methods now have no arguments and become a `async` methods. `api` can be required globally to your file.
 
 ```js
-const { Actionhero, api } = require("Actionhero");
+const { Actionhero, api } = require("actionhero");
 
 module.exports = class StuffInit extends Actionhero.Initializer {
   constructor() {

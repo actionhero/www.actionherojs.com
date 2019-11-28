@@ -4,12 +4,12 @@ In Actionhero we have introduced a modular server system which allows you to cre
 
 In Actionhero, the goal of each server is to ingest a specific type of connection and transform each client into a generic `connection` object which can be operated on by the rest of Actionhero. To help with this, all servers extend `Actionhero.Server` and fill in the required methods.
 
-To get started, you can use the `Actionhero generate server --name=myServer`. This will generate a template server which looks like the below.
+To get started, you can use the `actionhero generate server --name=myServer`. This will generate a template server which looks like the below.
 
 Like initializers, the `start()` and `stop()` methods will be called when the server is to boot up in Actionhero's lifecycle, but before any clients are permitted into the system. Here is where you should actually initialize your server (IE: `https.createServer.listen`, etc).
 
 ```ts
-import { Server } from "Actionhero";
+import { Server } from "actionhero";
 
 module.exports = class MyServer extends Server {
   constructor() {

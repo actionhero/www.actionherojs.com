@@ -3,7 +3,7 @@
 ```ts
 // A simple Action
 
-import { Action } from "Actionhero";
+import { Action } from "actionhero";
 
 export class RandomNumber extends Action {
   constructor() {
@@ -23,14 +23,14 @@ The core of Actionhero is the Action framework, and **actions** are the basic un
 
 The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and set the `data.response` (and `data.response.error` when needed) values to build the response to the client.
 
-You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `Actionhero generate action --name=myAction`
+You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate action --name=myAction`
 
 You can also define more than one action per file if you would like, and extend classes to share common methods and components (like input parsers).
 
 ```js
 // A compound Action with Shared Inputs
 
-import { Action } from "Actionhero";
+import { Action } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor() {
@@ -92,7 +92,7 @@ export class UserDelete extends ValidatedAction {
 Actionhero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` paramiter.
 
 ```js
-import { Action } from "Actionhero";
+import { Action } from "actionhero";
 
 export class ActionVersion1 extends Action {
   constructor() {
@@ -155,7 +155,7 @@ We go into more detail about routes when discussing the [web server](/tutorials/
 The complete set of options an action can have are:
 
 ```js
-import { Action } from "Actionhero";
+import { Action } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor () {

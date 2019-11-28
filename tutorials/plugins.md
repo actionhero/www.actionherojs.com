@@ -22,7 +22,7 @@ Plugins are loaded after all local Actionhero project files, but initializers fo
 | - package.json
 ```
 
-To create a plugin, create a project with the above structure via `Actionhero generate plugin`. Note that `Actionhero` should be a `peerDependnacy` within your plugin, with the proper version.
+To create a plugin, create a project with the above structure via `actionhero generate plugin`. Note that `actionhero` should be a `peerDependnacy` within your plugin, with the proper version.
 
 This structure will allow elements to be loaded into Actionhero (we search `/actions` for actions, `/tasks` for tasks, etc)
 
@@ -54,7 +54,7 @@ return {
 
 ## Testing
 
-This new plugin structure also makes testing plugins much easier, as you can boot up an Actionhero server from within your plugin (if `Actionhero` is a devDependancy) with the following:
+This new plugin structure also makes testing plugins much easier, as you can boot up an Actionhero server from within your plugin (if `actionhero` is a devDependancy) with the following:
 
 ```js
 const path = require("path");
@@ -62,10 +62,11 @@ process.env.PROJECT_ROOT = path.join(
   __dirname,
   "..",
   "node_modules",
-  "Actionhero"
+  "actionhero"
 );
-const Actionhero = require("Actionhero");
-const Actionhero = new Actionhero.Process();
+
+const actionhero = require("actionhero");
+const Actionhero = new actionhero.Process();
 let api;
 
 describe("My Plugin", () => {

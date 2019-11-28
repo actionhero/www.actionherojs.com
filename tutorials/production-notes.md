@@ -75,7 +75,7 @@ You can set a few environment variables to affect how Actionhero runs:
 
 When deploying Actionhero, you will probably have more than 1 process. You can use the cluster manager to keep an eye on the workers and manage them
 
-- Start the cluster with 2 workers: `Actionhero start cluster --workers=2`
+- Start the cluster with 2 workers: `actionhero start cluster --workers=2`
 
 When deploying new code, you can gracefully restart your workers by sending the `USR2` signal to the cluster manager to signal a reload to all workers. You don't need to start and stop the cluster-master. This allows for 0-downtime deployments.
 
@@ -93,9 +93,9 @@ Of course, not going in to swapping memory is more important than utilizing all 
 
 Actionhero will write its pid to a pidfile in the normal unix way. The path for the pidfile is set in `config/api.js` with `config.general.paths.pid`.
 
-Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/Actionhero/Actionhero/blob/master/initializers/pids.js) and [here](https://github.com/Actionhero/Actionhero/blob/master/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/Actionhero-192.168.0.1` in which would be a single line containing the process' pid.
+Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/Actionhero/Actionhero/blob/master/initializers/pids.js) and [here](https://github.com/actionhero/actionhero/blob/master/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
 
-When running the cluster, the cluster process first writes his own pidfile to `process.cwd() + './pids/cluster_pidfile'`. Then, every worker the cluster master creates will have a pid like `Actionhero-worker-1` in the location defined by `config/api.js`.
+When running the cluster, the cluster process first writes his own pidfile to `process.cwd() + './pids/cluster_pidfile'`. Then, every worker the cluster master creates will have a pid like `actionhero-worker-1` in the location defined by `config/api.js`.
 
 To send a signal to the cluster master process to reboot all its workers (`USR2`), you can cat the pidfile (bash): `kill -s USR2 'cat /path/to/pids/cluster_pidfile'`
 
@@ -129,7 +129,7 @@ web:    SCHEDULER=false \\
         ENABLE_WEB_SERVER=true  \\
         ENABLE_TCP_SERVER=true  \\
         ENABLE_WEBSOCKET_SERVER=true  \\
-        ./node_modules/.bin/Actionhero start
+        ./node_modules/.bin/actionhero start
 
 worker: SCHEDULER=true  \\
         MIN_TASK_PROCESSORS=5 \\
@@ -137,7 +137,7 @@ worker: SCHEDULER=true  \\
         ENABLE_WEB_SERVER=false \\
         ENABLE_TCP_SERVER=false \\
         ENABLE_WEBSOCKET_SERVER=false \\
-        ./node_modules/.bin/Actionhero start
+        ./node_modules/.bin/actionhero start
 ```
 
 Be sure **not** to use NPM in your `Procfile` definitions. In many deployment scenarios, NPM will not properly pass signals to the Actionhero process and it will be impossible to signal a graceful shutdown. Examples of this behavior can be found [here](https://github.com/flynn/flynn/issues/3601) and [here](https://github.com/npm/npm/issues/4603)
@@ -168,7 +168,7 @@ exports.production = {
   servers: {
     web: function(api) {
       return {
-        port: "/home/USER/www/APP/current/tmp/sockets/Actionhero.sock",
+        port: "/home/USER/www/APP/current/tmp/sockets/actionhero.sock",
         bindIP: null,
         metadataOptions: {
           serverInformation: false,
@@ -238,7 +238,7 @@ http {
             proxy_set_header Connection "Upgrade";
             proxy_set_header Host $host;
 
-            proxy_pass http://unix:/home/XXUSERXX/www/XXAPPLICATIONXX/shared/tmp/sockets/Actionhero.sock;
+            proxy_pass http://unix:/home/XXUSERXX/www/XXAPPLICATIONXX/shared/tmp/sockets/actionhero.sock;
         }
 
         location / {
@@ -247,7 +247,7 @@ http {
             proxy_cache_bypass $http_pragma $http_authorization;
             proxy_no_cache $http_pragma $http_authorization;
 
-            proxy_pass http://unix:/home/XXUSERXX/www/XXAPPLICATIONXX/shared/tmp/sockets/Actionhero.sock;
+            proxy_pass http://unix:/home/XXUSERXX/www/XXAPPLICATIONXX/shared/tmp/sockets/actionhero.sock;
         }
     }
 
@@ -356,8 +356,8 @@ Use redis-cluster or redis-sentinel. The [`ioredis`](https://github.com/luin/ior
 ### Crashing and Safety
 
 ```bash
-> ./node_modules./bin/Actionhero start cluster --workers 1
-2016-04-11T18:51:32.891Z - info: Actionhero >> start cluster
+> ./node_modules./bin/actionhero start cluster --workers 1
+2016-04-11T18:51:32.891Z - info: actionhero >> start cluster
 2016-04-11T18:51:32.904Z - notice:  - STARTING CLUSTER -
 2016-04-11T18:51:32.905Z - notice: pid: 43315
 2016-04-11T18:51:32.911Z - info: starting worker #1
@@ -366,16 +366,16 @@ Use redis-cluster or redis-sentinel. The [`ioredis`](https://github.com/luin/ior
 2016-04-11T18:51:33.985Z - notice: cluster equilibrium state reached with 1 workers
 2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]: uncaught exception => yay is not defined
 2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:    ReferenceError: yay is not defined
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at Object.exports.action.run (/app/Actionhero/actions/bad.js:14:5)
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/Actionhero/initializers/ActionProcessor.js:268:31
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/Actionhero/initializers/ActionProcessor.js:149:9
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/Actionhero/node_modules/async/lib/async.js:726:13
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/Actionhero/node_modules/async/lib/async.js:52:16
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at iterate (/app/Actionhero/node_modules/async/lib/async.js:260:24)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at async.forEachOfSeries.async.eachOfSeries (/app/Actionhero/node_modules/async/lib/async.js:281:9)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at _parallel (/app/Actionhero/node_modules/async/lib/async.js:717:9)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at Object.async.series (/app/Actionhero/node_modules/async/lib/async.js:739:9)
-2016-04-11T18:51:44.777Z - alert: [worker #1 (43316)]:        at api.ActionProcessor.preProcessAction (/app/Actionhero/initializers/ActionProcessor.js:148:13)
+2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at Object.exports.action.run (/app/actionhero/actions/bad.js:14:5)
+2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/actionhero/initializers/ActionProcessor.js:268:31
+2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/actionhero/initializers/ActionProcessor.js:149:9
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/actionhero/node_modules/async/lib/async.js:726:13
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/actionhero/node_modules/async/lib/async.js:52:16
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at iterate (/app/actionhero/node_modules/async/lib/async.js:260:24)
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at async.forEachOfSeries.async.eachOfSeries (/app/actionhero/node_modules/async/lib/async.js:281:9)
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at _parallel (/app/actionhero/node_modules/async/lib/async.js:717:9)
+2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at Object.async.series (/app/actionhero/node_modules/async/lib/async.js:739:9)
+2016-04-11T18:51:44.777Z - alert: [worker #1 (43316)]:        at api.ActionProcessor.preProcessAction (/app/actionhero/initializers/ActionProcessor.js:148:13)
 2016-04-11T18:51:44.777Z - notice: cluster equilibrium state reached with 1 workers
 2016-04-11T18:51:44.785Z - info: [worker #1 (43316)]: exited
 2016-04-11T18:51:44.785Z - info: starting worker #1
@@ -400,7 +400,7 @@ Always remember to sanitize any input for SQL injection, etc. The best way to de
 
 Remember that you can restrict actions to specific server types. Perhaps only a web POST request should be able to login, and not a websocket client. You can control application flow this way.
 
-Crafting [authentication middleware is not that hard](https://github.com/Actionhero/Actionhero-angular-bootstrap-cors-csrf)
+Crafting [authentication middleware is not that hard](https://github.com/actionhero/actionhero-angular-bootstrap-cors-csrf)
 
 ### Tasks
 

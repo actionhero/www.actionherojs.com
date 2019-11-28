@@ -5,21 +5,21 @@ Allow Actionhero developers to create new files in `./bin` which can be run via 
 You can create namespaces for commands by using folders. For example, a file in `./bin/redis/keys` would be run via `npx Actionhero redis keys`
 
 ```ts
-import { api, log, CLI } from "Actionhero";
+import { api, log, CLI } from "actionhero";
 
 export class RedisKeys extends CLI {
   constructor() {
     super();
     this.name = "redis keys";
     this.description = "I list all the keys in redis";
-    this.example = "Actionhero keys --prefix Actionhero";
+    this.example = "actionhero keys --prefix actionhero";
   }
 
   inputs() {
     return {
       prefix: {
         required: true,
-        default: "Actionhero",
+        default: "actionhero",
         note: "the redis prefix for searching keys"
       }
     };
@@ -37,7 +37,7 @@ export class RedisKeys extends CLI {
 
 ## Syntax
 
-Actionhero CLI commands have:
+actionhero CLI commands have:
 
 - name
 - description
@@ -49,14 +49,14 @@ Inputs for CLI commands have:
 - default (string only)
 - note
 
-These are sourced automatically by `Actionhero help`, and the example above would return:
+These are sourced automatically by `actionhero help`, and the example above would return:
 
 ```bash
 * redis keys
   description: I list all the keys in redis
-  example: Actionhero keys --prefix Actionhero
+  example: actionhero keys --prefix actionhero
   inputs:
     [prefix] (optional)
       note: the redis prefix for searching keys
-      default: Actionhero
+      default: actionhero
 ```

@@ -1,6 +1,6 @@
 ## Overview
 
-Tasks are background jobs meant to be run separately from a client's request. They can be started by an action or by the server itself. With Actionhero, there is no need to run a separate daemon to process these jobs. Actionhero uses the [node-resque](https://github.com/Actionhero/node-resque) package to store and process tasks in a way compatible with the [resque](https://github.com/resque/resque) ecosystem.
+Tasks are background jobs meant to be run separately from a client's request. They can be started by an action or by the server itself. With Actionhero, there is no need to run a separate daemon to process these jobs. Actionhero uses the [node-resque](https://github.com/actionhero/node-resque) package to store and process tasks in a way compatible with the [resque](https://github.com/resque/resque) ecosystem.
 
 There are 3 types of tasks Actionhero can process: `normal`, `delayed`, and `periodic`.
 
@@ -14,7 +14,7 @@ There are 3 types of tasks Actionhero can process: `normal`, `delayed`, and `per
 Here are examples of the 3 ways to programmatically enqueue a task:
 
 ```ts
-improt { task } from 'Actionhero'
+improt { task } from 'actionhero'
 
 // Enqueue the task now, and process it ASAP
 await task.enqueue(
@@ -124,7 +124,7 @@ An few ways to define a task:
 
 ```ts
 // define a single task in a file
-import { Task } from "Actionhero";
+import { Task } from "actionhero";
 import { sendWelcomeEamail } from "./../modules/email";
 
 export class SendWelcomeMessage extends Task {
@@ -147,7 +147,7 @@ export class SendWelcomeMessage extends Task {
 You can also define more than one task in a file, exporting each with a separate `exports` directive, ie:.
 
 ```ts
-import { Task } from "Actionhero";
+import { Task } from "actionhero";
 
 export class SayHello extends Task {
   constructor() {
@@ -197,7 +197,7 @@ Output of the above:
 2013-11-28 15:21:56 - debug: re-enqueued reccurent job sayGoodbye
 ```
 
-You can create you own tasks by placing them in a `./tasks/` directory at the root of your application. You can use the generator `Actionhero generate task --name=myTask`. Like actions, all tasks have some required metadata:
+You can create you own tasks by placing them in a `./tasks/` directory at the root of your application. You can use the generator `actionhero generate task --name=myTask`. Like actions, all tasks have some required metadata:
 
 - `task.name`: The unique name of your task
 - `task.description`: a description
@@ -221,7 +221,7 @@ Assuming you are running Actionhero across multiple machines, you will need to e
 // file: initializers/node_schedule.js
 
 import * as schedule from "node-schedule";
-import { api, task, Initializer } from "Actionhero";
+import { api, task, Initializer } from "actionhero";
 
 export class Scheduler extends Initializer {
   constructor() {
@@ -269,7 +269,7 @@ Because there are no 'heartbeats' in resque, it is impossible for the applicatio
 You can handle this with an own initializer and the following logic:
 
 ```ts
-import { log, task } from "Actionhero";
+import { log, task } from "actionhero";
 
 const removeStuckWorkersOlderThan = 10000; // 10000ms
 
@@ -292,7 +292,7 @@ Taks are expected to be as lean as possible, with most of thier logic living in 
 Actionhero ships with a method to help you check if a task is enqueued, `api.specHelper.findEnqueuedTasks(taskName)`:
 
 ```ts
-import { api, task } from "Actionhero";
+import { api, task } from "actionhero";
 
 describe("task testing", () => {
   beforeEach(async () => {

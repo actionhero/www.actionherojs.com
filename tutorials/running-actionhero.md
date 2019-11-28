@@ -185,7 +185,7 @@ In the example above, we are defining `config.namespace.enabled` and `config.nam
 While **NOT** encouraged, you can always instantiate an Actionhero process yourself. Perhaps you wish to combine Actionhero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
 
 ```ts
-import { Process } from "Actionhero";
+import { Process } from "actionhero";
 const Actionhero = new Process();
 
 const sleep = (time = 5000) => {
@@ -211,17 +211,17 @@ api.log(" >> Stopped!");
 process.exit();
 ```
 
-Feel free to look at the source of `./node_modules/Actionhero/bin/methods/start` to see how the main Actionhero server is implemented for more information.
+Feel free to look at the source of `./node_modules/actionhero/bin/methods/start` to see how the main Actionhero server is implemented for more information.
 
-You can programmatically control an Actionhero server with `Actionhero.start(params)`, `Actionhero.stop()` and `Actionhero.restart()`
+You can programmatically control an Actionhero server with `actionhero.start(params)`, `actionhero.stop()` and `actionhero.restart()`
 
 From within Actionhero itself (actions, initializers, etc), you can use `api.commands.start`, `api.commands.stop`, and `api.commands.restart` to control the server.
 
 ## Signals
 
 ```bash
-> npx Actionhero start cluster --workers=2
-info: Actionhero >> start cluster
+> npx actionhero start cluster --workers=2
+info: actionhero >> start cluster
 notice:  - STARTING CLUSTER -
 notice: pid: 41382
 info: starting worker #1
@@ -277,10 +277,10 @@ All signals should be sent to the cluster master process. You can still signal t
 
 ## Shutting Down
 
-When using `Actionhero start` or `Actionhero start cluster`, when you signal Actionhero to stop via the signals above (or from within your running application via `api.commands.stop()`), Actionhero will attempt to gracefully shutdown. This will include running any initializer's `stop()` method. This will close any open servers, and attempt to allow any running tasks to complete.
+When using `actionhero start` or `actionhero start cluster`, when you signal Actionhero to stop via the signals above (or from within your running application via `api.commands.stop()`), Actionhero will attempt to gracefully shutdown. This will include running any initializer's `stop()` method. This will close any open servers, and attempt to allow any running tasks to complete.
 
-Because things sometimes go wrong, `Actionhero start` and `Actionhero start cluster` also have a "emergency stop" timeout. This defaults to 30 seconds, and is configurable via the `ACTIONHERO_SHUTDOWN_TIMEOUT` environment variable. Be sure that your tasks and actions can complete within that window, or else raise that shutdown limit.
+Because things sometimes go wrong, `actionhero start` and `actionhero start cluster` also have a "emergency stop" timeout. This defaults to 30 seconds, and is configurable via the `ACTIONHERO_SHUTDOWN_TIMEOUT` environment variable. Be sure that your tasks and actions can complete within that window, or else raise that shutdown limit.
 
 ## Windows Specific Notes
 
-- Sometimes Actionhero may require a git-based module (rather than a NPM module). You will need to have git installed. Depending on how you installed git, it may not be available to the node shell. Be sure to have also installed references to git. You can also run node/npm install from the git shell.\* Sometimes, npm will not install the Actionhero binary @ `/node_modules/.bin/Actionhero`, but rather it will attempt to create a windows executable and wrapper. You can launch Actionhero directly with `./node_modules/Actionhero/bin/Actionhero`
+- Sometimes Actionhero may require a git-based module (rather than a NPM module). You will need to have git installed. Depending on how you installed git, it may not be available to the node shell. Be sure to have also installed references to git. You can also run node/npm install from the git shell.\* Sometimes, npm will not install the Actionhero binary @ `/node_modules/.bin/actionhero`, but rather it will attempt to create a windows executable and wrapper. You can launch Actionhero directly with `./node_modules/actionhero/bin/actionhero`

@@ -15,7 +15,7 @@ Actionhero includes a powerful cache system based on Redis. It can be used to st
 An Action:
 
 ```ts
-import { cache, Action } from "Actionhero";
+import { cache, Action } from "actionhero";
 
 export class CacheTest extends Action {
   constructor() {
