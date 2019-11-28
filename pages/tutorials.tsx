@@ -331,12 +331,12 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src={`/static/images/${Theme.icons["running-Actionhero"]}`}
+                      src={`/static/images/${Theme.icons["running-actionhero"]}`}
                     />
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/running-Actionhero">
+                      <Link href="/tutorials/running-actionhero">
                         <a>Running Actionhero</a>
                       </Link>
                     </h3>

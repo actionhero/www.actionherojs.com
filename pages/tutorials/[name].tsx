@@ -65,8 +65,11 @@ export default class ToutorialPage extends Component<Props, State> {
   }
 
   measureContentHeight() {
-    const height = document.getElementById("tutorialPageContent").offsetHeight;
-    this.setState({ contentHeight: height });
+    const elememnt = document.getElementById("tutorialPageContent");
+    if (elememnt) {
+      const height = elememnt.offsetHeight;
+      this.setState({ contentHeight: height });
+    }
   }
 
   waypointEnterCallback(id, { previousPosition }) {
@@ -75,10 +78,7 @@ export default class ToutorialPage extends Component<Props, State> {
   }
 
   waypointExitCallback(id) {
-    if (Object.keys(this.state.currentlyVisableSections).length > 1) {
-      this.state.currentlyVisableSections[id] = false;
-    }
-
+    this.state.currentlyVisableSections[id] = false;
     this.highlightSideNav();
   }
 
@@ -113,6 +113,7 @@ export default class ToutorialPage extends Component<Props, State> {
 
           return (
             <Waypoint
+              key={child.key}
               onEnter={args => {
                 this.waypointEnterCallback(stringValue, args);
               }}
@@ -120,7 +121,7 @@ export default class ToutorialPage extends Component<Props, State> {
                 this.waypointExitCallback(stringValue);
               }}
             >
-              <div key={child.key}>
+              <div>
                 <br />
                 <h2 id={stringValue} style={style}>
                   <span style={{ fontWeight: 300, fontSize: 36 }}>{child}</span>
