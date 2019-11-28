@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown/with-html";
 import { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import { Waypoint } from "react-waypoint";
 import DocsPage from "../../components/layouts/docsPage";
 import Code from "./../../components/code";
 import Link from "next/link";
@@ -15,6 +16,8 @@ interface Props {
 interface State {
   sectionHeadings: Array<any>;
   renderedContent: any;
+  currentlyVisableSections: {};
+  contentHeight: number;
 }
 
 export default class ToutorialPage extends Component<Props, State> {
@@ -29,29 +32,76 @@ export default class ToutorialPage extends Component<Props, State> {
 
   constructor(props) {
     super(props);
-
     this.state = {
+      currentlyVisableSections: {},
       sectionHeadings: [],
-      renderedContent: (
-        <ReactMarkdown
-          source={props.markdown}
-          escapeHtml={false}
-          renderers={{
-            code: Code,
-            heading: node => {
-              return this.parseHeading(node);
-            }
-          }}
-        />
-      )
+      renderedContent: "",
+      contentHeight: 0
     };
+  }
+
+  componentDidMount() {
+    this.renderMarkdown();
+    this.measureContentHeight();
+  }
+
+  renderMarkdown() {
+    const renderedContent = (
+      <ReactMarkdown
+        source={this.props.markdown}
+        escapeHtml={false}
+        renderers={{
+          code: Code,
+          heading: node => {
+            return this.parseHeading(node);
+          }
+        }}
+      />
+    );
+
+    this.setState({ renderedContent }, () => {
+      this.measureContentHeight();
+    });
+  }
+
+  measureContentHeight() {
+    const height = document.getElementById("tutorialPageContent").offsetHeight;
+    this.setState({ contentHeight: height });
+  }
+
+  waypointEnterCallback(id, { previousPosition }) {
+    this.state.currentlyVisableSections[id] = true;
+    this.highlightSideNav();
+  }
+
+  waypointExitCallback(id) {
+    if (Object.keys(this.state.currentlyVisableSections).length > 1) {
+      this.state.currentlyVisableSections[id] = false;
+    }
+
+    this.highlightSideNav();
+  }
+
+  highlightSideNav() {
+    Object.keys(this.state.currentlyVisableSections).forEach(section => {
+      const value = this.state.currentlyVisableSections[section];
+      const element = document.getElementById(`sidenav-${section}`);
+
+      if (value) {
+        element.style.color = Theme.colors.red;
+        element.style.fontWeight = "400";
+      } else {
+        element.style.color = Theme.typeography.h2.color;
+        element.style.fontWeight = Theme.typeography.h2.fontWeight.toString();
+      }
+    });
   }
 
   parseHeading({ children }) {
     const { sectionHeadings } = this.state;
 
     return (
-      <>
+      <div>
         {children.map(child => {
           const stringValue = child.props.value;
           if (sectionHeadings.indexOf(stringValue) < 0) {
@@ -59,23 +109,34 @@ export default class ToutorialPage extends Component<Props, State> {
             this.setState({ sectionHeadings });
           }
 
+          const style = Theme.typeography.h2;
+
           return (
-            <div key={child.key}>
-              <br />
-              <h2 id={stringValue} style={Theme.typeography.h2}>
-                <span style={{ fontWeight: 300, fontSize: 36 }}>{child}</span>
-              </h2>
-              <RedLine />
-            </div>
+            <Waypoint
+              onEnter={args => {
+                this.waypointEnterCallback(stringValue, args);
+              }}
+              onLeave={args => {
+                this.waypointExitCallback(stringValue);
+              }}
+            >
+              <div key={child.key}>
+                <br />
+                <h2 id={stringValue} style={style}>
+                  <span style={{ fontWeight: 300, fontSize: 36 }}>{child}</span>
+                </h2>
+                <RedLine />
+              </div>
+            </Waypoint>
           );
         })}
-      </>
+      </div>
     );
   }
 
   render() {
     const { name } = this.props;
-    const { sectionHeadings, renderedContent } = this.state;
+    const { sectionHeadings, renderedContent, contentHeight } = this.state;
 
     const aStyle = {
       fontWeight: 300,
@@ -92,31 +153,34 @@ export default class ToutorialPage extends Component<Props, State> {
           icon: `/static/images/${Theme.icons[name]}`
         }}
       >
-        <Row>
+        <Row id="tutorialPageContent">
           <Col md={9}>{renderedContent}</Col>
           <Col md={3}>
-            <div style={{ paddingTop: 90 }}>
-              <ul
-                style={{
-                  listStyleType: "none",
-                  paddingLeft: 0,
-                  marginLeft: 0
-                }}
-              >
-                {sectionHeadings.map(section => {
-                  return (
-                    <li key={`section-${section}`}>
-                      <a
-                        href={`#${section}`}
-                        className="text-info"
-                        style={aStyle}
-                      >
-                        {section}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+            <div style={{ height: contentHeight }}>
+              <div style={{ paddingTop: 90, position: "sticky", top: 0 }}>
+                <ul
+                  style={{
+                    listStyleType: "none",
+                    paddingLeft: 0,
+                    marginLeft: 0
+                  }}
+                >
+                  {sectionHeadings.map(section => {
+                    return (
+                      <li key={`section-${section}`}>
+                        <a
+                          href={`#${section}`}
+                          className="text-info"
+                          style={aStyle}
+                          id={`sidenav-${section}`}
+                        >
+                          {section}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </Col>
         </Row>
