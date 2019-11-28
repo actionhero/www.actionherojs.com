@@ -26,7 +26,7 @@ export default class extends Component<Props> {
 
     return (
       <div style={{ height: contentHeight }}>
-        <div style={{ paddingTop: 90 }}>
+        <div style={{ paddingTop: 90, position: "sticky", top: 0 }}>
           <ul
             style={{
               listStyleType: "none",

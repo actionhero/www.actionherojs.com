@@ -5,45 +5,32 @@ interface State {
   currentSection?: string;
   sections: { [key: string]: string };
   titleSection: { [key: string]: string };
-  currentlyVisableSections?: Array<string>;
+  currentlyVisableSections?: { [key: string]: boolean };
   links?: Array<any>;
 }
 
 export default class extends Component<{}, State> {
   waypointEnter(id, { previousPosition, currentPosition }) {
     if (!this.state.currentlyVisableSections) {
-      // this.state.currentlyVisableSections = [];
-      this.setState({ currentlyVisableSections: [] });
+      this.setState({ currentlyVisableSections: {} });
     }
 
-    if (this.state.currentlyVisableSections.indexOf(id) < 0) {
-      // going down
-      if (previousPosition === "below" || !previousPosition) {
-        this.state.currentlyVisableSections.push(id);
-      }
-
-      // going up
-      if (previousPosition === "above") {
-        // this.state.currentlyVisableSections = [id].concat(
-        //   this.state.currentlyVisableSections
-        // );
-        this.setState({
-          currentlyVisableSections: [id].concat(
-            this.state.currentlyVisableSections
-          )
-        });
-      }
+    // going down
+    if (previousPosition === "below" || !previousPosition) {
+      this.state.currentlyVisableSections[id] = true;
     }
+
+    // going up
+    if (previousPosition === "above") {
+      this.state.currentlyVisableSections[id] = true;
+    }
+
     this.highlightSection();
   }
 
   waypointExit(id, { previousPosition, currentPosition }) {
-    if (this.state.currentlyVisableSections.indexOf(id)) {
-      this.state.currentlyVisableSections.splice(
-        this.state.currentlyVisableSections.indexOf(id),
-        1
-      );
-    }
+    delete this.state.currentlyVisableSections[id];
+
     this.highlightSection();
   }
 
@@ -53,7 +40,7 @@ export default class extends Component<{}, State> {
     let id;
     while (i < ids.length) {
       id = ids[i];
-      if (this.state.currentlyVisableSections.indexOf(id) >= 0) {
+      if (this.state.currentlyVisableSections[id]) {
         return this.setState({ currentSection: id });
       }
       i++;
@@ -65,8 +52,8 @@ export default class extends Component<{}, State> {
 
     return (
       <DocSection
-        waypointEnter={this.waypointEnter}
-        waypointExit={this.waypointExit}
+        waypointEnter={(id, args) => this.waypointEnter(id, args)}
+        waypointExit={(id, args) => this.waypointExit(id, args)}
         // currentSection={this.state.currentSection}
         id={id}
         parent={this}
