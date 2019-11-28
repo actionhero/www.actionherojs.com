@@ -3,23 +3,23 @@ import { Row, Col } from "react-bootstrap";
 import DocsPage from "../components/layouts/docsPage";
 import Code from "../components/code";
 
-const ExampleBootCode = `> npm start
+const ExampleBootCode = `❯ npm run dev
 
-> Actionhero@12.2.2 start /app/Actionhero
-> node ./bin/Actionhero
+> actionhero@21.0.6 dev /Users/evan/workspace/actionhero/actionhero
+> ts-node-dev --transpile-only ./node_modules/bin/actionhero
 
-info: Actionhero >> start
-2015-11-14 16:01:27 - notice: *** starting Actionhero ***
-2015-11-14 16:01:27 - info: Actionhero member 10.0.1.15 has joined the cluster
-2015-11-14 16:01:27 - notice: pid: 36087
-2015-11-14 16:01:27 - notice: server ID: 10.0.1.15
-2015-11-14 16:01:27 - info: ensuring the existence of the chatRoom: defaultRoom
-2015-11-14 16:01:27 - info: ensuring the existence of the chatRoom: anotherRoom
-2015-11-14 16:01:27 - notice: starting server: web
-2015-11-14 16:01:27 - notice: starting server: websocket
-2015-11-14 16:01:28 - notice: environment: development
-2015-11-14 16:01:28 - notice: *** Server Started @ 2015-11-14 16:01:28 ***
-`;
+Using ts-node version 8.5.2, typescript version 3.7.2
+₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋
+ACTIONHERO COMMAND >> start
+⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻⁻
+192.168.7.33 @ 2019-11-27T23:29:24.255Z - notice: pid: 70962
+192.168.7.33 @ 2019-11-27T23:29:24.256Z - notice: environment: development
+192.168.7.33 @ 2019-11-27T23:29:24.256Z - info: *** Starting ActionHero ***
+192.168.7.33 @ 2019-11-27T23:29:24.258Z - info: actionhero member 192.168.7.33 has joined the cluster
+192.168.7.33 @ 2019-11-27T23:29:24.261Z - notice: Starting server: 'web' @ 0.0.0.0:8080
+192.168.7.33 @ 2019-11-27T23:29:24.262Z - notice: Starting server: 'websocket'
+192.168.7.33 @ 2019-11-27T23:29:24.776Z - notice: server ID: 192.168.7.33
+192.168.7.33 @ 2019-11-27T23:29:24.776Z - notice: *** ActionHero Started ***`;
 
 const InstallInstructions = `# On OSX With Homebrew:
 
@@ -41,39 +41,44 @@ run redis.exe in a bcackground window
 `;
 
 const Quickstart = `mkdir ~/project && cd ~/project
-npm install Actionhero
-npx Actionhero generate
+npm install actionhero
+npx actionhero generate
 npm install
 # ensure redis is running; see above
 npm start`;
 
-const Folders = `# Actionhero Project Layout
-
-|- config
-| -- api.js
-| -- errors.js
-| -- i18n.js
-| -- logger.js
-| -- redis.js
-| -- routes.js
-| -- tasks.js
-| -- servers
-| ---- web.js
-| ---- websocket.js
-| ---- socket.js
-|-- (project settings)
+const Folders = `|
+|- boot.js
+|- src
+|  - config
+|    - (project settings)
 |
-|- actions
-|-- (your actions)
+|  - actions
+|    -- (your actions)
 |
-|- initializers
-|-- (any additional initializers you want)
+|  - initializers
+|    -- (any additional initializers you want)
 |
-|- log
+|  - servers
+|    -- (custom servers you may make)
+|
+|  - tasks
+|    -- (your tasks)
+|
+|  - bin
+|    -- (your custom CLI commands)
+|
+|- locales
+|-- (translation files)
+|
+|- __tests__
+|-- (tests for your API)
+|
+| - log
 |-- (default location for logs)
 |
 |- node_modules
-|-- (your modules, Actionhero should be npm installed in here)
+|-- (your modules, actionhero should be npm installed in here)
 |
 |- pids
 |-- (pidfiles for your running servers)
@@ -81,20 +86,10 @@ const Folders = `# Actionhero Project Layout
 |- public
 |-- (your static assets to be served by /file)
 |
-|- servers
-|-- (custom servers you may make)
-|
-|- tasks
-|-- (your tasks)
-|
-|- locales
-|-- (translation files)
-|
-|- tests
-|-- (tests for your API)
-|
 readme.md
-package.json (be sure to include 'Actionhero':'x')`;
+package.json
+
+`;
 
 export default class GetStartedPage extends DocsPageWithNav {
   constructor(props) {
@@ -206,11 +201,11 @@ export default class GetStartedPage extends DocsPageWithNav {
                   </li>
                   <li>
                     Checkout the Actionhero source{" "}
-                    <code>npm install Actionhero</code>
+                    <code>npm install actionhero</code>
                   </li>
                   <li>
                     Use the generator to create a template project{" "}
-                    <code>npx Actionhero generate</code>
+                    <code>npx actionhero generate</code>
                   </li>
                   <li>
                     <code>npm install</code> to install dependencies
@@ -261,7 +256,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                 <p>
                   If you wish to customize your project's paths, you can do so
                   within <code>config/api.js</code> in the{" "}
-                  <code>api.config.general.paths</code> section.
+                  <code>config.general.paths</code> section.
                 </p>
               </div>
             )}

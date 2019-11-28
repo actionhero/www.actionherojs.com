@@ -1,8 +1,9 @@
 import { Component } from "react";
-import { Grid } from "react-bootstrap";
+import { Grid, Row } from "react-bootstrap";
 import Head from "next/head";
 import Router from "next/router";
 import Theme from "../theme";
+import TopAlert from "../elements/topAlert";
 import Header from "../header";
 import Footer from "../footer";
 
@@ -123,6 +124,7 @@ export default class extends Component {
         </Head>
 
         <Grid fluid style={commmonSetupStyle}>
+          <TopAlert />
           <Header />
         </Grid>
 

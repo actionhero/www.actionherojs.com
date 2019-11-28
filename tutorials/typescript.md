@@ -1,24 +1,66 @@
-# Upgrading an Actionhero Project to Typescript (Actionhero v21)
+**For Actionhero v21.x.x**
 
-## Packages & Package.json
+## Why Typescript?
+
+Actionhero is moving to [Typescript](https://www.typescriptlang.org). Typescript is a language that `compiles` to javascript that makes the developer experince much nicer. It includes features like type checking, sharing inerfaces and modules, and generally other features found to help you write code. For actionhero, that means we can not provide:
+
+**Type Hinting**
+
+<img style="width:90%" src='/static/images/tutorials/ts-actions.png' />
+
+**Module definitions**
+
+<img style="width:90%" src='/static/images/tutorials/ts-cache.png' />
+
+**Autotmatic Documentaion directly from the code**
+
+Visit [docs.actionherojs.com](https://docs.actionherojs.com/) to see this live!
+<img style="width:90%" src='/static/images/tutorials/docs.png' />
+
+And an overal more pelasant developer experince!
+
+**Note**: You do not have to use Typescript to use Actionhero! Other than some layout chagnes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javavascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generartors will favor Typescript projects moving forward, creating Typescript files
+
+For now, the `latest` Actionhero tag on NPM is still v20, the last javascript version of Actionhero. You can start using the Typescript version of Actionhero today by:
+
+```bash
+npm install actionhero@next
+./node_modules/.bin/actionhero generate
+npm install
+npm run dev
+```
+
+Actionhero will create and install everything you need for a pleasant typescript experince, including a `tsconfig` file, node's `@types` and developemnt tools already linked into your `package.json`
+
+---
+
+## Upgrading Packages & Package.json
+
+If you are upgarding an existing Actionhero project, the first thing to do is install the related packages and create new files:
 
 ```sh
-npm install --save Actionhero@next
+npm install --save actionhero@next
 npm install --save-dev @types/node prettier
 npm uninstall standard
 ```
 
+Update your scripts in `package.json`
+
 ```json
-  "scripts": {
-    "postinstall": "yarn run build",
-    "dev": "ts-node ./node_modules/.bin/Actionhero",
-    "start": "Actionhero start",
-    "build": "tsc --declaration",
-    "pretest": "yarn run lint",
-    "lint": "prettier --check src/*/**.ts __tests__/*/**.ts",
-    "test": "jest"
-  }
+"scripts": {
+  "dev": "ts-node-dev --transpile-only ./node_modules/.bin/actionhero start",
+  "start": "actionhero start",
+  "actionhero": "actionhero",
+  "test": "jest",
+  "pretest": "npm run build && npm run lint",
+  "postinstall": "npm run build",
+  "build": "tsc --declaration",
+  "lint": "prettier --check src/*/** __test__/*/**",
+  "pretty": "prettier --write src/*/** __test__/*/**"
+},
 ```
+
+and your `jest` config as well, also in `package.json`
 
 ```json
 "jest": {
@@ -33,7 +75,9 @@ Remove the block about `standard` from your `package.json`. We are switching to 
 
 Remember - you will be using `npm run dev` now when developing locally.
 
-## tsconfig.json
+## Typescript Configuration
+
+Typescript is managed by a `tsconfig.json` file at the root of your project. Create one now with the following content:
 
 ```json
 {
@@ -49,20 +93,114 @@ Remember - you will be using `npm run dev` now when developing locally.
 
 ## Project Structure
 
-- Create the `src` and `dist` directories
-- Move Actions, Tasks, Initializers, Servers, and Config into it
-- Create a new `modules` directory
+1. Create the `src` and `dist` directories
+2. Move Actions, Tasks, Initializers, Servers, and Config into `src`
+3. Create a new `modules` directory
 
-## Change all of your .js files to .ts
+Your project should now look like this:
 
-- All the files you just moved into `src`
-  - Helpful rename command for _nix -> `for f in _.js; do mv -- "$f" "${f%.js}.ts"; done`
-- Change the imports from Require `const {thing} = require('thing')` to Import `import { thing } from 'thing'`
-- Change all the exports from Module `module.exports = ...` or `exports.thing = ...` to Generic `export const thing = ...`
+```
+|
+|- boot.js
+|- src
+|  - config
+|    - (project settings)
+|
+|  - actions
+|    -- (your actions)
+|
+|  - initializers
+|    -- (any additional initializers you want)
+|
+|  - servers
+|    -- (custom servers you may make)
+|
+|  - tasks
+|    -- (your tasks)
+|
+|  - bin
+|    -- (your custom CLI commands)
+|
+|- locales
+|-- (translation files)
+|
+|- __tests__
+|-- (tests for your API)
+|
+| - log
+|-- (default location for logs)
+|
+|- node_modules
+|-- (your modules, actionhero should be npm installed in here)
+|
+|- pids
+|-- (pidfiles for your running servers)
+|
+|- public
+|-- (your static assets to be served by /file)
+|
+readme.md
+package.json
+```
+
+## Update JS to TS syntax
+
+Typescript uses the latest ES6-style syntax for importing and exporting things. You do not need to use babel to get this to work... Typescript does it for you!
+
+- Rename all the files you just moved into `src` from `*.js` to `*.ts` files
+  - A Helpful rename command for unix/osx computers to do this is -> `for f in _.js; do mv -- "$f" "${f%.js}.ts"; done`
+- Change the imports from Require-style `const {thing} = require('thing')` to Import-style `import { thing } from 'thing'`
+- Change all the exports from Module-style `module.exports = ...` or `exports.thing = ...` to ES6-style `export const thing = ...`
+
+For example:
+
+**OLD**
+
+```js
+const { Action } = require("actionhero");
+
+exports.default = class MyAction extends Action {
+  constructor() {
+    super();
+    this.name = "hello";
+    this.description = "an actionhero action";
+    this.outputExample = { message: "hello" };
+  }
+
+  async run({ response }) {
+    response.message = "hello";
+  }
+};
+```
+
+**NEW**
+
+```ts
+import { Action } from "actionhero";
+
+export class MyAction extends Action {
+  constructor() {
+    super();
+    this.name = "hello";
+    this.description = "an actionhero action";
+    this.outputExample = { message: "hello" };
+  }
+
+  async run({ response }) {
+    response.message = "hello";
+  }
+}
+```
 
 ## Config
 
-- Change all of the exports, per above. When exporting the default config, use `DEFAULT` (all caps), ie: `export const DEFAULT = {api: { ... }}`
+The config module (it is a module now!) produces a static object with your configuration. This means that it can be required via `import {config} from 'actionhero'` at any point in your project's life cycle... you no longer need to wait for the initialization process to complete. However, this required some changes:
+
+- The config methods no longer provide `api`, they provide `config`. Only other information from other config files is availalbe to you, nothing from the rest of the application.
+
+To upgrade your config:
+
+- Change all of the exports, per above. When exporting the default config, use `DEFAULT` (all caps), ie: `export const DEFAULT = {config: { ... }}`
 - Update your paths in `config/general` , ie:
 
 ```json
@@ -87,15 +225,19 @@ Don’t forget any paths you might have in other environments (like `test`)!
 
 ## Middleware and Sessions
 
-Now with Typescript, you’ll get an error if you try to set arbitrary properties on the data object either within an action or middleware. We need a place to pass data from the middleware to the action.
+Now with Typescript, you’ll get an error if you try to set arbitrary properties on the data object either within an `Action` or `Middleware`. We need a place to pass data from the middleware to the action.
 
 ```ts
+// in an intializer
+import { action } from "actionhero";
+import { models } from "./../models"; // in your prokect
+
 const authenticatedTeamMemberMiddleware = {
   name: "authenticated-team-member",
   global: false,
   priority: 1000,
   preProcessor: async data => {
-    const { Team, TeamMember } = api.models;
+    const { Team, TeamMember } = models;
     const sessionData = await api.session.load(data.connection);
     if (!sessionData) {
       throw new Error("Please log in to continue");
@@ -114,19 +256,21 @@ const authenticatedTeamMemberMiddleware = {
     }
   }
 };
+
+action.addMiddleware(authenticatedTeamMemberMiddleware);
 ```
 
 ## Modules and Initializers
 
-A number of things have been moved off of the API object to simlify thier use by creating import/export modules you can require directly. In this way, you can get type hinting for various parts of actionhro! This is a logical seperation between `initailziers` - code that excecutes when your server boots up and loads or connects vs `modules` which provide an API for you to use in your code.
+A number of things have been moved out of the API object to simlify thier use by creating import/export modules you can require directly. In this way, you can get type hinting for various parts of actionhro! This is a logical seperation between `initailziers` - code that excecutes when your server boots up and loads or connects vs `modules` which provide an API for you to use in your code.
 
-For example, the `task` system has been split into 2 parts - both a `module` and `initializer`. The initializer continues to load your tasks into `api.tasks.tasks`, but doesn’t expose any methods for you to use. Now, when you wan to call `task.enqueue()` you load it from the module via `import {task} from 'Actionhero'`
+For example, the `task` system has been split into 2 parts - both a `module` and `initializer`. The initializer continues to load your tasks into `api.tasks.tasks`, but doesn’t expose any methods for you to use. Now, when you want to enqueue a task, you call `task.enqueue()` you load it from the module via `import {task} from 'actionhero'`
 
 The `initialize`, `start`, and `stop` methods of your initializers will now be passed `config`. This is helpful in the off chance you are modifying `config` and cannot rely on the static export of that information (this is rare).
 
 **Removed from the API object and are now directly exported by Actionhero as modules:**
 
-ie: `import { log, config } from 'Actionhero'`
+ie: `import { log, config } from 'actionhero'`
 
 - log (the method to write to the logs)
 - config (the config object hash)

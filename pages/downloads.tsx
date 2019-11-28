@@ -5,17 +5,17 @@ import DocSection from "../components/elements/docSection";
 import Code from "../components/code";
 
 const npm = `# mkdir my_project && cd my_project
-npm install Actionhero --save
-npx Actionhero generate
+npm install actionhero --save
+npx actionhero generate
 npm install
 npm start
 `;
 
 const yarn = `# mkdir my_project && cd my_project
-yarn add Actionhero
-yarn run Actionhero generate
+yarn add actionhero
+yarn run actionhero generate
 yarn add ws fakeredis ioredis jest standard
-yarn run Actionhero
+yarn run actionhero
 `;
 
 export default class DownloadPage extends Component {
@@ -64,14 +64,14 @@ export default class DownloadPage extends Component {
           </Col>
           <Col md={12} style={{ textAlign: "center", padding: 50 }}>
             <DocSection title="Github" />
-            <a href="https://github.com/Actionhero/Actionhero">
+            <a href="https://github.com/actionhero/actionhero">
               <img src="/static/images/downloads/github.svg" />
             </a>
             <br />
             <br />
             <p>
               All of Actionhero's source code is hosted on{" "}
-              <a target="_bew" href="https://github.com/Actionhero/Actionhero">
+              <a target="_bew" href="https://github.com/actionhero/actionhero">
                 GitHub
               </a>
               .
@@ -80,10 +80,10 @@ export default class DownloadPage extends Component {
               If you are intersetd in forking or contributing to Actionhero,
               start here!
             </p>
-            <a href="https://github.com/Actionhero/Actionhero">
+            <a href="https://github.com/actionhero/actionhero">
               <div style={{ textAlign: "center" }}>
                 <Alert bsStyle="success">
-                  {"https://github.com/Actionhero/Actionhero"}
+                  {"https://github.com/actionhero/actionhero"}
                 </Alert>
               </div>
             </a>
