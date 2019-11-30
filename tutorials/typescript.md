@@ -6,7 +6,7 @@ Actionhero is moving to [Typescript](https://www.typescriptlang.org).
 
 Typescript is a language that `compiles` to javascript that makes the developer experince much nicer. It includes features like type checking, sharing inerfaces and modules, and generally other "quality of life" features found in other languages to help you write better javascript code.
 
-For Actionhero, that means we can not provide:
+For Actionhero, that means we can now provide:
 
 <h4>Type Hinting</h4>
 
@@ -290,7 +290,7 @@ ie: `import { log, config } from 'actionhero'`
 
 **The API object**
 
-what remains on the API object are truly things about your API - actions, tasks, servers, initializers. And now these elements are very typesafe. **_You can no longer add and remove things randomly to the API object_**. This means that in your project, you should create imports/and exorts directly and share them with your actions and tasks.
+what remains on the API object are truly things about your API - actions, tasks, servers, initializers. And now these elements are very typesafe. **_You can no longer add and remove things randomly to the API object_**. This means that in your project, you should create imports and exports directly and share them with your actions and tasks.
 
 **Polyfill**
 
