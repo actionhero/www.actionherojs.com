@@ -345,6 +345,61 @@ inputs = {
 };
 ```
 
+## Extending the Action class
+
+There may be times that you want add properties to the Action class. A common reason for this is to work with middleware, adding a property to your action that controls how authentication might work, etc. With typescript, adding arbitrary properties to class (interface) will produce an error, as we don't have a type definition for your new property. The way to overcome this is to extend the Action class with your new property.
+
+The example below creates a new class, `AutheticatedAction` which adds a boolean `authenticated` to the action. A global action middleware then checks if the action should be `authenticated`, and if it does, it checks for a password.
+
+```ts
+import { Action, action } from "actionhero";
+
+abstract class AutheticatedAction extends Action {
+  /**
+   * does this action require the user to be logged in?
+   */
+  authenticated: boolean;
+}
+
+action.addMiddleware({
+  name: "Authentication Middleware",
+  global: true,
+  preProcessor({ params, actionTemplate }) {
+    // we have access to the action's template here, which now will contain "authenticated: boolean"
+    if (actionTemplate.authenticated) {
+      if (params.password !== "thePassw0rd") {
+        // it the request does not include the param "password=thePassw0rd", the action will not be run
+        // this is bad authentication strategy, but hopefully serves as a good example
+        throw new Error("bad password");
+      }
+    }
+  }
+});
+
+export class ShowDashboard extends AutheticatedAction {
+  constructor() {
+    super();
+    this.name = "showDashboard";
+    this.description = "I return the authenticated user's dashboard data";
+    // without the AutheticatedAction class, this would throw an error, as "authenticated" is not a property of the class "Action"
+    this.authenticated = true;
+  }
+
+  async run({ response }) {
+    // your logic would be here...
+    response.dashboard = true;
+  }
+}
+
+/**
+ * ❯ curl "http://localhost:8080/api/showDashboard"
+ * { "error": "bad password" }
+ *
+ * ❯ curl "http://localhost:8080/api/showDashboard?password=thePassw0rd"
+ * { "dashboard": true }
+ */
+```
+
 ## The Data Object
 
 The `data` object passed into your action captures the state of the connection at the time the action was started. Middleware preProcessors have already fired, and input formatting and validation has occurred. Here are the properties of the `data` object.
