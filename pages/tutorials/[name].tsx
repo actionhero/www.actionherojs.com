@@ -7,6 +7,7 @@ import Code from "./../../components/code";
 import Link from "next/link";
 import Theme from "./../../components/theme";
 import RedLine from "./../../components/elements/redLine";
+import BigButton from "./../../components/buttons/bigButton";
 
 interface Props {
   markdown: string;
@@ -156,7 +157,7 @@ export default class ToutorialPage extends Component<Props, State> {
       >
         <Row id="tutorialPageContent">
           <Col md={9}>{renderedContent}</Col>
-          <Col md={3}>
+          <Col md={3} className="hidden-xs hidden-sm">
             <div style={{ height: contentHeight }}>
               <div style={{ paddingTop: 90, position: "sticky", top: 0 }}>
                 <ul
@@ -186,13 +187,15 @@ export default class ToutorialPage extends Component<Props, State> {
           </Col>
         </Row>
 
-        <hr />
-        <p>
-          Back to{" "}
-          <Link href="/tutorials">
-            <a>Tutorials</a>
-          </Link>
-        </p>
+        <br />
+
+        <BigButton
+          href="/tutorials"
+          backgroundColor={Theme.colors.red}
+          textColor={Theme.colors.white}
+        >
+          Back to Tutorials
+        </BigButton>
       </DocsPage>
     );
   }
