@@ -27,7 +27,7 @@ module.exports = class MyServer extends Server {
   }
 
   initialize() {
-    this.on("connection", conection => {});
+    this.on("connection", connection => {});
 
     this.on("actionComplete", data => {});
   }

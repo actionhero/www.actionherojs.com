@@ -4,7 +4,7 @@
 
 Actionhero is moving to [Typescript](https://www.typescriptlang.org).
 
-Typescript is a language that `compiles` to javascript that makes the developer experince much nicer. It includes features like type checking, sharing inerfaces and modules, and generally other "quality of life" features found in other languages to help you write better javascript code.
+Typescript is a language that `compiles` to javascript that makes the developer experience much nicer. It includes features like type checking, sharing interfaces and modules, and generally other "quality of life" features found in other languages to help you write better javascript code.
 
 For Actionhero, that means we can now provide:
 
@@ -16,14 +16,14 @@ For Actionhero, that means we can now provide:
 
 <img style="width:90%" src='/static/images/tutorials/ts-cache.png' />
 
-<h4>Autotmatic Documentaion directly from the code</h4>
+<h4>Automatic Documentation directly from the code</h4>
 
 Visit [docs.actionherojs.com](https://docs.actionherojs.com/) to see this live!
 <img style="width:90%" src='/static/images/tutorials/docs.png' />
 
 ...and an overall more pleasant developer experience!
 
-**Note**: You do not have to use Typescript to use Actionhero! Other than some layout chagnes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javavascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generartors will favor Typescript projects moving forward, creating Typescript files
+**Note**: You do not have to use Typescript to use Actionhero! Other than some layout changes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generators will favor Typescript projects moving forward, creating Typescript files
 
 For now, the `latest` Actionhero tag on NPM is still v20, the last javascript version of Actionhero. You can start using the Typescript version of Actionhero today by opting into the `next` tag:
 
@@ -34,7 +34,7 @@ npm install
 npm run dev
 ```
 
-Actionhero will create and install everything you need for a pleasant typescript experince, including a `tsconfig` file, node's `@types` and developemnt tools already linked into your `package.json`
+Actionhero will create and install everything you need for a pleasant typescript experience, including a `tsconfig` file, node's `@types` and development tools already linked into your `package.json`
 
 ---
 
@@ -200,7 +200,7 @@ export class MyAction extends Action {
 
 The config module (it is a module now!) produces a static object with your configuration. This means that it can be required via `import {config} from 'actionhero'` at any point in your project's life cycle... you no longer need to wait for the initialization process to complete. However, this required some changes:
 
-- The config methods no longer provide `api`, they provide `config`. Only other information from other config files is availalbe to you, nothing from the rest of the application.
+- The config methods no longer provide `api`, they provide `config`. Only other information from other config files is available to you, nothing from the rest of the application.
 
 To upgrade your config:
 
@@ -232,9 +232,9 @@ Don’t forget any paths you might have in other environments (like `test`)!
 Now with Typescript, you’ll get an error if you try to set arbitrary properties on the data object either within an `Action` or `Middleware`. We need a place to pass data from the middleware to the action.
 
 ```ts
-// in an intializer
+// in an initializer
 import { action } from "actionhero";
-import { models } from "./../models"; // in your prokect
+import { models } from "./../models"; // in your project
 
 const authenticatedTeamMemberMiddleware = {
   name: "authenticated-team-member",
@@ -266,7 +266,7 @@ action.addMiddleware(authenticatedTeamMemberMiddleware);
 
 ## Modules and Initializers
 
-A number of things have been moved out of the API object to simlify thier use by creating import/export modules you can require directly. In this way, you can get type hinting for various parts of actionhro! This is a logical seperation between `initailziers` - code that excecutes when your server boots up and loads or connects vs `modules` which provide an API for you to use in your code.
+A number of things have been moved out of the API object to simplify their use by creating import/export modules you can require directly. In this way, you can get type hinting for various parts of Actionhero! This is a logical separation between `initializers` - code that executes when your server boots up and loads or connects vs `modules` which provide an API for you to use in your code.
 
 For example, the `task` system has been split into 2 parts - both a `module` and `initializer`. The initializer continues to load your tasks into `api.tasks.tasks`, but doesn’t expose any methods for you to use. Now, when you want to enqueue a task, you call `task.enqueue()` you load it from the module via `import {task} from 'actionhero'`
 
@@ -296,7 +296,7 @@ what remains on the API object are truly things about your API - actions, tasks,
 
 A polyfill will be included in the first few releases of Actionhero in typescript to port the new exports back to the `api` object. A warning will be displayed.
 
-A new config setting to enable or disable the plyfill is located at `config.general.legacyApiPolyfill`
+A new config setting to enable or disable the polyfill is located at `config.general.legacyApiPolyfill`
 
 ## Config
 
@@ -305,10 +305,10 @@ A new config setting to enable or disable the plyfill is located at `config.gene
 
 ## Chat
 
-- `chatRoom.sanitizeMemberDetails()` is no longer overridable/customizable.
+- `chatRoom.sanitizeMemberDetails()` is no longer overrideable/customizable.
 
 ## WatchFileAndAct
 
-We have removed the custom module loaders for Actionhero's development mode, `watchFileAndAct`. Now that we need to transpile our applications from typescript to javascriopt, we can rely on some of the excellent packages already developed for this purpose. Newly generated Actionhero projects will make use of `node-ts-dev` (https://github.com/whitecolor/ts-node-dev) to boot and reload your projects when running in typescript mode.
+We have removed the custom module loaders for Actionhero's development mode, `watchFileAndAct`. Now that we need to transpile our applications from typescript to javascript, we can rely on some of the excellent packages already developed for this purpose. Newly generated Actionhero projects will make use of `node-ts-dev` (https://github.com/whitecolor/ts-node-dev) to boot and reload your projects when running in typescript mode.
 
-Javascript proejcts can do a simialr thing via the nodemon (https://nodemon.io/) package
+Javascript projects can do a similar thing via the nodemon (https://nodemon.io/) package

@@ -183,8 +183,8 @@ export default class indexPage extends Component {
               </Col>
               <Col md={1} />
               <Col md={6} style={{ textAlign: "center" }}>
-                <h1 style={Theme.typeography.h1}> To the Rescue </h1>
-                <h2 style={Theme.typeography.h2}>
+                <h1 style={Theme.typography.h1}> To the Rescue </h1>
+                <h2 style={Theme.typography.h2}>
                   {" "}
                   No matter what you are building, <br /> Actionhero is here to
                   save the day.
@@ -211,7 +211,7 @@ export default class indexPage extends Component {
                 colSpan={3}
                 title="Real Time Chat"
                 image="/static/images/real-time-chat.svg"
-                body="Actionhero includes all the modern tools you need for a highly-availabile realtime applications.  Actionhero can work in a cluster to handle all the clients you can throw at it."
+                body="Actionhero includes all the modern tools you need for a highly-available realtime applications.  Actionhero can work in a cluster to handle all the clients you can throw at it."
               />
 
               <FeatureBox
@@ -248,8 +248,8 @@ export default class indexPage extends Component {
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
-                <h1 style={Theme.typeography.h1}> Plays Well With Others </h1>
-                <h2 style={Theme.typeography.h2}>
+                <h1 style={Theme.typography.h1}> Plays Well With Others </h1>
+                <h2 style={Theme.typography.h2}>
                   {" "}
                   Use Actionhero around <em> your </em> workflow and preferred
                   tools.
@@ -358,8 +358,8 @@ export default class indexPage extends Component {
             <Row>
               <Col md={3} />
               <Col md={6} style={{ textAlign: "center" }}>
-                <h1 style={Theme.typeography.h1}> You've Got the Power</h1>
-                <h2 style={Theme.typeography.h2}>
+                <h1 style={Theme.typography.h1}> You've Got the Power</h1>
+                <h2 style={Theme.typography.h2}>
                   {" "}
                   Actionhero was built from the ground up to include all the
                   features you expect from a modern API framework.It also knows
@@ -446,7 +446,7 @@ export default class indexPage extends Component {
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
-                <h1 style={Theme.typeography.h1}>
+                <h1 style={Theme.typography.h1}>
                   {" "}
                   Trusted by Top Companies and Organizations{" "}
                 </h1>
@@ -529,7 +529,7 @@ export default class indexPage extends Component {
           <Grid style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
-                <h1 style={Theme.typeography.h1}>
+                <h1 style={Theme.typography.h1}>
                   {" "}
                   Ready to become the hero your project needs?{" "}
                 </h1>

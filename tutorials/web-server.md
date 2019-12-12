@@ -15,7 +15,7 @@ HTTP responses are always JSON and follow the following format:
   requestorInformation: {
     remoteAddress: "127.0.0.1",
     RequestsRemaining: 989,
-    recievedParams: {
+    receivedParams: {
       action: ""
     }
   }
@@ -48,7 +48,7 @@ HTTP responses are always JSON and follow the following format:
 * Closing connection #0
 {
     "requestorInformation": {
-        "recievedParams": {
+        "receivedParams": {
             "action": "status",
         },
         "remoteAddress": "127.0.0.1"
@@ -120,7 +120,7 @@ export const DEFAULT = {
         // The cache or (if etags are enabled) next-revalidation time to be returned for all flat files served from /public; defined in seconds
         flatFileCacheDuration: 60,
         // Add an etag header to requested flat files which acts as fingerprint that changes when the file is updated;
-        // Client will revalidate the fingerprint at latest after flatFileCacheDuration and reload it if the etag (and therfore the file) changed
+        // Client will revalidate the fingerprint at latest after flatFileCacheDuration and reload it if the etag (and therefore the file) changed
         // or continue to use the cached file if it's still valid
         enableEtag: true,
         // should we save the un-parsed HTTP POST/PUT payload to connection.rawConnection.params.rawBody?
@@ -158,7 +158,7 @@ export const DEFAULT = {
         // You can also set connection.rawConnection.responseHttpCode to specify a code per request.
         returnErrorCodes: true,
         // should this node server attempt to gzip responses if the client can accept them?
-        // this will slow down the performance of Actionhero, and if you need this funcionality, it is recommended that you do this upstream with nginx or your load balancer
+        // this will slow down the performance of Actionhero, and if you need this functionality, it is recommended that you do this upstream with nginx or your load balancer
         compress: false,
         // options to pass to the query parser
         // learn more about the options @ https://github.com/hapijs/qs
@@ -420,7 +420,7 @@ File uploads from forms will also appear in `connection.params`, but will be an 
 
 A note on JSON payloads:
 
-You can post BODY json paylaods to Actionhero in the form of a hash or array.
+You can post BODY json payloads to Actionhero in the form of a hash or array.
 
 **Hash**: `curl -X POST -d '{"key":"something", "value":{"a":1, "b":2}}' http://localhost:8080/api/cacheTest`. This will result in:
 
@@ -510,7 +510,7 @@ export class Uploader extends Action {
      _maxListeners: 10,
      size: 5477608,
      path: '/app/Actionhero/tmp/86b2aa018a9785e20b3f6cea95babcca',
-     name: '1-02 Concentration Enhancing Menu Initialiser.mp3',
+     name: '1-02 Concentration Enhancing Menu Initializer.mp3',
      type: 'audio/mp3',
      hash: false,
      lastModifiedDate: Wed Feb 13 2013 20:32:49 GMT-0800 (PST),

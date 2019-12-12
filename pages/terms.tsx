@@ -199,9 +199,9 @@ export default class TermsPage extends DocsPageWithNav {
                   <li>
                     Before or at the time of collecting personal information, we
                     will identify the purposes for which information is being
-                    collected. We may ask for enhanced permisions on your mobile
-                    device (geolocation access, camera access, etc), but we will
-                    inform you as to why.
+                    collected. We may ask for enhanced permissions on your
+                    mobile device (geolocation access, camera access, etc), but
+                    we will inform you as to why.
                   </li>
                   <li>
                     We will collect and use personal information solely for
@@ -227,7 +227,7 @@ export default class TermsPage extends DocsPageWithNav {
                   </li>
                   <li>
                     We will only retain personal information for as long as
-                    necessary for the fulfilment of those purposes.
+                    necessary for the fulfillment of those purposes.
                   </li>
                 </ul>
 

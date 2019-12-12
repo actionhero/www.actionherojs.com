@@ -20,8 +20,8 @@ export default class extends Component {
       paddingLeft: 0,
       paddingRight: 0,
       fontFamily: Theme.fonts.main,
-      fontSize: Theme.typeography.default.fontSize,
-      fontWeight: Theme.typeography.default.fontWeight
+      fontSize: Theme.typography.default.fontSize,
+      fontWeight: Theme.typography.default.fontWeight
     };
 
     return (

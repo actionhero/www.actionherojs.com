@@ -1,10 +1,10 @@
 ## Overview
 
-Actionhero includes a powerful cache system based on Redis. It can be used to store and retrive data, but also to create more complext data structures based on queues and epiring object.
+Actionhero includes a powerful cache system based on Redis. It can be used to store and retrieve data, but also to create more complex data structures based on queues and expiring object.
 
 ## Methods
 
-[The cache methods are docuemnted in detail with annotations here](https://docs.actionherojs.com/modules/cache.html). There are methods fall into 3 categories:
+[The cache methods are documented in detail with annotations here](https://docs.actionherojs.com/modules/cache.html). There are methods fall into 3 categories:
 
 - **data**: read, write, check, delete
 - **locks** you can lock and unlock objects in the cache so that only one Actionhero node can claim it

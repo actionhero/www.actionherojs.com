@@ -203,7 +203,7 @@ export default class PluginsPage extends DocsPageWithNav {
                 </p>
                 <p>
                   To use an Actionhero plugin you usually{" "}
-                  <code>npm install name-of-plugin</code> and then refrence is
+                  <code>npm install name-of-plugin</code> and then reference is
                   in your <code>./config/plugins.js</code> file to load it into
                   your application.
                 </p>

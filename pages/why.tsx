@@ -72,7 +72,7 @@ export default class WhyPage extends DocsPageWithNav {
                   Websocket, etc) from the API logic with the concept of
                   Actions. Actions are discrete and synchronous units of logic
                   that can be invoked using any transport (i.e. Servers). This
-                  separation helps us to acomplish many things.
+                  separation helps us to accomplish many things.
                 </p>
 
                 <strong>General Use Case</strong>
@@ -126,7 +126,7 @@ export default class WhyPage extends DocsPageWithNav {
                 <ul>
                   <li>Conventions for config follow 12-factor app patterns</li>
                   <li>Project organization with automatic-loading</li>
-                  <li>hot-relaoding developer experince</li>
+                  <li>hot-reloading developer experience</li>
                 </ul>
 
                 <strong>Localization</strong>
@@ -298,7 +298,7 @@ export default class WhyPage extends DocsPageWithNav {
 
                     <tr>
                       <td style={{ padding: 10 }}>
-                        <strong>Project Orginiization Conventions</strong>
+                        <strong>Project Organization Conventions</strong>
                       </td>
                       <td style={{ color: "green" }}>✅</td>
                       <td>🚫</td>

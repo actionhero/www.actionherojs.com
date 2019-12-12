@@ -10,13 +10,13 @@ Actionhero follows [semantic versioning](http://semver.org/). This means that a 
 
 ## Upgrading from v20 to v21
 
-WIP: This is a large change to Typescript. Detailed notes can be found on the Typescript page.
+WIP: This is a large change to Typescript. Detailed notes can be found on the [Typescript Tutorial](/tutorials/typescript).
 
 ## Upgrading from v19 to v20
 
 **Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v20.0.0)**
 
-The only change to take note of is that you must now ensure that the working directory (CWD/PWD) in use when you start your Actionhero project is the root. (where /config, /actions, etc) are visable.
+The only change to take note of is that you must now ensure that the working directory (CWD/PWD) in use when you start your Actionhero project is the root. (where /config, /actions, etc) are visible.
 
 ## Upgrading from v18 to v19
 
@@ -94,7 +94,7 @@ module.exports = class SendWelcomeMessage extends Task {
   }
 
   async run(data) {
-    await api.sendWelcomeEamail({ address: data.email });
+    await api.sendWelcomeEmail({ address: data.email });
     return true;
   }
 };
@@ -158,7 +158,7 @@ module.exports = class MyServer extends Actionhero.Server {
   }
 
   initialize() {
-    this.on("connection", conection => {});
+    this.on("connection", connection => {});
 
     this.on("actionComplete", data => {});
   }
@@ -197,7 +197,7 @@ module.exports = class RedisKeys extends CLI {
   inputs () {
     return {
       prefix: {
-        requried: true,
+        required: true,
         default: 'Actionhero',
         note: 'the redis prefix for searching keys'
       }
@@ -297,7 +297,7 @@ describe("Action: RandomNumber", () => {
 
 - You will need to acquire the [default locale file](https://github.com/Actionhero/Actionhero/blob/master/locales/en.json) and copy it into `./locales/en.json` within your project.
 - The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/Actionhero/Actionhero/blob/master/config/errors.js)
-- The `welcomeMessage` and `goodbyeMessage` are removed from the config files and Actionhero now refrences the locale files for these strings. Update yours accodingly.
+- The `welcomeMessage` and `goodbyeMessage` are removed from the config files and Actionhero now references the locale files for these strings. Update yours accordingly.
 
 - **utils**
 
@@ -311,10 +311,10 @@ describe("Action: RandomNumber", () => {
 
 The only breaking changes are related to the capilization of internal methods:
 
-- `api.Connecton()` rather than `api.connection()`
+- `api.Connection()` rather than `api.connection()`
 - `api.GenericServer()` rather than `api.genericServer()`
 - `api.ActionProcessor()` rather than `api.actionProcessor()`
-- `require('Actionhero')` not `require('Actionhero').actionheroPrototype` should you be using Actionhero programatically.
+- `require('Actionhero')` not `require('Actionhero').actionheroPrototype` should you be using Actionhero programmatically.
 
 ## Upgrading from v14 to v15
 
@@ -352,10 +352,10 @@ The only breaking changes are related to the capilization of internal methods:
 
 **Breaking Changes and How to Overcome Them:**
 
-- Pluggins
+- Plugins
   - `config/plugins.js` is removed. Delete yours.
   - Use the new binary command, `Actionhero link --name=NameOfPlugin` to link your plugins in the new method.
-  - Linking plugins will likley create new config files you may need to customize.
+  - Linking plugins will likely create new config files you may need to customize.
 - Locales
   - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/i18n.js).
   - Ensure that `api.config.i18n.updateFiles` is `true` so that your locale files can be generated for the first time.
@@ -373,7 +373,7 @@ The only breaking changes are related to the capilization of internal methods:
 **Breaking Changes and How to Overcome Them:**
 
 - Redis configuration
-  - Switch from using the `redis` npm pacakge to `ioredis`. Change this in your package.json.
+  - Switch from using the `redis` npm package to `ioredis`. Change this in your package.json.
 - `ioredis` handles passwords slightly differently. Read the [ioredis](https://github.com/luin/ioredis) documentation to learn more.
 - Stats Removed
   - The `api.stats` subsection has been removed from Actionhero

@@ -59,7 +59,7 @@ export default class extends Component<Props, State> {
                   ) : null}
                 </Col>
                 <Col md={6} style={{ textAlign: "center" }}>
-                  <h1 style={Theme.typeography.h1}>
+                  <h1 style={Theme.typography.h1}>
                     <br />
                     {this.props.titleSection.title}
                   </h1>
@@ -109,10 +109,10 @@ export default class extends Component<Props, State> {
               <Row>
                 <Col md={12} style={{ textAlign: "center" }}>
                   <BlueLine />
-                  <h2 style={Theme.typeography.h2}>
+                  <h2 style={Theme.typography.h2}>
                     <span style={{ fontWeight: 400 }}>Up Next</span>
                   </h2>
-                  <h2 style={Theme.typeography.h2}>
+                  <h2 style={Theme.typography.h2}>
                     <Link href={this.props.links[0].link}>
                       <a>{this.props.links[0].title.replace("» ", "")}</a>
                     </Link>

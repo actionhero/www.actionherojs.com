@@ -14,7 +14,7 @@ There are 3 types of tasks Actionhero can process: `normal`, `delayed`, and `per
 Here are examples of the 3 ways to programmatically enqueue a task:
 
 ```ts
-improt { task } from 'actionhero'
+import { task } from "actionhero";
 
 // Enqueue the task now, and process it ASAP
 await task.enqueue(
@@ -90,7 +90,7 @@ export const DEFAULT = {
       maxTaskProcessors: 0,
       // how often should we check the event loop to spawn more taskProcessors?
       checkTimeout: 500,
-      // how many ms would constitue an event loop delay to halt taskProcessors spawning?
+      // how many ms would constitute an event loop delay to halt taskProcessors spawning?
       maxEventLoopDelay: 5,
       // how long before we mark a resque worker / task processor as stuck/dead?
       stuckWorkerTimeout: 1000 * 60 * 60,
@@ -138,7 +138,7 @@ export class SendWelcomeMessage extends Task {
   }
 
   async run(data) {
-    await sendWelcomeEamail({ address: data.email });
+    await sendWelcomeEmail({ address: data.email });
     return true;
   }
 }
@@ -186,15 +186,15 @@ Output of the above:
 # The output of running the last 2 tasks would be:
 
 2013-11-28 15:21:56 - debug: resque scheduler working timestamp 1385680913
-2013-11-28 15:21:56 - debug: resque scheduler enquing job 1385680913 class=sayHello, queue=default,
+2013-11-28 15:21:56 - debug: resque scheduler enqueuing job 1385680913 class=sayHello, queue=default,
 2013-11-28 15:21:56 - debug: resque scheduler working timestamp 1385680914
-2013-11-28 15:21:56 - debug: resque scheduler enquing job 1385680914 class=sayGoodbye, queue=default,
+2013-11-28 15:21:56 - debug: resque scheduler enqueuing job 1385680914 class=sayGoodbye, queue=default,
 2013-11-28 15:21:56 - debug: resque worker #1 working job default class=sayHello, queue=default,
 2013-11-28 15:21:56 - info: hello
-2013-11-28 15:21:56 - debug: re-enqueued reccurent job sayHello
+2013-11-28 15:21:56 - debug: re-enqueued recurrent job sayHello
 2013-11-28 15:21:56 - debug: resque worker #1 working job default class=sayGoodbye, queue=default,
 2013-11-28 15:21:56 - info: goodbye
-2013-11-28 15:21:56 - debug: re-enqueued reccurent job sayGoodbye
+2013-11-28 15:21:56 - debug: re-enqueued recurrent job sayGoodbye
 ```
 
 You can create you own tasks by placing them in a `./tasks/` directory at the root of your application. You can use the generator `actionhero generate task --name=myTask`. Like actions, all tasks have some required metadata:
@@ -287,7 +287,7 @@ if (Object.keys(result).length > 0) {
 
 ## Testing Tasks
 
-Taks are expected to be as lean as possible, with most of thier logic living in other methods you've created via initializers or middleware (or included via packages). This helps keep your task logic concicse, limited to excecution and scueduling... and the excecuting functions easier to test.
+Tasks are expected to be as lean as possible, with most of their logic living in other methods you've created via initializers or middleware (or included via packages). This helps keep your task logic concise, limited to execution and scheduling... and the executing functions easier to test.
 
 Actionhero ships with a method to help you check if a task is enqueued, `api.specHelper.findEnqueuedTasks(taskName)`:
 
@@ -296,7 +296,7 @@ import { api, task } from "actionhero";
 
 describe("task testing", () => {
   beforeEach(async () => {
-    // if you are testing taks, you likely want to start each test with an empty test redis
+    // if you are testing tasks, you likely want to start each test with an empty test redis
     await api.resque.queue.connection.redis.flushdb();
   });
 

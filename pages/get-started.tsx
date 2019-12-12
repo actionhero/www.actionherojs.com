@@ -37,7 +37,7 @@ redis-server --daemonize yes # this will keep redis running in the background fo
 
 [download nodeJS](https://nodejs.org/en/download)
 [download redis](https://github.com/MSOpenTech/redis)
-run redis.exe in a bcackground window
+run redis.exe in a background window
 `;
 
 const Quickstart = `mkdir ~/project && cd ~/project

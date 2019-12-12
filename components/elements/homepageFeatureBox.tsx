@@ -63,7 +63,7 @@ export default class FeatureBox extends Component<FeatureBoxProps> {
           }}
         >
           <img style={{ padding: 30 }} src={this.props.image} />
-          <h2 style={Theme.typeography.h2Alt}>{this.props.title}</h2>
+          <h2 style={Theme.typography.h2Alt}>{this.props.title}</h2>
           <p style={{ lineHeight: 2 }}>{this.props.body}</p>
           <br />
           {this.props.code ? <CodePopover code={code} title={title} /> : null}

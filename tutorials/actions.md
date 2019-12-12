@@ -89,7 +89,7 @@ export class UserDelete extends ValidatedAction {
 
 ## Versions
 
-Actionhero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` paramiter.
+Actionhero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` parameter.
 
 ```js
 import { Action } from "actionhero";
@@ -184,7 +184,7 @@ class ValidatedAction extends Action {
       }
     },
 
-    // any middlewares to apply before/after this action
+    // any middleware to apply before/after this action
     // global middleware will be applied automatically
     // default []
     this.middleware = []
@@ -349,12 +349,12 @@ inputs = {
 
 There may be times that you want add properties to the Action class. A common reason for this is to work with middleware, adding a property to your action that controls how authentication might work, etc. With typescript, adding arbitrary properties to class (interface) will produce an error, as we don't have a type definition for your new property. The way to overcome this is to extend the Action class with your new property.
 
-The example below creates a new class, `AutheticatedAction` which adds a boolean `authenticated` to the action. A global action middleware then checks if the action should be `authenticated`, and if it does, it checks for a password.
+The example below creates a new class, `AuthenticatedAction` which adds a boolean `authenticated` to the action. A global action middleware then checks if the action should be `authenticated`, and if it does, it checks for a password.
 
 ```ts
 import { Action, action } from "actionhero";
 
-abstract class AutheticatedAction extends Action {
+abstract class AuthenticatedAction extends Action {
   /**
    * does this action require the user to be logged in?
    */
@@ -376,7 +376,7 @@ action.addMiddleware({
   }
 });
 
-export class ShowDashboard extends AutheticatedAction {
+export class ShowDashboard extends AuthenticatedAction {
   constructor() {
     super();
     this.name = "showDashboard";
@@ -432,7 +432,7 @@ Finally, if your action is again only for the web server, you can send a string 
 
 ## Middleware
 
-You can create middlware which would apply to the connection both before and after an action. Middleware can be either global (applied to all actions) or local, specified in each action via `action.middleware = []`. Supply the `names` of any middleware you want to use.
+You can create middleware which would apply to the connection both before and after an action. Middleware can be either global (applied to all actions) or local, specified in each action via `action.middleware = []`. Supply the `names` of any middleware you want to use.
 
 You can [learn more about middleware here](/tutorials/middleware).
 
@@ -440,7 +440,7 @@ You can [learn more about middleware here](/tutorials/middleware).
 
 - Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
 - If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client in `response.error`. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
-- The metadata `outputExample` is used in reflexive and self-documenting actions in the API, available via the `documentation` verb (and showDocumenation action).
+- The metadata `outputExample` is used in reflexive and self-documenting actions in the API, available via the `documentation` verb (and showDocumentation action).
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `api.config.general.simultaneousActions`
 - `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `api.config.general.disableParamScrubbing`. Note that [Middleware](tutorial-middleware.html) preProcessors will always have access to all params pre-scrubbing.
 - `matchExtensionMimeType` is currently only used by the `web` server, and it indicates that if this action is successfully called by a client with `connection.extension` set, the headers of the response should be changed to match that file type. This is useful when creating actions that download files.

@@ -46,7 +46,7 @@ export default class WhyPage extends DocsPageWithNav {
                 <p>
                   Welcome to Actionhero! These tutorials are here to provide a
                   more story-driven guide to how things work. These tutorials
-                  are meant to parter with the{" "}
+                  are meant to partner with the{" "}
                   <a href="https://docs.actionherojs.com">
                     Actionhero Documentation
                   </a>{" "}
@@ -73,7 +73,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actions are the core of Actionhero, and the main way you
-                      respond to your user's requets.
+                      respond to your user's requests.
                     </p>
                   </Col>
                 </Row>
@@ -92,7 +92,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Tasks are how your excecute background jobs, like sending
+                      Tasks are how your execute background jobs, like sending
                       emails or contacting a third-party API. In Actionhero, you
                       can trigger tasks manually or run them on a schedule.
                     </p>
@@ -136,9 +136,9 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero includes a built-in localization tool based on
-                      i18n which allows you to custominze your API's responses
-                      to a specific languange or country. You can customize how
-                      that languag is determined.
+                      i18n which allows you to customize your API's responses to
+                      a specific language or country. You can customize how that
+                      language is determined.
                     </p>
                   </Col>
                 </Row>
@@ -158,7 +158,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero's Middleware system makes it easy to add
-                      authatnication, logging, and other custom behavior to your
+                      authentication, logging, and other custom behavior to your
                       Actions and Tasks
                     </p>
                   </Col>
@@ -201,9 +201,9 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero includes a powerful cache system based on
-                      Redis. It can be used to store and retrive data, but also
-                      to create more complext data structures based on queues
-                      and epiring object.
+                      Redis. It can be used to store and retrieve data, but also
+                      to create more complex data structures based on queues
+                      and expiring object.
                     </p>
                   </Col>
                 </Row>
@@ -223,7 +223,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero's chat system is for more than just
-                      peer-to-peer communciations. It is a robust way to share
+                      peer-to-peer communications. It is a robust way to share
                       data between clients and your servers. Game coordination,
                       messaging, and sharing state are all possible via
                       Actionhero's chat system.
@@ -245,7 +245,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Actionhero incldues tools to build CLI scripts that
+                      Actionhero includes tools to build CLI scripts that
                       integrate with your application. Need to migrate a
                       database or seed data in a repeatable way? Check out
                       Actionhero's CLI tooling.
@@ -275,7 +275,7 @@ export default class WhyPage extends DocsPageWithNav {
                       Actionhero is unique in that it allows you to build or add
                       many types of servers into one application. Not only can
                       you support HTTP and Web Socket, but you can add custom
-                      proticols like Quick and Protobuf to your application and
+                      protocols like Quick and Protobuf to your application and
                       easily reuse your Actions!
                     </p>
                   </Col>
@@ -342,7 +342,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero is ready for your production deployments - with
-                      support for hot reloading, clustered process managment,
+                      support for hot reloading, clustered process management,
                       and multiple ways of logging.
                     </p>
                   </Col>
@@ -367,7 +367,7 @@ export default class WhyPage extends DocsPageWithNav {
                         12-factor application
                       </a>
                       . That means you can easily configure and deploy your app
-                      to a nubmer of environments.
+                      to a number of environments.
                     </p>
                   </Col>
                 </Row>
@@ -386,7 +386,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Actionhero includes a REPL so you can interactibvly
+                      Actionhero includes a REPL so you can interactively
                       explore your application can work with your data.
                     </p>
                   </Col>
@@ -428,7 +428,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </h3>
                     <p>
                       Actionhero uses Winston to create multi faceted logs for
-                      your applicaiton.
+                      your application.
                     </p>
                   </Col>
                 </Row>
@@ -498,7 +498,7 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Actionhero has been used by many compines in both large
+                      Actionhero has been used by many companies in both large
                       and small deployments. Let us share some best practices
                       with you to design your Actionhero deployment in the best
                       possible way.
@@ -543,10 +543,10 @@ export default class WhyPage extends DocsPageWithNav {
                       </Link>
                     </h3>
                     <p>
-                      Actionhero has moved from being a Javscript project to a
+                      Actionhero has moved from being a Javascript project to a
                       Typescript project in version 21. This guide explains how
                       more your existing Javascript project to Typescript, and
-                      how to enjoy all the enchancements of this new version.
+                      how to enjoy all the enhancements of this new version.
                     </p>
                   </Col>
                 </Row>

@@ -21,7 +21,7 @@ interface State {
   contentHeight: number;
 }
 
-export default class ToutorialPage extends Component<Props, State> {
+export default class TutorialPage extends Component<Props, State> {
   static async getInitialProps(ctx) {
     const name = ctx.query.name;
     const markdown = await require(`./../../tutorials/${name}.md`);
@@ -66,9 +66,9 @@ export default class ToutorialPage extends Component<Props, State> {
   }
 
   measureContentHeight() {
-    const elememnt = document.getElementById("tutorialPageContent");
-    if (elememnt) {
-      const height = elememnt.offsetHeight;
+    const element = document.getElementById("tutorialPageContent");
+    if (element) {
+      const height = element.offsetHeight;
       this.setState({ contentHeight: height });
     }
   }
@@ -92,8 +92,8 @@ export default class ToutorialPage extends Component<Props, State> {
         element.style.color = Theme.colors.red;
         element.style.fontWeight = "400";
       } else {
-        element.style.color = Theme.typeography.h2.color;
-        element.style.fontWeight = Theme.typeography.h2.fontWeight.toString();
+        element.style.color = Theme.typography.h2.color;
+        element.style.fontWeight = Theme.typography.h2.fontWeight.toString();
       }
     });
   }
@@ -110,7 +110,7 @@ export default class ToutorialPage extends Component<Props, State> {
             this.setState({ sectionHeadings });
           }
 
-          const style = Theme.typeography.h2;
+          const style = Theme.typography.h2;
 
           return (
             <Waypoint

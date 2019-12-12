@@ -212,7 +212,7 @@ http {
     gzip_proxied any;
     gzip_types text/plain text/xml text/css text/comma-separated-values text/javascript application/x-javascript font/ttf font/otf image/svg+xml application/atom+xml;
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent" "$http_x_forwarded_for" $request_time';
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referrer" "$http_user_agent" "$http_x_forwarded_for" $request_time';
 
     server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -256,7 +256,7 @@ http {
 
 ## Redis High-Availability
 
-[Redis](http://redis.io/) is technically optional in Actionhero environments, but you will need it if you want to coordinates tasks across a cluster of workers, handle group chat mechanics between WebSocket clients, or do other cross-cluster operations. In those cases, you'll want your Redis setup to be reliable. There are 2 methods to achieving HA redis: Sentinels and Cluster. A simple architectural wireframe of how to deploy the various options is below The [`ioredis`](https://github.com/luin/ioredis) node package supports both of these connection schemes, and all you need to change is your connection options.
+[Redis](http://redis.io/) is technically optional in Actionhero environments, but you will need it if you want to coordinates tasks across a cluster of workers, handle group chat mechanics between WebSocket clients, or do other cross-cluster operations. In those cases, you'll want your Redis setup to be reliable. There are 2 methods to achieving HA redis: Sentinels and Cluster. A simple architectural wire frame of how to deploy the various options is below The [`ioredis`](https://github.com/luin/ioredis) node package supports both of these connection schemes, and all you need to change is your connection options.
 
 ![](/static/images/tutorials/redis.png)
 
@@ -309,7 +309,7 @@ Additional options can be found here: [github.com/luin/ioredis#sentinel](https:/
 
 In Cluster mode, Redis shards all the keys in data into "slots" which are evenly allocated though all the masters in the cluster. The client can connect to any node in the cluster, and if the requested key belongs on another node, it will proxy the request for you (just like the Sentinel would). The cluster can also take care of master re-election for each shard in the event of a master node failure.
 
-Cluster mode provides similar high-availability to Sentinel mode, but the sharding allows more data to be stored in the cluster overall. However, where Sentinel mode requires a minimum of 3 servers, Cluster mode requires a minimum of 6 to reach a quorom and provide full redundancy.
+Cluster mode provides similar high-availability to Sentinel mode, but the sharding allows more data to be stored in the cluster overall. However, where Sentinel mode requires a minimum of 3 servers, Cluster mode requires a minimum of 6 to reach a quorum and provide full redundancy.
 
 Also an important note: while you may opt to run "sentinel processes", it's the same codebase as regular redis, just running in "sentinel mode". The same goes if you run redis in "cluster mode".
 
