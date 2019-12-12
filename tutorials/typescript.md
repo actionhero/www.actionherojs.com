@@ -21,7 +21,7 @@ For Actionhero, that means we can now provide:
 Visit [docs.actionherojs.com](https://docs.actionherojs.com/) to see this live!
 <img style="width:90%" src='/static/images/tutorials/docs.png' />
 
-...and an overal more pelasant developer experince!
+...and an overall more pleasant developer experience!
 
 **Note**: You do not have to use Typescript to use Actionhero! Other than some layout chagnes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javavascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generartors will favor Typescript projects moving forward, creating Typescript files
 
