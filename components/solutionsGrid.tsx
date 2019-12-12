@@ -53,8 +53,8 @@ export default class extends Component<{}, State> {
               }}
             >
               <SuccessAlert message={this.state.successMessage} />
-              <h1 style={Theme.typeography.h1}>Solutions</h1>
-              <h2 style={Theme.typeography.h2}>
+              <h1 style={Theme.typography.h1}>Solutions</h1>
+              <h2 style={Theme.typography.h2}>
                 <span style={{ color: Theme.colors.yellow }}>
                   Actionhero was built from the ground up to include all the
                   features you expect from a modern API framework.
@@ -78,7 +78,7 @@ export default class extends Component<{}, State> {
                 }}
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
-                  <h1 style={Theme.typeography.h1}>Open Source</h1>
+                  <h1 style={Theme.typography.h1}>Open Source</h1>
                 </div>
                 <RedLine />
                 <p>
@@ -118,7 +118,7 @@ export default class extends Component<{}, State> {
               >
                 <div style={{ textAlign: "center" }}>
                   <img src="/static/images/dog.svg" />
-                  <h1 style={Theme.typeography.h1}>
+                  <h1 style={Theme.typography.h1}>
                     <span style={{ color: Theme.colors.yellow }}>
                       Premium Training & Review
                     </span>
@@ -177,9 +177,7 @@ export default class extends Component<{}, State> {
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
                   <img src="/static/images/dog.svg" />
-                  <h1 style={Theme.typeography.h1}>
-                    Premium Training & Review
-                  </h1>
+                  <h1 style={Theme.typography.h1}>Premium Training & Review</h1>
                 </div>
                 <RedLine />
                 <p>
@@ -230,7 +228,7 @@ export default class extends Component<{}, State> {
                 }}
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
-                  <h1 style={Theme.typeography.h1}>Enterprise</h1>
+                  <h1 style={Theme.typography.h1}>Enterprise</h1>
                 </div>
                 <RedLine />
                 <p>
@@ -295,7 +293,7 @@ export default class extends Component<{}, State> {
                 >
                   <Row>
                     <Col md={4}>
-                      <h1 style={Theme.typeography.h1}>
+                      <h1 style={Theme.typography.h1}>
                         Actionhero Professional Services
                       </h1>
                       <p>

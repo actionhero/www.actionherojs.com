@@ -13,7 +13,7 @@ export default {
     docs: "Open Sans, sans-serif"
   },
 
-  typeography: {
+  typography: {
     default: {
       fontSize: 14,
       fontWeight: 300,

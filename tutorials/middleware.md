@@ -85,7 +85,7 @@ data = {
 };
 ```
 
-If your middleware wants to pass information about the connection to the action, place that data withinin the `session` object. For example, you might have a middleware that sets `session.user` for use in your actions:
+If your middleware wants to pass information about the connection to the action, place that data within the `session` object. For example, you might have a middleware that sets `session.user` for use in your actions:
 
 ```ts
 import { action } from "actionhero";
@@ -181,7 +181,7 @@ var chatMiddleware = {
   onSayReceive: function(connection, room, messagePayload) {
     // do stuff
     log(messagePayload);
-    messagePayload.recievedAt = new Date().getTime();
+    messagePayload.receivedAt = new Date().getTime();
     return messagePayload;
   }
 };
@@ -199,7 +199,7 @@ More detail and nuance on chat middleware can be found in the [chat tutorial](tu
 
 - In the example above, I want to announce the member joining the room, but he has not yet been added to the room, as the join logic is still firing. If the connection itself were to make the broadcast, it would fail because the connection is not in the room. Instead, an empty `{}` connection is used to proxy the message coming from the 'server'.
 - Only the `sayCallbacks` return `messagePayload`. This allows you to modify the message being sent to your clients.
-  - `messagePayload` will be modified and and passed on to all middlewares inline, so you can append and modify it as you go
+  - `messagePayload` will be modified and and passed on to all middleware inline, so you can append and modify it as you go
 - If you have a number of callbacks (`say`, `onSayReceive`, `join` or `leave`), the priority maters, and you can block subsequent methods from firing by throwing an error.
 - `sayCallbacks` are executed once per client connection. This makes it suitable for customizing the message based on the individual client.
 - `onSayReceiveCallbacks` are executed only once, when the message is sent to the server.
@@ -266,7 +266,7 @@ export class taskMiddleware extends Initializer {
 
       preEnqueue: async function () {
         const arg = this.args[0]
-        return true // returing `false` will prevent the task from enqueing
+        return true // returning `false` will prevent the task from enqueuing
       },
 
       postEnqueue: async function () {

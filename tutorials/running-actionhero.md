@@ -89,7 +89,7 @@ Descriptions:
     [frequency]
 
 * help
-  description: get actonhero CLI help; will display this document
+  description: get actionhero CLI help; will display this document
 
 * start
   description: start this Actionhero server
@@ -180,7 +180,7 @@ export const production = {
 
 In the example above, we are defining `config.namespace.enabled` and `config.namespace.safe`. In all environments (NODE_ENV) `config.namespace.enabled = true` Only in production would `config.namespace.safe = true`, it is `false` everywhere else.
 
-## Programatic Use of Actionhero
+## Programmatic Use of Actionhero
 
 While **NOT** encouraged, you can always instantiate an Actionhero process yourself. Perhaps you wish to combine Actionhero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
 
@@ -277,7 +277,7 @@ All signals should be sent to the cluster master process. You can still signal t
 
 ## Shutting Down
 
-When using `actionhero start` or `actionhero start cluster`, when you signal Actionhero to stop via the signals above (or from within your running application via `api.commands.stop()`), Actionhero will attempt to gracefully shutdown. This will include running any initializer's `stop()` method. This will close any open servers, and attempt to allow any running tasks to complete.
+When using `actionhero start` or `actionhero start cluster`, when you signal Actionhero to stop via the signals above (or from within your running application via `api.commands.stop()`), Actionhero will attempt to gracefully shutdown. This will include running any initializers' `stop()` method. This will close any open servers, and attempt to allow any running tasks to complete.
 
 Because things sometimes go wrong, `actionhero start` and `actionhero start cluster` also have a "emergency stop" timeout. This defaults to 30 seconds, and is configurable via the `ACTIONHERO_SHUTDOWN_TIMEOUT` environment variable. Be sure that your tasks and actions can complete within that window, or else raise that shutdown limit.
 

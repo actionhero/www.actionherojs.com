@@ -15,7 +15,6 @@ actionhero console
 
 Running "console" task
 2015-11-14 17:48:01 - notice: *** starting actionhero ***
-2015-11-14 17:48:01 - warning: running with fakeredis
 2015-11-14 17:48:01 - info: actionhero member 10.0.1.15 has joined the cluster
 2015-11-14 17:48:01 - notice: pid: 38464
 2015-11-14 17:48:01 - notice: server ID: 10.0.1.15

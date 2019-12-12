@@ -163,7 +163,7 @@ export default class CommunityPage extends Component<
 
         <Row>
           <Col md={4} style={{ textAlign: "center" }}>
-            <h2 style={Theme.typeography.h2}>Logo</h2>
+            <h2 style={Theme.typography.h2}>Logo</h2>
             <br />
             <img src="/static/press-assets/logo.png" style={{ height: 50 }} />
             <p>
@@ -176,7 +176,7 @@ export default class CommunityPage extends Component<
           </Col>
 
           <Col md={4} style={{ textAlign: "center" }}>
-            <h2 style={Theme.typeography.h2}>Wordmark</h2>
+            <h2 style={Theme.typography.h2}>Wordmark</h2>
             <br />
             <img
               src="/static/press-assets/wordmark.png"
@@ -190,7 +190,7 @@ export default class CommunityPage extends Component<
           </Col>
 
           <Col md={4} style={{ textAlign: "center" }}>
-            <h2 style={Theme.typeography.h2}>Brand Colors</h2>
+            <h2 style={Theme.typography.h2}>Brand Colors</h2>
             <br />
             <table>
               <tbody>

@@ -42,7 +42,7 @@ export default class extends Component<Props> {
       <Waypoint onEnter={waypointEnterCallback} onLeave={waypointExitCallback}>
         <div>
           <br />
-          <h2 id={id} style={Theme.typeography.h2}>
+          <h2 id={id} style={Theme.typography.h2}>
             <span style={{ fontWeight: 300, fontSize: 36 }}>{title}</span>
           </h2>
           <RedLine />

@@ -10,7 +10,7 @@ Cluster instances are named sequentially, starting with `actionhero-worker-1`, a
 
 Using a [redis](http://redis.io) backend, Actionhero nodes share memory objects (using the `cache`) and have a common queue for tasks. This means that all peers will have access to all data stored in the cache. The task system also becomes a common queue which all peers will work on draining. There should be no changes required to deploy your application in a cluster.
 
-Keep in mind that many clients/server can access a cached value simultaneously, so build your actions carefully not to have conflicting state. You can [learn more about the cache methods here](/tutorails/cache). You can also [review recommendations about Production Redis configurations](/tutorials/production-notes).
+Keep in mind that many clients/server can access a cached value simultaneously, so build your actions carefully not to have conflicting state. You can [learn more about the cache methods here](/tutorials/cache). You can also [review recommendations about Production Redis configurations](/tutorials/production-notes).
 
 ## RPC
 
