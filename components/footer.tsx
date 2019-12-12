@@ -61,6 +61,17 @@ export default class extends Component<{}, State> {
                   </a>
                 </p>
                 <p>
+                  You can contribute to this website{" "}
+                  <a
+                    style={{ color: Theme.colors.yellow, fontWeight: 500 }}
+                    href="https://github.com/actionhero/www.actionherojs.com"
+                    target="_blank"
+                  >
+                    here
+                  </a>
+                  .
+                </p>
+                <p>
                   <a
                     href="https://medium.com/tag/actionherojs/latest"
                     target="_new"
@@ -69,7 +80,8 @@ export default class extends Component<{}, State> {
                     Blogs
                   </a>
                 </p>
-                <p>
+
+                <p style={{ color: Theme.colors.white, fontWeight: "bold" }}>
                   {String.fromCharCode(169) +
                     " " +
                     this.state.date.getFullYear()}{" "}
@@ -118,7 +130,7 @@ export default class extends Component<{}, State> {
               <div style={{ paddingLeft: columnPadding }}>
                 <p>
                   <a
-                    href="https://www.npmjs.com/package/Actionhero"
+                    href="https://www.npmjs.com/package/actionhero"
                     target="_new"
                     style={footerLinkStyle}
                   >
