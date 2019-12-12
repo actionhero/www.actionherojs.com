@@ -531,7 +531,7 @@ export default class indexPage extends Component {
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typeography.h1}>
                   {" "}
-                  Ready to take your development to the next level ?{" "}
+                  Ready to become the hero your project needs?{" "}
                 </h1>
               </Col>
             </Row>
