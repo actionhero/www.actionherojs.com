@@ -360,9 +360,10 @@ export default class indexPage extends Component {
               <Col md={6} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}> You've Got the Power</h1>
                 <h2 style={Theme.typography.h2}>
-                  {" "}
                   Actionhero was built from the ground up to include all the
-                  features you expect from a modern API framework.It also knows
+                  features you expect from a modern API framework. Written in
+                  Typescript, Actionhero makes it easy to build a modern API
+                  server with ES6 features like Async/Await... and it also knows
                   when to get out of the way so you can customize your stack to
                   fit your needs.
                 </h2>

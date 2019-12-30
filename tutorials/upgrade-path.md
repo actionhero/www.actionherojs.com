@@ -10,7 +10,10 @@ Actionhero follows [semantic versioning](http://semver.org/). This means that a 
 
 ## Upgrading from v20 to v21
 
-WIP: This is a large change to Typescript. Detailed notes can be found on the [Typescript Tutorial](/tutorials/typescript).
+The recommended upgrade to v21 of Actionhero is to move your project to Typescript.
+Detailed notes can be found on the [Typescript Tutorial](/tutorials/typescript).
+
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v21.0.9)**
 
 ## Upgrading from v19 to v20
 

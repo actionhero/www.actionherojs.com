@@ -14,7 +14,7 @@ export default class TopAlert extends Component {
         }}
       >
         <p>
-          <strong>Actionhero is moving to Typescript in v21!</strong>
+          <strong>Actionhero is now built with Typescript!</strong>
           <br />
           To learn more about the new features and the upgrade process, visit
           the{" "}
