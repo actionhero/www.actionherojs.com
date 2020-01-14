@@ -181,7 +181,7 @@ export default class extends Component<{}, State> {
                 </div>
                 <RedLine />
                 <p>
-                  We provide support for corperate & nonprofit customers
+                  We provide support for corporate & nonprofit customers
                   starting at a flat rate of $150/hr. Our services include:
                 </p>
                 <RedLine />
