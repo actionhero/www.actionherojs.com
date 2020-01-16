@@ -14,14 +14,18 @@ export default class TopAlert extends Component {
         }}
       >
         <p>
-          <strong>Actionhero is now built with Typescript!</strong>
+          <strong>We need your input!</strong>
           <br />
-          To learn more about the new features and the upgrade process, visit
-          the{" "}
-          <Link href="/tutorials/typescript">
-            <a>Typescript Tutorial</a>
-          </Link>
-          .
+          <br />
+          The Actionhero Team is working on our plans for 2020 and would like to
+          solicit input from our community. <br />
+          Please take 5 to complete our{" "}
+          <strong>
+            <a href="https://forms.gle/ZMmCqGN7pvgHKdz57" target="_blank">
+              2020 Developer Survey
+            </a>
+          </strong>
+          ! .
         </p>
       </div>
     );
