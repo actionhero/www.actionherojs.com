@@ -182,7 +182,7 @@ In the example above, we are defining `config.namespace.enabled` and `config.nam
 
 ## Programmatic Use of Actionhero
 
-While **NOT** encouraged, you can always instantiate an Actionhero process yourself. Perhaps you wish to combine Actionhero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
+While not encouraged for new users, you can always instantiate an Actionhero process yourself. Perhaps you wish to combine Actionhero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
 
 ```ts
 import { Process } from "actionhero";
