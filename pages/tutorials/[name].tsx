@@ -100,9 +100,9 @@ export default class TutorialPage extends Component<Props, State> {
                 this.waypointExitCallback(stringValue);
               }}
             >
-              <div>
+              <div id={stringValue}>
                 <br />
-                <h2 id={stringValue} style={style}>
+                <h2 style={style}>
                   <span style={{ fontWeight: 300, fontSize: 36 }}>{child}</span>
                 </h2>
                 <RedLine />
