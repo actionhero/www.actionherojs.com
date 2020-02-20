@@ -4,7 +4,7 @@
 
 Modern versions of node.js have built-in inspector capabilities.
 
-Run Actionhero with node's `--inspect` flag, ie: `node ./node_modules/.bin/actionhero --inspect start`
+Run Actionhero with node's `--inspect` flag, ie: `node ./dist/server.js --inspect start`
 
 More info about new [node inspector](https://nodejs.org/en/docs/inspector)
 

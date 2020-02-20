@@ -34,7 +34,7 @@ You also don't need to use these test helpers, and you may want to make a real h
     "typescript": "latest"
   },
   "scripts": {
-    "dev": "ts-node-dev --transpile-only ./node_modules/.bin/actionhero start",
+    "dev": "ts-node-dev --transpile-only src/server.ts",
     "start": "actionhero start",
     "actionhero": "actionhero",
     "test": "jest",
@@ -107,5 +107,6 @@ More details on the specHelper methods [can be found here](https://docs.actionhe
 - `runAction`
 - `runFullTask`
 - `runTask`
+- `deleteEnqueuedTasks`
 
 If you want to see fuller example of how to create an integration test within Actionhero, please [check out the tutorial](https://github.com/actionhero/actionhero-tutorial#testing)

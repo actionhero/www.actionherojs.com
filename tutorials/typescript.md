@@ -25,22 +25,13 @@ Visit [docs.actionherojs.com](https://docs.actionherojs.com/) to see this live!
 
 **Note**: You do not have to use Typescript to use Actionhero! Other than some layout changes to your project, you can continue to use Actionhero with regular javascript node.js projects. We will always ship compiled javascript files to NPM so that actionhero will still work with the most recent versions of Node.js. That said, the generators will favor Typescript projects moving forward, creating Typescript files
 
-For now, the `latest` Actionhero tag on NPM is still v20, the last javascript version of Actionhero. You can start using the Typescript version of Actionhero today by opting into the `next` tag:
-
-```bash
-npm install actionhero@next
-./node_modules/.bin/actionhero generate
-npm install
-npm run dev
-```
-
 Actionhero will create and install everything you need for a pleasant typescript experience, including a `tsconfig` file, node's `@types` and development tools already linked into your `package.json`
 
 ---
 
 ## Upgrading Packages & Package.json
 
-If you are upgarding an existing Actionhero project, the first thing to do is install the related packages and create new files:
+If you are upgrading an existing Actionhero project, the first thing to do is install the related packages and create new files:
 
 ```sh
 npm install --save actionhero@next
@@ -52,7 +43,7 @@ Update your scripts in `package.json`
 
 ```json
 "scripts": {
-  "dev": "ts-node-dev --transpile-only ./node_modules/.bin/actionhero start",
+  "dev": "ts-node-dev --transpile-only src/server.ts",
   "start": "actionhero start",
   "actionhero": "actionhero",
   "test": "jest",
@@ -105,8 +96,9 @@ Your project should now look like this:
 
 ```
 |
-|- boot.js
 |- src
+|  - server.ts
+|
 |  - config
 |    - (project settings)
 |
@@ -145,6 +137,30 @@ Your project should now look like this:
 |
 readme.md
 package.json
+```
+
+## Create server.ts
+
+Create `server.ts` at /src/server.ts
+
+```ts
+import { Process } from "actionhero";
+
+// load any custom code, configure the env, as needed
+
+async function main() {
+  // create a new actionhero process
+  const app = new Process();
+
+  // handle unix signals and uncaught exceptions & rejections
+  app.registerProcessSignals();
+
+  // start the app!
+  // you can pass custom configuration to the process as needed
+  await app.start();
+}
+
+main();
 ```
 
 ## Update JS to TS syntax
