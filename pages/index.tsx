@@ -62,7 +62,8 @@ export class RunAction extends Task {
     await api.sendEmail(params)
   }
 }`,
-  clusterReady: "npx Actionhero start cluster --workers 10",
+  clusterReady:
+    "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
   localization: `let number = Math.random()
 let response = connection.localize(['Your random number is {{number}}', {number: number}])
 response.stringRandomNumber = response`,

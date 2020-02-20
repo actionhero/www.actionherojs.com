@@ -33,7 +33,6 @@ To invoke the logger from your code, use: `log(message, severity, metadata)`. Le
 ## Defaults
 
 ```ts
-const cluster = require("cluster");
 const winston = require("winston");
 
 // learn more about winston v3 loggers @
@@ -107,11 +106,7 @@ function buildFileLogger(
 export const DEFAULT = {
   logger: config => {
     const loggers = [];
-
-    if (cluster.isMaster) {
-      loggers.push(buildConsoleLogger());
-    }
-
+    loggers.push(buildConsoleLogger());
     config.general.paths.log.forEach(p => {
       loggers.push(buildFileLogger(p));
     });

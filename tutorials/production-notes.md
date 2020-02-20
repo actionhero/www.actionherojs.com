@@ -66,28 +66,10 @@ exports.default = {
 
 You can set a few environment variables to affect how Actionhero runs:
 
-- `PROJECT_ROOT`: This is useful when deploying Actionhero applications on a server where symlinks will change under a running process. The cluster will look at your symlink `PROJECT_ROOT=/path/to/current_symlink` rather than the absolute path it was started from
+- `PROJECT_ROOT`: This is useful when deploying Actionhero applications on a server where symlinks will change under a running process. The server will look at your symlink `PROJECT_ROOT=/path/to/current_symlink` rather than the absolute path it was started from
 - `ACTIONHERO_ROOT`: This can used to set the absolute path to the Actionhero binaries
 - `ACTIONHERO_CONFIG`: This can be user to set the absolute path to the Actionhero config directory you wish to use. This is useful when you might have a variable configs per server
 - `ACTIONHERO_TITLE`: The value of `api.id`, and the name for the pidfile in some boot configurations
-
-## Daemon
-
-When deploying Actionhero, you will probably have more than 1 process. You can use the cluster manager to keep an eye on the workers and manage them
-
-- Start the cluster with 2 workers: `actionhero start cluster --workers=2`
-
-When deploying new code, you can gracefully restart your workers by sending the `USR2` signal to the cluster manager to signal a reload to all workers. You don't need to start and stop the cluster-master. This allows for 0-downtime deployments.
-
-You may want to set some of the ENV variables above to help with your deployment.
-
-## Number of Workers
-
-When choosing the number of workers (`--workers=n`) for your Actionhero cluster, choose at least 1 less than the number of CPUs available. If you have a "burstable" architecture (like a Joyent smart machine), opt for the highest number of 'consistent' CPUs you can have, meaning a number of CPUs that you will always have available to you.
-
-You never want more workers than you can run at a time, or else you will actually be slowing down the execution of all processes.
-
-Of course, not going in to swapping memory is more important than utilizing all of your CPUs, so if you find yourself running out of RAM, reduce the number of workers!
 
 ## Pidfiles
 
@@ -95,29 +77,9 @@ Actionhero will write its pid to a pidfile in the normal unix way. The path for 
 
 Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/Actionhero/Actionhero/blob/master/initializers/pids.js) and [here](https://github.com/actionhero/actionhero/blob/master/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
 
-When running the cluster, the cluster process first writes his own pidfile to `process.cwd() + './pids/cluster_pidfile'`. Then, every worker the cluster master creates will have a pid like `actionhero-worker-1` in the location defined by `config/api.js`.
-
-To send a signal to the cluster master process to reboot all its workers (`USR2`), you can cat the pidfile (bash): `kill -s USR2 'cat /path/to/pids/cluster_pidfile'`
-
-## Git-based Deployment
-
-If you want to setup a git-based 0-downtime deployment, the simplest steps would be something like =>
-
-```bash
-#!/usr/bin/env bash
-# assuming the Actionhero cluster master process is already running
-
-DEPLOY_PATH=/path/to/your/application
-
-cd $DEPLOY_PATH && git pull
-cd $DEPLOY_PATH && npm install
-# run any build tasks here, like perhaps an asset compile step or a database migration
-cd $DEPLOY_PATH && kill -s USR2 \`cat pids/cluster_pidfile\`
-```
-
 ## PAAS and Procfile Deployment
 
-When deploying to a Platform as a Service (PAAS) cluster (like [Heroku](https://heroku.com), [Flynn](https://flynn.io), and even some [Docker](https://www.docker.com) deployments), we can offer a few pieces of advice.
+When deploying to a Platform as a Service (PAAS), like [Heroku](https://heroku.com), [Flynn](https://flynn.io), and even some [Docker](https://www.docker.com) deployments), we can offer a few pieces of advice.
 
 If you are deploying a separate WEB and WORKER process type, you can define them in a [`Procfile`](https://devcenter.heroku.com/articles/procfile) and make use of environment variable overrides in addition to those defined from the environment. You can modify your config files to use these options:
 
@@ -327,13 +289,7 @@ As Actionhero is a framework, much of the work for keeping your application secu
 
 ### Topology
 
-Run a cluster via `start cluster`. This will guarantee that you can reboot your application with 0 downtime and deploy new versions without interruption.
-
-- You can run 1 Actionhero instance per core (assuming the server is dedicated to Actionhero), and that is the default behavior of `start cluster`.
-- You don't need a tool like PM2 to manage Actionhero cluster process, but you can use it if you like.
-- You can use an init script to `start cluster` at boot, or use a tool like [monit](https://mmonit.com/monit/) to do it for you.
-
-Never run tasks on the same Actionhero instances you run your servers on; never run your servers on the same Actionhero instances you run your tasks on.
+- Never run tasks on the same Actionhero instances you run your servers on; never run your servers on the same Actionhero instances you run your tasks on.
 
 - Yes, under most situations running servers + tasks on the same instance will work OK, but the load profiles (and often the types of packages required) vary in each deployment. Actions are designed to respond quickly and offload hard computations to tasks. Tasks are designed to work slower computations.
 - Do any CPU-intensive work in a task. If a client needs to see the result of a CPU-intensive operation, poll for it (or use web-sockets)
@@ -355,7 +311,7 @@ Use redis-cluster or redis-sentinel. The [`ioredis`](https://github.com/luin/ior
 
 ### Crashing and Safety
 
-Let the app crash rather than being defensive prematurely. Actionhero has a good logger.  You should be using a tool like PM2 or Docker which will then restart your application fresh. It is very easy to hide uncaught errors, exceptions, or un-resolved promises, and doing so might leave your application in strange state.
+Let the app crash rather than being defensive prematurely. Actionhero has a good logger. You should be using a tool like PM2 or Docker which will then restart your application fresh. It is very easy to hide uncaught errors, exceptions, or un-resolved promises, and doing so might leave your application in strange state.
 
 For example, if you timeout connections that are taking too long, what are you going to do about the database connection it was running? Will you roll it back? What about the other clients using the same connection pool? How can you be sure which connection in the mySQL pool was in use? Rather than handle all these edge cases… just let your app crash, log, and reboot.
 

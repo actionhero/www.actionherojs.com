@@ -44,7 +44,7 @@ Update your scripts in `package.json`
 ```json
 "scripts": {
   "dev": "ts-node-dev --transpile-only src/server.ts",
-  "start": "actionhero start",
+  "start": "node dist/server.js",
   "actionhero": "actionhero",
   "test": "jest",
   "pretest": "npm run build && npm run lint",

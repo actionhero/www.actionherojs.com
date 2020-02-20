@@ -140,23 +140,6 @@ Descriptions:
   description: return the Actionhero version within this project
 ```
 
-## Linking the Actionhero Binary
-
-Actionhero is not designed to function when installed globally. Do not install Actionhero globally, using `npm install -g`. Modern versions of NPM (v5+) allow you to also use the `npx` command, ie: `npx Actionhero start cluster --workers=2`, which is a simple way to get to the Actionhero binary from the top-level of your project. Otherwise defining `scripts` referencing Actionhero in your `package.json` is the best way to run Actionhero:
-
-```js
-{
-  "name": "my Actionhero project",
-  "scripts": {
-    "start" : "Actionhero start",
-    "dev" : "ts-node-dev ./node_modules/.bin Actionhero start",
-    "pretest": "prettier ...",
-    "test" : "jest"
-  }
-}
-
-```
-
 ## Environments and Config
 
 By default, Actionhero will use the settings found in the `exports.default` blocks in `/config/`. However, you can set environment-specific overrides or changes. Actionhero inspects `process.env.NODE_ENV` to load up runtime configuration overrides from `exports.#{env}` blocks in your configuration files. This is the recommended way to have separate settings for staging and production.

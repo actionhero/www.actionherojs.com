@@ -35,7 +35,7 @@ You also don't need to use these test helpers, and you may want to make a real h
   },
   "scripts": {
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "start": "actionhero start",
+    "start": "node ./dist/server.js",
     "actionhero": "actionhero",
     "test": "jest",
     "pretest": "npm run build && npm run lint",
