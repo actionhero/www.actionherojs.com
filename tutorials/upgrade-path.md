@@ -50,6 +50,8 @@ Your package json should now contain:
 
 Tasks can now use [input validation](https://www.actionherojs.com/tutorials/tasks#Task%20Inputs).
 
+**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v22.0.0)**
+
 ## Upgrading from v20 to v21
 
 The recommended upgrade to v21 of Actionhero is to move your project to Typescript.
