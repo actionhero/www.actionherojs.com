@@ -1,8 +1,47 @@
+## Server.ts
+
+Actionhero v22 removes the built-in `actionhero start` and `actionhero start cluster` commands, and adds a single `server.ts` entrypoint for your applications. We are also removing support for `boot.ts|js`.
+
+For years, Actionhero has shipped with a robust runtime solution, handling graceful restarts, clustering, and more... however. as the node.js ecosystem has matured, the community has:
+
+1. Created excellent process management tools, like [PM2](https://pm2.keymetrics.io/) which handle running and monitoring your processes, including integration with OS process managers
+2. Moved to serverless/PASS/Docker deployments which prefer to mange the running of the application directly.
+
+To better integrate with the above, Actionhero will now run from a new `server.ts` file, which will be required in your project @ `/src/server.ts`:
+
+```ts
+import { Process } from "actionhero";
+
+// load any custom code, configure the env, as needed
+
+async function main() {
+  // create a new actionhero process
+  const app = new Process();
+
+  // handle unix signals and uncaught exceptions & rejections
+  app.registerProcessSignals();
+
+  // start the app!
+  // you can pass custom configuration to the process as needed
+  await app.start();
+}
+
+main();
+```
+
+When developing, there is no change to your workflow:
+
+- `npm run dev` will continue to hot-compile your typescript code and run it.
+- `npm run build` will compile your TS into JS
+- `npm start` will now run your `./dist/server.js` instead of running `./node_modules/.bin/actoinhero`
+
+This change should also make it easier to distribute your actionhero projects as you can modify a base config collection from this file, and you can use tools like [pkg](https://github.com/zeit/pkg) to compile your projects.
+
+Now that we have this single entrypoint for your applications, we no longer need `boot.js|ts`. You can now directly run any setup code you need, modify the environment, etc directly in `server.ts`.
+
 ## The Actionhero Binary
 
-The suggested method to run your Actionhero server is to use the included `./node_modules/.bin/Actionhero` binary. Note that there is no `main.js` or specific start script your project needs. Actionhero handles this for you. Your Actionhero project simply needs to follow the proper directory conventions and it will be bootable.
-
-The help for this binary is as follows:
+Actionhero also includes an optional binary which can help you with lifecycle tasks, like generating a new project, actions, tasks, and more. The help for this binary is as follows:
 
 ```
 --------------------------------------
@@ -22,8 +61,6 @@ Binary options:
 * generate server
 * generate task
 * help
-* start
-* start cluster
 * task enqueue
 * version
 
@@ -91,32 +128,6 @@ Descriptions:
 * help
   description: get actionhero CLI help; will display this document
 
-* start
-  description: start this Actionhero server
-  example: Actionhero start --config=[/path/to/config] --title=[processTitle] --daemon
-  inputs:
-    [config] (optional)
-      note: path to config.js, defaults to "process.cwd()" + '/' + config.js. You can also use ENV[ACTIONHERO_CONFIG]
-    [title] (optional)
-      note: process title to use for Actionhero\'s ID, ps, log, and pidFile defaults. Must be unique for each member of the cluster. You can also use ENV[ACTIONHERO_TITLE]. Process renaming does not work on OSX/Windows
-    [daemon] (optional)
-      note: to fork and run as a new background process defaults to false
-
-* start cluster
-  description: start an Actionhero cluster
-  example: Actionhero start cluster --workers=[numWorkers] --workerTitlePrefix=[title] --daemon
-  inputs:
-    [workers]
-      note: number of workers (defaults to # CPUs)
-      default: 8
-    [title] (optional)
-      note: worker title prefix (default 'Actionhero-worker-') set `--workerTitlePrefix=hostname`, your app.id would be like your_host_name-#
-    [workerTitlePrefix]
-      default: Actionhero-worker-
-    [daemon] (optional)
-      note: to fork and run as a new background process defaults to false
-    [silent] (optional)
-
 * task enqueue
   description: enqueue a defined task into your Actionhero cluster
   example: Actionhero task enqueue --name=[taskName] --args=[JSON-formatted args]
@@ -180,107 +191,61 @@ export const production = {
 
 In the example above, we are defining `config.namespace.enabled` and `config.namespace.safe`. In all environments (NODE_ENV) `config.namespace.enabled = true` Only in production would `config.namespace.safe = true`, it is `false` everywhere else.
 
-## Programmatic Use of Actionhero
-
-While not encouraged for new users, you can always instantiate an Actionhero process yourself. Perhaps you wish to combine Actionhero with an existing project. Here is how! Take note that using these methods will not work for a cluster process, and only a single instance will be started within your project.
-
-```ts
-import { Process } from "actionhero";
-const Actionhero = new Process();
-
-const sleep = (time = 5000) => {
-  return new Promise(resolve => {
-    setTimeout(resolve, time);
-  });
-};
-
-const api = await Actionhero.start({ configChanges });
-
-api.log(" >> Boot Successful!");
-await sleep();
-
-api.log(" >> restarting server...");
-await Actionhero.restart();
-
-api.log(" >> Restarted!");
-await sleep();
-
-api.log(" >> stopping server...");
-await Actionhero.stop();
-api.log(" >> Stopped!");
-process.exit();
-```
-
-Feel free to look at the source of `./node_modules/actionhero/bin/methods/start` to see how the main Actionhero server is implemented for more information.
-
-You can programmatically control an Actionhero server with `actionhero.start(params)`, `actionhero.stop()` and `actionhero.restart()`
-
-From within Actionhero itself (actions, initializers, etc), you can use `api.commands.start`, `api.commands.stop`, and `api.commands.restart` to control the server.
-
 ## Signals
 
-```bash
-> npx actionhero start cluster --workers=2
-info: actionhero >> start cluster
-notice:  - STARTING CLUSTER -
-notice: pid: 41382
-info: starting worker #1
-info: worker 41383 (#1) has spawned
-info: Worker #1 [41383]: starting
-info: Worker #1 [41383]: started
-info: starting worker #2
-info: worker 41384 (#2) has spawned
-info: Worker #2 [41384]: starting
-info: Worker #2 [41384]: started
+If your `server.ts` has used `app.registerProcessSignals()`, you should be ready to handle the most common unix signals:
 
-# A new terminal
-kill -s TTIN \`cat pids/cluster_pidfile\`
+```ts
+  /**
+   * Register listeners for process signals and uncaught exceptions & rejections.
+   * Try to gracefully shut down when signaled to do so
+   */
+  registerProcessSignals() {
+    function awaitHardStop() {
+      const timeout = process.env.ACTIONHERO_SHUTDOWN_TIMEOUT
+        ? parseInt(process.env.ACTIONHERO_SHUTDOWN_TIMEOUT)
+        : 1000 * 30;
+      return setTimeout(() => {
+        console.error(
+          `Process did not terminate within ${timeout}ms. Stopping now!`
+        );
+        process.nextTick(process.exit(1));
+      }, timeout);
+    }
 
-info: worker 41632 (#3) has spawned
-info: Worker #3 [41632]: starting
-info: Worker #3 [41632]: started
+    // handle errors & rejections
+    process.on("uncaughtException", (error: Error) => {
+      log(error.stack, "fatal");
+      process.nextTick(process.exit(1));
+    });
 
-# A new terminal
-kill -s KILL \`cat pids/cluster_pidfile\`
+    process.on("unhandledRejection", (rejection: Error) => {
+      log(rejection.stack, "fatal");
+      process.nextTick(process.exit(1));
+    });
 
-warning: Cluster manager quitting
-info: Stopping each worker...
-info: Worker #1 [41901]: stopping
-info: Worker #2 [41904]: stopping
-info: Worker #3 [41906]: stopping
-info: Worker #3 [41906]: stopped
-info: Worker #2 [41904]: stopped
-info: Worker #1 [41901]: stopped
-alert: worker 41901 (#1) has exited
-alert: worker 41904 (#2) has exited
-alert: worker 41906 (#3) has exited
-info: all workers gone
-notice: cluster complete, Bye!
+    // handle signals
+    process.on("SIGINT", async () => {
+      log(`[ SIGNAL ] - SIGINT`, "notice");
+      let timer = awaitHardStop();
+      await this.stop();
+      clearTimeout(timer);
+    });
+
+    process.on("SIGTERM", async () => {
+      log(`[ SIGNAL ] - SIGTERM`, "notice");
+      let timer = awaitHardStop();
+      await this.stop();
+      clearTimeout(timer);
+    });
+
+    process.on("SIGUSR2", async () => {
+      log(`[ SIGNAL ] - SIGUSR2`, "notice");
+      let timer = awaitHardStop();
+      await this.restart();
+      clearTimeout(timer);
+    });
+  }
 ```
 
-Actionhero is intended to be run on `*nix` operating systems. The `start` and `start cluster` commands provide support for signaling. (There is limited support for some of these commands in windows).
-
-**Actionhero start**
-
-- `kill` / `term` / `int` : Process will attempt to "gracefully" shut down. That is, the worker will close all server connections (possibly sending a shutdown message to clients, depending on server type), stop all task workers, and eventually shut down. This action may take some time to fully complete.
-- `USR2`: Process will restart itself. The process will preform the "graceful shutdown" above, and they restart.
-
-**Actionhero start cluster**
-
-All signals should be sent to the cluster master process. You can still signal the termination of a worker, but the cluster manager will start a new one in its place.
-
-- `kill` / `term` / `int`: Will signal the master to "gracefully terminate" all workers. Master will terminate once all workers have completed
-- `HUP` : Restart all workers.
-- `USR2` : "Hot reload". Worker will kill off existing workers one-by-one, and start a new worker in their place. This is used for 0-downtime restarts. Keep in mind that for a short while, your server will be running both old and new code while the workers are rolling.
-- `TTOU`: remove one worker
-- `TTIN`: add one worker
-
-## Shutting Down
-
-When using `actionhero start` or `actionhero start cluster`, when you signal Actionhero to stop via the signals above (or from within your running application via `api.commands.stop()`), Actionhero will attempt to gracefully shutdown. This will include running any initializers' `stop()` method. This will close any open servers, and attempt to allow any running tasks to complete.
-
-Because things sometimes go wrong, `actionhero start` and `actionhero start cluster` also have a "emergency stop" timeout. This defaults to 30 seconds, and is configurable via the `ACTIONHERO_SHUTDOWN_TIMEOUT` environment variable. Be sure that your tasks and actions can complete within that window, or else raise that shutdown limit.
-
-## Windows Specific Notes
-
-- Sometimes Actionhero may require a git-based module (rather than a NPM module). You will need to have git installed. Depending on how you installed git, it may not be available to the node shell. Be sure to have also installed references to git. You can also run node/npm install from the git shell.\* Sometimes, npm will not install the Actionhero binary @ `/node_modules/.bin/actionhero`, but rather it will attempt to create a windows executable and wrapper. You can launch Actionhero directly with `./node_modules/actionhero/bin/actionhero`
+You can of course add custom handlers as well to handle additional signals. Note that the environment variable `ACTIONHERO_SHUTDOWN_TIMEOUT` can be used to change how long the process waits to shut down gracefully.

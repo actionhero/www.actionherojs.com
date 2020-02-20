@@ -6,8 +6,27 @@ import BigButton from "./../components/buttons/bigButton";
 import SolutionsGrid from "./../components/solutionsGrid";
 import FeatureBox from "./../components/elements/homepageFeatureBox";
 import GithubLatestVersion from "./../components/githubLatestVersion";
+import Code from "./../components/code";
 
 const CodeSamples = {
+  getStarted: `# Generate a new Project
+npx actionhero generate
+npm install
+npm run build # <--- new! I compile the TS to JS
+npm run dev # <--- new! I use \`ts-node\` to let you develop on your ts files without compiling
+
+# Use the actionhero CLI
+(npx) actionhero generate action --name my_action
+(npx) actionhero generate task --name my_task --queue default --frequency 0
+
+# Test
+npm test
+# I'll run \`prettier\` and \`build\` for you first
+# I handle .ts files now!
+
+# To deploy your app
+npm run build # <--- new! I compile the TS to JS
+npm run start`,
   eastToUseActions: `import { Action } from 'Actionhero'
 
 export class RandomNumber extends Action {
@@ -185,7 +204,6 @@ export default class indexPage extends Component {
               <Col md={6} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}> To the Rescue </h1>
                 <h2 style={Theme.typography.h2}>
-                  {" "}
                   No matter what you are building, <br /> Actionhero is here to
                   save the day.
                 </h2>
@@ -241,6 +259,24 @@ export default class indexPage extends Component {
 
         <div
           style={{
+            backgroundColor: Theme.colors.blueGray,
+            color: "white"
+          }}
+        >
+          <Grid style={Theme.padding.section}>
+            <Row>
+              <Col md={12} style={{ textAlign: "center" }}>
+                <h1 style={Theme.typography.h1}>Get started in seconds</h1>
+                <div style={{ textAlign: "left" }}>
+                  <Code language="bash">{CodeSamples.getStarted}</Code>
+                </div>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+
+        <div
+          style={{
             backgroundColor: Theme.colors.white,
             color: Theme.colors.blue
           }}
@@ -250,7 +286,6 @@ export default class indexPage extends Component {
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}> Plays Well With Others </h1>
                 <h2 style={Theme.typography.h2}>
-                  {" "}
                   Use Actionhero around <em> your </em> workflow and preferred
                   tools.
                 </h2>

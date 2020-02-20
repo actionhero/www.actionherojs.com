@@ -6,7 +6,7 @@ import Code from "../components/code";
 const ExampleBootCode = `❯ npm run dev
 
 > actionhero@21.0.6 dev /Users/evan/workspace/actionhero/actionhero
-> ts-node-dev --transpile-only ./node_modules/bin/actionhero
+> ts-node-dev --transpile-only src/server.ts
 
 Using ts-node version 8.5.2, typescript version 3.7.2
 ₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋
@@ -41,14 +41,12 @@ run redis.exe in a background window
 `;
 
 const Quickstart = `mkdir ~/project && cd ~/project
-npm install actionhero
 npx actionhero generate
 npm install
 # ensure redis is running; see above
-npm start`;
+npm dev`;
 
 const Folders = `|
-|- boot.js
 |- src
 |  - config
 |    - (project settings)
@@ -211,7 +209,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                     <code>npm install</code> to install dependencies
                   </li>
                   <li>
-                    You can now start up the server: <code>npm start</code>
+                    You can now start up the server: <code>npm dev</code>
                   </li>
                 </ul>
 

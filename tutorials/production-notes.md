@@ -129,7 +129,7 @@ web:    SCHEDULER=false \\
         ENABLE_WEB_SERVER=true  \\
         ENABLE_TCP_SERVER=true  \\
         ENABLE_WEBSOCKET_SERVER=true  \\
-        ./node_modules/.bin/actionhero start
+        /dist/server.js
 
 worker: SCHEDULER=true  \\
         MIN_TASK_PROCESSORS=5 \\
@@ -137,7 +137,7 @@ worker: SCHEDULER=true  \\
         ENABLE_WEB_SERVER=false \\
         ENABLE_TCP_SERVER=false \\
         ENABLE_WEBSOCKET_SERVER=false \\
-        ./node_modules/.bin/actionhero start
+        /dist/server.js
 ```
 
 Be sure **not** to use NPM in your `Procfile` definitions. In many deployment scenarios, NPM will not properly pass signals to the Actionhero process and it will be impossible to signal a graceful shutdown. Examples of this behavior can be found [here](https://github.com/flynn/flynn/issues/3601) and [here](https://github.com/npm/npm/issues/4603)
@@ -355,40 +355,9 @@ Use redis-cluster or redis-sentinel. The [`ioredis`](https://github.com/luin/ior
 
 ### Crashing and Safety
 
-```bash
-> ./node_modules./bin/actionhero start cluster --workers 1
-2016-04-11T18:51:32.891Z - info: actionhero >> start cluster
-2016-04-11T18:51:32.904Z - notice:  - STARTING CLUSTER -
-2016-04-11T18:51:32.905Z - notice: pid: 43315
-2016-04-11T18:51:32.911Z - info: starting worker #1
-2016-04-11T18:51:33.097Z - info: [worker #1 (43316)]: starting
-2016-04-11T18:51:33.984Z - info: [worker #1 (43316)]: started
-2016-04-11T18:51:33.985Z - notice: cluster equilibrium state reached with 1 workers
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]: uncaught exception => yay is not defined
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:    ReferenceError: yay is not defined
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at Object.exports.action.run (/app/actionhero/actions/bad.js:14:5)
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/actionhero/initializers/ActionProcessor.js:268:31
-2016-04-11T18:51:44.775Z - alert: [worker #1 (43316)]:        at /app/actionhero/initializers/ActionProcessor.js:149:9
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/actionhero/node_modules/async/lib/async.js:726:13
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at /app/actionhero/node_modules/async/lib/async.js:52:16
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at iterate (/app/actionhero/node_modules/async/lib/async.js:260:24)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at async.forEachOfSeries.async.eachOfSeries (/app/actionhero/node_modules/async/lib/async.js:281:9)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at _parallel (/app/actionhero/node_modules/async/lib/async.js:717:9)
-2016-04-11T18:51:44.776Z - alert: [worker #1 (43316)]:        at Object.async.series (/app/actionhero/node_modules/async/lib/async.js:739:9)
-2016-04-11T18:51:44.777Z - alert: [worker #1 (43316)]:        at api.ActionProcessor.preProcessAction (/app/actionhero/initializers/ActionProcessor.js:148:13)
-2016-04-11T18:51:44.777Z - notice: cluster equilibrium state reached with 1 workers
-2016-04-11T18:51:44.785Z - info: [worker #1 (43316)]: exited
-2016-04-11T18:51:44.785Z - info: starting worker #1
-2016-04-11T18:51:44.960Z - info: [worker #1 (43323)]: starting
-2016-04-11T18:51:45.827Z - info: [worker #1 (43323)]: started
-2016-04-11T18:51:45.827Z - notice: cluster equilibrium state reached with 1 workers
-```
+Let the app crash rather than being defensive prematurely. Actionhero has a good logger.  You should be using a tool like PM2 or Docker which will then restart your application fresh. It is very easy to hide uncaught errors, exceptions, or un-resolved promises, and doing so might leave your application in strange state.
 
-Let the app crash rather than being defensive prematurely. Actionhero has a good logger, and if you are running within `start cluster` mode, your server will be restarted. It is very easy to hide uncaught errors, exceptions, or un-resolved promises, and doing so might leave your application in strange state.
-
-We removed domains from the project in v13 to follow this philosophy, and rely on a parent process (`start cluster`) to handle error logging. Domains are deprecated in node.js now for the same reasons we discuss here.
-
-- For example, if you timeout connections that are taking too long, what are you going to do about the database connection it was running? Will you roll it back? What about the other clients using the same connection pool? How can you be sure which connection in the mySQL pool was in use? Rather than handle all these edge cases… just let your app crash, log, and reboot.
+For example, if you timeout connections that are taking too long, what are you going to do about the database connection it was running? Will you roll it back? What about the other clients using the same connection pool? How can you be sure which connection in the mySQL pool was in use? Rather than handle all these edge cases… just let your app crash, log, and reboot.
 
 As noted above, centralized logging (Splunk et al) will be invaluable here. You can can also employ a tool like [BugSnag](https://bugsnag.com) to collect and correlate errors.
 

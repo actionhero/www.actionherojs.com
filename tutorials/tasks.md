@@ -17,27 +17,13 @@ Here are examples of the 3 ways to programmatically enqueue a task:
 import { task } from "actionhero";
 
 // Enqueue the task now, and process it ASAP
-await task.enqueue(
-  "sendWelcomeEmail",
-  { to: "evan@evantahler.com" },
-  "default"
-);
+await task.enqueue("sendWelcomeEmail", { to: "evan@evantahler.com" });
 
 // Enqueue the task now, and process it once \`timestamp\` has arrived
-await task.enqueueAt(
-  1234556,
-  "sendWelcomeEmail",
-  { to: "evan@evantahler.com" },
-  "default"
-);
+await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" });
 
 // Enqueue the task now, and process it once \`delay\` (ms) has passed
-await task.enqueueIn(
-  10000,
-  "sendWelcomeEmail",
-  { to: "evan@evantahler.com" },
-  "default"
-);
+await task.enqueueIn(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" });
 ```
 
 `sendWelcomeEmail` should be a task defined in the project, and `{to: 'evan@evantahler.com'}` are arguments to that task. This task will be processed by TaskProcessors assigned to the "default" queue.
@@ -210,6 +196,77 @@ You can create you own tasks by placing them in a `./tasks/` directory at the ro
 - `params`: An array of parameters that the task was enqueued with. This is whatever was passed as the second argument to `api.tasks.enqueue`.
 
 Throwing an error will stop the task, and log it as a failure in resque, which you can inspect via the various [tasks](api.tasks.html) methods. If a periodic task throws an error, it will not be run again.
+
+## Task Inputs
+
+Just like [Actions](/tutorials/actions), you can optionally define the inputs your task expects.
+Inputs can be:
+
+- required
+- default
+- validated
+
+Unlike actions, we don’t need a formatter, as the inputs should already be of the proper type, coming from the server. We can check the inputs at `enqueue` rather than at runtime. This will ensure that no task without the required inputs is enqueued.
+
+For example, with this task:
+
+```ts
+import { Task } from "actionhero";
+
+class SendWelcomeEmail extends Task {
+  constructor() {
+    super();
+    this.name = "sendWelcomeEmail";
+    this.description = "send a new user a welcome email";
+    this.queue = "email";
+    this.frequency = 0;
+    this.inputs = {
+      email: { required: true },
+      template: { required: true, default: "welcome-email-en" }
+    };
+  }
+
+  async run(params) {
+    // send the email
+  }
+}
+```
+
+- `await task.enqueue('sendWelcomeEmail')` would throw an error, as "email" is a required input
+- `await task.enqueue('sendWelcomeEmail', {email: 'evan@actionherojs.com'})` would be ok, and in the task `params.template` would be set to `welcome-email-en` when the task is run, per the defaults.
+
+There are also validators you can use, and like actions, you can throw a custom error or return false to prevent the task from being enqueued, ie:
+
+```ts
+import { Task } from "actionhero";
+
+function emailValidator(p) {
+  if (p.indexOf("@") < 0) {
+    throw new Error("that is not an email address");
+  }
+}
+
+class SendWelcomeEmail extends Task {
+  constructor() {
+    super();
+    this.name = "sendWelcomeEmail";
+    this.description = "send a new user a welcome email";
+    this.queue = "email";
+    this.frequency = 0;
+    this.inputs = {
+      email: { required: true, validator: emailValidator },
+      template: { required: true, default: "welcome-email-en" }
+    };
+  }
+
+  async run(params) {
+    // send the email
+  }
+}
+```
+
+- `await task.enqueue('sendWelcomeEmail', {email: 'someone'})` would throw an error, as the email is missing the `"@"`
+- `await task.enqueue('sendWelcomeEmail', {email: 'evan@actionherojs.com'})` would be ok
 
 ## Job Schedules
 
