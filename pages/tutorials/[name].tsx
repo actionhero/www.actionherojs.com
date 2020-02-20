@@ -16,7 +16,6 @@ interface Props {
 
 interface State {
   sectionHeadings: Array<any>;
-  renderedContent: any;
   currentlyVisableSections: {};
   contentHeight: number;
 }
@@ -36,33 +35,12 @@ export default class TutorialPage extends Component<Props, State> {
     this.state = {
       currentlyVisableSections: {},
       sectionHeadings: [],
-      renderedContent: "",
       contentHeight: 0
     };
   }
 
   componentDidMount() {
-    this.renderMarkdown();
     this.measureContentHeight();
-  }
-
-  renderMarkdown() {
-    const renderedContent = (
-      <ReactMarkdown
-        source={this.props.markdown}
-        escapeHtml={false}
-        renderers={{
-          code: Code,
-          heading: node => {
-            return this.parseHeading(node);
-          }
-        }}
-      />
-    );
-
-    this.setState({ renderedContent }, () => {
-      this.measureContentHeight();
-    });
   }
 
   measureContentHeight() {
@@ -138,7 +116,7 @@ export default class TutorialPage extends Component<Props, State> {
 
   render() {
     const { name } = this.props;
-    const { sectionHeadings, renderedContent, contentHeight } = this.state;
+    const { sectionHeadings, contentHeight } = this.state;
 
     const aStyle = {
       fontWeight: 300,
@@ -156,7 +134,18 @@ export default class TutorialPage extends Component<Props, State> {
         }}
       >
         <Row id="tutorialPageContent">
-          <Col md={9}>{renderedContent}</Col>
+          <Col md={9}>
+            <ReactMarkdown
+              source={this.props.markdown}
+              escapeHtml={false}
+              renderers={{
+                code: Code,
+                heading: node => {
+                  return this.parseHeading(node);
+                }
+              }}
+            />
+          </Col>
           <Col md={3} className="hidden-xs hidden-sm">
             <div style={{ height: contentHeight }}>
               <div style={{ paddingTop: 90, position: "sticky", top: 0 }}>
