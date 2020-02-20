@@ -2,11 +2,53 @@
 
 Upgrading big Actionhero projects to a new major might require some effort. Every Actionhero version has it's own specific project files which you generate using `Actionhero generate` command.
 
-One of the ways to upgrade your project is to generate a new project using the latest Actionhero framework (`npm install Actionhero && npx Actionhero generate`). Using that as your starting point you can then carefully copy all your `configs`, `initializers`, `servers`, `tasks`, `actions`, and other custom code from your old project, making sure that you are at the same working state as before. It's a good practice to make tests for your actions (or any other component) before you plan to upgrade your Actionhero project.
+One of the ways to upgrade your project is to generate a new project using the latest Actionhero framework (`npx Actionhero generate`). Using that as your starting point you can then carefully copy all your `configs`, `initializers`, `servers`, `tasks`, `actions`, and other custom code from your old project, making sure that you are at the same working state as before. It's a good practice to make tests for your actions (or any other component) before you plan to upgrade your Actionhero project.
 
 With good [test coverage](tutorial-testing.html) you can make sure that you have successfully upgraded your project.
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
+
+## Upgrading from v21 to v22
+
+Assuming that you have already migrated your project to [Typescript](/tutorials/typescript), the only change is create your `server.ts` and change your `package.json` scripts to use it. Support for `boot.js` has also been removed, and you should move that logic into your new `server.ts`
+
+```ts
+// in ./src/server.ts
+import { Process } from "actionhero";
+
+// load any custom code, configure the env, as needed
+
+async function main() {
+  // create a new actionhero process
+  const app = new Process();
+
+  // handle unix signals and uncaught exceptions & rejections
+  app.registerProcessSignals();
+
+  // start the app!
+  // you can pass custom configuration to the process as needed
+  await app.start();
+}
+
+main();
+```
+
+Your package json should now contain:
+
+```js
+  "scripts": {
+    "postinstall": "npm run build",
+    "dev": "ts-node-dev --no-deps --transpile-only ./src/server.ts",
+    "start": "node ./dist/server.js",
+    "test": "jest",
+    "pretest": "npm run build && npm run lint",
+    "build": "tsc --declaration",
+    "lint": "prettier --check src/*/** __test__/*/**",
+    "pretty": "prettier --write src/*/** __test__/*/**"
+  },
+```
+
+Tasks can now use [input validation](https://www.actionherojs.com/tutorials/tasks#Task%20Inputs).
 
 ## Upgrading from v20 to v21
 
