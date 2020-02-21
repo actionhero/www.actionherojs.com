@@ -5,7 +5,7 @@ Actionhero uses the **[Winston logger](https://github.com/flatiron/winston)**. T
 ## Levels
 
 ```ts
-import { log } form 'actionhero'
+import { log } from 'actionhero'
 
 log("hello"); // will use the default, 'info' level
 log("debug message", "debug"); // will not show up unless you have configured your logger in this NODE_ENV to be debug
