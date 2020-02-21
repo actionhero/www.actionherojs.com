@@ -48,6 +48,8 @@ Your package json should now contain:
   },
 ```
 
+Also be sure that your `packate.json` contains the `@types/ioreids` devDependency.  You can install it with `npm install --save-dev @types/ioredis`
+
 Tasks can now use [input validation](https://www.actionherojs.com/tutorials/tasks#Task%20Inputs).
 
 **Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v22.0.0)**
