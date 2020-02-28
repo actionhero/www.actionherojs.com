@@ -124,7 +124,6 @@ export default class extends Component {
         </Head>
 
         <Grid fluid style={commmonSetupStyle}>
-          <TopAlert />
           <Header />
         </Grid>
 
