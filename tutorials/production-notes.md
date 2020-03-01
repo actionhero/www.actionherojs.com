@@ -335,6 +335,6 @@ You can chain tasks together to create workflows.
 
 Actionhero uses the [`multiWorker`](https://github.com/taskrabbit/node-resque#multi-worker) from node-resque. When configured properly, it will consume 100% of a CPU core, to work as many tasks at once as it can. This will also fluctuate depending on the CPU difficulty of the job. Plan accordingly.
 
-Create a way to view the state of your redis cluster. Are you running out of RAM? Are your Queues growing faster than they can be worked? Checking this information is the key to having a healthy ecosystem. [The methods for doing so](tutorial-tasks.html) are available.
+You should create a way to view the state of your redis cluster. Are you running out of RAM? Are your Queues growing faster than they can be worked? Checking this information is the key to having a healthy ecosystem. [The methods for doing so](/tutorials/tasks#Resque%20Health) are available.
 
 Be extra-save within your actions, and do not allow an uncaught exception. This will cause the worker to crash and the job to be remain 'claimed' in redis, and never make it to the failed queue.

@@ -367,6 +367,53 @@ describe("task testing", () => {
 });
 ```
 
+## Resque Health
+
+Monitoring the health of your task queues is important. We use [node-resque](https://github.com/actionhero/node-resque) and connect to Redis to store task data. Actionhero promotes a number of methods from node-resque to the task namespace so that you can check the length of your task queues (are they growing? shrinking?), see what the workers are working on, and more. A great starting point is `await task.details()`, an async method which will collect the results of many information queries from resque:
+
+```ts
+/**
+ * Return wholistic details about the task system, including failures, queues, and workers.
+ * Will throw an error if redis cannot be reached.
+ */
+export async function details(): Promise<{ [key: string]: any }> {
+  const details = { queues: {}, workers: {}, stats: null };
+
+  details.workers = await task.allWorkingOn();
+  details.stats = await task.stats();
+  const queues = await api.resque.queue.queues();
+
+  for (const i in queues) {
+    const queue = queues[i];
+    const length = await api.resque.queue.length(queue);
+    details.queues[queue] = { length: length };
+  }
+
+  return details;
+}
+```
+
+You can then use this information in an action, which you can then hit to check the status of your cluster. The default `status` action does a basic version of this:
+
+```ts
+async checkResqueQueues(data) {
+  const maxResqueQueueLength = 1000
+  const details = await task.details();
+  let length = 0;
+  Object.keys(details.queues).forEach(q => {
+    length += details.queues[q].length;
+  });
+
+  if (length > maxResqueQueueLength) {
+    // return this information in some way...
+  }
+}
+```
+
+Learn more at https://docs.actionherojs.com/modules/task.html
+
+You can also ask for information about the redis database itself, like how much RAM it is currently using with `api.resque.clients[name-of-client].info()`. Note there are 3 connections to redis, each with a different client name.
+
 ## Notes
 
 Note that the `frequency`, `enqueueIn` and `enqueueAt` times are when a task is **allowed** to run, not when it **will** run. TaskProcessors will work tasks in a first-in-first-out manner. TaskProcessors also `sleep` when there is no work to do, and will take some time (default 5 seconds) to wake up and check for more work to do.

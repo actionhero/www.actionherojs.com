@@ -17,9 +17,63 @@ Chat on multiple Actionhero nodes relies on redis for both chat (pub/sub) and a 
 
 There is no limit to the number of rooms which can be created, but keep in mind that each room stores information in redis, and there load created for each connection.
 
+## Examples
+
+The full documentation for the chatRoom module can be found here: [https://docs.actionherojs.com/modules/chatroom.html](https://docs.actionherojs.com/modules/chatroom.html)
+
+In an initializer, ensure a room exists and log the room membership every minute
+
+```ts
+// in an initializer, /src/initializers/lobby.ts
+import { Initializer, chatRoom, log } from "actionhero";
+
+let timer: NodeJS.Timeout;
+
+export class MyInitializer extends Initializer {
+  constructor() {
+    super();
+    this.name = "rooms";
+  }
+
+  async initialize() {
+    // ensure a room exists
+    const lobbyExists = await chatRoom.exists("lobby");
+    if (!lobbyExists) {
+      await chatRoom.add("lobby");
+    }
+  }
+
+  async start() {
+    timer = setInterval(() => {
+      this.logLobbyStatus();
+    }, 60 * 1000);
+  }
+
+  async stop() {
+    if (timer) {
+      clearInterval(timer);
+    }
+  }
+
+  async logLobbyStatus() {
+    const { membersCount } = await chatRoom.roomStatus("lobby");
+    log(`lobby has ${membersCount} members`);
+  }
+}
+```
+
+And if you want to broadcast a message to all clients in a room, you can use:
+
+```ts
+// client should either be a real client you are emulating (found in api.connections) or just `{}`
+// room is the string name of a room
+// message is a string or JSON
+api.chatRoom.broadcast(connection, room, message);
+```
+
 ## Middleware
 
-There are 4 types of middleware you can install for the chat system: `say`, `onSayReceive`, `join`, and `leave`. You can learn more about [chat middleware in the middleware section of this site](tutorials/middleware). Using middleware when messages are sent or when connections join rooms is how you build up authentication and more complex workflows.
+There are 4 types of middleware you can install for the chat system: `say`, `onSayReceive`, `join`, and `leave`. You can learn more about [chat middleware in the middleware section of this site](/tutorials/middleware#Chat%20Middleware). Using middleware when messages are sent or when connections join rooms is how you build up authentication and more complex workflows.
 
 ## Specific Client Communication
 
@@ -27,7 +81,7 @@ Every connection object also has a `connection.sendMessage(message)` method whic
 
 ## Client Use
 
-The details of communicating within a chat room are up to each individual server (see [websocket](tutorials/websocket-server).
+The details of communicating within a chat room are up to each individual server (see [websocket](/tutorials/websocket-server)).
 
 - Client will join a room (`client.roomAdd(room)`).
 - Once in the room, clients can send messages (which are strings) to everyone else in the room via `say`, ie: `{client.say('room', Hello World')}`
