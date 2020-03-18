@@ -68,7 +68,7 @@ And if you want to broadcast a message to all clients in a room, you can use:
 // client should either be a real client you are emulating (found in api.connections) or just `{}`
 // room is the string name of a room
 // message is a string or JSON
-api.chatRoom.broadcast(connection, room, message);
+chatRoom.broadcast(connection, room, message);
 ```
 
 ## Middleware
