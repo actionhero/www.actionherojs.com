@@ -2,11 +2,47 @@
 
 ### Debugging
 
+**Development Debugging / Typescript Debugging**
+
+Actionhero makes it simple to use the node.js debugger, even when developing your project with Typescript. New Actionhero projects comes with a `npm run debug` script which will pass the proper arguments to [`ts-node-dev`](https://github.com/whitecolor/ts-node-dev), which we use to run our development mode server. For older Actionhero projects, to start a debugger with `ts-node-dev`, the command is:
+
+```shell
+ts-node-dev --transpile-only --no-deps --inspect -- ./src/server
+```
+
+Once your server is running in debug mode, you can then attach to it via a number of debuggers. The default debugger in Chrome can be used. Learn more here: https://nodejs.org/en/docs/guides/debugging-getting-started/.
+
+You can also use the inspector built into your IDE. For example, VSCode is easy to use with the following `.vscode/launch.json` configuration:
+
+```json
+// from .vscode/launch.json
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Actionhero Debugger",
+      "protocol": "inspector",
+      "port": 9229,
+      "restart": true,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "."
+    }
+  ]
+}
+```
+
+<img style="width:90%" src="/static/images/debugger.png" />
+
+**Production Debugging**
+
 Modern versions of node.js have built-in inspector capabilities.
 
 Run Actionhero with node's `--inspect` flag, ie: `node ./dist/server.js --inspect start`
 
-More info about new [node inspector](https://nodejs.org/en/docs/inspector)
+More info about the [node inspector](https://nodejs.org/en/docs/inspector) can be found on the official node.js website.
 
 ### REPL
 

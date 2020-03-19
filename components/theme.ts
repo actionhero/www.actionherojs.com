@@ -80,7 +80,7 @@ export default {
     "websocket-server": "documentation.svg",
     "running-actionhero": "ops-tools.svg",
     config: "video-game-servers.svg",
-    repl: "ops-tools.svg",
+    "repl-and-debugging": "ops-tools.svg",
     "file-server": "file-server.svg",
     logging: "ops-tools.svg",
     plugins: "ops-tools.svg",
