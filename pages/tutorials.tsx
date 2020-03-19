@@ -202,8 +202,8 @@ export default class WhyPage extends DocsPageWithNav {
                     <p>
                       Actionhero includes a powerful cache system based on
                       Redis. It can be used to store and retrieve data, but also
-                      to create more complex data structures based on queues
-                      and expiring object.
+                      to create more complex data structures based on queues and
+                      expiring object.
                     </p>
                   </Col>
                 </Row>
@@ -376,18 +376,20 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src={`/static/images/${Theme.icons.repl}`}
+                      src={`/static/images/${Theme.icons["repl-and-debugging"]}`}
                     />
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/repl">
-                        <a>Debugging and REPL</a>
+                      <Link href="/tutorials/repl-and-debugging">
+                        <a>REPL and Debugging</a>
                       </Link>
                     </h3>
                     <p>
                       Actionhero includes a REPL so you can interactively
-                      explore your application can work with your data.
+                      explore your application can work with your data. You can
+                      also use node.js' robust debugging ecosystem with your
+                      Actionhero project.
                     </p>
                   </Col>
                 </Row>
