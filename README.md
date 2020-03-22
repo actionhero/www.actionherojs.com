@@ -1,6 +1,6 @@
 # www.actionherojs.com
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Actionhero/www.actionherojs.com.svg)](https://greenkeeper.io/)
+
 
 [![Build Status](https://circleci.com/gh/Actionhero/www.actionherojs.com.png)](https://circleci.com/gh/Actionhero/www.actionherojs.com)
 
