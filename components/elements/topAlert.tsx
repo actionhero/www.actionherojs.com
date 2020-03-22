@@ -10,7 +10,7 @@ export default class TopAlert extends Component {
           textAlign: "center",
           padding: 10,
           backgroundColor: Theme.colors.white,
-          borderBottom: `5px solid ${Theme.colors.red}`
+          borderBottom: `5px solid ${Theme.colors.red}`,
         }}
       >
         <p>

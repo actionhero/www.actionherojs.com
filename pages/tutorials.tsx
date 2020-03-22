@@ -8,7 +8,7 @@ import Theme from "./../components/theme";
 const imageStyle = {
   maxWidth: 150,
   maxHeight: 150,
-  padding: 10
+  padding: 10,
 };
 
 export default class WhyPage extends DocsPageWithNav {
@@ -18,15 +18,15 @@ export default class WhyPage extends DocsPageWithNav {
     this.state = {
       titleSection: {
         title: "Tutorials",
-        icon: "/static/images/jetpack-lady.svg"
+        icon: "/static/images/jetpack-lady.svg",
       },
       sections: {
         intro: "Introduction",
         core: "Actionhero Core",
         servers: "Actionhero Servers",
         configuration: "Configuration and Development",
-        advanced: "Advanced Topics"
-      }
+        advanced: "Advanced Topics",
+      },
     };
   }
 

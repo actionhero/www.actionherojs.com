@@ -96,7 +96,7 @@ export default class GetStartedPage extends DocsPageWithNav {
     this.state = {
       titleSection: {
         title: "Let's get Started",
-        icon: "/static/images/get-started.svg"
+        icon: "/static/images/get-started.svg",
       },
       sections: {
         who: "Who is the Actionhero?",
@@ -105,14 +105,14 @@ export default class GetStartedPage extends DocsPageWithNav {
         structure: "Application Structure",
         tutorial: "Tutorial",
         contributing: "Contributing",
-        notes: "Documentation Notes"
+        notes: "Documentation Notes",
       },
       links: [
         {
           link: "https://docs.actionherojs.com",
-          title: "» Actionhero Documentation"
-        }
-      ]
+          title: "» Actionhero Documentation",
+        },
+      ],
     };
   }
 

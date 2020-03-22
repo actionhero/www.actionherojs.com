@@ -25,7 +25,7 @@ export default class DownloadPage extends Component {
         showSolutions
         titleSection={{
           title: "Downloads",
-          icon: "/static/images/downloads.svg"
+          icon: "/static/images/downloads.svg",
         }}
       >
         <Row>

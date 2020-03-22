@@ -86,11 +86,11 @@ await chatRoom.broadcast(null, 'myRoom', 'Hello!')
 
 //client
 client.on('message', (message) => alert(message))
-`
+`,
 };
 
 const smallIconStyle = {
-  padding: 30
+  padding: 30,
 };
 
 export default class indexPage extends Component {
@@ -100,7 +100,7 @@ export default class indexPage extends Component {
         <div
           style={{
             backgroundColor: Theme.colors.blue,
-            color: Theme.colors.white
+            color: Theme.colors.white,
           }}
         >
           <Grid style={{ paddingTop: 50 }}>
@@ -120,7 +120,7 @@ export default class indexPage extends Component {
                     fontFamily: "Roboto",
                     fontWeight: 200,
                     paddingTop: 5,
-                    paddingBottom: 40
+                    paddingBottom: 40,
                   }}
                 >
                   {" "}
@@ -182,14 +182,14 @@ export default class indexPage extends Component {
         <div
           style={{
             height: 183,
-            background: `url("/static/images/clouds.svg") no-repeat center ${Theme.colors.blue}`
+            background: `url("/static/images/clouds.svg") no-repeat center ${Theme.colors.blue}`,
           }}
         />
 
         <div
           style={{
             backgroundColor: Theme.colors.yellow,
-            color: Theme.colors.blue
+            color: Theme.colors.blue,
           }}
         >
           <Grid style={Theme.padding.section}>
@@ -248,7 +248,7 @@ export default class indexPage extends Component {
                     fontWeight: 400,
                     fontSize: 20,
                     lineHeight: "1.5em",
-                    color: "#3B5D72"
+                    color: "#3B5D72",
                   }}
                 >
                   ...and a whole lot more!
@@ -261,7 +261,7 @@ export default class indexPage extends Component {
         <div
           style={{
             backgroundColor: Theme.colors.blueGray,
-            color: "white"
+            color: "white",
           }}
         >
           <Grid style={Theme.padding.section}>
@@ -279,7 +279,7 @@ export default class indexPage extends Component {
         <div
           style={{
             backgroundColor: Theme.colors.white,
-            color: Theme.colors.blue
+            color: Theme.colors.blue,
           }}
         >
           <Grid style={Theme.padding.section}>
@@ -387,7 +387,7 @@ export default class indexPage extends Component {
         <div
           style={{
             backgroundColor: Theme.colors.yellow,
-            color: Theme.colors.blue
+            color: Theme.colors.blue,
           }}
         >
           <Grid style={Theme.padding.section}>
@@ -477,7 +477,7 @@ export default class indexPage extends Component {
         <div
           style={{
             backgroundColor: Theme.colors.white,
-            color: Theme.colors.blue
+            color: Theme.colors.blue,
           }}
         >
           <Grid style={Theme.padding.section}>
@@ -560,7 +560,7 @@ export default class indexPage extends Component {
             backgroundColor: Theme.colors.yellow,
             color: Theme.colors.blue,
             backgroundImage: 'url("/static/images/starburst.png")',
-            backgroundSize: "100% 100%"
+            backgroundSize: "100% 100%",
           }}
         >
           <Grid style={Theme.padding.section}>

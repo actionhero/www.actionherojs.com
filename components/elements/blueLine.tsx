@@ -9,7 +9,7 @@ export default class extends Component {
           color: Theme.colors.blue,
           backgroundColor: Theme.colors.blue,
           border: 0,
-          height: 2
+          height: 2,
         }}
       />
     );

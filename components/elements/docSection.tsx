@@ -19,21 +19,21 @@ export default class extends Component<Props> {
       waypointExit,
       id,
       title,
-      parent
+      parent,
     } = this.props;
 
-    let waypointEnterCallback = data => {};
+    let waypointEnterCallback = (data) => {};
 
     if (waypointEnter) {
-      waypointEnterCallback = data => {
+      waypointEnterCallback = (data) => {
         waypointEnter.call(parent, id, data);
       };
     }
 
-    let waypointExitCallback = data => {};
+    let waypointExitCallback = (data) => {};
 
     if (waypointExit) {
-      waypointExitCallback = data => {
+      waypointExitCallback = (data) => {
         waypointExit.call(parent, id, data);
       };
     }
@@ -48,7 +48,7 @@ export default class extends Component<Props> {
           <RedLine />
           <div
             style={{
-              fontFamily: Theme.fonts.docs
+              fontFamily: Theme.fonts.docs,
             }}
           >
             {children}

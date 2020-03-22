@@ -8,7 +8,7 @@ interface State {
 }
 
 const footerLinkStyle = {
-  color: Theme.colors.yellow
+  color: Theme.colors.yellow,
 };
 
 const columnPadding = 100;
@@ -27,7 +27,7 @@ export default class extends Component<{}, State> {
           backgroundColor: "#2F5266",
           color: Theme.colors.yellow,
           fontFamily: Theme.fonts.main,
-          fontWeight: 200
+          fontWeight: 200,
         }}
       >
         <Grid>
@@ -35,7 +35,7 @@ export default class extends Component<{}, State> {
             style={{
               paddingBottom: 50,
               paddingTop: 50,
-              paddingLeft: columnPadding
+              paddingLeft: columnPadding,
             }}
           >
             <Col md={12}>

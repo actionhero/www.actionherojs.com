@@ -25,12 +25,12 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.2",
-    "@types/react": "^16.9.23",
+    "@types/node": "^13.9.3",
+    "@types/react": "^16.9.25",
     "babel-eslint": "^10.1.0",
     "glob": "^7.1.6",
     "jest": "25.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.1",
     "react-test-renderer": "16.13.1",
     "request": "^2.88.2",
     "ts-jest": "^25.2.1",
@@ -43,6 +43,6 @@
     "build": "next build",
     "test": "jest",
     "pretest": "npm run lint",
-    "lint": "prettier --check pages/*/**.tsx components/*/**.tsx pageClasses/*/**.tsx __tests__/*/**.tsx"
+    "lint": "prettier --check pages components pageClasses __tests__"
   }
 }

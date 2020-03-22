@@ -8,13 +8,13 @@ export default class TermsPage extends DocsPageWithNav {
 
     this.state = {
       titleSection: {
-        title: "Terms & Conditions"
+        title: "Terms & Conditions",
       },
       sections: {
         web: "Terms and Conditions",
         privacy: "Privacy Policy",
-        code: "Apache License (v2)"
-      }
+        code: "Apache License (v2)",
+      },
     };
   }
 

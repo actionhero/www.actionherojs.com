@@ -17,7 +17,7 @@ export default class extends Component<Props> {
 
     const bottomLinkStyle = {
       fontWeight: 200,
-      color: Theme.colors.red
+      color: Theme.colors.red,
     };
 
     if (!this.props.sideNav) {
@@ -31,17 +31,17 @@ export default class extends Component<Props> {
             style={{
               listStyleType: "none",
               paddingLeft: 0,
-              marginLeft: 0
+              marginLeft: 0,
             }}
           >
-            {Object.keys(sideNav).map(key => {
+            {Object.keys(sideNav).map((key) => {
               const message = sideNav[key];
 
               const aStyle = {
                 fontWeight: 300,
                 fontSize: 18,
                 lineHeight: "1.6em",
-                color: null
+                color: null,
               };
 
               if (this.props.currentSection === key) {
@@ -65,12 +65,12 @@ export default class extends Component<Props> {
             style={{
               listStyleType: "none",
               paddingLeft: 0,
-              marginLeft: 0
+              marginLeft: 0,
             }}
           >
             {links ? (
               <div>
-                {links.map(k => {
+                {links.map((k) => {
                   return <li key={`side-nav-link-${k.link}`}></li>;
                 })}
               </div>

@@ -19,7 +19,7 @@ class CodePopover extends Component<CodePopoverProps> {
             paddingTop: 15,
             paddingLeft: 10,
             paddingRight: 10,
-            paddingBottom: 6
+            paddingBottom: 6,
           }}
         >
           <Code language="javascript">{code}</Code>
@@ -59,7 +59,7 @@ export default class FeatureBox extends Component<FeatureBoxProps> {
           style={{
             paddingLeft: 20,
             paddingRight: 20,
-            paddingBottom: 30
+            paddingBottom: 30,
           }}
         >
           <img style={{ padding: 30 }} src={this.props.image} />

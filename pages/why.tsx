@@ -10,13 +10,13 @@ export default class WhyPage extends DocsPageWithNav {
     this.state = {
       titleSection: {
         title: "Why Actionhero",
-        icon: "/static/images/routing.svg"
+        icon: "/static/images/routing.svg",
       },
       sections: {
         introduction: "Introduction",
         why: "Why Actionhero",
-        comparison: "Comparison"
-      }
+        comparison: "Comparison",
+      },
     };
   }
 

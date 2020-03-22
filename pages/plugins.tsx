@@ -29,27 +29,27 @@ const plugins = {
       name: "ah-sequelize-plugin",
       url: "https://github.com/Actionhero/ah-sequelize-plugin",
       description: "Sequelize.js plugin for Actionhero",
-      versions: "14-19"
+      versions: "14-19",
     },
     {
       name: "ah-elasticsearch-orm",
       url: "https://github.com/messagebot/ah-elasticsearch-orm",
       description:
         "An Elasticsearch ORM for Actionhero Projects. Provides CRUD instance methods, finders, updates, and collection abstractions",
-      versions: "14-16"
+      versions: "14-16",
     },
     {
       name: "ah-mongodb-plugin",
       url: "https://github.com/eduardogch/ah-mongodb-plugin",
       description: "Actionhero plugin to support MongoDB",
-      versions: "14-16"
+      versions: "14-16",
     },
     {
       name: "ah-rethinkdb-plugin",
       url: "https://github.com/eduardogch/ah-rethinkdb-plugin",
       description: "Actionhero plugin to support RethinkDB",
-      versions: "14"
-    }
+      versions: "14",
+    },
   ],
 
   tasks: [
@@ -58,8 +58,8 @@ const plugins = {
       url: "https://github.com/Actionhero/ah-resque-ui",
       description:
         "Visualization and Managment tools for Actionhero Tasks & Resque Jobs.",
-      versions: "17+"
-    }
+      versions: "17+",
+    },
   ],
 
   apis: [
@@ -67,15 +67,15 @@ const plugins = {
       name: "ah-swagger-plugin",
       url: "https://github.com/walbertoibarra/ah-swagger-plugin",
       description: "Generate Swagger-UI documentation from Actionhero ",
-      versions: "14-19"
+      versions: "14-19",
     },
     {
       name: "ah-ratelimit-plugin",
       url: "https://github.com/innerdvations/ah-ratelimit-plugin",
       description:
         "Allows limits to be set on the number of time actions can be called in a time period, based on some identifier. Has been tested to work with both Actionhero 8 and Actionhero 9.",
-      versions: "8-9"
-    }
+      versions: "8-9",
+    },
   ],
 
   auth: [
@@ -84,15 +84,15 @@ const plugins = {
       url: "https://github.com/ifavo/ah-jwtauth-plugin",
       description:
         "Uses auth0 node-jsonwebtoken to allow token authentication of actions",
-      versions: "14-17"
+      versions: "14-17",
     },
     {
       name: "ah-passport-plugin",
       url: "https://github.com/neilstuartcraig/ah-passport-plugin",
       description:
         "An Actionhero plugin for the passport authentication middleware",
-      versions: "14-16"
-    }
+      versions: "14-16",
+    },
   ],
 
   integrations: [
@@ -100,21 +100,21 @@ const plugins = {
       name: "ah-newrelic-plugin",
       url: "https://github.com/Actionhero/ah-newrelic-plugin",
       description: "Actionhero plugin for New Relic",
-      versions: "14-19"
+      versions: "14-19",
     },
     {
       name: "ah-airbrake-plugin",
       url: "https://github.com/Actionhero/ah-airbrake-plugin",
       description: "Actionhero plugin for airbrake",
-      versions: "14-17"
+      versions: "14-17",
     },
     {
       name: "ah-nodemailer-plugin",
       url: "https://github.com/panjiesw/ah-nodemailer-plugin",
       description: "Actionhero plugin for Node Mailer",
-      versions: "14-16"
-    }
-  ]
+      versions: "14-16",
+    },
+  ],
 };
 
 class PluginTable extends Component<{ plugins: any }> {
@@ -129,7 +129,7 @@ class PluginTable extends Component<{ plugins: any }> {
           </tr>
         </thead>
         <tbody>
-          {this.props.plugins.map(plugin => {
+          {this.props.plugins.map((plugin) => {
             return <PluginTableRow key={plugin.name} plugin={plugin} />;
           })}
         </tbody>
@@ -164,7 +164,7 @@ export default class PluginsPage extends DocsPageWithNav {
     this.state = {
       titleSection: {
         title: "Plugins",
-        icon: "/static/images/ops-tools.svg"
+        icon: "/static/images/ops-tools.svg",
       },
       sections: {
         intro: "Introduction",
@@ -172,14 +172,14 @@ export default class PluginsPage extends DocsPageWithNav {
         tasks: "Tasks",
         apis: "API tools",
         auth: "Authentication and Auth",
-        integrations: "Integrations"
+        integrations: "Integrations",
       },
       links: [
         {
           link: "https://docs.actionherojs.com",
-          title: "» Actionhero Documentation"
-        }
-      ]
+          title: "» Actionhero Documentation",
+        },
+      ],
     };
   }
 

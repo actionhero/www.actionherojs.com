@@ -48,7 +48,7 @@ export default class extends Component<Props, State> {
               backgroundColor: Theme.colors.yellow,
               color: Theme.colors.blue,
               fontWeight: 200,
-              padding: 50
+              padding: 50,
             }}
           >
             <Grid>
@@ -76,7 +76,7 @@ export default class extends Component<Props, State> {
         <div
           style={{
             height: 183,
-            background: `url("/static/images/clouds-white.svg") no-repeat center ${Theme.colors.yellow}`
+            background: `url("/static/images/clouds-white.svg") no-repeat center ${Theme.colors.yellow}`,
           }}
         />
 
@@ -102,7 +102,7 @@ export default class extends Component<Props, State> {
           <div
             style={{
               paddingBottom: Theme.padding.section.paddingBottom,
-              color: Theme.colors.blue
+              color: Theme.colors.blue,
             }}
           >
             <Grid>

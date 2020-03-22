@@ -11,8 +11,8 @@ describe("Community", () => {
         published_at: "Thu Apr 27 2017 15:43:47 GMT-0700 (PDT)",
         tag_name: "v0.0.1",
         name: "first!",
-        html_url: "http://go.away"
-      }
+        html_url: "http://go.away",
+      },
     ];
 
     const page = TestUtils.renderIntoDocument(

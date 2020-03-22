@@ -25,7 +25,7 @@ export default class CommunityPage extends Component<
     super(props);
     this.state = {
       error: props.error || null,
-      releases: props.releases || []
+      releases: props.releases || [],
     };
   }
 
@@ -58,11 +58,11 @@ export default class CommunityPage extends Component<
 
     const communityIcon = {
       padding: 20,
-      float: "left" as "left"
+      float: "left" as "left",
     };
 
     const communityHeader = {
-      fontWeight: 200
+      fontWeight: 200,
     };
 
     return (
@@ -70,7 +70,7 @@ export default class CommunityPage extends Component<
         showSolutions
         titleSection={{
           title: "Team Up",
-          icon: "/static/images/team-up.svg"
+          icon: "/static/images/team-up.svg",
         }}
       >
         <Row>
@@ -125,11 +125,12 @@ export default class CommunityPage extends Component<
             ) : (
               <Table bordered condensed hover>
                 <tbody>
-                  {this.state.releases.map(release => {
+                  {this.state.releases.map((release) => {
                     releaseCounter++;
                     const date = new Date(release.published_at);
-                    const dateString = `${date.getFullYear()}-${date.getMonth() +
-                      1}-${date.getDate()}`;
+                    const dateString = `${date.getFullYear()}-${
+                      date.getMonth() + 1
+                    }-${date.getDate()}`;
 
                     if (releaseCounter > maxReleases) return null;
 
@@ -194,7 +195,7 @@ export default class CommunityPage extends Component<
             <br />
             <table>
               <tbody>
-                {Object.keys(Theme.colors).map(color => {
+                {Object.keys(Theme.colors).map((color) => {
                   const hex = Theme.colors[color];
                   return (
                     <tr key={color}>
@@ -205,7 +206,7 @@ export default class CommunityPage extends Component<
                             margin: 10,
                             height: 30,
                             width: 30,
-                            border: "1px solid black"
+                            border: "1px solid black",
                           }}
                         />
                       </td>

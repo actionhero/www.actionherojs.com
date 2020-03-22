@@ -26,7 +26,7 @@ export default class TutorialPage extends Component<Props, State> {
     const markdown = await require(`./../../tutorials/${name}.md`);
     return {
       markdown: markdown.default,
-      name
+      name,
     };
   }
 
@@ -35,7 +35,7 @@ export default class TutorialPage extends Component<Props, State> {
     this.state = {
       currentlyVisableSections: {},
       sectionHeadings: [],
-      contentHeight: 0
+      contentHeight: 0,
     };
   }
 
@@ -62,7 +62,7 @@ export default class TutorialPage extends Component<Props, State> {
   }
 
   highlightSideNav() {
-    Object.keys(this.state.currentlyVisableSections).forEach(section => {
+    Object.keys(this.state.currentlyVisableSections).forEach((section) => {
       const value = this.state.currentlyVisableSections[section];
       const element = document.getElementById(`sidenav-${section}`);
 
@@ -81,7 +81,7 @@ export default class TutorialPage extends Component<Props, State> {
 
     return (
       <div>
-        {children.map(child => {
+        {children.map((child) => {
           const stringValue = child.props.value;
           if (sectionHeadings.indexOf(stringValue) < 0) {
             sectionHeadings.push(stringValue);
@@ -93,10 +93,10 @@ export default class TutorialPage extends Component<Props, State> {
           return (
             <Waypoint
               key={child.key}
-              onEnter={args => {
+              onEnter={(args) => {
                 this.waypointEnterCallback(stringValue, args);
               }}
-              onLeave={args => {
+              onLeave={(args) => {
                 this.waypointExitCallback(stringValue);
               }}
             >
@@ -122,7 +122,7 @@ export default class TutorialPage extends Component<Props, State> {
       fontWeight: 300,
       fontSize: 18,
       lineHeight: "1.6em",
-      color: null
+      color: null,
     };
 
     return (
@@ -130,7 +130,7 @@ export default class TutorialPage extends Component<Props, State> {
         showSolutions
         titleSection={{
           title: name.charAt(0).toUpperCase() + name.slice(1),
-          icon: `/static/images/${Theme.icons[name]}`
+          icon: `/static/images/${Theme.icons[name]}`,
         }}
       >
         <Row id="tutorialPageContent">
@@ -140,9 +140,9 @@ export default class TutorialPage extends Component<Props, State> {
               escapeHtml={false}
               renderers={{
                 code: Code,
-                heading: node => {
+                heading: (node) => {
                   return this.parseHeading(node);
-                }
+                },
               }}
             />
           </Col>
@@ -153,10 +153,10 @@ export default class TutorialPage extends Component<Props, State> {
                   style={{
                     listStyleType: "none",
                     paddingLeft: 0,
-                    marginLeft: 0
+                    marginLeft: 0,
                   }}
                 >
-                  {sectionHeadings.map(section => {
+                  {sectionHeadings.map((section) => {
                     return (
                       <li key={`section-${section}`}>
                         <a

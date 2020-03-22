@@ -23,13 +23,13 @@ export default class extends Component<Props, State> {
       github: new GitHub(),
       org: props.org || "Actionhero",
       repo: props.repo || "Actionhero",
-      error: null
+      error: null,
     };
   }
 
   async componentDidMount() {
     await this.setState({
-      repository: this.state.github.getRepo(this.state.org, this.state.repo)
+      repository: this.state.github.getRepo(this.state.org, this.state.repo),
     });
 
     if (this.state.latestRelease === "~") {

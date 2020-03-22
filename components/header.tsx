@@ -43,7 +43,7 @@ export default class extends Component<{}, State> {
       color: Theme.colors.white,
       paddingBottom: 10,
       fontWeight: 300,
-      borderBottom: decoration
+      borderBottom: decoration,
     };
   }
 
@@ -63,7 +63,7 @@ export default class extends Component<{}, State> {
     return (
       <header
         style={{
-          backgroundColor: Theme.colors.blue
+          backgroundColor: Theme.colors.blue,
         }}
       >
         <Grid>
@@ -72,7 +72,7 @@ export default class extends Component<{}, State> {
               backgroundColor: Theme.colors.blue,
               paddingTop: 5,
               marginBottom: 10,
-              border: 0
+              border: 0,
             }}
           >
             <Navbar.Header>

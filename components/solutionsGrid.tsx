@@ -16,7 +16,7 @@ export default class extends Component<{}, State> {
     super(props);
     this.state = {
       showModal: false,
-      successMessage: null
+      successMessage: null,
     };
   }
 
@@ -38,7 +38,7 @@ export default class extends Component<{}, State> {
           color: Theme.colors.blue,
           fontWeight: 300,
           paddingTop: Theme.padding.section.paddingTop,
-          paddingBottom: Theme.padding.section.paddingBottom
+          paddingBottom: Theme.padding.section.paddingBottom,
         }}
       >
         <Grid>
@@ -49,7 +49,7 @@ export default class extends Component<{}, State> {
               style={{
                 textAlign: "center",
                 color: Theme.colors.yellow,
-                paddingBottom: 100
+                paddingBottom: 100,
               }}
             >
               <SuccessAlert message={this.state.successMessage} />
@@ -74,7 +74,7 @@ export default class extends Component<{}, State> {
                   paddingLeft: 40,
                   paddingRight: 50,
                   backgroundColor: Theme.colors.yellow,
-                  boxShadow: boxShadow
+                  boxShadow: boxShadow,
                 }}
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
@@ -113,7 +113,7 @@ export default class extends Component<{}, State> {
                   padding: 20,
                   backgroundColor: Theme.colors.blue,
                   color: Theme.colors.white,
-                  boxShadow: boxShadow
+                  boxShadow: boxShadow,
                 }}
               >
                 <div style={{ textAlign: "center" }}>
@@ -172,7 +172,7 @@ export default class extends Component<{}, State> {
                   boxShadow: boxShadow,
                   marginLeft: "-13%",
                   marginRight: "-5%",
-                  zIndex: 10
+                  zIndex: 10,
                 }}
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
@@ -224,7 +224,7 @@ export default class extends Component<{}, State> {
                   paddingRight: 40,
                   paddingLeft: 50,
                   backgroundColor: Theme.colors.yellow,
-                  boxShadow: boxShadow
+                  boxShadow: boxShadow,
                 }}
               >
                 <div style={{ textAlign: "center", paddingBottom: 10 }}>
@@ -288,7 +288,7 @@ export default class extends Component<{}, State> {
                     fontWeight: 200,
                     width: 750,
                     marginLeft: -75,
-                    background: `url("/static/images/clouds-white.svg") no-repeat center bottom ${Theme.colors.yellow}`
+                    background: `url("/static/images/clouds-white.svg") no-repeat center bottom ${Theme.colors.yellow}`,
                   }}
                 >
                   <Row>
@@ -359,7 +359,7 @@ export default class extends Component<{}, State> {
                       <div
                         style={{
                           textAlign: "center",
-                          padding: 20
+                          padding: 20,
                         }}
                       >
                         <Button

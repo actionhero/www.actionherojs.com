@@ -4,20 +4,20 @@ export default {
     blue: "#2F5266",
     blueGray: "#6E8898",
     yellow: "#FBF9E4",
-    white: "#FFFFFF"
+    white: "#FFFFFF",
   },
 
   fonts: {
     main: "Roboto, sans-serif",
     title: "BebasNeue, Roboto, sans-serif",
-    docs: "Open Sans, sans-serif"
+    docs: "Open Sans, sans-serif",
   },
 
   typography: {
     default: {
       fontSize: 14,
       fontWeight: 300,
-      lineHeight: 26
+      lineHeight: 26,
     } as React.CSSProperties,
     h1: {
       fontFamily: "BebasNeue, Roboto, sans-serif",
@@ -25,30 +25,30 @@ export default {
       marginTop: 20,
       marginBottom: 10,
       letterSpacing: 2,
-      fontSize: 36
+      fontSize: 36,
     } as React.CSSProperties,
     h2: {
       fontFamily: "Roboto, sans-serif",
       fontWeight: 300,
       fontSize: 20,
       lineHeight: "1.5em",
-      color: "#3B5D72"
+      color: "#3B5D72",
     } as React.CSSProperties,
     h2Alt: {
       fontFamily: "BebasNeue, Roboto, sans-serif",
       fontWeight: 800,
       fontSize: 24,
       letterSpacing: 1,
-      color: "#3B5D72"
-    } as React.CSSProperties
+      color: "#3B5D72",
+    } as React.CSSProperties,
   },
 
   padding: {
     common: 50,
     section: {
       paddingTop: 100,
-      paddingBottom: 100
-    }
+      paddingBottom: 100,
+    },
   },
 
   form: {
@@ -61,8 +61,8 @@ export default {
       paddingBottom: 10,
       width: "100%",
       fontSize: 24,
-      fontWeight: 300
-    } as React.CSSProperties
+      fontWeight: 300,
+    } as React.CSSProperties,
   },
 
   icons: {
@@ -87,7 +87,7 @@ export default {
     cluster: "cluster-ready.svg",
     "production-notes": "ops-tools.svg",
     "upgrade-path": "documentation.svg",
-    typescript: "dog.svg"
+    typescript: "dog.svg",
   },
 
   buttons: {
@@ -106,7 +106,7 @@ export default {
         marginBottom: 20,
         paddingTop: 15,
         paddingBottom: 15,
-        outline: "none"
+        outline: "none",
       } as React.CSSProperties;
     },
 
@@ -125,10 +125,10 @@ export default {
         marginBottom: 0,
         marginLeft: 10,
         marginRight: 10,
-        outline: "none"
+        outline: "none",
         // paddingTop: 10,
         // paddingBottom: 10
       } as React.CSSProperties;
-    }
-  }
+    },
+  },
 };
