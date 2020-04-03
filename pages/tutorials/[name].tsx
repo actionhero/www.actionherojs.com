@@ -161,7 +161,7 @@ export default class TutorialPage extends Component<Props, State> {
                       <li key={`section-${section}`}>
                         <a
                           href={`#${section}`}
-                          className="text-info"
+                          className="text-danger"
                           style={aStyle}
                           id={`sidenav-${section}`}
                         >

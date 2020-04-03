@@ -123,7 +123,7 @@ export default class CommunityPage extends Component<
             {this.state.error ? (
               <DangerAlert message={this.state.error} />
             ) : (
-              <Table bordered hover>
+              <Table bordered hover size="sm">
                 <tbody>
                   {this.state.releases.map((release) => {
                     releaseCounter++;

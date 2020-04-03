@@ -198,7 +198,7 @@ export default class extends Component<{}, State> {
                 </NavItem>
 
                 <NavItem
-                  className="d-none d-lg-block"
+                  className="d-none d-xlg-block"
                   onClick={this.goTo.bind(
                     this,
                     "https://actionherojs.threadless.com"
