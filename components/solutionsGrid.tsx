@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import { Grid, Row, Col, Modal, Button } from "react-bootstrap";
+import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import Theme from "./theme";
 import SuccessAlert from "./alerts/success";
 import RedLine from "./elements/redLine";
@@ -41,7 +41,7 @@ export default class extends Component<{}, State> {
           paddingBottom: Theme.padding.section.paddingBottom,
         }}
       >
-        <Grid>
+        <Container>
           <Row>
             <Col md={2} />
             <Col
@@ -106,7 +106,7 @@ export default class extends Component<{}, State> {
               </div>
             </Col>
 
-            <Col md={4} className="hidden-md hidden-lg hidden-xl">
+            <Col md={4} className="d-lg-none">
               <div
                 style={{
                   width: "100%",
@@ -160,7 +160,7 @@ export default class extends Component<{}, State> {
               </div>
             </Col>
 
-            <Col md={4} className="hidden-xs hidden-sm">
+            <Col md={4} className="d-none d-lg-block">
               <div
                 style={{
                   width: "125%",
@@ -305,7 +305,7 @@ export default class extends Component<{}, State> {
                       </p>
 
                       <div
-                        className="hidden-sm hidden-xs"
+                        className="d-none d-md-block"
                         style={{ textAlign: "center", paddingTop: 100 }}
                       >
                         <img
@@ -317,7 +317,7 @@ export default class extends Component<{}, State> {
                     <Col md={8}>
                       <div
                         style={{ paddingTop: 150 }}
-                        className="hidden-sm hidden-xs"
+                        className="d-none d-md-block"
                       />
 
                       <input
@@ -368,7 +368,7 @@ export default class extends Component<{}, State> {
                             Theme.colors.red,
                             Theme.colors.yellow
                           )}
-                          bsSize="large"
+                          size="lg"
                           block
                         >
                           Submit
@@ -381,7 +381,7 @@ export default class extends Component<{}, State> {
               </form>
             </Modal>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

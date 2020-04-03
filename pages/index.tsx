@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Page from "./../components/layouts/page";
 import Theme from "./../components/theme";
 import BigButton from "./../components/buttons/bigButton";
@@ -103,7 +103,7 @@ export default class indexPage extends Component {
             color: Theme.colors.white,
           }}
         >
-          <Grid style={{ paddingTop: 50 }}>
+          <Container style={{ paddingTop: 50 }}>
             <Row>
               <Col md={2} />
               <Col md={8} style={{ textAlign: "center" }}>
@@ -176,7 +176,7 @@ export default class indexPage extends Component {
               </Col>
               <Col md={1} />
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <div
@@ -192,7 +192,7 @@ export default class indexPage extends Component {
             color: Theme.colors.blue,
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={1} />
               <Col md={1} style={{ textAlign: "center" }}>
@@ -255,7 +255,7 @@ export default class indexPage extends Component {
                 </h2>
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <div
@@ -264,7 +264,7 @@ export default class indexPage extends Component {
             color: "white",
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}>Get started in seconds</h1>
@@ -273,7 +273,7 @@ export default class indexPage extends Component {
                 </div>
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <div
@@ -282,7 +282,7 @@ export default class indexPage extends Component {
             color: Theme.colors.blue,
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}> Plays Well With Others </h1>
@@ -293,7 +293,7 @@ export default class indexPage extends Component {
               </Col>
             </Row>
 
-            <Row className="hidden-xs hidden-sm">
+            <Row className="d-none d-lg-block">
               <Col md={12} style={{ textAlign: "center" }}>
                 <img
                   style={smallIconStyle}
@@ -326,7 +326,7 @@ export default class indexPage extends Component {
               </Col>
             </Row>
 
-            <Row className="hidden-md hidden-lg hidden-xl">
+            <Row className="d-lg-none">
               <Col md={2} />
               <Col md={1} style={{ textAlign: "center" }}>
                 <img
@@ -381,7 +381,7 @@ export default class indexPage extends Component {
                 />
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <div
@@ -390,7 +390,7 @@ export default class indexPage extends Component {
             color: Theme.colors.blue,
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={3} />
               <Col md={6} style={{ textAlign: "center" }}>
@@ -471,7 +471,7 @@ export default class indexPage extends Component {
                 body="Every server needs to serve files to its clients (even those that don't speak HTTP), and Actionhero is no exception. Configured to asynchronously stream file contents, Actionhero provides an robust file server which can live in parallel with your API, allowing for a fully featured server."
               />
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <div
@@ -480,7 +480,7 @@ export default class indexPage extends Component {
             color: Theme.colors.blue,
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}>
@@ -491,7 +491,7 @@ export default class indexPage extends Component {
               </Col>
             </Row>
 
-            <Row className="hidden-xs hidden-sm">
+            <Row className="d-none d-lg-block">
               <Col md={12} style={{ textAlign: "center" }}>
                 <img
                   style={smallIconStyle}
@@ -516,7 +516,7 @@ export default class indexPage extends Component {
               </Col>
             </Row>
 
-            <Row className="hidden-md hidden-lg hidden-xl">
+            <Row className="d-lg-none">
               <Col md={1} />
               <Col md={2} style={{ textAlign: "center" }}>
                 <img
@@ -550,7 +550,7 @@ export default class indexPage extends Component {
               </Col>
               <Col md={1} />
             </Row>
-          </Grid>
+          </Container>
         </div>
 
         <SolutionsGrid />
@@ -563,7 +563,7 @@ export default class indexPage extends Component {
             backgroundSize: "100% 100%",
           }}
         >
-          <Grid style={Theme.padding.section}>
+          <Container style={Theme.padding.section}>
             <Row>
               <Col md={12} style={{ textAlign: "center" }}>
                 <h1 style={Theme.typography.h1}>
@@ -585,7 +585,7 @@ export default class indexPage extends Component {
                 </BigButton>
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </div>
       </Page>
     );

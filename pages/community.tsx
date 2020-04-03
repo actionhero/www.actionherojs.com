@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Row, Col, Table, Clearfix } from "react-bootstrap";
+import { Row, Col, Table } from "react-bootstrap";
 import DocsPage from "../components/layouts/docsPage";
 import DangerAlert from "../components/alerts/danger";
 import DocSection from "../components/elements/docSection";
@@ -77,7 +77,7 @@ export default class CommunityPage extends Component<
           <Col md={5} style={{ paddingTop: 50, paddingBottom: 50 }}>
             <DocSection title="Join the Team" />
 
-            <Clearfix />
+            <div className="clearfix" />
 
             <a href="https://slack.actionherojs.com">
               <img
@@ -87,7 +87,7 @@ export default class CommunityPage extends Component<
               <h2 style={communityHeader}>Chat with us on Slack</h2>
             </a>
 
-            <Clearfix />
+            <div className="clearfix" />
 
             <a href="https://twitter.com/actionherojs">
               <img
@@ -97,7 +97,7 @@ export default class CommunityPage extends Component<
               <h2 style={communityHeader}>Find us on Twitter</h2>
             </a>
 
-            <Clearfix />
+            <div className="clearfix" />
 
             <a href="https://www.github.com/Actionhero/Actionhero">
               <img
@@ -107,7 +107,7 @@ export default class CommunityPage extends Component<
               <h2 style={communityHeader}>View the source on GitHub</h2>
             </a>
 
-            <Clearfix />
+            <div className="clearfix" />
 
             <a href="https://www.github.com/Actionhero/Actionhero/issues">
               <img
@@ -123,7 +123,7 @@ export default class CommunityPage extends Component<
             {this.state.error ? (
               <DangerAlert message={this.state.error} />
             ) : (
-              <Table bordered condensed hover>
+              <Table bordered hover>
                 <tbody>
                   {this.state.releases.map((release) => {
                     releaseCounter++;

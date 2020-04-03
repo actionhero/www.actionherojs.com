@@ -7,7 +7,7 @@ interface Props {
   backgroundColor: string;
   textColor: string;
   href: string;
-  bsSize?: string;
+  size?: "lg" | "sm";
 }
 
 interface State {
@@ -40,6 +40,7 @@ export default class extends Component<Props, State> {
 
     return (
       <div
+        className="d-none d-lg-block"
         onMouseDown={() => {
           this.onMouseDown();
         }}
@@ -49,7 +50,7 @@ export default class extends Component<Props, State> {
       >
         <Link href={this.props.href}>
           <a style={{ textDecoration: "none" }}>
-            <Button style={style} bsSize={this.props.bsSize || "large"} block>
+            <Button style={style} size={this.props.size || "lg"} block>
               {this.props.children}
             </Button>
           </a>

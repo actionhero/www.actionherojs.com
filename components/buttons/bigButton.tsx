@@ -7,8 +7,8 @@ interface Props {
   backgroundColor: string;
   textColor: string;
   href?: string;
-  bsSize?: string;
-  onClick?: Function;
+  size?: "lg" | "sm";
+  onClick?: (e) => {};
 }
 
 interface State {
@@ -51,7 +51,7 @@ export default class extends Component<Props, State> {
         {this.props.href ? (
           <Link href={this.props.href}>
             <a style={{ textDecoration: "none" }}>
-              <Button style={style} bsSize={this.props.bsSize || "large"} block>
+              <Button style={style} size={this.props.size || "lg"} block>
                 {this.props.children}
               </Button>
             </a>
@@ -60,7 +60,7 @@ export default class extends Component<Props, State> {
           <Button
             onClick={this.props.onClick}
             style={style}
-            bsSize={this.props.bsSize || "large"}
+            size={this.props.size || "lg"}
             block
           >
             {this.props.children}

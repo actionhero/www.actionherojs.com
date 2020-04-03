@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Theme from "./theme";
 
 interface State {
@@ -30,7 +30,7 @@ export default class extends Component<{}, State> {
           fontWeight: 200,
         }}
       >
-        <Grid>
+        <Container>
           <Row
             style={{
               paddingBottom: 50,
@@ -176,7 +176,7 @@ export default class extends Component<{}, State> {
               </div>
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </footer>
     );
   }

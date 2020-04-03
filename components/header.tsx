@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Router from "next/router";
-import { Grid, Navbar, Nav, NavItem } from "react-bootstrap";
+import { Container, Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
 import Theme from "./theme";
 import HeaderButton from "./buttons/headerButton";
 
@@ -44,6 +44,7 @@ export default class extends Component<{}, State> {
       paddingBottom: 10,
       fontWeight: 300,
       borderBottom: decoration,
+      marginRight: 20,
     };
   }
 
@@ -66,42 +67,38 @@ export default class extends Component<{}, State> {
           backgroundColor: Theme.colors.blue,
         }}
       >
-        <Grid>
+        <Container>
           <Navbar
             style={{
               backgroundColor: Theme.colors.blue,
               paddingTop: 5,
-              marginBottom: 10,
+              marginBottom: 0,
               border: 0,
             }}
           >
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a
-                  onClick={this.goTo.bind(this, "/")}
-                  style={{ paddingTop: 0, marginBottom: 15 }}
-                >
-                  <img
-                    src="/static/images/actionhero-logo-header-wordmark.svg"
-                    style={{ paddingTop: 14, paddingBottom: 20 }}
-                  />
-                </a>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
+            <Navbar.Brand>
+              <a
+                onClick={this.goTo.bind(this, "/")}
+                style={{ paddingTop: 0, marginBottom: 15 }}
+              >
+                <img
+                  src="/static/images/actionhero-logo-header-wordmark.svg"
+                  style={{ paddingTop: 14, paddingBottom: 20 }}
+                />
+              </a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
 
             <Navbar.Collapse>
-              <Nav pullRight />
-
-              <Nav pullLeft className="hidden-md hidden-sm hidden-xs">
+              <Nav className="d-none d-lg-block">
                 <NavItem>&nbsp;</NavItem>
                 <NavItem>&nbsp;</NavItem>
               </Nav>
 
-              <Nav pullLeft>
+              <Nav>
                 <NavItem
                   onClick={this.goTo.bind(this, "/why")}
-                  className="hidden-sm"
+                  className="d-none d-lg-block"
                 >
                   <span
                     onMouseEnter={() => {
@@ -116,7 +113,10 @@ export default class extends Component<{}, State> {
                   </span>
                 </NavItem>
 
-                <NavItem onClick={this.goTo.bind(this, "/downloads")}>
+                <NavItem
+                  onClick={this.goTo.bind(this, "/downloads")}
+                  className="d-none d-md-block"
+                >
                   <span
                     onMouseEnter={() => {
                       this.onMouseEnter("/downloads");
@@ -165,7 +165,7 @@ export default class extends Component<{}, State> {
 
                 <NavItem
                   onClick={this.goTo.bind(this, "/plugins")}
-                  className="hidden-sm"
+                  className="d-none d-lg-block"
                 >
                   <span
                     onMouseEnter={() => {
@@ -180,7 +180,10 @@ export default class extends Component<{}, State> {
                   </span>
                 </NavItem>
 
-                <NavItem onClick={this.goTo.bind(this, "/community")}>
+                <NavItem
+                  onClick={this.goTo.bind(this, "/community")}
+                  className="d-none d-md-block"
+                >
                   <span
                     onMouseEnter={() => {
                       this.onMouseEnter("/community");
@@ -195,6 +198,7 @@ export default class extends Component<{}, State> {
                 </NavItem>
 
                 <NavItem
+                  className="d-none d-lg-block"
                   onClick={this.goTo.bind(
                     this,
                     "https://actionherojs.threadless.com"
@@ -214,7 +218,7 @@ export default class extends Component<{}, State> {
                 </NavItem>
               </Nav>
 
-              <Nav pullRight>
+              <Nav>
                 <HeaderButton
                   href="/get-started"
                   backgroundColor={Theme.colors.red}
@@ -225,7 +229,7 @@ export default class extends Component<{}, State> {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-        </Grid>
+        </Container>
       </header>
     );
   }
