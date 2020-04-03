@@ -52,10 +52,7 @@ Actionhero will generate the client-side javascript needed for you (based on the
       console.log(error);
     } else {
       client.roomAdd("defaultRoom");
-      client.action("someAction", { key: "k", value: "v" }, function(
-        error,
-        data
-      ) {
+      client.action("someAction", { key: "k", value: "v" }, function(data) {
         // do stuff
       });
     }
