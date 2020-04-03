@@ -121,7 +121,7 @@ export default {
         backgroundColor: backgroundColor,
         borderColor: backgroundColor,
         fontWeight: 300,
-        marginTop: 20,
+        // marginTop: 20,
         marginBottom: 0,
         marginLeft: 10,
         marginRight: 10,

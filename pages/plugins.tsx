@@ -120,7 +120,7 @@ const plugins = {
 class PluginTable extends Component<{ plugins: any }> {
   render() {
     return (
-      <Table bordered condensed hover>
+      <Table bordered hover size="sm">
         <thead>
           <tr>
             <th>Name</th>

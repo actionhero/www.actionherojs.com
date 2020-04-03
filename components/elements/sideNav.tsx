@@ -51,7 +51,7 @@ export default class extends Component<Props> {
 
               return (
                 <li key={key}>
-                  <a href={`#${key}`} className="text-info" style={aStyle}>
+                  <a href={`#${key}`} className="text-danger" style={aStyle}>
                     {message}
                   </a>
                 </li>

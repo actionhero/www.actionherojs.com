@@ -14,7 +14,7 @@ export default class extends Component<Props> {
     return (
       <Row>
         <Col md={12}>
-          <Alert bsStyle="danger"> {this.props.message.toString()} </Alert>
+          <Alert variant="danger"> {this.props.message.toString()} </Alert>
         </Col>
       </Row>
     );

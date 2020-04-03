@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Grid, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Head from "next/head";
 import Router from "next/router";
 import Theme from "../theme";
@@ -123,17 +123,17 @@ export default class extends Component {
           <script src="/static/js/googleAnalytics.js" />
         </Head>
 
-        <Grid fluid style={commmonSetupStyle}>
+        <Container fluid style={commmonSetupStyle}>
           <Header />
-        </Grid>
+        </Container>
 
-        <Grid fluid style={commmonSetupStyle}>
+        <Container fluid style={commmonSetupStyle}>
           {this.props.children}
-        </Grid>
+        </Container>
 
-        <Grid fluid style={commmonSetupStyle}>
+        <Container fluid style={commmonSetupStyle}>
           <Footer />
-        </Grid>
+        </Container>
       </div>
     );
   }

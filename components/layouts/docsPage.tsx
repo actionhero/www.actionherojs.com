@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import Page from "./page";
 import Theme from "../theme";
@@ -51,7 +51,7 @@ export default class extends Component<Props, State> {
               padding: 50,
             }}
           >
-            <Grid>
+            <Container>
               <Row>
                 <Col md={3} style={{ textAlign: "center" }}>
                   {this.props.titleSection.icon ? (
@@ -69,7 +69,7 @@ export default class extends Component<Props, State> {
                 </Col>
                 <Col md={3} />
               </Row>
-            </Grid>
+            </Container>
           </div>
         ) : null}
 
@@ -80,14 +80,16 @@ export default class extends Component<Props, State> {
           }}
         />
 
-        <Grid style={{ paddingBottom: Theme.padding.section.paddingBottom }}>
+        <Container
+          style={{ paddingBottom: Theme.padding.section.paddingBottom }}
+        >
           <Row>
             <div id="_top" />
             <Col md={contentColWidth} id="docPageContent">
               {this.props.children}
             </Col>
 
-            <Col md={3} className="hidden-xs hidden-sm">
+            <Col md={3} className="d-none d-md-block">
               <SideNav
                 contentHeight={this.state.contentHeight}
                 sideNav={this.props.sideNav}
@@ -96,7 +98,7 @@ export default class extends Component<Props, State> {
               />
             </Col>
           </Row>
-        </Grid>
+        </Container>
 
         {this.props.links && this.props.links[0].title.indexOf("»") >= 0 ? (
           <div
@@ -105,7 +107,7 @@ export default class extends Component<Props, State> {
               color: Theme.colors.blue,
             }}
           >
-            <Grid>
+            <Container>
               <Row>
                 <Col md={12} style={{ textAlign: "center" }}>
                   <BlueLine />
@@ -119,7 +121,7 @@ export default class extends Component<Props, State> {
                   </h2>
                 </Col>
               </Row>
-            </Grid>
+            </Container>
           </div>
         ) : null}
 

@@ -82,7 +82,7 @@ export default class DownloadPage extends Component {
             </p>
             <a href="https://github.com/actionhero/actionhero">
               <div style={{ textAlign: "center" }}>
-                <Alert bsStyle="success">
+                <Alert variant="success">
                   {"https://github.com/actionhero/actionhero"}
                 </Alert>
               </div>

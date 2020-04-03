@@ -146,7 +146,7 @@ export default class TutorialPage extends Component<Props, State> {
               }}
             />
           </Col>
-          <Col md={3} className="hidden-xs hidden-sm">
+          <Col md={3} className="d-none d-md-block">
             <div style={{ height: contentHeight }}>
               <div style={{ paddingTop: 90, position: "sticky", top: 0 }}>
                 <ul
@@ -161,7 +161,7 @@ export default class TutorialPage extends Component<Props, State> {
                       <li key={`section-${section}`}>
                         <a
                           href={`#${section}`}
-                          className="text-info"
+                          className="text-danger"
                           style={aStyle}
                           id={`sidenav-${section}`}
                         >
