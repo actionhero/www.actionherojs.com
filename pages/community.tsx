@@ -120,38 +120,39 @@ export default class CommunityPage extends Component<
 
           <Col md={7} style={{ paddingTop: 50, paddingBottom: 50 }}>
             <DocSection title="Recent Releases" />
-            {this.state.error ? (
-              <DangerAlert message={this.state.error} />
-            ) : (
-              <Table bordered hover size="sm">
-                <tbody>
-                  {this.state.releases.map((release) => {
-                    releaseCounter++;
-                    const date = new Date(release.published_at);
-                    const dateString = `${date.getFullYear()}-${
-                      date.getMonth() + 1
-                    }-${date.getDate()}`;
+            {
+              this.state.error ? (
+                <DangerAlert message={this.state.error} />
+              ) : (
+                <Table bordered hover size="sm">
+                  <tbody>
+                    {this.state.releases.map((release) => {
+                      releaseCounter++;
+                      const date = new Date(release.published_at);
+                      const dateString = `${date.getFullYear()}-${
+                        date.getMonth() + 1
+                      }-${date.getDate()}`;
 
-                    if (releaseCounter > maxReleases) return null;
+                      if (releaseCounter > maxReleases) return null;
 
-                    return (
-                      <tr key={release.tag_name}>
-                        <td>
-                          <strong>{release.tag_name}</strong>
-                        </td>
-                        <td>{dateString}</td>
-                        <td>{release.name}</td>
-                        <td>
-                          <a target="_new" href={release.html_url}>
-                            Learn More
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </Table>
-            ) //eslint-disable-line
+                      return (
+                        <tr key={release.tag_name}>
+                          <td>
+                            <strong>{release.tag_name}</strong>
+                          </td>
+                          <td>{dateString}</td>
+                          <td>{release.name}</td>
+                          <td>
+                            <a target="_new" href={release.html_url}>
+                              Learn More
+                            </a>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              ) //eslint-disable-line
             }
           </Col>
         </Row>
