@@ -15,7 +15,6 @@ Plugins are loaded after all local Actionhero project files, but initializers fo
 | - tasks
 | - servers
 | - initializers
-| - config
 | - public
 | - cli
 |
@@ -33,7 +32,7 @@ To include your plugin in an Actionhero project, add it to `config/plugins.js`
 ```js
 // If you want to use plugins in your application, include them here:
 return {
-  myPlugin: { path: __dirname + "/../node_modules/myPlugin" }
+  myPlugin: { path: __dirname + "/../node_modules/myPlugin" },
 };
 
 // You can also toggle on or off sections of a plugin to include (default true for all sections):
@@ -45,8 +44,8 @@ return {
     initializers: true,
     servers: true,
     cli: true,
-    public: true
-  }
+    public: true,
+  },
 };
 ```
 
@@ -73,8 +72,8 @@ describe("My Plugin", () => {
   before(async () => {
     let configChanges = {
       plugins: {
-        testPlugin: { path: path.join(__dirname, "..") }
-      }
+        testPlugin: { path: path.join(__dirname, "..") },
+      },
     };
 
     api = await Actionhero.start({ configChanges });
@@ -98,6 +97,12 @@ When creating plugins, you may find yourself wanting to do things which could no
 
 - `api.routes.registerRoute(method, path, action, apiVersion, matchTrailingPathParts)`
   - Add a route to the system.
+
+## Config
+
+Note that Actionhero will not load configuration files from within your plugin (ie: files in `/src/config` or `/dist/config`). This is done to prevent confusion or collisions between the `config` namespaces between Actionhero's core, the "top-level" project, and the plugin. If you want to use a special config namespace for your plugin, you can describe how to add one in your project's `README` file.
+
+Using `npm postinstall` hooks to generate a config file is also frowned upon as many users disable that behavior, and ensuring cross-platform compatibility is difficult.
 
 ## Published
 
