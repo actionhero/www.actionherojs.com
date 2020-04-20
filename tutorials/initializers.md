@@ -13,7 +13,7 @@ In general, `initialize()` methods should create prototypes and new objects, and
 ```ts
 // initializers/myInitializer.ts
 
-import { Initializer, api } from "actionhero";
+import { Initializer, api, log } from "actionhero";
 
 export class myInitializer extends Initializer {
   constructor() {
@@ -27,20 +27,20 @@ export class myInitializer extends Initializer {
   async initialize() {
     api.StuffInit = {
       doAThing: async () => {},
-      stopStuff: async () => {}
+      stopStuff: async () => {},
     };
 
-    api.log("I initialized", "debug", this.name);
+    log("I initialized", "debug", this.name);
   }
 
   async start() {
     await api.StuffInit.startStuff();
-    api.log("I started", "debug", this.name);
+    log("I started", "debug", this.name);
   }
 
   async stop() {
     await api.StuffInit.stopStuff();
-    api.log("I stopped", "debug", this.name);
+    log("I stopped", "debug", this.name);
   }
 }
 ```
