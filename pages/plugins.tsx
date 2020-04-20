@@ -210,7 +210,7 @@ export default class PluginsPage extends DocsPageWithNav {
                 <Code language="javascript">{pluginSample}</Code>
                 <p>
                   You can learn more about plugins in the{" "}
-                  <a href="https://docs.actionherojs.com/tutorial-plugins.html">
+                  <a href="https://www.actionherojs.com/tutorials/plugins">
                     Actionhero documentation
                   </a>
                   .
