@@ -93,9 +93,15 @@ describe("My Plugin", () => {
 
 When creating plugins, you may find yourself wanting to do things which could normally be accomplished easily with a "top level" Actionhero project, but might be difficult from within a plugin. Here are some helpers:
 
+### Dependencies:
+
+- Move actionhero from `dependencies` to `devDependencies`
+
+basically you want to ensure that the main app and the plugin use the same "instance" of actionhero at runtime, which means they share actionhero - the dependency of the main project will be a peer of the plugin
+
 ### Routes:
 
-- `api.routes.registerRoute(method, path, action, apiVersion, matchTrailingPathParts)`
+- `route.registerRoute(method, path, action, apiVersion, matchTrailingPathParts)`
   - Add a route to the system.
 
 ## Config
