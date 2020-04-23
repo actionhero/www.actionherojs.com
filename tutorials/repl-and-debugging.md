@@ -7,7 +7,7 @@
 Actionhero makes it simple to use the node.js debugger, even when developing your project with Typescript. New Actionhero projects comes with a `npm run debug` script which will pass the proper arguments to [`ts-node-dev`](https://github.com/whitecolor/ts-node-dev), which we use to run our development mode server. For older Actionhero projects, to start a debugger with `ts-node-dev`, the command is:
 
 ```shell
-ts-node-dev --transpile-only --no-deps --inspect -- ./src/server
+tsc && ts-node-dev --transpile-only --no-deps --inspect -- ./src/server
 ```
 
 Once your server is running in debug mode, you can then attach to it via a number of debuggers. The default debugger in Chrome can be used. Learn more here: https://nodejs.org/en/docs/guides/debugging-getting-started/.
