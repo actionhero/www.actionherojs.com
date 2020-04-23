@@ -12,7 +12,7 @@ ts-node-dev --transpile-only --no-deps --inspect -- ./src/server
 
 Once your server is running in debug mode, you can then attach to it via a number of debuggers. The default debugger in Chrome can be used. Learn more here: https://nodejs.org/en/docs/guides/debugging-getting-started/.
 
-You can also use the inspector built into your IDE. For example, VSCode is easy to use with the following `.vscode/launch.json` configuration:
+You can also use the inspector built into your IDE. For example, VSCode is easy to use with the following `.vscode/launch.json` configuration. This example includes 2 ways to use the debugger: You can attach to an existing Actionhero process which was launched with `npm run debug` with `Actionhero Debugger (attach)`, or you can have VSCode compile your Typescript and attach the debugger all at once (`Actionhero Debugger (launch)`)
 
 ```json
 // from .vscode/launch.json
@@ -23,16 +23,38 @@ You can also use the inspector built into your IDE. For example, VSCode is easy 
     {
       "type": "node",
       "request": "attach",
-      "name": "Actionhero Debugger",
+      "name": "Actionhero Debugger (attach)",
       "protocol": "inspector",
       "port": 9229,
       "restart": true,
       "localRoot": "${workspaceFolder}",
+      "outFiles": ["${workspaceRoot}/dist/**/*.js"],
+      "sourceMaps": true,
       "remoteRoot": "."
+    },
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Actionhero Debugger (launch)",
+      "program": "${workspaceFolder}/src/server.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "outputCapture": "std"
     }
   ]
 }
 ```
+
+Caveats:
+
+Since we are using Typescript, there's not going to be a perfect 1-to-1 mapping with the TS and JS files. Both ways of using the debugger above has issues:
+
+- Using the debug console to access imported/required files may have imported names that have been changed. For example, `import { api } from "actionhero";` may become `const actionhero_1 = require("actionhero");` and so to access `api` in the debugger you may need to do `actionhero_1.api`
+- Line numbers between JS and TS will change.
+- When using the network attach method (`Actionhero Debugger (attach)`), the debugger will open the JS files rather than the TS files (although it does a good job of finding the proper line number).
+- When using the network debugger, you will need first compile your typescript to javascript, including sourcemap files. To combine this with launching actionhero with `ts-node-dev`, a debug command in your `package.json` should be: `"debug": "tsc && ts-node-dev --transpile-only --no-deps --inspect -- ./src/server"`. And be sure your `tsconfig.json`
+  includes `"sourceMap": true`.
 
 <img style="width:90%" src="/static/images/debugger.png" />
 
