@@ -21,7 +21,8 @@
     "react-fontawesome": "^1.7.1",
     "react-markdown": "^4.3.1",
     "react-syntax-highlighter": "^12.2.1",
-    "react-waypoint": "^9.0.2"
+    "react-waypoint": "^9.0.2",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
@@ -43,6 +44,9 @@
     "build": "next build",
     "test": "jest",
     "pretest": "npm run lint",
-    "lint": "prettier --check pages components pageClasses __tests__"
-  }
+    "lint": "prettier --check pages components pageClasses __tests__",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
