@@ -39,12 +39,12 @@ class ValidatedAction extends Action {
     this.inputs = {
       email: {
         required: true,
-        validator: this.emailValidator
+        validator: this.emailValidator,
       },
       password: {
         required: true,
-        validator: this.passwordValidator
-      }
+        validator: this.passwordValidator,
+      },
     };
   }
 
@@ -143,8 +143,8 @@ exports.routes = {
     { path: "/myAction/:apiVersion", action: "myAction" },
 
     // creates routes like \`/api/v1/myAction/\` and \`/api/v2/myAction/\`
-    { path: "/v:apiVersion/myAction", action: "myAction" }
-  ]
+    { path: "/v:apiVersion/myAction", action: "myAction" },
+  ],
 };
 ```
 
@@ -332,17 +332,31 @@ inputs = {
     schema: {
       country: {
         required: true,
-        default: "USA"
+        default: "USA",
       },
       state: { required: false },
       city: {
         required: true,
-        formatter: val => `City:\${val}`,
-        validator: val => val.length > 10
-      }
-    }
-  }
+        formatter: (val) => `City:\${val}`,
+        validator: (val) => val.length > 10,
+      },
+    },
+  },
 };
+```
+
+### Reserved Input Names
+
+There are a small number of input names that are reserved by Actionhero, enumerated within `api.params.globalSafeParams` which should not be used as input keys in your Actions. These are used at the system or server level to help with routing and formatting.
+
+```ts
+api.params.globalSafeParams = [
+  "file",
+  "apiVersion",
+  "callback",
+  "action",
+  "messageId",
+];
 ```
 
 ## Extending the Action class
@@ -373,7 +387,7 @@ action.addMiddleware({
         throw new Error("bad password");
       }
     }
-  }
+  },
 });
 
 export class ShowDashboard extends AuthenticatedAction {
@@ -414,7 +428,7 @@ data = {
   params: { action: "randomNumber", apiVersion: 1 },
   actionStartTime: 123,
   response: {},
-  session: {}
+  session: {},
 };
 ```
 
