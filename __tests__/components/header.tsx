@@ -10,7 +10,7 @@ describe("Header", () => {
     const body = ReactDOM.findDOMNode(page).textContent;
 
     expect(body).toContain("Get Started");
-    expect(body).toContain("Documentation");
+    expect(body).toContain("Docs");
     expect(body).toContain("Shop");
     expect(body).toContain("Community");
     expect(body).toContain("Download");
