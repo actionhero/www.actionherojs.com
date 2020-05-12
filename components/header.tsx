@@ -1,51 +1,21 @@
 import { Component } from "react";
 import Router from "next/router";
-import { Container, Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import Theme from "./theme";
 import HeaderButton from "./buttons/headerButton";
 
-interface State {
-  activeKey: string;
-  hoverKey: string;
-}
+const linkStyle = {
+  lineHeight: 3,
+  color: Theme.colors.white,
+  paddingBottom: 10,
+  fontWeight: 300,
+  borderBottom: "none",
+  marginRight: 20,
+};
 
-export default class extends Component<{}, State> {
+export default class extends Component<{}> {
   constructor(props) {
     super(props);
-    this.state = { activeKey: null, hoverKey: null };
-  }
-
-  componentDidMount() {
-    if (!process || process.browser) {
-      this.setState({ activeKey: Router.pathname });
-    }
-  }
-
-  onMouseEnter(matchKey) {
-    this.setState({ hoverKey: matchKey });
-  }
-
-  onMouseLeave() {
-    this.setState({ hoverKey: null });
-  }
-
-  linkStyle(matchKey) {
-    let decoration = null;
-    if (
-      (this.state.activeKey && this.state.activeKey.match(matchKey)) ||
-      (this.state.hoverKey && this.state.hoverKey.match(matchKey))
-    ) {
-      decoration = "3px solid currentColor";
-    }
-
-    return {
-      lineHeight: 3,
-      color: Theme.colors.white,
-      paddingBottom: 10,
-      fontWeight: 300,
-      borderBottom: decoration,
-      marginRight: 20,
-    };
   }
 
   async goTo(path) {
@@ -75,6 +45,7 @@ export default class extends Component<{}, State> {
               marginBottom: 0,
               border: 0,
             }}
+            expand="lg"
           >
             <Navbar.Brand>
               <a
@@ -87,138 +58,46 @@ export default class extends Component<{}, State> {
                 />
               </a>
             </Navbar.Brand>
-            <Navbar.Toggle />
 
-            <Navbar.Collapse>
-              <Nav className="d-none d-lg-block">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+            <Navbar.Collapse id="basic-navbar-nav">
+              {/* <Nav className="d-none d-lg-block">
                 <NavItem>&nbsp;</NavItem>
                 <NavItem>&nbsp;</NavItem>
+              </Nav> */}
+
+              <Nav className="mr-auto">
+                <Nav.Link href="/why" style={linkStyle}>
+                  Why Actionhero?
+                </Nav.Link>
+                <Nav.Link href="/downloads" style={linkStyle}>
+                  Downloads
+                </Nav.Link>
+                <Nav.Link href="/tutorials" style={linkStyle}>
+                  Tutorials
+                </Nav.Link>
+                <Nav.Link
+                  href="https://docs.actionherojs.com"
+                  style={linkStyle}
+                >
+                  Docs
+                </Nav.Link>
+                <Nav.Link href="plugins" style={linkStyle}>
+                  Plugins
+                </Nav.Link>
+                <Nav.Link href="community" style={linkStyle}>
+                  Community
+                </Nav.Link>
+                <Nav.Link
+                  href="https://actionherojs.threadless.com"
+                  style={linkStyle}
+                >
+                  Shop
+                </Nav.Link>
               </Nav>
 
-              <Nav>
-                <NavItem
-                  onClick={this.goTo.bind(this, "/why")}
-                  className="d-none d-lg-block"
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/why");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/why")}
-                  >
-                    Why Actionhero
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  onClick={this.goTo.bind(this, "/downloads")}
-                  className="d-none d-md-block"
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/downloads");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/downloads")}
-                  >
-                    Downloads
-                  </span>
-                </NavItem>
-
-                <NavItem onClick={this.goTo.bind(this, "/tutorials")}>
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/tutorials");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/tutorials")}
-                  >
-                    Tutorials
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  onClick={this.goTo.bind(
-                    this,
-                    "https://docs.actionherojs.com"
-                  )}
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/docs");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/docs")}
-                  >
-                    Documentation
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  onClick={this.goTo.bind(this, "/plugins")}
-                  className="d-none d-lg-block"
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/plugins");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/plugins")}
-                  >
-                    Plugins
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  onClick={this.goTo.bind(this, "/community")}
-                  className="d-none d-md-block"
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/community");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/community")}
-                  >
-                    Community
-                  </span>
-                </NavItem>
-
-                <NavItem
-                  className="d-none d-xlg-block"
-                  onClick={this.goTo.bind(
-                    this,
-                    "https://actionherojs.threadless.com"
-                  )}
-                >
-                  <span
-                    onMouseEnter={() => {
-                      this.onMouseEnter("/shop");
-                    }}
-                    onMouseLeave={() => {
-                      this.onMouseLeave();
-                    }}
-                    style={this.linkStyle("/shop")}
-                  >
-                    Shop
-                  </span>
-                </NavItem>
-              </Nav>
-
-              <Nav>
+              <Nav className="d-none d-xl-block">
                 <HeaderButton
                   href="/get-started"
                   backgroundColor={Theme.colors.red}
