@@ -174,7 +174,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                 <h3 id="requirements">Requirements</h3>
 
                 <ul>
-                  <li>node.js ( >= v8.0.0)</li>
+                  <li>node.js ( {`>`}= v10.0.0)</li>
                   <li>npm</li>
                   <li>
                     redis (for cluster support, cache, chat, and tasks); but not
