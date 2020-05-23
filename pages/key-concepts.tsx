@@ -1,5 +1,5 @@
 import DocsPageWithNav from "../pageClasses/docsPageWithSideNav";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Alert, Button } from "react-bootstrap";
 import DocsPage from "../components/layouts/docsPage";
 import Code from "../components/code";
 
@@ -19,7 +19,7 @@ export default class GetStartedPage extends DocsPageWithNav {
         initializers: "Initializers",
         chat: "Chat",
         servers: "Servers",
-        tests: "Tests",
+        testing: "Testing",
       },
       links: [
         {
@@ -167,6 +167,12 @@ export class RandomNumber extends Action {
                   Actions rely on servers to handle routing requests to them,
                   and to format responses.
                 </p>
+
+                <div style={{ textAlign: "center", margin: 30 }}>
+                  <Button href="/tutorials/actions" variant="outline-info">
+                    Learn more about Actions
+                  </Button>
+                </div>
               </div>
             )}
 
@@ -253,6 +259,12 @@ await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" })`}
                   style={{ margin: 10 }}
                   width="100%"
                 />
+
+                <div style={{ textAlign: "center", margin: 30 }}>
+                  <Button href="/tutorials/tasks" variant="outline-info">
+                    Learn more about Tasks
+                  </Button>
+                </div>
               </div>
             )}
 
@@ -303,6 +315,12 @@ export class DatabaseInit extends Initializer {
                   <code>start</code> phase, and disconnects at the{" "}
                   <code>stop</code> phase.
                 </p>
+
+                <div style={{ textAlign: "center", margin: 30 }}>
+                  <Button href="/tutorials/initializers" variant="outline-info">
+                    Learn more about Initializers
+                  </Button>
+                </div>
               </div>
             )}
 
@@ -345,6 +363,12 @@ chatRoom.broadcast(connection, room, message);`}</Code>
                     here
                   </a>
                 </p>
+
+                <div style={{ textAlign: "center", margin: 30 }}>
+                  <Button href="/tutorials/chat" variant="outline-info">
+                    Learn more about Chat
+                  </Button>
+                </div>
               </div>
             )}
 
@@ -366,11 +390,17 @@ chatRoom.broadcast(connection, room, message);`}</Code>
                   with other real-time APIs, like consuming the streaming
                   Twitter API or custom responses from IOT or embedded devices.
                 </p>
+
+                <div style={{ textAlign: "center", margin: 30 }}>
+                  <Button href="/tutorials/servers" variant="outline-info">
+                    Learn more about Servers
+                  </Button>
+                </div>
               </div>
             )}
 
             {this.section(
-              "tests",
+              "testing",
               <div>
                 <Code language="typescript">{`import { Process, specHelper } from "actionhero";
 
@@ -417,6 +447,12 @@ describe("Action", () => {
                   NODE_ENV-aware, and makes it simple to change your database
                   configurations between environments.
                 </p>
+
+                <div style={{ textAlign: "center", marginTop: 30 }}>
+                  <Button href="/tutorials/testing" variant="outline-info">
+                    Learn more about Testing
+                  </Button>
+                </div>
               </div>
             )}
           </Col>
