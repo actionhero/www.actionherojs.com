@@ -22,6 +22,7 @@ export default class WhyPage extends DocsPageWithNav {
       },
       sections: {
         intro: "Introduction",
+        "key-concepts": "Key Concepts",
         core: "Actionhero Core",
         servers: "Actionhero Servers",
         configuration: "Configuration and Development",
@@ -51,6 +52,17 @@ export default class WhyPage extends DocsPageWithNav {
                     Actionhero Documentation
                   </a>{" "}
                   to provide a full guide un using the framework.
+                </p>
+              </div>
+            )}
+
+            {this.section(
+              "key-concepts",
+              <div>
+                <p>
+                  If you are new to Actionhero, we suggest visiting the{" "}
+                  <a href="/key-concepts">key concepts page</a> first, which
+                  will put these tutorials into context.
                 </p>
               </div>
             )}

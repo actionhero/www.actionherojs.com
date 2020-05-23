@@ -102,6 +102,11 @@ export default class extends Component<{}, State> {
                   </Link>
                 </p>
                 <p>
+                  <Link href="/key-concepts">
+                    <a style={footerLinkStyle}>Key Concepts</a>
+                  </Link>
+                </p>
+                <p>
                   <a
                     href="https://docs.actionherojs.com"
                     style={footerLinkStyle}
