@@ -45,18 +45,16 @@ export default class GetStartedPage extends DocsPageWithNav {
               "intro",
               <div>
                 <p>
-                  Actionhero is an API server. That means that the type of
-                  workload Actionhero excels at involves producing and consuming
-                  APIs, storing and retrieving data from databases, modifying
-                  files and similar jobs.
-                </p>
-                <p>
-                  Actionhero has 5 key concepts that make up each application:{" "}
-                  <strong>Actions</strong>, <strong>Tasks</strong>,{" "}
+                  Actionhero is an API server. The type of workload Actionhero
+                  excels at involves producing and consuming APIs, storing and
+                  retrieving data from databases, modifying files, and similar
+                  jobs. Actionhero has 5 key concepts that make up each
+                  application: <strong>Actions</strong>, <strong>Tasks</strong>,{" "}
                   <strong>Initializers</strong>, <strong>Chat</strong>, and{" "}
-                  <strong> Servers</strong>. We will cover each of these on this
-                  page. If you are looking for more detail on any of these
-                  topics, please visit the <a href="/tutorials">Tutorials</a>.
+                  <strong> Servers</strong>. This page will contain a brief
+                  overview of these key concepts, and provide a like to the
+                  related <a href="/tutorials">tutorial</a> which contains more
+                  in-depth information.
                 </p>
 
                 <img
@@ -67,13 +65,23 @@ export default class GetStartedPage extends DocsPageWithNav {
 
                 <p>
                   If you are coming from a framework like Rails that has a
-                  strong focus on the MVC (model - view - controller) pattern,
-                  you might be surprised to see that those concepts are missing
-                  here. That is because Actionhero is a{" "}
+                  strong focus on the{" "}
+                  <a
+                    href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"
+                    target="_new"
+                  >
+                    MVC (model - view - controller) pattern
+                  </a>
+                  , you might be surprised to see that those concepts are
+                  missing from Actionhero. That is because Actionhero is a{" "}
                   <strong>
                     <em>backend-agnostic API framework</em>
                   </strong>
-                  . Backend-agnostic means that Actionhero can work with any
+                  .
+                </p>
+
+                <p>
+                  "Backend-agnostic" means that Actionhero can work with any
                   backend/storage engine you might want to use. Since "models"
                   are so closely tied to the storage engine around them,
                   Actionhero doesn't have any opinions on how they should work.
@@ -86,13 +94,16 @@ export default class GetStartedPage extends DocsPageWithNav {
                     ah-sequelize-plugin
                   </a>{" "}
                   which is a great way to introduce traditional database-backed
-                  models & migrations with MySQL or Postgres. API framework
-                  means that by default, Actionhero only speaks JSON over
-                  HTTP(S) or Websocket. It doesn't render HTML or any other type
-                  of "view" meant to be consumed by a human. Again, there are
-                  plugins to introduce new protocols to Actionhero if you want
-                  them, but they are optional. Actionhero is not a font-end
-                  server, although it's easy to pair{" "}
+                  models & migrations with MySQL or Postgres.
+                </p>
+
+                <p>
+                  "API framework" means that by default, Actionhero only speaks
+                  JSON over HTTP(S) or websockets. It doesn't render HTML or any
+                  other type of "view" meant to be consumed by a human. Again,
+                  there are plugins to introduce new protocols to Actionhero if
+                  you want them, but they are optional. Actionhero is not a
+                  font-end server, although it's easy to pair{" "}
                   <a
                     target="_blank"
                     href="https://github.com/actionhero/ah-next-plugin"
@@ -140,13 +151,14 @@ export class RandomNumber extends Action {
 }`}
                 </Code>
                 <p>
-                  Actions are the main way that you interact with the requests
-                  of your clients. An action exists to read a connection's
-                  request information (which we call <code>params</code>),
-                  preform some operation (perhaps reading or writing to a
-                  database), and then finally responding to that request with a
-                  response. When you think of an API, this is probably what you
-                  are thinking of. Actions are most like traditional
+                  Actions are the main way that you interact with your clients -
+                  responding to their requests and performing actions for them.
+                  An Action exists to read a connection's request information
+                  (which we call <code>params</code>), preform some operation
+                  (perhaps reading or writing to a database), and then finally
+                  responding to that request with a response. When you think of
+                  an API in the most general sense, Actions are probably what
+                  you are thinking of. Actions are most like traditional
                   "controller" objects from an MVC framework... but they work
                   for all connection types like web, websocket, etc. Actions are
                   a uniform way to define what methods your API exposes to any
@@ -154,13 +166,14 @@ export class RandomNumber extends Action {
                 </p>
 
                 <p>
-                  Actions can have middleware to help with authentication or
-                  logging. Actions are generally stateless, and throw errors if
-                  something goes wrong (<code>user not found</code> or{" "}
+                  Actions can have middleware to help with things like
+                  authentication or logging. Actions are generally stateless,
+                  and throw errors if something goes wrong (
+                  <code>user not found</code> or{" "}
                   <code>you aren't signed in</code>). In general actions are
-                  short, and don't have much business logic. They call out to
-                  other objects for the business logic, perhaps in your models,
-                  or service objects you've created in other parts of your
+                  short, and don't have much business logic. They rely on other
+                  objects for the business logic, perhaps in your models, or
+                  service objects you've created in other parts of your
                   application.
                 </p>
                 <p>
@@ -201,13 +214,13 @@ export class SendWelcomeMessage extends Task {
 
                 <p>
                   Tasks are background jobs. Tasks can be either enqueued by an
-                  action or another task, or they can be recurring, and run
+                  Action or another Task, or they can be recurring, and run
                   every few minutes, hours, or days. Actionhero is
-                  cluster-aware, which means that we know how to distribute
+                  "cluster-aware", which means that it knows how to distribute
                   tasks between many servers, ensure that only one is running at
-                  a time, and how to retry them when things go wrong. Tasks can
-                  be enqueued to run ASAP, or delayed until a specific time in
-                  the future.
+                  a time, and how to retry them when something go wrong. Tasks
+                  can be enqueued to run ASAP, or delayed until a specific time
+                  in the future.
                 </p>
 
                 <Code language="typescript">{`import { task } from "actionhero";
@@ -219,11 +232,11 @@ await task.enqueue("sendWelcomeEmail", { to: "evan@evantahler.com" });
 await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" })`}</Code>
 
                 <p>
-                  when working with a third-party API or doing a particularly
+                  When working with a third-party API or doing a particularly
                   slow operation, it's probably a good idea to use a Task so
-                  your client doesn't need to wait. Also, if some operation
-                  might fail and you want to retry it, a Task again would be a
-                  good choice.
+                  your users do not need to wait. Also, if some operation might
+                  fail and you want to retry it, a Task again would be a good
+                  choice.
                 </p>
 
                 <p>
@@ -297,13 +310,13 @@ export class DatabaseInit extends Initializer {
                 </Code>
 
                 <p>
-                  Initializers are how your server connects databases and other
-                  APIs. Initializers hook into the Actionhero server's lifecycle
-                  methods, (<code>initialize</code>, <code>start</code>, and{" "}
-                  <code>stop</code>), and provide a great place to run any code
-                  you need. This is also a great place to do per-server chores,
-                  like clearing a disk cache or compressing files. For example,
-                  the{" "}
+                  Initializers are how your server connects to databases and
+                  other APIs. Initializers hook into the Actionhero server's
+                  lifecycle methods, (<code>initialize</code>,{" "}
+                  <code>start</code>, and <code>stop</code>), and provide a
+                  great place to run any code you need. This is also a great
+                  place to do per-server chores, like clearing a disk cache or
+                  compressing files. For example, the{" "}
                   <a
                     href="https://github.com/actionhero/ah-sequelize-plugin"
                     target="_blank"
@@ -347,20 +360,18 @@ client.on('message', (message) => {console.log(message)})`}</Code>
                   clients.
                 </p>
 
-                <Code language="typescript">{`// client should either be a real client you are emulating (found in api.connections) or just \`{}\`
-// room is the string name of a room
-// message is a string or JSON
-chatRoom.broadcast(connection, room, message);`}</Code>
+                <Code language="typescript">{`// or, from the srver
+chatRoom.broadcast({}, "public-chat-room", "welcome to the room");`}</Code>
 
                 <p>
-                  Just like Actions, middleware can be used to help with Chat
-                  presence, authentication, and more. Try an example of the chat
-                  room{" "}
+                  Just like Actions, middleware can be used to help with chat
+                  room presence, authentication, and more. Try an example of the
+                  chat{" "}
                   <a
                     href="https://demo.actionherojs.com/chat.html"
                     target="_blank"
                   >
-                    here
+                    here.
                   </a>
                 </p>
 
@@ -378,7 +389,7 @@ chatRoom.broadcast(connection, room, message);`}</Code>
                 <p>
                   Actionhero is unique in that it allows you to build or add
                   many types of servers into one application. Not only can you
-                  support HTTP and Web Socket, but you can add custom protocols
+                  support HTTP and websockets, but you can add custom protocols
                   like Quick and Protobuf to your application and easily reuse
                   your Actions!
                 </p>
