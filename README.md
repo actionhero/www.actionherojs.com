@@ -20,7 +20,7 @@ The master branch of this repository is automatically built and pushed to the `g
 
 ## Linting
 
-We use [standard.js](https://standardjs.com) to manage our lint rules.  We run `standard` as part of our test suite, and your contributions must pass.  Standard is *very* opinionated and inflexible such that we cannot inject our own opinions.  There are no eslint/jshint files to manage in this project.
+We use [prettier](https://prettier.io/) to manage our lint rules.  We run `prettier --check` as part of our test suite, and your contributions must pass.  Prettier is *very* opinionated and inflexible such that we cannot inject our own opinions.  There are no eslint/jshint files to manage in this project.
 
 ## CSS
 - we use a default boostrap CSS file
