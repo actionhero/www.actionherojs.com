@@ -102,6 +102,7 @@ export default class GetStartedPage extends DocsPageWithNav {
         who: "Who is the Actionhero?",
         "getting-started": "Getting Started",
         quickstart: "Install and Quickstart",
+        "key-concepts": "Key Concepts",
         structure: "Application Structure",
         tutorial: "Tutorial",
         contributing: "Contributing",
@@ -109,8 +110,8 @@ export default class GetStartedPage extends DocsPageWithNav {
       },
       links: [
         {
-          link: "https://docs.actionherojs.com",
-          title: "» Actionhero Documentation",
+          link: "/key-concepts",
+          title: "» Key Concepts",
         },
       ],
     };
@@ -230,6 +231,20 @@ export default class GetStartedPage extends DocsPageWithNav {
                   You can disable the features of Actionhero which require redis
                   (cache, chat, tasks, etc) from <code>./config/redis.js</code>{" "}
                   and set <code>enabled = false</code>
+                </p>
+              </div>
+            )}
+
+            {this.section(
+              "key-concepts",
+              <div>
+                <p>
+                  The next step is learning more about Actionhero's{" "}
+                  <a href="/key-concepts">Key Concepts</a>,{" "}
+                  <strong>Actions</strong>, <strong>Tasks</strong>,{" "}
+                  <strong>Initializers</strong>, <strong>Chat</strong>, and{" "}
+                  <strong> Servers</strong>, and how Actionhero differs from a
+                  traditional MVC-style framework.
                 </p>
               </div>
             )}
