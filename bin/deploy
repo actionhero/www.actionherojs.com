@@ -16,7 +16,6 @@ rm -rf ./out
 touch ./out/.nojekyll
 cp .gitignore ./out/.gitignore
 cp CNAME ./out/CNAME
-mkdir ./out/.circleci && cp .circleci/config.yml ./out/.circleci/config.yml
 
 # make a directory to put the gh-pages branch
 mkdir gh-pages
