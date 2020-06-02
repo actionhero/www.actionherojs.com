@@ -295,7 +295,7 @@ export class Scheduler extends Initializer {
     const job = schedule.scheduleJob("0,10,20,30,40,50 * * * * *", async () => {
       // we want to ensure that only one instance of this job is scheduled in our environment at once,
       // no matter how many schedulers we have running
-      if (api.resque.scheduler && api.resque.scheduler.master) {
+      if (api.resque.scheduler && api.resque.scheduler.leader) {
         await task.enqueue(
           "sayHello",
           { time: new Date().toString() },
