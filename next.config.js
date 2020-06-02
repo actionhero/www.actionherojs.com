@@ -2,10 +2,10 @@ const glob = require("glob");
 const path = require("path");
 
 module.exports = {
-  webpack: config => {
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.md$/,
-      use: "raw-loader"
+      use: "raw-loader",
     });
 
     return config;
@@ -17,17 +17,17 @@ module.exports = {
       path.join(__dirname, "tutorials", "**", "*.md")
     );
     tutorialPages = {};
-    tutorials.forEach(file => {
+    tutorials.forEach((file) => {
       const name = path.parse(file).name;
       tutorialPages[`/tutorials/${name}`] = {
         page: `/tutorials/[name]`,
-        query: { name }
+        query: { name },
       };
     });
 
     const pages = glob.sync(path.join(__dirname, "pages", "**", "*.tsx"));
     staticPages = {};
-    pages.forEach(file => {
+    pages.forEach((file) => {
       if (file.indexOf("]") >= 0) {
         return;
       }
@@ -36,7 +36,12 @@ module.exports = {
       staticPages[`/${name}`] = { page: `/${name}` };
     });
 
-    routes = Object.assign({}, tutorialPages, staticPages);
+    routes = Object.assign(
+      { "/": { page: "/index" } },
+      tutorialPages,
+      staticPages
+    );
+    console.log(routes);
     return routes;
-  }
+  },
 };
