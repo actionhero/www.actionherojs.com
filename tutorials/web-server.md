@@ -223,15 +223,37 @@ when inspecting `data.connection` in actions or action middleware from web clien
 
 ## Sending Files
 
-```ts
-// in your action's run method
+Actionhero can also serve up flat files. Actionhero will not cache these files and each request to `file` will re-read the file from disk (like the nginx web server).
 
-data.connection.sendFile("/path/to/file.mp3");
-data.toRender = false;
-next();
+If the file you want to send is within your `/public` directory you can use:
+
+```ts
+async run (data) {
+  data.connection.sendFile("/path/to/file.mp3");
+  data.toRender = false;
+}
 ```
 
-Actionhero can also serve up flat files. Actionhero will not cache these files and each request to `file` will re-read the file from disk (like the nginx web server).
+Otherwise, you'll need to pipe the file and set headers directly:
+
+```ts
+async run (data) {
+  const file = await File.findOne({where: {id: data.params.fileId}})
+  if (file) {
+    const fileBuffer = await fs.readFile(file.localPath, 'binary')
+    data.connection.rawConnection.res.writeHead(200, {
+      'Content-Disposition': `attachment; filename=${file.name}`,
+      'Content-Type': file.mimeType,
+      'Content-Length': Buffer.byteLength(fileBuffer)
+    })
+    data.connection.rawConnection.res.write(fileBuffer)
+    data.connection.rawConnection.res.end()
+    data.toRender = false
+  } else {
+    throw new Error(`File with id ${data.params.fileId} not found`)
+  }
+}
+```
 
 There are helpers you can use in your actions to send files:
 
