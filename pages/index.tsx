@@ -5,7 +5,6 @@ import Theme from "./../components/theme";
 import BigButton from "./../components/buttons/bigButton";
 import SolutionsGrid from "./../components/solutionsGrid";
 import FeatureBox from "./../components/elements/homepageFeatureBox";
-import GithubLatestVersion from "./../components/githubLatestVersion";
 import Code from "./../components/code";
 
 const CodeSamples = {
@@ -93,6 +92,10 @@ const smallIconStyle = {
   padding: 30,
 };
 
+const badgeStyle = {
+  padding: 10,
+};
+
 export default class indexPage extends Component {
   render() {
     return (
@@ -107,14 +110,9 @@ export default class indexPage extends Component {
             <Row>
               <Col md={2} />
               <Col md={8} style={{ textAlign: "center" }}>
-                <a href="https://github.com/Actionhero/Actionhero">
-                  {" "}
-                  <img src="/static/images/logo-and-wordmark.svg" />{" "}
-                </a>
-                <p id="latestRelease" style={{ paddingTop: 20 }}>
-                  {" "}
-                  <GithubLatestVersion />
-                </p>
+                {" "}
+                <img src="/static/images/logo-and-wordmark.svg" />
+                <br />
                 <h2
                   style={{
                     fontFamily: "Roboto",
@@ -123,7 +121,7 @@ export default class indexPage extends Component {
                     paddingBottom: 40,
                   }}
                 >
-                  {" "}
+                  <br />
                   The reusable, scalable, and quick node.js API server for
                   stateless and stateful applications{" "}
                 </h2>
@@ -175,6 +173,41 @@ export default class indexPage extends Component {
                 />
               </Col>
               <Col md={1} />
+            </Row>
+            <Row style={{ paddingTop: 40, paddingBottom: 20 }}>
+              <Col
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                <p>
+                  <a href="http://github.com/actionhero/actionhero?style=for-the-badge">
+                    <img
+                      style={badgeStyle}
+                      alt="npm"
+                      src="https://img.shields.io/npm/v/actionhero?style=for-the-badge"
+                    />
+
+                    <img
+                      style={badgeStyle}
+                      alt="npm"
+                      src="https://img.shields.io/npm/dm/actionhero?style=for-the-badge"
+                    />
+
+                    <img
+                      style={badgeStyle}
+                      alt="NPM"
+                      src="https://img.shields.io/npm/l/actionhero?style=for-the-badge"
+                    />
+
+                    <img
+                      style={badgeStyle}
+                      alt="GitHub stars"
+                      src="https://img.shields.io/github/stars/actionhero/actionhero?style=for-the-badge"
+                    />
+                  </a>
+                </p>
+              </Col>
             </Row>
           </Container>
         </div>

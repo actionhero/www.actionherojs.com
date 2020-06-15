@@ -37,7 +37,7 @@ export default class DownloadPage extends Component {
               distributed with the code. Actionhero can be installed via a
               number of methods, but we recommend using NPM or Yarn.{" "}
               <a href="https://nodejs.org" target="_new">
-                Version 8.0.0+ of node.js
+                Version 10.0.0+ of node.js
               </a>{" "}
               is required.
             </p>
