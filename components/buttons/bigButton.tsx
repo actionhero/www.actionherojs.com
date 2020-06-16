@@ -4,11 +4,29 @@ import { Button } from "react-bootstrap";
 import Theme from "../theme";
 
 interface Props {
-  backgroundColor: string;
+  backgroundColor?: string;
   textColor: string;
   href?: string;
   size?: "lg" | "sm";
   onClick?: (e) => {};
+  variant?:
+    | "link"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "dark"
+    | "light"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-success"
+    | "outline-danger"
+    | "outline-warning"
+    | "outline-info"
+    | "outline-dark"
+    | "outline-light";
 }
 
 interface State {
@@ -60,6 +78,7 @@ export default class extends Component<Props, State> {
           <Button
             onClick={this.props.onClick}
             style={style}
+            variant={this.props.variant || "primary"}
             size={this.props.size || "lg"}
             block
           >
