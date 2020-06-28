@@ -8,6 +8,20 @@ With good [test coverage](tutorial-testing.html) you can make sure that you have
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
+## Upgrading from v22 to v23
+
+This release is breaking for 2 reasons:
+
+1. The logger format for Action and Task errors has changed [Pull Request](https://github.com/actionhero/actionhero/pull/1505).
+2. The `Documentation` initializer and related `showDocumentation` action has been removed in favor of the new swagger action & middleware [Pull Request](https://github.com/actionhero/actionhero/pull/1474).
+
+If you use automated log ingestion (i.e.: Splunk or a Winston logger) this PR should be helpful, as the error and stack trace will now all be on the same line... but you will need to update your log tools.
+
+If you had been using the `Documentation` middleware, you can re-build it yourself from `api.actions.actions`. If you want upgrade your Actionhero project to use the new Swagger documentation tooling, you need to copy in 2 files:
+
+- The Swagger public page - [swagger.html](https://github.com/actionhero/actionhero/blob/master/public/swagger.html)
+- The Swagger Action - [swagger.ts](https://github.com/actionhero/actionhero/blob/master/src/actions/swagger.ts)
+
 ## Upgrading from v21 to v22
 
 Assuming that you have already migrated your project to [Typescript](/tutorials/typescript), the only change is create your `server.ts` and change your `package.json` scripts to use it. Support for `boot.js` has also been removed, and you should move that logic into your new `server.ts`
@@ -48,7 +62,7 @@ Your package json should now contain:
   },
 ```
 
-Also be sure that your `packate.json` contains the `@types/ioreids` devDependency.  You can install it with `npm install --save-dev @types/ioredis`
+Also be sure that your `packate.json` contains the `@types/ioreids` devDependency. You can install it with `npm install --save-dev @types/ioredis`
 
 Tasks can now use [input validation](https://www.actionherojs.com/tutorials/tasks#Task%20Inputs).
 
@@ -201,15 +215,15 @@ module.exports = class MyServer extends Actionhero.Server {
       logConnections: true,
       logExits: true,
       sendWelcomeMessage: false,
-      verbs: []
+      verbs: [],
     };
     // this.config will be set to equal api.config.servers[this.type]
   }
 
   initialize() {
-    this.on("connection", connection => {});
+    this.on("connection", (connection) => {});
 
-    this.on("actionComplete", data => {});
+    this.on("actionComplete", (data) => {});
   }
 
   start() {

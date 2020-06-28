@@ -454,7 +454,7 @@ You can [learn more about middleware here](/tutorials/middleware).
 
 - Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
 - If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client in `response.error`. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
-- The metadata `outputExample` is used in reflexive and self-documenting actions in the API, available via the `documentation` verb (and showDocumentation action).
+- The metadata `outputExample` is used in reflexive and self-documenting actions in the API, an is used by the Swagger action.
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `api.config.general.simultaneousActions`
 - `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `api.config.general.disableParamScrubbing`. Note that [Middleware](tutorial-middleware.html) preProcessors will always have access to all params pre-scrubbing.
 - `matchExtensionMimeType` is currently only used by the `web` server, and it indicates that if this action is successfully called by a client with `connection.extension` set, the headers of the response should be changed to match that file type. This is useful when creating actions that download files.

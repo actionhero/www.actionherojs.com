@@ -86,7 +86,7 @@ Running "console" task
 [ AH::development ] > Object.keys(api.actions.actions)
 [ ‘cacheTest',
 ‘randomNumber',
-‘showDocumentation',
+‘swagger',
 ‘sleepTest',
 ‘status' ]
 ```
