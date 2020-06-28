@@ -17,10 +17,15 @@ This release is breaking for 2 reasons:
 
 If you use automated log ingestion (i.e.: Splunk or a Winston logger) this PR should be helpful, as the error and stack trace will now all be on the same line... but you will need to update your log tools.
 
-If you had been using the `Documentation` middleware, you can re-build it yourself from `api.actions.actions`. If you want upgrade your Actionhero project to use the new Swagger documentation tooling, you need to copy in 2 files:
+If you had been using the `Documentation` initializer, you can re-build it yourself from `api.actions.actions`. If you want upgrade your Actionhero project to use the new Swagger documentation tooling, you need to copy in 2 files:
 
 - The Swagger public page - [swagger.html](https://github.com/actionhero/actionhero/blob/master/public/swagger.html)
 - The Swagger Action - [swagger.ts](https://github.com/actionhero/actionhero/blob/master/src/actions/swagger.ts)
+
+There are also new logging options to add to `src/config/api.ts`:
+
+- `config.general.enableResponseLogging` (bool) toggles this option on (off by default)
+- `config.general. filteredResponse` (string[]) allow you to filter out certain parts of the response payload from the logs, hiding sensitive data.
 
 ## Upgrading from v21 to v22
 
