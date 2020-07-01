@@ -38,12 +38,18 @@ The final type of task, periodic tasks, are defined with a `task.frequency` of g
 // From /config/tasks.js:
 
 export const DEFAULT = {
-  tasks: config => {
+  tasks: (config) => {
     return {
+      _toExpand: false,
+
       // Should this node run a scheduler to promote delayed tasks?
       scheduler: false,
+
       // what queues should the taskProcessors work?
       queues: ["*"],
+      // Or, rather than providing a static list of `queues`, you can define a method that returns the list of queues.
+      // queues: async () => { return ["queueA", "queueB"]; },
+
       // Logging levels of task workers
       workerLogging: {
         failure: "error", // task failure
@@ -55,7 +61,7 @@ export const DEFAULT = {
         job: "debug",
         pause: "debug",
         internalError: "error",
-        multiWorkerAction: "debug"
+        multiWorkerAction: "debug",
       },
       // Logging levels of the task scheduler
       schedulerLogging: {
@@ -65,7 +71,7 @@ export const DEFAULT = {
         enqueue: "debug",
         reEnqueue: "debug",
         working_timestamp: "debug",
-        transferred_job: "debug"
+        transferred_job: "debug",
       },
       // how long to sleep between jobs / scheduler checks
       timeout: 5000,
@@ -84,13 +90,13 @@ export const DEFAULT = {
       resque_overrides: {
         queue: null,
         multiWorker: null,
-        scheduler: null
+        scheduler: null,
       },
       connectionOptions: {
-        tasks: {}
-      }
+        tasks: {},
+      },
     };
-  }
+  },
 };
 ```
 
@@ -102,7 +108,9 @@ Because node and Actionhero are asynchronous, we can process more than one job a
 
 In production, it is best to set up some Actionhero servers that only handle requests from clients (that is, servers with no TaskProcessors) and others that handle no requests, and only process jobs (that is, no servers, many `TaskProcessor`s).
 
-As you noticed above, when you enqueue a task, you tell it which queue to be enqueued within. This is so you can separate load or priority. For example, you might have a `high` priority queue which does jobs like "sendPushMessage" and a `low` priority queue which does a task like "cleanupCache". You tell the `taskProcessor`s which jobs to work, and in which priority. For the example above, you would ensure that all `high` jobs happen before all `low` jobs by setting: `api.config.tasks.queues = ['high', 'low']`. You could also configure more nodes to work on the `high` queue than the `low` queue, thus further ensuring that `high` priority jobs are processed faster and sooner than `low` priority jobs.
+As you noticed above, when you enqueue a task, you tell it which queue to be enqueued within. This is so you can separate load or priority. For example, you might have a `high` priority queue which does jobs like "sendPushMessage" and a `low` priority queue which does a task like "cleanupCache". You tell the `taskProcessor`s which jobs to work, and in which priority. For the example above, you would ensure that all `high` jobs happen before all `low` jobs by setting: `config.tasks.queues = ['high', 'low']`. You could also configure more nodes to work on the `high` queue than the `low` queue, thus further ensuring that `high` priority jobs are processed faster and sooner than `low` priority jobs.
+
+Alternatively, `config.tasks.queues` can be an async function, so you can set the list of queues to work on this server dynamically.
 
 ## Creating A Task
 
@@ -222,7 +230,7 @@ class SendWelcomeEmail extends Task {
     this.frequency = 0;
     this.inputs = {
       email: { required: true },
-      template: { required: true, default: "welcome-email-en" }
+      template: { required: true, default: "welcome-email-en" },
     };
   }
 
@@ -255,7 +263,7 @@ class SendWelcomeEmail extends Task {
     this.frequency = 0;
     this.inputs = {
       email: { required: true, validator: emailValidator },
-      template: { required: true, default: "welcome-email-en" }
+      template: { required: true, default: "welcome-email-en" },
     };
   }
 
@@ -308,7 +316,7 @@ export class Scheduler extends Initializer {
   }
 
   stop() {
-    this.scheduledJobs.forEach(job => {
+    this.scheduledJobs.forEach((job) => {
       job.cancel();
     });
   }
