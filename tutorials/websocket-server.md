@@ -13,46 +13,46 @@ Actionhero will generate the client-side javascript needed for you (based on the
 <script>
   client = new ActionheroWebsocketClient();
 
-  client.on("connected", function() {
+  client.on("connected", function () {
     console.log("connected!");
   });
-  client.on("disconnected", function() {
+  client.on("disconnected", function () {
     console.log("disconnected :(");
   });
 
-  client.on("error", function(error) {
+  client.on("error", function (error) {
     console.log("error", error.stack);
   });
-  client.on("reconnect", function() {
+  client.on("reconnect", function () {
     console.log("reconnect");
   });
-  client.on("reconnecting", function() {
+  client.on("reconnecting", function () {
     console.log("reconnecting");
   });
 
   // this will log all messages send the client
   // client.on('message',      function(message){ console.log(message) })
 
-  client.on("alert", function(message) {
+  client.on("alert", function (message) {
     alert(message);
   });
-  client.on("api", function(message) {
+  client.on("api", function (message) {
     alert(message);
   });
 
-  client.on("welcome", function(message) {
+  client.on("welcome", function (message) {
     appendMessage(message);
   });
-  client.on("say", function(message) {
+  client.on("say", function (message) {
     appendMessage(message);
   });
 
-  client.connect(function(error, details) {
+  client.connect(function (error, details) {
     if (error != null) {
       console.log(error);
     } else {
       client.roomAdd("defaultRoom");
-      client.action("someAction", { key: "k", value: "v" }, function(data) {
+      client.action("someAction", { key: "k", value: "v" }, function (data) {
         // do stuff
       });
     }
@@ -72,7 +72,7 @@ If you want to communicate with a websocket client outside of an action, you can
 
 ## Linking WebSockets to Web Clients
 
-Actionhero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `api.config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
+Actionhero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
 
 You can read more about using a value like `connection.fingerprint` in an [authentication middleware](tutorials/middleware) or using it as a key for session information.
 
@@ -81,13 +81,13 @@ You can read more about using a value like `connection.fingerprint` in an [authe
 ```ts
 export const DEFAULT = {
   servers: {
-    websocket: config => {
+    websocket: (config) => {
       return {
         enabled: true,
         // you can pass a FQDN (string) here or 'window.location.origin'
         clientUrl: "window.location.origin",
         // Directory to render client-side JS.
-        // Path should start with "/" and will be built starting from api.config..general.paths.public
+        // Path should start with "/" and will be built starting from config..general.paths.public
         clientJsPath: "javascript/",
         // the name of the client-side JS file to render.  Both `.js` and `.min.js` versions will be created
         // do not include the file extension
@@ -115,7 +115,7 @@ export const DEFAULT = {
         client: {
           apiPath: "/api", // the api base endpoint on your Actionhero server
           // the cookie name we should use for shared authentication between WS and web connections
-          cookieKey: config.servers.web.fingerprintOptions.cookieKey
+          cookieKey: config.servers.web.fingerprintOptions.cookieKey,
           // reconnect:        {},
           // timeout:          10000,
           // ping:             25000,
@@ -126,10 +126,10 @@ export const DEFAULT = {
           // network:          true,
           // transport:        {},
           // queueSize:        Infinity,
-        }
+        },
       };
-    }
-  }
+    },
+  },
 };
 ```
 

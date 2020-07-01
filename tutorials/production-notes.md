@@ -20,12 +20,12 @@ Notes:
 // config/tasks.js
 
 exports.production = {
-  tasks: function(api) {
+  tasks: function (api) {
     // default to config for 'server'
     let config = {
       scheduler: false,
       queues: ["*"],
-      verbose: true
+      verbose: true,
       // ...
     };
 
@@ -36,19 +36,19 @@ exports.production = {
     }
 
     return config;
-  }
+  },
 };
 
 // config/servers/web.js
 
 exports.default = {
   servers: {
-    web: function(api) {
+    web: function (api) {
       config = {
         enabled: true,
         secure: false,
         serverOptions: {},
-        port: process.env.PORT || 8080
+        port: process.env.PORT || 8080,
         // ...
       };
 
@@ -57,8 +57,8 @@ exports.default = {
       }
 
       return config;
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -128,17 +128,17 @@ Here is an example nginx config for interfacing with Actionhero, including using
 
 exports.production = {
   servers: {
-    web: function(api) {
+    web: function (api) {
       return {
         port: "/home/USER/www/APP/current/tmp/sockets/actionhero.sock",
         bindIP: null,
         metadataOptions: {
           serverInformation: false,
-          requesterInformation: false
-        }
+          requesterInformation: false,
+        },
       };
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -240,7 +240,7 @@ let sentinels = [{ host: "127.0.0.1", port: 26379 }];
 let name = "mymaster";
 
 exports["default"] = {
-  redis: api => {
+  redis: (api) => {
     return {
       enabled: true,
 
@@ -248,20 +248,20 @@ exports["default"] = {
       client: {
         konstructor: require("ioredis"),
         args: [{ db, sentinels, name }],
-        buildNew: true
+        buildNew: true,
       },
       subscriber: {
         konstructor: require("ioredis"),
         args: [{ db, sentinels, name }],
-        buildNew: true
+        buildNew: true,
       },
       tasks: {
         konstructor: require("ioredis"),
         args: [{ db, sentinels, name }],
-        buildNew: true
-      }
+        buildNew: true,
+      },
     };
-  }
+  },
 };
 ```
 
@@ -283,9 +283,9 @@ As Actionhero is a framework, much of the work for keeping your application secu
 
 ### General Configuration
 
-- Be sure to change `api.config.general.serverToken` to something unique for your application
+- Be sure to change `config.general.serverToken` to something unique for your application
 - Turn off [developer mode](tutoria.development-mode.html) in production.
-- Use `api.config.general.filteredParams` to hide sensitive information from the logs. You probably don't want to log out `password`, `credit_card`, and other things of that nature.
+- Use `config.general.filteredParams` to hide sensitive information from the logs. You probably don't want to log out `password`, `credit_card`, and other things of that nature.
 
 ### Topology
 

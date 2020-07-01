@@ -44,16 +44,16 @@ const middleware = {
   name: "userId checker",
   global: false,
   priority: 1000,
-  preProcessor: data => {
+  preProcessor: (data) => {
     if (!data.params.userId) {
       throw new Error("All actions require a userId");
     }
   },
-  postProcessor: data => {
+  postProcessor: (data) => {
     if (data.thing.stuff == false) {
       data.toRender = false;
     }
-  }
+  },
 };
 
 action.addMiddleware(middleware);
@@ -65,7 +65,7 @@ Action middleware requires a `name` and at least one of `preProcessor` or `postP
 
 Each processor is passed `data`. Just like within actions, you can modify the `data` object to add to `data.response` to create a response to the client. If an error is thrown, the action will not execute, and `data.response.error` will contain the error. If a `preProcessor` has an error, the action will never be called.
 
-The priority of a middleware orders it with all other middleware which might fire for an action. All global middleware happen before locally defined middleware on an action. Lower numbers happen first. If you do not provide a priority, the default from `api.config.general.defaultProcessorPriority` will be used.
+The priority of a middleware orders it with all other middleware which might fire for an action. All global middleware happen before locally defined middleware on an action. Lower numbers happen first. If you do not provide a priority, the default from `config.general.defaultProcessorPriority` will be used.
 
 ### The Data Object
 
@@ -81,7 +81,7 @@ data = {
   actionStartTime: 1429531553417,
   actionTemplate: {}, // the actual object action definition
   response: {},
-  session: {}
+  session: {},
 };
 ```
 
@@ -95,7 +95,7 @@ const authenticatedUserMiddleware = {
   name: "authenticated-team-member",
   global: false,
   priority: 1000,
-  preProcessor: async data => {
+  preProcessor: async (data) => {
     const sessionData = await api.session.load(data.connection);
     if (!sessionData) {
       throw new Error("Please log in to continue");
@@ -107,11 +107,11 @@ const authenticatedUserMiddleware = {
     } else {
       const teamMember = await TeamMember.findOne({
         where: { guid: sessionData.guid },
-        include: Team
+        include: Team,
       });
       data.session = { data: sessionData, teamMember };
     }
-  }
+  },
 };
 
 action.addMiddleware(authenticatedUserMiddleware);
@@ -125,12 +125,12 @@ import { log, connection } from "actionhero";
 const connectionMiddleware = {
   name: "connection middleware",
   priority: 1000,
-  create: async connection => {
+  create: async (connection) => {
     log("connection joined");
   },
-  destroy: async connection => {
+  destroy: async (connection) => {
     log("connection left");
-  }
+  },
 };
 
 connection.addMiddleware(connectionMiddleware);
@@ -138,7 +138,7 @@ connection.addMiddleware(connectionMiddleware);
 
 Like the action middleware above, you can also create middleware to react to the creation or destruction of all connections.
 
-Keep in mind that some connections persist (webSocket, socket) and some only exist for the duration of a single request (web). You will likely want to inspect `connection.type` in this middleware. Again, if you do not provide a priority, the default from `api.config.general.defaultMiddlewarePriority` will be used.
+Keep in mind that some connections persist (webSocket, socket) and some only exist for the duration of a single request (web). You will likely want to inspect `connection.type` in this middleware. Again, if you do not provide a priority, the default from `config.general.defaultMiddlewarePriority` will be used.
 
 Any modification made to the connection at this stage may happen either before or after an action, and may or may not persist to the connection depending on how the server is implemented.
 
@@ -178,12 +178,12 @@ var chatMiddleware = {
   /**
    * Will be executed only once, when the message is sent to the server.
    */
-  onSayReceive: function(connection, room, messagePayload) {
+  onSayReceive: function (connection, room, messagePayload) {
     // do stuff
     log(messagePayload);
     messagePayload.receivedAt = new Date().getTime();
     return messagePayload;
-  }
+  },
 };
 
 chatRoom.addMiddleware(chatMiddleware);

@@ -50,7 +50,7 @@ Actionhero has exposed `connections.apply` which can be used to retrieve data ab
 import { redis } from "actionhero";
 
 // To subscribe to messages, add a callback for your \`messageType\`, IE:
-redis.subscriptionHandlers["myMessageType"] = function(message) {
+redis.subscriptionHandlers["myMessageType"] = function (message) {
   // do stuff
 };
 
@@ -58,8 +58,8 @@ redis.subscriptionHandlers["myMessageType"] = function(message) {
 const payload = {
   messageType: "myMessageType",
   serverId: api.id,
-  serverToken: api.config.general.serverToken,
-  message: "hello!"
+  serverToken: config.general.serverToken,
+  message: "hello!",
 };
 
 await api.redis.publish(payload);
@@ -75,4 +75,4 @@ You can broadcast and receive messages from other peers in the cluster:
 - payload must contain:
   - `messageType` : the name of your payload type,
   - `serverId` : `api.id`,
-  - `serverToken` : `api.config.general.serverToken`,
+  - `serverToken` : `config.general.serverToken`,

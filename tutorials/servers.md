@@ -21,15 +21,15 @@ module.exports = class MyServer extends Server {
       logConnections: true,
       logExits: true,
       sendWelcomeMessage: false,
-      verbs: []
+      verbs: [],
     };
     // this.config will be set to equal config.servers[this.type]
   }
 
   initialize() {
-    this.on("connection", connection => {});
+    this.on("connection", (connection) => {});
 
-    this.on("actionComplete", data => {});
+    this.on("actionComplete", (data) => {});
   }
 
   start() {
@@ -61,11 +61,11 @@ server.buildConnection({
     cookies: cookies,
     responseHeaders: responseHeaders,
     responseHttpCode: responseHttpCode,
-    parsedURL: parsedURL
+    parsedURL: parsedURL,
   },
   id: randomNumber(),
   remoteAddress: remoteIP,
-  remotePort: req.connection.remotePort
+  remotePort: req.connection.remotePort,
 }); // will emit "connection"
 
 // Note that connections will have a \`rawConnection\` property.  This is where you should store the actual object(s) returned by your server so that you can use them to communicate back with the client.  Again, an example from the \`web\` server:
@@ -83,7 +83,7 @@ server.sendMessage = (connection, message) => {
 
 ## Options and Attributes
 
-A server defines `attributes` which define it's behavior. Variables like `canChat` are defined here. `options` are passed in, and come from `api.config.servers[serverName]`. These can be new variables (like https?) or they can also overwrite the set `attributes`.
+A server defines `attributes` which define it's behavior. Variables like `canChat` are defined here. `options` are passed in, and come from `config.servers[serverName]`. These can be new variables (like https?) or they can also overwrite the set `attributes`.
 The required attributes are provided in a generated server.
 
 ## Verbs
@@ -102,7 +102,7 @@ allowedVerbs: [
   "listenToRoom",
   "silenceRoom",
   "detailsView",
-  "say"
+  "say",
 ];
 ```
 

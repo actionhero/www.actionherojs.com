@@ -26,7 +26,7 @@ export class DetermineConnectionLocale extends Initializer {
 
   initialize() {
     api.customLocalization = {
-      lookup: connection => {
+      lookup: (connection) => {
         let locale = "en";
 
         if (connection.type === "web") {
@@ -46,7 +46,7 @@ export class DetermineConnectionLocale extends Initializer {
         }
 
         return locale;
-      }
+      },
     };
   }
 }
@@ -65,7 +65,7 @@ export class RandomNumber extends Action {
       "I am an API method which will generate a random number, returning both the number and a localized string";
     this.outputExample = {
       number: 0.234,
-      localizedResponse: "Your random number is 0.234"
+      localizedResponse: "Your random number is 0.234",
     };
   }
 
@@ -73,7 +73,7 @@ export class RandomNumber extends Action {
     const number = Math.random();
     const localizedResponse = connection.localize([
       "Your random number is {{number}}",
-      { number: number }
+      { number: number },
     ]);
     response.message = localizedResponse;
     response.number = number;
@@ -91,4 +91,4 @@ export class RandomNumber extends Action {
 - To localize strings that are not used in methods mentioned above you can use `api.i18n.localize(string, options)`.
   - Allows you to interpolate a string.
   - Just as the other localize methods above, the input string will be in your locale files for you to change it anytime you want.
-  - The second `options` optional argument (default value is `api.i18n`) allows you to [configure](https://github.com/mashpie/i18n-node#list-of-all-configuration-options) i18n. Note that you will use this argument only in very few special cases, It is recommended to edit the global `api.config.i18n` settings to suit your localization needs.
+  - The second `options` optional argument (default value is `api.i18n`) allows you to [configure](https://github.com/mashpie/i18n-node#list-of-all-configuration-options) i18n. Note that you will use this argument only in very few special cases, It is recommended to edit the global `config.i18n` settings to suit your localization needs.

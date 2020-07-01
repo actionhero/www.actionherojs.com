@@ -77,7 +77,7 @@ HTTP responses are always JSON and follow the following format:
 ```ts
 export const DEFAULT = {
   servers: {
-    web: config => {
+    web: (config) => {
       return {
         enabled: true,
         // HTTP or HTTPS?  This setting is to enable SSL termination directly in the Actionhero app, not set redirection host headers
@@ -101,7 +101,7 @@ export const DEFAULT = {
           "Access-Control-Allow-Methods":
             "HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS, TRACE",
           "Access-Control-Allow-Headers": "Content-Type",
-          "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
         },
         // Route that actions will be served from; secondary route against this route will be treated as actions,
         //  IE: /api/?action=test == /api/test/
@@ -135,8 +135,8 @@ export const DEFAULT = {
           onlyStaticElements: false,
           settings: {
             path: "/",
-            expires: 3600000
-          }
+            expires: 3600000,
+          },
         },
         // Options to be applied to incoming file uploads.
         //  More options and details at https://github.com/felixge/node-formidable
@@ -144,7 +144,7 @@ export const DEFAULT = {
           uploadDir: os.tmpdir(),
           keepExtensions: false,
           maxFieldsSize: 1024 * 1024 * 20,
-          maxFileSize: 1024 * 1024 * 200
+          maxFileSize: 1024 * 1024 * 200,
         },
         // Should we pad JSON responses with whitespace to make them more human-readable?
         // set to null to disable
@@ -152,7 +152,7 @@ export const DEFAULT = {
         // Options to configure metadata in responses
         metadataOptions: {
           serverInformation: true,
-          requesterInformation: true
+          requesterInformation: true,
         },
         // When true, returnErrorCodes will modify the response header for http(s) clients if connection.error is not null.
         // You can also set connection.rawConnection.responseHttpCode to specify a code per request.
@@ -162,10 +162,10 @@ export const DEFAULT = {
         compress: false,
         // options to pass to the query parser
         // learn more about the options @ https://github.com/hapijs/qs
-        queryParseOptions: {}
+        queryParseOptions: {},
       };
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -257,7 +257,7 @@ async run (data) {
 
 There are helpers you can use in your actions to send files:
 
-- `/public` and `/api` are routes which expose the directories of those types. These top level path can be configured in `/config/servers/web.js` with `api.config.servers.web.urlPathForActions` and `api.config.servers.web.urlPathForFiles`.
+- `/public` and `/api` are routes which expose the directories of those types. These top level path can be configured in `/config/servers/web.js` with `config.servers.web.urlPathForActions` and `config.servers.web.urlPathForFiles`.
 - the root of the web server "/" can be toggled to serve the content between /file or /api actions per your needs `config.servers.web.rootEndpointType`. The default is `api`.
 - Actionhero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}?action=file&fileName={pathToFile}` and `http://{baseUrl}/file/{pathToFile}`.
 - Errors will result in a 404 (file not found) with a message you can customize.
@@ -299,32 +299,32 @@ export const DEFAULT = function(api) {
 }
 ```
 
-If the `api.config.servers.web.rootEndpointType` is `"file"` which means that the routes you are making are active only under the `/api` path. If you wanted the route example to become `server.com/stuff/statusPage`, you would need to change `api.config.servers.web.rootEndpointType` to be ‘api'. Note that making this change doesn't stop `server.com/api/stuff/statusPage` from working as well, as you still have `api.config.servers.web.urlPathForActions` set to be ‘api', so both will continue to work.
+If the `config.servers.web.rootEndpointType` is `"file"` which means that the routes you are making are active only under the `/api` path. If you wanted the route example to become `server.com/stuff/statusPage`, you would need to change `config.servers.web.rootEndpointType` to be ‘api'. Note that making this change doesn't stop `server.com/api/stuff/statusPage` from working as well, as you still have `config.servers.web.urlPathForActions` set to be ‘api', so both will continue to work.
 
 For a route to match, all params must be satisfied. So, if you expect a route to provide `api/:a/:b/:c` and the request is only for `api/:a/:c`, the route won't match. This holds for any variable, including `:apiVersion`. If you want to match both with and without apiVersion, just define the rote 2x, IE:
 
 ```ts
-export const DEFAULT = function(api) {
+export const DEFAULT = function (api) {
   return {
     all: [
       { path: "/cache/:key/:value", action: "cacheTest" },
-      { path: "/:apiVersion/cache/:key/:value", action: "cacheTest" }
-    ]
+      { path: "/:apiVersion/cache/:key/:value", action: "cacheTest" },
+    ],
   };
 };
 ```
 
-If you want to shut off access to your action at `server.com/api/stuff/statusPage` and only allow access via `server.com/stuff/statusPage`, you can disable `api.config.servers.web.urlPathForActions` by setting it equal to `null` (but keeping the `api.config.servers.web.rootEndpointType` equal to `api`).
+If you want to shut off access to your action at `server.com/api/stuff/statusPage` and only allow access via `server.com/stuff/statusPage`, you can disable `config.servers.web.urlPathForActions` by setting it equal to `null` (but keeping the `config.servers.web.rootEndpointType` equal to `api`).
 
 Routes will match the newest version of `apiVersion`. If you want to have a specific route match a specific version of an action, you can provide the `apiVersion` param in your route definitions:
 
 ```ts
-export const DEFAULT = function(api) {
+export const DEFAULT = function (api) {
   return {
     get: [
       { path: "/myAction/old", action: "myAction", apiVersion: 1 },
-      { path: "/myAction/new", action: "myAction", apiVersion: 2 }
-    ]
+      { path: "/myAction/new", action: "myAction", apiVersion: 2 },
+    ],
   };
 };
 ```
@@ -399,29 +399,29 @@ You have to map the specified public folder within the "dir" parameter, relative
 - The HTTP verbs which you can route against are: `api.routes.verbs = ['head', 'get', 'post', 'put', 'patch', 'delete']`
 
 ```ts
-export const DEFAULT = function(api) {
+export const DEFAULT = function (api) {
   return {
     get: [
       { path: "/users", action: "usersList" }, // (GET) /api/users
-      { path: "/search/:term/limit/:limit/offset/:offset", action: "search" } // (GET) /api/search/car/limit/10/offset/100
+      { path: "/search/:term/limit/:limit/offset/:offset", action: "search" }, // (GET) /api/search/car/limit/10/offset/100
     ],
 
     post: [
-      { path: "/login/:userID(^\\d{3}$)", action: "login" } // (POST) /api/login/123
+      { path: "/login/:userID(^\\d{3}$)", action: "login" }, // (POST) /api/login/123
     ],
 
     all: [
-      { path: "/user/:userID", action: "user" } // (*) / /api/user/123
-    ]
+      { path: "/user/:userID", action: "user" }, // (*) / /api/user/123
+    ],
   };
 };
 ```
 
 ## Hosts
 
-Actionhero allows you to define a collection of host headers which this API server will allow access from. You can set these via `api.config.servers.web.allowedRequestHosts`. If the `Host` header of a client does not match one of those listed (protocol counts!), they will be redirected to the first one present.
+Actionhero allows you to define a collection of host headers which this API server will allow access from. You can set these via `config.servers.web.allowedRequestHosts`. If the `Host` header of a client does not match one of those listed (protocol counts!), they will be redirected to the first one present.
 
-You can also set `process.env.ALLOWED_HOSTS` which will be parsed as a comma-separated list of Hosts which will set `api.config.servers.web.allowedRequestHosts`
+You can also set `process.env.ALLOWED_HOSTS` which will be parsed as a comma-separated list of Hosts which will set `config.servers.web.allowedRequestHosts`
 
 ## Parameters
 
@@ -474,7 +474,7 @@ connection.params = {
 
 ### Uploading Files
 
-Actionhero uses the [formidable](https://github.com/felixge/node-formidable) form parsing library. You can set options for it via `api.config.servers.web.formOptions`. You can upload multiple files to an action and they will be available within `connection.params` as formidable response objects containing references to the original file name, where the uploaded file was stored temporarily, etc. Here is an example:
+Actionhero uses the [formidable](https://github.com/felixge/node-formidable) form parsing library. You can set options for it via `config.servers.web.formOptions`. You can upload multiple files to an action and they will be available within `connection.params` as formidable response objects containing references to the original file name, where the uploaded file was stored temporarily, etc. Here is an example:
 
 ```ts
 // actions/uploader.js
@@ -489,7 +489,7 @@ export class Uploader extends Action {
       file1: { required: true },
       file2: { required: false },
       key1: { required: false },
-      key2: { required: false }
+      key2: { required: false },
     };
   }
 
@@ -567,7 +567,7 @@ Although the `ActionheroWebsocketClient` client-side library is mostly for webso
 
 <script>
   var client = new ActionheroWebsocketClient();
-  client.action("cacheTest", { key: "k", value: "v" }, function(error, data) {
+  client.action("cacheTest", { key: "k", value: "v" }, function (error, data) {
     // do stuff
   });
 </script>
