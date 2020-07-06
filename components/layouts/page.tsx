@@ -118,6 +118,8 @@ export default class extends Component {
             rel="stylesheet"
           />
 
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
           <title>Actionhero</title>
 
           <script src="/static/js/googleAnalytics.js" />
