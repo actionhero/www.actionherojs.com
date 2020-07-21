@@ -195,7 +195,7 @@ class ValidatedAction extends Action {
 
     // you can choose to block certain servers from using this action
     // default: []
-    this.blockedConnectionTypes = ['webSocket']
+    this.blockedConnectionTypes = ['websocket']
 
     // how should this action be logged?
     // default: 'info'
