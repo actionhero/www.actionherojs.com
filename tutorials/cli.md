@@ -13,22 +13,19 @@ export class RedisKeys extends CLI {
     this.name = "redis keys";
     this.description = "I list all the keys in redis";
     this.example = "actionhero keys --prefix actionhero";
-  }
-
-  inputs() {
-    return {
+    this.inputs = {
       prefix: {
         required: true,
         default: "actionhero",
-        note: "the redis prefix for searching keys"
-      }
+        note: "the redis prefix for searching keys",
+      },
     };
   }
 
   async run({ params }) {
     let keys = await api.redis.clients.client.keys(params.prefix);
     log("Found " + keys.length + "keys:");
-    keys.forEach(k => {
+    keys.forEach((k) => {
       log(k);
     });
   }
