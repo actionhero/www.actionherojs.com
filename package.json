@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-fontawesome": "^1.7.1",
     "react-markdown": "^4.3.1",
-    "react-syntax-highlighter": "^13.0.0",
+    "react-syntax-highlighter": "^13.2.1",
     "react-waypoint": "^9.0.3"
   },
   "devDependencies": {
