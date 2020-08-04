@@ -11,7 +11,7 @@ module.exports = {
     return config;
   },
 
-  async exportPathMap() {
+  exportPathMap: async function () {
     // scan tutorials
     const tutorials = glob.sync(
       path.join(__dirname, "tutorials", "**", "*.md")
@@ -36,11 +36,7 @@ module.exports = {
       staticPages[`/${name}`] = { page: `/${name}` };
     });
 
-    routes = Object.assign(
-      { "/": { page: "/index" } },
-      tutorialPages,
-      staticPages
-    );
+    routes = Object.assign({ "/": { page: "/" } }, tutorialPages, staticPages);
     console.log(routes);
     return routes;
   },
