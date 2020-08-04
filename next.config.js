@@ -28,9 +28,8 @@ module.exports = {
     const pages = glob.sync(path.join(__dirname, "pages", "**", "*.tsx"));
     staticPages = {};
     pages.forEach((file) => {
-      if (file.indexOf("]") >= 0) {
-        return;
-      }
+      if (file.match("pages/index.tsx")) return;
+      if (file.indexOf("]") >= 0) return;
 
       const name = path.parse(file).name;
       staticPages[`/${name}`] = { page: `/${name}` };
