@@ -73,4 +73,4 @@ Note that you can optionally modify responseCodes (for HTTP clients only). Be su
 
 ## File Locations
 
-Actionhero will check all paths defined by `config.general.paths.public` for files, in the order they are specified via that option, then check any public paths of your [plugins](/tutorials/plugins).
+Actionhero will check all paths defined by `config.general.paths.public` for files, in the order they are specified via that option, then check any public paths of your [plugins](/tutorials/plugins). Actionhero's file server will not serve files outside of the directories enumerated by `config.general.paths.public` for secrutiry.
