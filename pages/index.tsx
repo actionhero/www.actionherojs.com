@@ -11,8 +11,7 @@ const CodeSamples = {
   getStarted: `# Generate a new Project
 npx actionhero generate
 npm install
-npm run build # <--- new! I compile the TS to JS
-npm run dev # <--- new! I use \`ts-node\` to let you develop on your ts files without compiling
+npm run dev
 
 # Use the actionhero CLI
 (npx) actionhero generate action --name my_action
