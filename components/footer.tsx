@@ -72,6 +72,16 @@ export default class extends Component<{}, State> {
                   .
                 </p>
                 <p>
+                  Sponsored by{" "}
+                  <a
+                    href="https://vercel.com?utm_source=[project-name]&utm_campaign=oss"
+                    target="_blank"
+                    style={{ color: Theme.colors.yellow, fontWeight: 500 }}
+                  >
+                    <img src="/static/images/sponsors/vercel.svg" height="10" />
+                  </a>
+                </p>
+                <p>
                   <a
                     href="https://medium.com/tag/actionherojs/latest"
                     target="_new"
@@ -80,7 +90,6 @@ export default class extends Component<{}, State> {
                     Blogs
                   </a>
                 </p>
-
                 <p style={{ color: Theme.colors.white, fontWeight: "bold" }}>
                   {String.fromCharCode(169) +
                     " " +
