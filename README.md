@@ -29,4 +29,4 @@ We use [prettier](https://prettier.io/) to manage our lint rules. We run `pretti
 
 ## Sponsors
 
-Thank you to [Vercel](https://vercel.com?utm_source=[project-name]&utm_campaign=oss) for sponsoring Actionhero and providing hosting for this website!
+Thank you to [Vercel](https://vercel.com?utm_source=actionhero&utm_campaign=oss) for sponsoring Actionhero and providing hosting for this website!
