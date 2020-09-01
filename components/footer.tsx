@@ -74,7 +74,7 @@ export default class extends Component<{}, State> {
                 <p>
                   Sponsored by{" "}
                   <a
-                    href="https://vercel.com?utm_source=[project-name]&utm_campaign=oss"
+                    href="https://vercel.com?utm_source=actionhero&utm_campaign=oss"
                     target="_blank"
                     style={{ color: Theme.colors.yellow, fontWeight: 500 }}
                   >
