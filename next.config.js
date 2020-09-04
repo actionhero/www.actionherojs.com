@@ -36,7 +36,6 @@ module.exports = {
     });
 
     routes = Object.assign({ "/": { page: "/" } }, tutorialPages, staticPages);
-    console.log(routes);
     return routes;
   },
 };
