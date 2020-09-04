@@ -290,13 +290,15 @@ There are 3 ways a client can access actions via the web server.
 - or you can modify this with routes. Say you want `server.com/api/stuff/statusPage`
 
 ```ts
-export const DEFAULT = function(api) {
-  return {
-    get: [
-      { path: ‘/stuff/statusPage', action: 'status' }
-    ]
+export const DEFAULT = {
+  routes: (config) => {
+    return {
+      get: [
+        { path: ‘/stuff/statusPage', action: 'status' }
+      ]
+    };
   };
-}
+};
 ```
 
 If the `config.servers.web.rootEndpointType` is `"file"` which means that the routes you are making are active only under the `/api` path. If you wanted the route example to become `server.com/stuff/statusPage`, you would need to change `config.servers.web.rootEndpointType` to be ‘api'. Note that making this change doesn't stop `server.com/api/stuff/statusPage` from working as well, as you still have `config.servers.web.urlPathForActions` set to be ‘api', so both will continue to work.
@@ -304,12 +306,14 @@ If the `config.servers.web.rootEndpointType` is `"file"` which means that the ro
 For a route to match, all params must be satisfied. So, if you expect a route to provide `api/:a/:b/:c` and the request is only for `api/:a/:c`, the route won't match. This holds for any variable, including `:apiVersion`. If you want to match both with and without apiVersion, just define the rote 2x, IE:
 
 ```ts
-export const DEFAULT = function (api) {
-  return {
-    all: [
-      { path: "/cache/:key/:value", action: "cacheTest" },
-      { path: "/:apiVersion/cache/:key/:value", action: "cacheTest" },
-    ],
+export const DEFAULT = {
+  routes: (config) => {
+    return {
+      all: [
+        { path: "/cache/:key/:value", action: "cacheTest" },
+        { path: "/:apiVersion/cache/:key/:value", action: "cacheTest" },
+      ],
+    };
   };
 };
 ```
@@ -319,12 +323,14 @@ If you want to shut off access to your action at `server.com/api/stuff/statusPag
 Routes will match the newest version of `apiVersion`. If you want to have a specific route match a specific version of an action, you can provide the `apiVersion` param in your route definitions:
 
 ```ts
-export const DEFAULT = function (api) {
-  return {
-    get: [
-      { path: "/myAction/old", action: "myAction", apiVersion: 1 },
-      { path: "/myAction/new", action: "myAction", apiVersion: 2 },
-    ],
+export const DEFAULT = {
+  routes: (config) => {
+    return {
+      get: [
+        { path: "/myAction/old", action: "myAction", apiVersion: 1 },
+        { path: "/myAction/new", action: "myAction", apiVersion: 2 },
+      ],
+    };
   };
 };
 ```
@@ -399,20 +405,22 @@ You have to map the specified public folder within the "dir" parameter, relative
 - The HTTP verbs which you can route against are: `api.routes.verbs = ['head', 'get', 'post', 'put', 'patch', 'delete']`
 
 ```ts
-export const DEFAULT = function (api) {
-  return {
-    get: [
-      { path: "/users", action: "usersList" }, // (GET) /api/users
-      { path: "/search/:term/limit/:limit/offset/:offset", action: "search" }, // (GET) /api/search/car/limit/10/offset/100
-    ],
+export const DEFAULT = {
+  routes: (config) => {
+    return {
+      get: [
+        { path: "/users", action: "usersList" }, // (GET) /api/users
+        { path: "/search/:term/limit/:limit/offset/:offset", action: "search" }, // (GET) /api/search/car/limit/10/offset/100
+      ],
 
-    post: [
-      { path: "/login/:userID(^\\d{3}$)", action: "login" }, // (POST) /api/login/123
-    ],
+      post: [
+        { path: "/login/:userID(^\\d{3}$)", action: "login" }, // (POST) /api/login/123
+      ],
 
-    all: [
-      { path: "/user/:userID", action: "user" }, // (*) / /api/user/123
-    ],
+      all: [
+        { path: "/user/:userID", action: "user" }, // (*) / /api/user/123
+      ],
+    };
   };
 };
 ```
