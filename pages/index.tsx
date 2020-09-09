@@ -89,6 +89,7 @@ client.on('message', (message) => alert(message))
 
 const smallIconStyle = {
   padding: 30,
+  maxHeight: 100,
 };
 
 const badgeStyle = {
@@ -545,6 +546,10 @@ export default class indexPage extends Component {
                   style={smallIconStyle}
                   src="/static/images/companies/taskrabbit.svg"
                 />
+                <img
+                  style={smallIconStyle}
+                  src="/static/images/companies/kp.png"
+                />
               </Col>
             </Row>
 
@@ -578,6 +583,12 @@ export default class indexPage extends Component {
                 <img
                   style={smallIconStyle}
                   src="/static/images/companies/taskrabbit.svg"
+                />
+              </Col>
+              <Col md={3} style={{ textAlign: "center" }}>
+                <img
+                  style={smallIconStyle}
+                  src="/static/images/companies/kp.png"
                 />
               </Col>
               <Col md={1} />
