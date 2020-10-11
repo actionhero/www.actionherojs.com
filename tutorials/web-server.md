@@ -68,7 +68,7 @@ HTTP responses are always JSON and follow the following format:
 
 - You can provide the `?callback=myFunc` param to initiate a JSONp response which will wrap the returned JSON in your callback `function`. The mime type of the response will change from JSON to Javascript.
 - If everything went OK with your request, no error attribute will be set on the response, otherwise, you should see either a string or hash error response within your action
-- To build the response for "hello" above, the action would have set `data.response.hello = 'world'` in an action.
+- To build the response for "hello" above, the action would have returned `{hello: 'world'}` in an action.
 
 ## Config Options
 
@@ -113,10 +113,13 @@ export const DEFAULT = {
         // When visiting the root URL, should visitors see 'api' or 'file'?
         //  Visitors can always visit /api and /public as normal
         rootEndpointType: "file",
-        // simple routing also adds an 'all' route which matches /api/:action for all actions
-        simpleRouting: true,
-        // queryRouting allows an action to be defined via a URL param, ie: /api?action=:action
-        queryRouting: true,
+        // In addition to what's defined in config/routes.ts, should we make a route for every action?  Useful for debugging or simple APIs.
+        // automaticRoutes should an array of strings - HTTP verbs, ie: [] (default), ['get'], ['post'], ['get','put'], ['get','post','put'], etc.
+        automaticRoutes: process.env.AUTOMATIC_ROUTES
+          ? process.env.AUTOMATIC_ROUTES.split(",")
+              .map((v) => v.trim())
+              .map((v) => v.toLowerCase())
+          : [],
         // The cache or (if etags are enabled) next-revalidation time to be returned for all flat files served from /public; defined in seconds
         flatFileCacheDuration: 60,
         // Add an etag header to requested flat files which acts as fingerprint that changes when the file is updated;

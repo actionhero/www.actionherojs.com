@@ -11,7 +11,7 @@ const CodeSamples = {
   getStarted: `# Generate a new Project
 npx actionhero generate
 npm install
-npm run dev
+npm run dev # <-- I automatically notice changes and restart, as well as compiling .ts files
 
 # Use the actionhero CLI
 (npx) actionhero generate action --name my_action
@@ -19,11 +19,9 @@ npm run dev
 
 # Test
 npm test
-# I'll run \`prettier\` and \`build\` for you first
-# I handle .ts files now!
 
 # To deploy your app
-npm run build # <--- new! I compile the TS to JS
+npm run build
 npm run start`,
   eastToUseActions: `import { Action } from 'Actionhero'
 
@@ -35,8 +33,8 @@ export class RandomNumber extends Action {
     this.outputExample = { randomNumber: 0.123 }
   }
 
-  async run ({ response }) {
-    response.randomNumber = Math.random()
+  async run () {
+    return { randomNumber: Math.random() }
   }
 }`,
   backgroundTasks: `
@@ -64,7 +62,7 @@ export class RunAction extends Task {
     "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
   localization: `let number = Math.random()
 let response = connection.localize(['Your random number is {{number}}', {number: number}])
-response.stringRandomNumber = response`,
+return {stringRandomNumber: response}`,
   routing: `{
   get: [
     { path: '/users', action: 'usersList' },

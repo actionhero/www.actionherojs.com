@@ -69,14 +69,14 @@ export class RandomNumber extends Action {
     };
   }
 
-  async run({ connection, response }) {
+  async run({ connection }) {
     const number = Math.random();
     const localizedResponse = connection.localize([
       "Your random number is {{number}}",
       { number: number },
     ]);
-    response.message = localizedResponse;
-    response.number = number;
+
+    return { message: localizedResponse, number };
   }
 }
 ```

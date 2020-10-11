@@ -8,6 +8,20 @@ With good [test coverage](tutorial-testing.html) you can make sure that you have
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
+## Upgrading from v23 to v24
+
+New Config Options which should be added:
+
+- `config.servers.web.automaticRoutes` = []
+- `config.tasks.retryStuckJobs` = false
+
+Config Options which should be removed:
+
+- `config.servers.web.simpleRouting` (spiritually replaced with `config.servers.web.automaticRoutes`)
+- `config.servers.web.queryRouting` (depreciated)
+
+And if you want to use the new Typescript features, change your `Actions` to return the response you want to send rather than using `data.response`. `data.response` will be removed in a future version of Actionhero.
+
 ## Upgrading from v22 to v23
 
 This release is breaking for 2 reasons:
