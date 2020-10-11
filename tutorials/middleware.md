@@ -80,7 +80,6 @@ data = {
   params: { action: "randomNumber", apiVersion: 1 },
   actionStartTime: 1429531553417,
   actionTemplate: {}, // the actual object action definition
-  response: {},
   session: {},
 };
 ```
