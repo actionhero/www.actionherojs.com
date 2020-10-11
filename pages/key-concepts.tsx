@@ -141,12 +141,14 @@ export class RandomNumber extends Action {
     this.outputExample = { randomNumber: 0.123 };
   }
 
-  async run({connection, response}) {
-    response.randomNumber = Math.random();
-    response.stringRandomNumber = connection.localize([
+  async run({connection}) {
+    const randomNumber = Math.random();
+    const stringRandomNumber = connection.localize([
       "Your random number is {{ randomNumber }}",
-      response,
+      {randomNumber},
     ]);
+
+    return {randomNumber, stringRandomNumber};
   }
 }`}
                 </Code>

@@ -35,8 +35,8 @@ export class RandomNumber extends Action {
     this.outputExample = { randomNumber: 0.123 }
   }
 
-  async run ({ response }) {
-    response.randomNumber = Math.random()
+  async run () {
+    return {randomNumber: Math.random() }
   }
 }`,
   backgroundTasks: `
@@ -64,7 +64,7 @@ export class RunAction extends Task {
     "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
   localization: `let number = Math.random()
 let response = connection.localize(['Your random number is {{number}}', {number: number}])
-response.stringRandomNumber = response`,
+return {stringRandomNumber: response}`,
   routing: `{
   get: [
     { path: '/users', action: 'usersList' },

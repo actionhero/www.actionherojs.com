@@ -13,15 +13,15 @@ export class RandomNumber extends Action {
     this.outputExample = { randomNumber: 0.1234 };
   }
 
-  async run({ response }) {
-    response.randomNumber = Math.random();
+  async run() {
+    return { randomNumber: Math.random() };
   }
 }
 ```
 
 The core of Actionhero is the Action framework, and **actions** are the basic units of work. All connection types from all servers can use actions. This means that you only need to write an action once, and both HTTP clients and websocket clients can consume it!
 
-The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and set the `data.response` (and `data.response.error` when needed) values to build the response to the client.
+The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and return a response (and `throw new Error()` when needed) values to build the response to the client.
 
 You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate action --name=myAction`
 
@@ -103,9 +103,8 @@ export class ActionVersion1 extends Action {
     this.version = 1;
   }
 
-  async run({ connection, response }) {
-    response.version = 1;
-    response.randomNumber = Math.random();
+  async run({ connection }) {
+    return { version: 1, randomNumber: Math.random() }
   }
 };
 
@@ -118,12 +117,12 @@ exports class ActionVersion2 extends Action {
     this.version = 2;
   }
 
-  async run({ connection, response }) {
-    response.version = 2;
+  async run({ connection }) {
     const number = Math.random();
-    response.randomNumber = connection.localize([
+    const responseString connection.localize([
       "Your random number is {{number}}", { number }
     ]);
+    return { version: 2, randomNumber: responseString}
   }
 };
 ```
@@ -211,7 +210,8 @@ class ValidatedAction extends Action {
 
     // (required) the run method of the action
     async run (data) {
-      data.response.randomNumber = Math.random() * data.params.multiplier;
+      const randomNumber = Math.random() * data.params.multiplier;
+      return { randomNumber };
     }
   }
 }
@@ -399,9 +399,9 @@ export class ShowDashboard extends AuthenticatedAction {
     this.authenticated = true;
   }
 
-  async run({ response }) {
+  async run() {
     // your logic would be here...
-    response.dashboard = true;
+    return { dashboard: true };
   }
 }
 
@@ -453,7 +453,7 @@ You can [learn more about middleware here](/tutorials/middleware).
 ## Notes
 
 - Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
-- If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client in `response.error`. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
+- If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client as the `error` key in the response object. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
 - The metadata `outputExample` is used in reflexive and self-documenting actions in the API, an is used by the Swagger action.
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `config.general.simultaneousActions`
 - `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `config.general.disableParamScrubbing`. Note that [Middleware](tutorial-middleware.html) preProcessors will always have access to all params pre-scrubbing.

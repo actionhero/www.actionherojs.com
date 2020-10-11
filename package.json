@@ -40,7 +40,7 @@
     "dev": "next dev",
     "sitemap": "node ./bin/sitemap.js",
     "start": "next start -p $PORT",
-    "prepare": "next build",
+    "build": "next build",
     "test": "jest",
     "pretest": "npm run lint",
     "lint": "prettier --check pages components pageClasses __tests__"

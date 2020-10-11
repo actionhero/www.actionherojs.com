@@ -187,8 +187,8 @@ exports.default = class MyAction extends Action {
     this.outputExample = { message: "hello" };
   }
 
-  async run({ response }) {
-    response.message = "hello";
+  async run() {
+    return { message: "hello" };
   }
 };
 ```
@@ -206,7 +206,7 @@ export class MyAction extends Action {
     this.outputExample = { message: "hello" };
   }
 
-  async run({ response }) {
+  async run() {
     response.message = "hello";
   }
 }
@@ -256,7 +256,7 @@ const authenticatedTeamMemberMiddleware = {
   name: "authenticated-team-member",
   global: false,
   priority: 1000,
-  preProcessor: async data => {
+  preProcessor: async (data) => {
     const { Team, TeamMember } = models;
     const sessionData = await api.session.load(data.connection);
     if (!sessionData) {
@@ -269,12 +269,12 @@ const authenticatedTeamMemberMiddleware = {
     } else {
       const teamMember = await TeamMember.findOne({
         where: { guid: sessionData.guid },
-        include: Team
+        include: Team,
       });
       data.session.data = sessionData; /// <--- HERE/
       data.session.teamMember = teamMember; /// <--- HERE/
     }
-  }
+  },
 };
 
 action.addMiddleware(authenticatedTeamMemberMiddleware);

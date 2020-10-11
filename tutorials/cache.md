@@ -26,14 +26,14 @@ export class CacheTest extends Action {
       key: {
         required: true,
         formatter: this.stringFormatter,
-        validator: this.stringValidator
+        validator: this.stringValidator,
       },
 
       value: {
         required: true,
         formatter: this.stringFormatter,
-        validator: this.stringValidator
-      }
+        validator: this.stringValidator,
+      },
     };
     this.outputExample = {
       cacheTestResults: {
@@ -44,10 +44,10 @@ export class CacheTest extends Action {
           value: "value",
           expireTimestamp: 1420953274716,
           createdAt: 1420953269716,
-          readAt: null
+          readAt: null,
         },
-        deleteResp: true
-      }
+        deleteResp: true,
+      },
     };
   }
 
@@ -63,15 +63,17 @@ export class CacheTest extends Action {
     }
   }
 
-  async run({ params, response }) {
+  async run({ params }) {
     const key = `cacheTest_${params.key}`;
     const value = params.value;
 
-    response.cacheTestResults = {
-      saveResp: await cache.save(key, value, 5000),
-      sizeResp: await cache.size(),
-      loadResp: await cache.load(key),
-      deleteResp: await cache.destroy(key)
+    return {
+      cacheTestResults = {
+        saveResp: await cache.save(key, value, 5000),
+        sizeResp: await cache.size(),
+        loadResp: await cache.load(key),
+        deleteResp: await cache.destroy(key),
+      },
     };
   }
 }

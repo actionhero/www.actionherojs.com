@@ -63,7 +63,7 @@ actionhero provides hooks for you to execute custom code both before and after t
 
 Action middleware requires a `name` and at least one of `preProcessor` or `postProcessor`. Middleware can be `global`, or you can choose to apply each middleware to an action specifically via `action.middleware = []` in the action's definition. You supply a list of middleware names, like `action.middleware = ['userId checker']` in the example above.
 
-Each processor is passed `data`. Just like within actions, you can modify the `data` object to add to `data.response` to create a response to the client. If an error is thrown, the action will not execute, and `data.response.error` will contain the error. If a `preProcessor` has an error, the action will never be called.
+Each processor is passed `data`. Just like within actions, you can modify the `data` object to add to `data.response` to create a response to the client. If an error is thrown, the action will not execute, and `error` will contain the error when sent to the client. If a `preProcessor` has an error, the action will never be called.
 
 The priority of a middleware orders it with all other middleware which might fire for an action. All global middleware happen before locally defined middleware on an action. Lower numbers happen first. If you do not provide a priority, the default from `config.general.defaultProcessorPriority` will be used.
 
