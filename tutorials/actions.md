@@ -449,6 +449,52 @@ You can create middleware which would apply to the connection both before and af
 
 You can [learn more about middleware here](/tutorials/middleware).
 
+## Running Actions Programmatically
+
+From time to time, you may want to run an Action programmatically in your codebase. Perhaps you want to combine the responses of 2 Actions into one, or you may want to run an Action via a Task. You can with `action.run()`, introduced in Actionhero `v24.0.1`.
+
+```ts
+import { action } from "actionhero";
+
+const nameOfAction = "myAction";
+const actionVersion = "v1"; // or leave null to use the latest version
+const params = { key: "value" }; // the params which would be parsed from the client
+const connectionProperties = {}; // special properties on the connection which may be expected by the action or middleware.  Perhaps "session.id" or "authenticated = true" depending on your middleware
+
+const response = await action.run(
+  nameOfAction,
+  actionVersion,
+  params,
+  connectionProperties
+);
+```
+
+So, if you wanted an Action which combines the responses of 2 other Actions:
+
+```ts
+import { Action, action } from "actionhero";
+
+export class RecursiveAction extends Action {
+  constructor() {
+    super();
+    this.name = "recursiveAction";
+    this.description = "I am an action that runs 2 other actions";
+    this.outputExample = {};
+  }
+
+  async run() {
+    const localResponse = { local: true };
+    const firstActionResponse = await action.run("otherAction");
+    const secondActionResponse = await action.run("anotherAction");
+    return Object.assign(
+      firstActionResponse,
+      secondActionResponse,
+      localResponse
+    );
+  }
+}
+```
+
 ## Notes
 
 - Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
