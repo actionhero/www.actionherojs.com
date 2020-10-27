@@ -451,7 +451,7 @@ You can [learn more about middleware here](/tutorials/middleware).
 
 ## Running Actions Programmatically
 
-From time to time, you may want to run an Action programmatically in your codebase. Perhaps you want to combine the responses of 2 Actions into one, or you may want to run an Action via a Task. You can with `action.run()`, introduced in Actionhero `v24.0.1`.
+From time to time, you may want to run an Action programmatically in your codebase. Perhaps you want to combine the responses of 2 Actions into one, or you may want to run an Action via a Task. You can with `action.run()`, introduced in Actionhero v24.0.1.
 
 ```ts
 import { action } from "actionhero";
