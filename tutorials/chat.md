@@ -65,10 +65,15 @@ export class MyInitializer extends Initializer {
 And if you want to broadcast a message to all clients in a room, you can use:
 
 ```ts
-// client should either be a real client you are emulating (found in api.connections) or just `{}`
-// room is the string name of a room
-// message is a string or JSON
+// -- client: should either be a real client you are emulating (found in api.connections)
+// -- room: is the string name of a room
+// -- message: is a string or JSON
 chatRoom.broadcast(connection, room, message);
+
+// -- client:  `{}` for send to all clients connected
+// -- room: is the string name of a room
+// -- message: is a string or JSON
+chatRoom.broadcast({}, room, message);
 ```
 
 ## Middleware
