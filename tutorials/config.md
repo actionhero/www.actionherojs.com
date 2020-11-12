@@ -22,7 +22,10 @@ export const production = {
     };
   }
 };
+
 ```
+
+```general``` represent the name of your config.
 
 The priority order of configs is:
 
@@ -43,3 +46,78 @@ The priority of arguments is:
 3.  `ACTIONHERO_CONFIG=PATH1,PATH2 npm start`
 
 Note that if `--config` or `ACTIONHERO_CONFIG` are used, they _overwrite_ the use of the default `/config` folder. If you wish to use both, you need to re-specify "config", e.g. `--config=config,local-config`. Also, note that specifying multiple `--config` options on the command line does exactly the same thing as using one parameter with comma separators, however the environment variable method only supports the comma-delimited syntax.
+
+
+## Exemple
+
+
+- Configure your database with your key word ```db``` 
+
+```src/config/db.ts```
+
+```ts
+export interface MyDbInterface {
+    host: string;
+    port: number;
+    database: string;
+    username: string;
+    password: string;
+}
+
+export const DEFAULT = {
+  db: (config) => {
+    return {
+      host: 'HOST_A',
+      port: 5432,
+      database: 'DB_A',
+      username: 'USERNAME_A',
+      password: 'PASSWORD_A',
+    };
+  }
+};
+module.exports.DEFAULT = DEFAULT;
+
+export const production = {
+  db: (config) => {
+    return {
+      host: 'HOST_B',
+      port: 5432,
+      database: 'DB_B',
+      username: 'USERNAME_B',
+      password: 'PASSWORD_B',
+    };
+  }
+};
+module.exports.production = production;
+
+```
+
+- Initialisation: Retrieve your configuration from ```src/config/db.ts```
+
+```src/initializers/db.ts```
+
+```ts
+
+export class DbInitializer extends Initializer {
+    constructor() {
+        super();
+        this.name = "db";
+    }
+
+    async initialize(config: {db: MyDbInterface }) {
+        // acces to your config ...
+        // config.db.*
+    }
+
+    async start(config: {db: MyDbInterface }) {
+        // acces to your config ...
+        // config.db.*
+    }
+
+    async stop(config: {db: MyDbInterface }) {
+        // acces to your config ...
+        // config.db.*
+    }
+
+}
+```
