@@ -23,27 +23,24 @@ npm test
 # To deploy your app
 npm run build
 npm run start`,
-  eastToUseActions: `import { Action } from 'Actionhero'
+  easyToUseActions: `import { Action } from 'Actionhero'
 
-export class RandomNumber extends Action {
+export class Greeting extends Action {
   constructor () {
     super()
-    this.name = 'randomNumber'
-    this.description = 'I am an API method which will generate a random number'
-    this.outputExample = { randomNumber: 0.123 }
+    this.name = 'greeting'
+    this.description = 'I say hello'
+    this.inputs = {
+      firstName: { required: true }
+    }
+    this.outputExample = { message: "Hello, Evan!" }
   }
 
   async run () {
-    return { randomNumber: Math.random() }
+    return { message: \`Hello, \${firstName}\` }
   }
 }`,
-  backgroundTasks: `
-import { task, Task} from 'actionhero'
-
-  await task.enqueue(
-    "sendWelcomeEmail",
-    {to: 'evan@evantahler.com'},
-    'default');
+  backgroundTasks: `import { task, Task} from 'actionhero'
 
 export class RunAction extends Task {
   constructor () {
@@ -57,7 +54,10 @@ export class RunAction extends Task {
   async run (params) {
     await api.sendEmail(params)
   }
-}`,
+}
+
+// to use it
+await task.enqueue("sendWelcomeEmail", {to: 'evan@actionherojs.com'});`,
   clusterReady:
     "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
   localization: `let number = Math.random()
@@ -302,6 +302,21 @@ export default class indexPage extends Component {
                 <div style={{ textAlign: "left" }}>
                   <Code language="bash">{CodeSamples.getStarted}</Code>
                 </div>
+
+                <Row>
+                  <Col md={6}>
+                    <h2>Create an Action</h2>
+                    <div style={{ textAlign: "left" }}>
+                      <Code>{CodeSamples.easyToUseActions}</Code>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <h2>Create a Task</h2>
+                    <div style={{ textAlign: "left" }}>
+                      <Code>{CodeSamples.backgroundTasks}</Code>
+                    </div>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </Container>
@@ -442,7 +457,7 @@ export default class indexPage extends Component {
                 title="Easy-to-Use Actions"
                 image="/static/images/easy-to-use-actions.svg"
                 body="With Actionhero, you create Actions which can respond to any type of connection. They process incoming parameters and offer a response to the client. Actionhero takes care of routing and responding to each connection type for you."
-                code={CodeSamples.eastToUseActions}
+                code={CodeSamples.easyToUseActions}
               />
 
               <FeatureBox

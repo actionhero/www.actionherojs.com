@@ -228,10 +228,10 @@ export class SendWelcomeMessage extends Task {
                 <Code language="typescript">{`import { task } from "actionhero";
 
 // Enqueue the task now, and process it ASAP
-await task.enqueue("sendWelcomeEmail", { to: "evan@evantahler.com" });
+await task.enqueue("sendWelcomeEmail", { to: "evan@actionherojs.com" });
 
 // Enqueue the task now, and process it once \`timestamp\` has ocurred
-await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" })`}</Code>
+await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@actionherojs.com" })`}</Code>
 
                 <p>
                   When working with a third-party API or doing a particularly

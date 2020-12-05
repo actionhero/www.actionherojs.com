@@ -17,16 +17,20 @@ Here are examples of the 3 ways to programmatically enqueue a task:
 import { task } from "actionhero";
 
 // Enqueue the task now, and process it ASAP
-await task.enqueue("sendWelcomeEmail", { to: "evan@evantahler.com" });
+await task.enqueue("sendWelcomeEmail", { to: "evan@actionherojs.com" });
 
 // Enqueue the task now, and process it once \`timestamp\` has arrived
-await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" });
+await task.enqueueAt(10000, "sendWelcomeEmail", {
+  to: "evan@actionherojs.com",
+});
 
 // Enqueue the task now, and process it once \`delay\` (ms) has passed
-await task.enqueueIn(10000, "sendWelcomeEmail", { to: "evan@evantahler.com" });
+await task.enqueueIn(10000, "sendWelcomeEmail", {
+  to: "evan@actionherojs.com",
+});
 ```
 
-`sendWelcomeEmail` should be a task defined in the project, and `{to: 'evan@evantahler.com'}` are arguments to that task. This task will be processed by TaskProcessors assigned to the "default" queue.
+`sendWelcomeEmail` should be a task defined in the project, and `{to: 'evan@actionherojs.com'}` are arguments to that task. This task will be processed by TaskProcessors assigned to the "default" queue.
 
 You can also enqueue tasks to be run at some time in the future (timestamp is in ms): `enqueueAt` asks for a timestamp (in ms) to run at, and `enqueueIn` asks for the number of ms from now to run.
 
