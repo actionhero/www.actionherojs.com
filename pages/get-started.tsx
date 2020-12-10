@@ -227,11 +227,6 @@ export default class GetStartedPage extends DocsPageWithNav {
                     here
                   </a>
                 </p>
-                <p>
-                  You can disable the features of Actionhero which require redis
-                  (cache, chat, tasks, etc) from <code>./config/redis.js</code>{" "}
-                  and set <code>enabled = false</code>
-                </p>
               </div>
             )}
 
