@@ -10,16 +10,16 @@ Actionhero follows [semantic versioning](http://semver.org/). This means that a 
 
 ## Upgrading from v24 to v25
 
-### Configuration
+**Configuration**
 
 - Redis can no longer be disabled, but you can opt to use `ioredis-mock` instead. See what a configuration from using this redis mock looks like on the [master branch](https://github.com/actionhero/actionhero/blob/master/src/config/redis.ts). See [PR #1653](https://github.com/actionhero/actionhero/pull/1653) for more information.
 
-### Logging and HTTP Server
+**Logging and HTTP Server**
 
 - The default HTTP response code if an Action throws is now 500, configured by a new config setting, `config.servers.web.defaultErrorStatusCode` (default 500). This option is only effective if the status code has not been set by the action. See [PR #1661](https://github.com/actionhero/actionhero/pull/1661) for more information.
   - Error log message format has changed as well.
 
-### CLI Commands
+**CLI Commands**
 
 - Commands now have optional `initialize` and `start` options, so you can opt-into initializing or starting your server as needed for your CLI command. The default is to initialize (`initialize=true`) but not start (`start=false`)
 - Command names with spaces now have renamed to have `-`. IE: `actionhero generate action` is now `actionhero generate-action`.
