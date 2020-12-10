@@ -26,7 +26,7 @@ await connections.apply("abc123", "set", ["auth", true]);
 
 The RPC system is used heavily by Chat.
 
-Two options have been added to the `config/redis.js` config file to support this: `config.general.channel` ( Which channel to use on redis pub/sub for RPC communication ) and `config.general.rpcTimeout` ( How long to wait for an RPC call before considering it a failure )
+Two options have been added to the `config/redis.ts` config file to support this: `config.general.channel` ( Which channel to use on redis pub/sub for RPC communication ) and `config.general.rpcTimeout` ( How long to wait for an RPC call before considering it a failure )
 
 **WARNING**
 

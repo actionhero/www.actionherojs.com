@@ -232,7 +232,7 @@ Note that it is not necessary to run the Sentinel nodes on separate servers. The
 
 To run this configuration, configure ioredis with a list of the Sentinel nodes and the name of the cluster. The driver will automatically connect to an appropriate Sentinel in round-robin fashion, reconnecting to another node if one is down, or fails.
 
-Assuming your sentinels were monitoring "mymaster" via `sentinel monitor mymaster 127.0.0.1 6379 2`, an example of a `redis.js` config file for sentinels would be:
+Assuming your sentinels were monitoring "mymaster" via `sentinel monitor mymaster 127.0.0.1 6379 2`, an example of a `redis.ts` config file for sentinels would be:
 
 ```js
 let db = 0;
@@ -242,8 +242,6 @@ let name = "mymaster";
 exports["default"] = {
   redis: (api) => {
     return {
-      enabled: true,
-
       _toExpand: false,
       client: {
         konstructor: require("ioredis"),
@@ -275,7 +273,7 @@ Cluster mode provides similar high-availability to Sentinel mode, but the shardi
 
 Also an important note: while you may opt to run "sentinel processes", it's the same codebase as regular redis, just running in "sentinel mode". The same goes if you run redis in "cluster mode".
 
-An example of a `redis.js` config file for redis cluster would be: **TODO**
+An example of a `redis.ts` config file for redis cluster would be: **TODO**
 
 ## Best Practices
 
