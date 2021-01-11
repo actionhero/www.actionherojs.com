@@ -494,7 +494,90 @@ export class RecursiveAction extends Action {
   }
 }
 ```
+If a main action is dependent on many actions from 2 to infinity, your sub-actions are chained like so: (notice action.run returns a then promise function for success and for failure)
 
+```ts
+import { Action, action } from "actionhero";
+
+export class RecursiveAction extends Action {
+  constructor() {
+    super();
+    this.name = "recursiveAction";
+    this.description = "I am an action that runs 3 other required actions";
+    this.outputExample = {};
+    this.inputs = {
+      datapassed1:{required:true},
+      datapassed2: {required:true},
+      datapassed3: {required:true},
+      datapassed4: {required:false}
+    }
+  }
+
+  async run() {
+    /*
+    const nameOfAction = "myAction";
+    const actionVersion = "v1"; // or leave null to use the latest version
+    const params = { key: "value" }; // the params which would be parsed from the client
+    const connectionProperties = {}; // special properties on the connection which may be expected by the action or middleware.  Perhaps "session.id" or "authenticated = true" depending on your middleware
+
+    const response = await action.run(
+      nameOfAction,
+      actionVersion,
+      params,
+      connectionProperties
+    );
+    */
+    await action.run( // action.run needs to await
+      'getUserExists',
+      null,
+      {
+        datapassed1: data.params.datapassed1
+      },
+      {}
+    ).then(async (dat)=>{ // set callback async
+      if(!dat.res) {
+        await action.run( // action.run() needs to await
+          'addDriverUser', //nameOfAction
+          null, // action version (stay latest)
+          { // action params
+            datapassed2: data.params.datapassed2,
+            datapassed3: data.params.datapassed3,
+            datapassed4: data.params.datapassed4
+          },
+          {} // connectionProperties
+        ).then(async (dat)=>{ // notice we still call async callbacks
+          data.response.user = dat.user;
+
+          // Add device
+          await action.run( // and await on action.run
+            'addDevice',
+            null,
+            {
+              datapassed1: data.params.datapassed1,
+              datapassed2: data.params.datapassed2,
+              datapassed5: dat.user.datapassed5
+            },
+            {}
+          ).then(async (dat)=>{  // here too
+            data.connection.datapassed1 = dat.device.datapassed1;
+            data.response.datapassed6 = dat.datapassed6;
+            data.response.res = true;
+          },(message)=>{
+            throw new Error(message);
+          });
+        },(message)=>{
+          throw new Error(message);
+        });
+      }else{
+        data.response.message = "Device exists..."
+        data.response.res = true;
+      }
+    },(message)=>{
+      throw new Error(message);
+    });
+  }
+}
+```
 ## Notes
 
 - Actions' run methods are async, and have `data` as their only argument. Completing an action is as simple returning from the method.
