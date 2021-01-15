@@ -207,12 +207,12 @@ class ValidatedAction extends Action {
     // should this action appear within \`api.documentation\`
     // default: true
     this.toDocument = true
-
-    // (required) the run method of the action
-    async run (data) {
-      const randomNumber = Math.random() * data.params.multiplier;
-      return { randomNumber };
-    }
+  }
+  
+  // (required) the run method of the action
+  async run (data) {
+    const randomNumber = Math.random() * data.params.multiplier;
+    return { randomNumber };
   }
 }
 ```
