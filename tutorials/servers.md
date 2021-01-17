@@ -26,25 +26,25 @@ module.exports = class MyServer extends Server {
     // this.config will be set to equal config.servers[this.type]
   }
 
-  initialize() {
+  async initialize() {
     this.on("connection", (connection) => {});
 
     this.on("actionComplete", (data) => {});
   }
 
-  start() {
+  async start() {
     // this.buildConnection (data)
     // this.processAction (connection)
     // this.processFile (connection)
   }
 
-  stop() {}
+  async stop() {}
 
-  sendMessage(connection, message, messageId) {}
+  async sendMessage(connection, message, messageId) {}
 
-  sendFile(connection, error, fileStream, mime, length, lastModified) {}
+  async sendFile(connection, error, fileStream, mime, length, lastModified) {}
 
-  goodbye(connection) {}
+  async goodbye(connection) {}
 };
 ```
 
