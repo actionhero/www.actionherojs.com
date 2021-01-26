@@ -83,10 +83,10 @@ export default class extends Component<{}> {
                 >
                   Docs
                 </Nav.Link>
-                <Nav.Link href="plugins" style={linkStyle}>
+                <Nav.Link href="/plugins" style={linkStyle}>
                   Plugins
                 </Nav.Link>
-                <Nav.Link href="community" style={linkStyle}>
+                <Nav.Link href="/community" style={linkStyle}>
                   Community
                 </Nav.Link>
                 <Nav.Link
