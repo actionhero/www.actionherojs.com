@@ -16,7 +16,7 @@
     "next": "^10.0.6",
     "raw-loader": "^4.0.2",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
     "react-fontawesome": "^1.7.1",
     "react-markdown": "^5.0.3",
