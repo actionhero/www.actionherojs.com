@@ -120,7 +120,7 @@ export default class extends Component<{}, State> {
                     href="https://docs.actionherojs.com"
                     style={footerLinkStyle}
                   >
-                    Documenation
+                    Documentation
                   </a>
                 </p>
                 <p>
