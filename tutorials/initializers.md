@@ -47,7 +47,7 @@ export class myInitializer extends Initializer {
 
 To use a custom initializer, create a `initializers` directory in your project. Export a class that extends `actionhero.Initializer` and implements at least one of `start`, `stop` or `initialize` and specify your priorities.
 
-You can generate a file of this type with `actionhero generate initializer --name=stuffInit`
+You can generate a file of this type with `actionhero generate-initializer --name=stuffInit`
 
 ## Errors
 

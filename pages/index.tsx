@@ -14,8 +14,8 @@ npm install
 npm run dev # <-- I automatically notice changes and restart, as well as compiling .ts files
 
 # Use the actionhero CLI
-(npx) actionhero generate action --name my_action
-(npx) actionhero generate task --name my_task --queue default --frequency 0
+(npx) actionhero generate-action --name my_action
+(npx) actionhero generate-task --name my_task --queue default --frequency 0
 
 # Test
 npm test

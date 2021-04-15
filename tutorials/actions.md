@@ -23,7 +23,7 @@ The core of Actionhero is the Action framework, and **actions** are the basic un
 
 The goal of an action is to read `data.params` (which are the arguments a connection provides), do work, and return a response (and `throw new Error()` when needed) values to build the response to the client.
 
-You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate action --name=myAction`
+You can create you own actions by placing them in a `./actions/` folder at the `src` directory of your application. You can use the generator with `actionhero generate-action --name=myAction`
 
 You can also define more than one action per file if you would like, and extend classes to share common methods and components (like input parsers).
 
@@ -208,7 +208,7 @@ class ValidatedAction extends Action {
     // default: true
     this.toDocument = true
   }
-  
+
   // (required) the run method of the action
   async run (data) {
     const randomNumber = Math.random() * data.params.multiplier;
