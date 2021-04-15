@@ -21,7 +21,7 @@ Plugins are loaded after all local Actionhero project files, but initializers fo
 | - package.json
 ```
 
-To create a plugin, create a project with the above structure via `actionhero generate plugin`. Note that `actionhero` should be a `peerDependency` within your plugin, with the proper version.
+To create a plugin, create a project with the above structure via `actionhero generate-plugin`. Note that `actionhero` should be a `peerDependency` within your plugin, with the proper version.
 
 This structure will allow elements to be loaded into Actionhero (we search `/actions` for actions, `/tasks` for tasks, etc)
 

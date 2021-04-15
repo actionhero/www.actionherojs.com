@@ -44,100 +44,26 @@ Now that we have this single entrypoint for your applications, we no longer need
 Actionhero also includes an optional binary which can help you with lifecycle tasks, like generating a new project, actions, tasks, and more. The help for this binary is as follows:
 
 ```
---------------------------------------
-Actionhero COMMAND >> help
---------------------------------------
-Actionhero - A multi-transport node.js API Server with integrated cluster capabilities and delayed tasks
+$ (npx) actionhero help
 
-Binary options:
+Usage: actionhero [options] [command]
 
-* actions list
-* console
-* generate
-* generate action
-* generate cli
-* generate initializer
-* generate plugin
-* generate server
-* generate task
-* help
-* task enqueue
-* version
+Options:
+  -V, --version                   output the version number
+  -h, --help                      display help for command
 
-Descriptions:
-
-* actions list
-  description: I will list the actions defined on this server
-
-* console
-  description: start an interactive REPL session with the api object in-scope
-
-* generate
-  description: will prepare an empty directory with a template Actionhero project
-
-* generate action
-  description: generate a new action
-  example: Actionhero generate action --name=[name] --description=[description]
-  inputs:
-    [name]
-    [description]
-      default: an Actionhero action
-
-* generate cli
-  description: generate a new cli command
-  example: Actionhero generate cli --name=[name]
-  inputs:
-    [name]
-    [description] (optional)
-      default: an Actionhero cli command
-    [example] (optional)
-      default: Actionhero command --option=yes
-
-* generate initializer
-  description: generate a new initializer
-  example: Actionhero generate initializer --name=[name] --loadPriority=[p] --startPriority=[p] --stopPriority=[p]
-  inputs:
-    [name]
-    [loadPriority]
-      default: 1000
-    [startPriority]
-      default: 1000
-    [stopPriority]
-      default: 1000
-
-* generate plugin
-  description: generate the structure of a new Actionhero plugin in an empty directory
-  example: Actionhero generate plugin
-
-* generate server
-  description: generate a new server
-  example: Actionhero generate server --name=[name]
-  inputs:
-    [name]
-
-* generate task
-  description: generate a new task
-  example: Actionhero generate task --name=[name] --description=[description] --scope=[scope] --frequency=[frequency]
-  inputs:
-    [name]
-    [queue]
-    [description]
-      default: an Actionhero task
-    [frequency]
-
-* help
-  description: get actionhero CLI help; will display this document
-
-* task enqueue
-  description: enqueue a defined task into your Actionhero cluster
-  example: Actionhero task enqueue --name=[taskName] --args=[JSON-formatted args]
-  inputs:
-    [name]
-    [args] (optional)
-    [params] (optional)
-
-* version
-  description: return the Actionhero version within this project
+Commands:
+  actions                         List the actions defined on this server
+  console                         Start an interactive REPL session with the api object in-scope
+  generate                        Generate a new Actionhero Project in an empty directory
+  generate-action [options]       Generate a new Action
+  generate-cli [options]          Generate a new cli command
+  generate-initializer [options]  Generate a new Initializer
+  generate-plugin                 Generate the structure of a new actionhero plugin in an empty directory
+  generate-server [options]       Generate a new Server
+  generate-task [options]         Generate a new Task
+  task-enqueue [options]          Enqueue a defined Task into your actionhero cluster
+  help [command]                  display help for command
 ```
 
 ## Environments and Config
@@ -155,20 +81,20 @@ You can `{configChanges: {}}` to a new Actionhero.Process' `start` or `initializ
 ```ts
 // from ./config/namespace.js
 export const DEFAULT = {
-  namespace: function(api) {
+  namespace: function (api) {
     return {
       enabled: true,
-      safe: false
+      safe: false,
     };
-  }
+  },
 };
 
 export const production = {
-  namespace: function(api) {
+  namespace: function (api) {
     return {
-      safe: true
+      safe: true,
     };
-  }
+  },
 };
 ```
 
