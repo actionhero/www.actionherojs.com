@@ -13,14 +13,8 @@ interface Props {
 
 export default class extends Component<Props> {
   render() {
-    const {
-      children,
-      waypointEnter,
-      waypointExit,
-      id,
-      title,
-      parent,
-    } = this.props;
+    const { children, waypointEnter, waypointExit, id, title, parent } =
+      this.props;
 
     let waypointEnterCallback = (data) => {};
 
