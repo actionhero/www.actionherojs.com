@@ -12,7 +12,7 @@ Actionhero follows [semantic versioning](http://semver.org/). This means that a 
 
 **Configuration**
 
-- Redis can no longer be disabled, but you can opt to use `ioredis-mock` instead. See what a configuration from using this redis mock looks like on the [master branch](https://github.com/actionhero/actionhero/blob/main/src/config/redis.ts). See [PR #1653](https://github.com/actionhero/actionhero/pull/1653) for more information.
+- Redis can no longer be disabled, but you can opt to use `ioredis-mock` instead. See what a configuration from using this redis mock looks like on the [main branch](https://github.com/actionhero/actionhero/blob/main/src/config/redis.ts). See [PR #1653](https://github.com/actionhero/actionhero/pull/1653) for more information.
 
 **Logging and HTTP Server**
 

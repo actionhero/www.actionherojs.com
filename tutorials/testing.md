@@ -4,7 +4,7 @@ Actionhero provides test helpers so that you may try your actions and tasks with
 
 We have chosen [jest](https://facebook.github.io/jest) as our test framework which is included as dependencies within all new projects generated with `actionhero generate`. You do not need to use these testing tools, but an example will be provided which makes use of them.
 
-You also don't need to use these test helpers, and you may want to make a real http or websocket request to test something specific. If this is the case, you can [check out how Actionhero tests its own servers](https://github.com/actionhero/actionhero/tree/master/test/servers) for examples.
+You also don't need to use these test helpers, and you may want to make a real http or websocket request to test something specific. If this is the case, you can [check out how Actionhero tests its own servers](https://github.com/actionhero/actionhero/tree/main/__tests__/servers) for examples.
 
 ## Getting Started
 

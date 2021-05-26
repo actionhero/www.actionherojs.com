@@ -16,7 +16,7 @@ This is a [React Project](https://facebook.github.io/react/) utilizing [next.js]
 
 (see `./bin/deploy`)
 
-The master branch of this repository is automatically built and pushed to the `gh-pages` branch of this project by Circle.CI on a successful test run. We statically host this project on www.actionherojs.com via github pages.
+The main branch of this repository is automatically built and pushed to the `gh-pages` branch of this project by Circle.CI on a successful test run. We statically host this project on www.actionherojs.com via github pages.
 
 ## Linting
 
