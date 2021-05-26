@@ -1,26 +1,26 @@
 ## Overview
 
-There are 2 ways to manage Actionhero configuration: configuration files and overrides. In both cases, Actionhero starts by reading the config in `./config/`. [Here is what config files for a new Actionhero project look like](https://github.com/actionhero/Actionhero/blob/master/config/).
+There are 2 ways to manage Actionhero configuration: configuration files and overrides. In both cases, Actionhero starts by reading the config in `./config/`. [Here is what config files for a new Actionhero project look like](https://github.com/actionhero/actionhero/tree/main/src/config).
 
 The normal way to deal with configuration changes is to use the files in `/config/` and to have changed options for each environment, based on NODE_ENV. First we load in all settings from the `default` config block, and then we replace those with anything defined in the relevant `environment` section. Actionhero uses the standard node environment variable `NODE_ENV` to determine environment, and defaults to ‘development' when one isn't found. This pattern is very similar the Rails and Sails frameworks. A good way to visualize this is to note that, by default, the server will return metadata in response JSON, but we change that in the production NODE_ENV and disable it.
 
 ```js
 export const DEFAULT = {
-  general: config => {
+  general: (config) => {
     return {
       //...
-      developmentMode: true
+      developmentMode: true,
       //...
     };
-  }
+  },
 };
 
 export const production = {
-  general: config => {
+  general: (config) => {
     return {
-      developmentMode: false
+      developmentMode: false,
     };
-  }
+  },
 };
 ```
 
