@@ -246,7 +246,7 @@ export default class TermsPage extends DocsPageWithNav {
               <div>
                 <p>
                   Actionhero's source code licence is{" "}
-                  <a href="https://github.com/actionhero/actionhero/blob/master/LICENSE.txt">
+                  <a href="https://github.com/actionhero/actionhero/blob/main/LICENSE.txt">
                     The V2 Apache Licence, and is distributed with the code.
                   </a>
                 </p>
