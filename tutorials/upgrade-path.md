@@ -102,24 +102,24 @@ Also be sure that your `packate.json` contains the `@types/ioreids` devDependenc
 
 Tasks can now use [input validation](https://www.actionherojs.com/tutorials/tasks#Task%20Inputs).
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v22.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v22.0.0)**
 
 ## Upgrading from v20 to v21
 
 The recommended upgrade to v21 of Actionhero is to move your project to Typescript.
 Detailed notes can be found on the [Typescript Tutorial](/tutorials/typescript).
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v21.0.9)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v21.0.9)**
 
 ## Upgrading from v19 to v20
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v20.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v20.0.0)**
 
 The only change to take note of is that you must now ensure that the working directory (CWD/PWD) in use when you start your Actionhero project is the root. (where /config, /actions, etc) are visible.
 
 ## Upgrading from v18 to v19
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v19.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v19.0.0)**
 
 **Configuration**
 
@@ -370,7 +370,7 @@ describe("Action: RandomNumber", () => {
 - **Plugins**
 
   - Actionhero no longer uses linkfiles to find plugins. If you have any in a `plugins` directory in your actions, tasks, config, or public folders, delete them.
-  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/Actionhero/Actionhero/blob/master/config/plugins.js)
+  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/actionhero/actionhero/blob/master/config/plugins.js)
   - Removed `Actionhero link` and `Actionhero unlink` per the above.
   - Added `Actionhero generate plugin`, a helper which you can use in an empty directory which will create a template plugin project
   - Testing plugins is now simpler. [Read more about this on docs.actionherojs.com](https://docs.actionherojs.com/tutorial-plugins.html)
@@ -381,7 +381,7 @@ describe("Action: RandomNumber", () => {
 
 ## Upgrading from v16 to v17
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v17.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v17.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -394,8 +394,8 @@ describe("Action: RandomNumber", () => {
 
 - Actionhero now ships with locale files by default.
 
-- You will need to acquire the [default locale file](https://github.com/Actionhero/Actionhero/blob/master/locales/en.json) and copy it into `./locales/en.json` within your project.
-- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/Actionhero/Actionhero/blob/master/config/errors.js)
+- You will need to acquire the [default locale file](https://github.com/actionhero/actionhero/blob/master/locales/en.json) and copy it into `./locales/en.json` within your project.
+- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/actionhero/actionhero/blob/master/config/errors.js)
 - The `welcomeMessage` and `goodbyeMessage` are removed from the config files and Actionhero now references the locale files for these strings. Update yours accordingly.
 
 - **utils**
@@ -404,7 +404,7 @@ describe("Action: RandomNumber", () => {
 
 ## Upgrading from v15 to v16
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v16.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v16.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -417,7 +417,7 @@ The only breaking changes are related to the capilization of internal methods:
 
 ## Upgrading from v14 to v15
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v15.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v15.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -435,19 +435,19 @@ The only breaking changes are related to the capilization of internal methods:
 
 ## Upgrading from v13 to v14
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v14.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v14.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
 - Redis Client Configurations have changed drastically. This allows for greater configuration, but at a complexity cost.
-  - The easiest way to upgrade your `config/redis.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/redis.js) directly and re-apply your configuration.
+  - The easiest way to upgrade your `config/redis.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/redis.js) directly and re-apply your configuration.
   - Move `config.redis.channel` to `config.general.channel`
   - Move `config.redis. rpcTimeout` to `config.general.rpcTimeout`
   - Throughout the code, use `config.redis.client` rather than `api.redis.client`
 
 ## Upgrading from v12 to v13
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v13.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v13.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -456,10 +456,10 @@ The only breaking changes are related to the capilization of internal methods:
   - Use the new binary command, `Actionhero link --name=NameOfPlugin` to link your plugins in the new method.
   - Linking plugins will likely create new config files you may need to customize.
 - Locales
-  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/i18n.js).
+  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/i18n.js).
   - Ensure that `config.i18n.updateFiles` is `true` so that your locale files can be generated for the first time.
 - Errors
-  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [master branch](https://github.com/Actionhero/Actionhero/blob/master/config/errors.js).
+  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/master/config/errors.js).
 - Grunt Removed
   - Grunt is removed from the project. The old Actionhero grunt commands have been moved into the Actionhero binary.
 - Redis configuration
@@ -467,7 +467,7 @@ The only breaking changes are related to the capilization of internal methods:
 
 ## Upgrading from v11 to v12
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v12.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v12.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 
@@ -480,7 +480,7 @@ The only breaking changes are related to the capilization of internal methods:
 
 ## Upgrading from v10 to v11
 
-**Full Release Notes: [GitHub](https://github.com/Actionhero/Actionhero/releases/tag/v11.0.0)**
+**Full Release Notes: [GitHub](https://github.com/actionhero/actionhero/releases/tag/v11.0.0)**
 
 **Breaking Changes and How to Overcome Them:**
 

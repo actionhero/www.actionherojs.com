@@ -109,7 +109,7 @@ export default class CommunityPage extends Component<
 
             <div className="clearfix" />
 
-            <a href="https://www.github.com/Actionhero/Actionhero/issues">
+            <a href="https://www.github.com/actionhero/actionhero/issues">
               <img
                 style={communityIcon}
                 src="/static/images/community/issues.svg"
