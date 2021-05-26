@@ -125,7 +125,7 @@ The only change to take note of is that you must now ensure that the working dir
 
 - in `config/tasks.js` `add config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
 - in `config/servers/websocket.js` `add config.servers.websocket.client.cookieKey = config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/main/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/main/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/main/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/main/config/servers/web.js) for more information
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/api.ts), [`config/redis.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/redis.ts), [`config/servers/websocket.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/servers/websocket.ts), and [`config/servers/web.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/servers/web.ts) for more information
 
 ## Upgrading from v19 to v20
 
@@ -140,7 +140,7 @@ The only change to take note of is that you must now ensure that the working dir
 
 - in `config/tasks.js` `add config.tasks.stuckWorkerTimeout = 3600000`. This will be a 1 hour timeout for stuck/crashed worker processes
 - in `config/servers/websocket.js` `add config.servers.websocket.client.cookieKey = config.servers.web.fingerprintOptions.cookieKey`. This will instruct the Actionhero Websocket Clients to share the same cookie as the web server to share a fingerprint, which can be used to share session information.
-- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.js`](https://github.com/actionhero/actionhero/blob/main/config/api.js), [`config/redis.js`](https://github.com/actionhero/actionhero/blob/main/config/redis.js), [`config/servers/socket.js`](https://github.com/actionhero/actionhero/blob/main/config/servers/socket.js), and [`config/servers/web.js`](https://github.com/actionhero/actionhero/blob/main/config/servers/web.js) for more information
+- If you plan to use Jest for your tests, and want to test in parallel, you will need to configure your server in the test environment to make use of `process.env.JEST_WORKER_ID`. Please view [`config/api.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/api.ts), [`config/redis.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/redis.ts), [`config/servers/websocket.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/servers/websocket.ts), and [`config/servers/web.ts`](https://github.com/actionhero/actionhero/blob/main/src/config/servers/web.ts) for more information
 
 ## Upgrading from v17 to v18
 
@@ -370,7 +370,7 @@ describe("Action: RandomNumber", () => {
 - **Plugins**
 
   - Actionhero no longer uses linkfiles to find plugins. If you have any in a `plugins` directory in your actions, tasks, config, or public folders, delete them.
-  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/actionhero/actionhero/blob/main/config/plugins.js)
+  - Plugins now need to be defined explicitly in a new `./config/plugins.js` config file. You should create one [per the example](https://github.com/actionhero/actionhero/blob/main/src/config/plugins.ts)
   - Removed `Actionhero link` and `Actionhero unlink` per the above.
   - Added `Actionhero generate plugin`, a helper which you can use in an empty directory which will create a template plugin project
   - Testing plugins is now simpler. [Read more about this on docs.actionherojs.com](https://docs.actionherojs.com/tutorial-plugins.html)
@@ -395,7 +395,7 @@ describe("Action: RandomNumber", () => {
 - Actionhero now ships with locale files by default.
 
 - You will need to acquire the [default locale file](https://github.com/actionhero/actionhero/blob/main/locales/en.json) and copy it into `./locales/en.json` within your project.
-- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/actionhero/actionhero/blob/main/config/errors.js)
+- The error reporters have all been changed to use these new locale file and mustache-style syntax. Update your from the [default errors file](https://github.com/actionhero/actionhero/blob/main/src/config/errors.ts)
 - The `welcomeMessage` and `goodbyeMessage` are removed from the config files and Actionhero now references the locale files for these strings. Update yours accordingly.
 
 - **utils**
@@ -440,7 +440,7 @@ The only breaking changes are related to the capilization of internal methods:
 **Breaking Changes and How to Overcome Them:**
 
 - Redis Client Configurations have changed drastically. This allows for greater configuration, but at a complexity cost.
-  - The easiest way to upgrade your `config/redis.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/main/config/redis.js) directly and re-apply your configuration.
+  - The easiest way to upgrade your `config/redis.js` is to take if from the [main branch](https://github.com/actionhero/actionhero/blob/main/src/config/redis.ts) directly and re-apply your configuration.
   - Move `config.redis.channel` to `config.general.channel`
   - Move `config.redis. rpcTimeout` to `config.general.rpcTimeout`
   - Throughout the code, use `config.redis.client` rather than `api.redis.client`
@@ -456,10 +456,10 @@ The only breaking changes are related to the capilization of internal methods:
   - Use the new binary command, `Actionhero link --name=NameOfPlugin` to link your plugins in the new method.
   - Linking plugins will likely create new config files you may need to customize.
 - Locales
-  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/main/config/i18n.js).
+  - This release introduced Locales. You will need the new locale config file. The easiest way to upgrade your `config/i18n.js` is to take if from the [main branch](https://github.com/actionhero/actionhero/blob/main/src/config/i18n.ts).
   - Ensure that `config.i18n.updateFiles` is `true` so that your locale files can be generated for the first time.
 - Errors
-  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [master branch](https://github.com/actionhero/actionhero/blob/main/config/errors.js).
+  - `config/errors.js` has been completely redone to take advantage of `connection.localize`. The easiest way to upgrade your `config/errors.js` is to take if from the [main branch](https://github.com/actionhero/actionhero/blob/main/src/config/errors.ts).
 - Grunt Removed
   - Grunt is removed from the project. The old Actionhero grunt commands have been moved into the Actionhero binary.
 - Redis configuration
