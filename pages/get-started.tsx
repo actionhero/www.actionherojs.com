@@ -223,7 +223,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   <code>npm install -g</code>. Actionhero does not support
                   running from a global (system) location, and expects to be
                   installed locally per-project. You can learn more about why{" "}
-                  <a href="https://github.com/Actionhero/Actionhero/issues/1141">
+                  <a href="https://github.com/actionhero/actionhero/issues/1141">
                     here
                   </a>
                 </p>

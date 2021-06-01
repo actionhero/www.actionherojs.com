@@ -106,7 +106,7 @@ export const DEFAULT = {
 };
 ```
 
-To work these tasks, you need to run Actionhero with at least one `taskProcessor`. `TaskProcessor`s run in-line with the rest of your server and process jobs. This is controlled by settings in [/config/tasks.js](https://github.com/Actionhero/Actionhero/blob/master/src/config/tasks.ts).
+To work these tasks, you need to run Actionhero with at least one `taskProcessor`. `TaskProcessor`s run in-line with the rest of your server and process jobs. This is controlled by settings in [/config/tasks.js](https://github.com/actionhero/actionhero/blob/main/src/config/tasks.ts).
 
 If you are enqueuing delayed or periodic tasks, you also need to enable the scheduler. This is a part of Actionhero that will periodically check the delayed queues for jobs that are ready to work now, and move them to the normal queues when the time comes.
 

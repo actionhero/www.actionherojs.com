@@ -51,4 +51,4 @@ You can generate a file of this type with `actionhero generate-initializer --nam
 
 ## Errors
 
-You can throw an error at any step in the initializer. Doing so will cause Actionhero to log the error and stop the server. For example, you might throw an error if you cannot connect to an external service at boot, [like a database](https://github.com/Actionhero/ah-sequelize-plugin/blob/master/initializers/sequelize.js).
+You can throw an error at any step in the initializer. Doing so will cause Actionhero to log the error and stop the server. For example, you might throw an error if you cannot connect to an external service at boot, [like a database](https://github.com/actionhero/ah-sequelize-plugin/blob/main/src/initializers/sequelize.ts).

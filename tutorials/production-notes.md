@@ -75,7 +75,7 @@ You can set a few environment variables to affect how Actionhero runs:
 
 Actionhero will write its pid to a pidfile in the normal unix way. The path for the pidfile is set in `config/api.js` with `config.general.paths.pid`.
 
-Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/Actionhero/Actionhero/blob/master/initializers/pids.js) and [here](https://github.com/actionhero/actionhero/blob/master/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
+Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/actionhero/actionhero/blob/main/initializers/pids.js) and [here](https://github.com/actionhero/actionhero/blob/main/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
 
 ## PAAS and Procfile Deployment
 
@@ -224,7 +224,7 @@ http {
 
 ### Sentinel Mode
 
-In Sentinel mode, you have your Redis configured in a normal master->slave configuration. However, rather than hard-code your application to know who the master and slaves are, your application connects to the Sentinel processes instead. These Sentinels transparently pipeline your connection to the proper Redis master, and they do this invisibly to Actionhero / your application.
+In Sentinel mode, you have your Redis configured in a normal master->standby configuration. However, rather than hard-code your application to know who the master and standbys are, your application connects to the Sentinel processes instead. These Sentinels transparently pipeline your connection to the proper Redis master, and they do this invisibly to Actionhero / your application.
 
 The biggest advantage to this configuration is high-availability. In the event of a master failure, the Sentinel processes reach a consensus, then elect a new master automatically. Since the same process which handles master election also manages the client connections, no requests are lost - the sentinels hold the connection idle and then replay any pending requests on the new master after election. In the configuration shown in the first diagram above, up to 2 Redis data nodes and any 1 Sentinel can fail without the entire system failing.
 
