@@ -224,20 +224,20 @@ http {
 
 ### Sentinel Mode
 
-In Sentinel mode, you have your Redis configured in a normal master->standby configuration. However, rather than hard-code your application to know who the master and standbys are, your application connects to the Sentinel processes instead. These Sentinels transparently pipeline your connection to the proper Redis master, and they do this invisibly to Actionhero / your application.
+In Sentinel mode, you have your Redis configured in a normal leader->follower configuration. However, rather than hard-code your application to know who the leaders and followers are, your application connects to the Sentinel processes instead. These Sentinels transparently pipeline your connection to the proper Redis leader, and they do this invisibly to Actionhero / your application.
 
-The biggest advantage to this configuration is high-availability. In the event of a master failure, the Sentinel processes reach a consensus, then elect a new master automatically. Since the same process which handles master election also manages the client connections, no requests are lost - the sentinels hold the connection idle and then replay any pending requests on the new master after election. In the configuration shown in the first diagram above, up to 2 Redis data nodes and any 1 Sentinel can fail without the entire system failing.
+The biggest advantage to this configuration is high-availability. In the event of a leader failure, the Sentinel processes reach a consensus, then elect a new leader automatically. Since the same process which handles leader election also manages the client connections, no requests are lost - the sentinels hold the connection idle and then replay any pending requests on the new leader after election. In the configuration shown in the first diagram above, up to 2 Redis data nodes and any 1 Sentinel can fail without the entire system failing.
 
 Note that it is not necessary to run the Sentinel nodes on separate servers. They can be run as parallel processes on the Redis nodes themselves.
 
 To run this configuration, configure ioredis with a list of the Sentinel nodes and the name of the cluster. The driver will automatically connect to an appropriate Sentinel in round-robin fashion, reconnecting to another node if one is down, or fails.
 
-Assuming your sentinels were monitoring "mymaster" via `sentinel monitor mymaster 127.0.0.1 6379 2`, an example of a `redis.ts` config file for sentinels would be:
+Assuming your sentinels were monitoring "myleader" via `sentinel monitor myleader 127.0.0.1 6379 2`, an example of a `redis.ts` config file for sentinels would be:
 
 ```js
 let db = 0;
 let sentinels = [{ host: "127.0.0.1", port: 26379 }];
-let name = "mymaster";
+let name = "myleader";
 
 exports["default"] = {
   redis: (api) => {
@@ -267,7 +267,7 @@ Additional options can be found here: [github.com/luin/ioredis#sentinel](https:/
 
 ### Cluster Mode
 
-In Cluster mode, Redis shards all the keys in data into "slots" which are evenly allocated though all the masters in the cluster. The client can connect to any node in the cluster, and if the requested key belongs on another node, it will proxy the request for you (just like the Sentinel would). The cluster can also take care of master re-election for each shard in the event of a master node failure.
+In Cluster mode, Redis shards all the keys in data into "slots" which are evenly allocated though all the leaders in the cluster. The client can connect to any node in the cluster, and if the requested key belongs on another node, it will proxy the request for you (just like the Sentinel would). The cluster can also take care of leader re-election for each shard in the event of a leader node failure.
 
 Cluster mode provides similar high-availability to Sentinel mode, but the sharding allows more data to be stored in the cluster overall. However, where Sentinel mode requires a minimum of 3 servers, Cluster mode requires a minimum of 6 to reach a quorum and provide full redundancy.
 
