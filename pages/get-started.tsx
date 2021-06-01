@@ -293,7 +293,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   <a href="https://github.com/Actionhero/www.actionherojs.com">
                     this codebase
                   </a>
-                  . You can submit pull requests to the master branch with any
+                  . You can submit pull requests to the main branch with any
                   updates or changes.
                 </p>
               </div>
@@ -303,7 +303,7 @@ export default class GetStartedPage extends DocsPageWithNav {
               "notes",
               <div>
                 <p>
-                  This documentation will always reflect the master branch of
+                  This documentation will always reflect the main branch of
                   Actionhero, and therefore may be slightly ahead of the latest
                   release on NPM.
                 </p>
