@@ -75,7 +75,7 @@ You can set a few environment variables to affect how Actionhero runs:
 
 Actionhero will write its pid to a pidfile in the normal unix way. The path for the pidfile is set in `config/api.js` with `config.general.paths.pid`.
 
-Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/actionhero/actionhero/blob/main/initializers/pids.js) and [here](https://github.com/actionhero/actionhero/blob/main/initializers/id.js). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
+Individual Actionhero servers will name their pidfiles by `api.id`, which is determined by the logic [here](https://github.com/actionhero/actionhero/blob/1bcada9d91d9e08d11d6c055aa187b14ae1c476f/src/classes/process/pid.ts) and [here](https://github.com/actionhero/actionhero/blob/1bcada9d91d9e08d11d6c055aa187b14ae1c476f/src/classes/process/id.ts). For example, on my laptop with the IP address of `192.168.0.1`, running `npm start` would run one Actionhero server and generate a pidfile of `./pids/actionhero-192.168.0.1` in which would be a single line containing the process' pid.
 
 ## PAAS and Procfile Deployment
 
