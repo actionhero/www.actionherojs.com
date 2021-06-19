@@ -74,7 +74,7 @@ If you want to communicate with a websocket client outside of an action, you can
 
 Actionhero provides `connection.fingerprint` where available to help you link websocket connections to related web connections. While every connection will always have a unique `connection.id`, we attempt to build `connection.fingerprint` by checking the headers the websocket connection began with. If the cookie defined by `config.servers.web.fingerprint.cookieKey` is present, we will store its value on the websocket connection.
 
-You can read more about using a value like `connection.fingerprint` in an [authentication middleware](tutorials/middleware) or using it as a key for session information.
+You can read more about using a value like `connection.fingerprint` in an [authentication middleware](/tutorials/middleware) or using it as a key for session information.
 
 ## Config Options
 
