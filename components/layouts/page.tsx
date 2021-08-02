@@ -9,7 +9,7 @@ import Footer from "../footer";
 
 export default class extends Component {
   componentDidMount() {
-    Router.events.on("onRouteChangeComplete", () => {
+    Router.events.on("routeChangeComplete", () => {
       //@ts-ignore
       ga("send", "pageview", location.pathname);
     });
