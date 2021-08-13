@@ -8,7 +8,7 @@ describe("Footer", () => {
   it("renders the date and body content", () => {
     const page = TestUtils.renderIntoDocument(<Footer />);
     const body = ReactDOM.findDOMNode(page).textContent;
-    expect(body).toContain(new Date().getFullYear());
+    expect(body).toContain(new Date().getFullYear().toString());
     expect(body).toContain("Contact us");
   });
 });
