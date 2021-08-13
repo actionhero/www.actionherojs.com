@@ -30,6 +30,7 @@
     "babel-eslint": "^10.1.0",
     "glob": "^7.1.7",
     "jest": "27.0.6",
+    "next-remote-watch": "^1.0.0",
     "prettier": "^2.3.2",
     "react-test-renderer": "17.0.2",
     "request": "^2.88.2",
@@ -37,7 +38,7 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next-remote-watch pages tutorials",
     "sitemap": "node ./bin/sitemap.js",
     "start": "next start -p $PORT",
     "build": "next build",

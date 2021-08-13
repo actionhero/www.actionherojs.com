@@ -8,6 +8,58 @@ With good [test coverage](tutorial-testing.html) you can make sure that you have
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
+## Upgrading from v26 to v27
+
+**Spec Helper Type changes**
+
+It's now much easier to get the types of your response from `specHelper.runAction<Action>()` and `specHelper.runTask<Task>()`!
+
+Just provide your Action or Task Class!
+
+```typescript
+// In `__tests__/actions/randomNumber.ts`
+import { Process, specHelper } from "actionhero";
+import { RandomNumber } from "../../src/actions/randomNumber";
+
+describe("Action: randomNumber", () => {
+  const actionhero = new Process();
+  beforeAll(async () => await actionhero.start());
+  afterAll(async () => await actionhero.stop());
+
+  test("generates random numbers", async () => {
+    // now "randomNumber" is typed properly as a number
+    const { randomNumber } = await specHelper.runAction<RandomNumber>(
+      "randomNumber"
+    );
+    expect(randomNumber).toBeGreaterThan(0);
+    expect(randomNumber).toBeLessThan(1);
+  });
+});
+```
+
+Version 27 also removed `i18n` and `uglify` from Actionhero
+
+**Localization Removal**
+
+1. Remove any `/locales/*` files you have, and move that text content into your Actions and Tasks
+2. Remove any instances if `connection.localize()` in your code - this method is removed
+
+**Configuration**
+
+1. In `src/config/api.ts`:
+   - Add `config.general.welcomeMessage = 'Welcome to the Actionhero API!'` or similar message
+   - Remove `config.general.paths.locale`
+2. In `src/config/errors.ts`:
+   - Remove all instances of `data.connection.localize` and use regular JS strings
+
+**Minified Websocket Client Library Removed**
+
+`ActionheroWebsocketClient.min.js` will no longer be generated in your Actionhero projects. Most users include `/public/javascript/ActionheroWebsocketClient.js` in their build and it is compiled into their react or angular project... or cached and minified by their CDN. Minifiying this client-side javascript is now outside of the scope of Actionhero.
+
+## Upgrading from v25 to v26
+
+There are no major changes in this version's code, but as of v26, Actionhero requires Node.js v12+ Support for Node.js v10 has been dropped.
+
 ## Upgrading from v24 to v25
 
 **Configuration**
