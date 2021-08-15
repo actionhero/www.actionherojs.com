@@ -2,9 +2,9 @@
 
 Actionhero provides test helpers so that you may try your actions and tasks within a headless environment. We do this by including a `specHelper` initializer which creates a server, `testServer` when running within the test environment. Via the `testServer`, you can easily call actions or tasks without making a real request.
 
-We have chosen [jest](https://facebook.github.io/jest) as our test framework which is included as dependencies within all new projects generated with `actionhero generate`. You do not need to use these testing tools, but an example will be provided which makes use of them.
+We have chosen [jest](https://facebook.github.io/jest) as our test framework which is included as dependencies within all new projects generated with `actionhero generate`. using `jest` is not required, but that is how Actionhero itself is tested and what the following example will use.
 
-You also don't need to use these test helpers, and you may want to make a real http or websocket request to test something specific. If this is the case, you can [check out how Actionhero tests its own servers](https://github.com/actionhero/actionhero/tree/main/__tests__/servers) for examples.
+You also don't need to use `specHelper`, and you may want to make a real http or websocket request to test something specific. If this is the case, you can [check out how Actionhero tests its own servers](https://github.com/actionhero/actionhero/tree/main/__tests__/servers) for examples - you can make real requests to `http://localhost` in your tests if you would like.
 
 ## Getting Started
 
@@ -64,42 +64,41 @@ Actionhero comes with a `specHelper` to make it easier to test tasks and actions
 
 Say you had an action that was supposed to respond with a `randomNumber`, and you wanted to write a test for it.
 
-```js
+```typescript
 // from __tests__/actions/randomNumber.ts
 import { Process, specHelper } from "actionhero";
+import { RandomNumber } from "../../src/actions/randomNumber"; // import the class of the Action being tested
 
-const Actionhero = new Process();
+describe("Action: randomNumber", () => {
+  const actionhero = new Process();
+  beforeAll(async () => await actionhero.start());
+  afterAll(async () => await actionhero.stop());
 
-describe("Action", () => {
-  describe("randomNumber", () => {
-    beforeAll(async () => {
-      await Actionhero.start();
-    });
+  let firstNumber = null;
 
-    afterAll(async () => {
-      await Actionhero.stop();
-    });
+  test("generates random numbers", async () => {
+    const { randomNumber } = await specHelper.runAction<RandomNumber>(
+      "randomNumber"
+    );
+    expect(randomNumber).toBeGreaterThan(0);
+    expect(randomNumber).toBeLessThan(1);
+    firstNumber = randomNumber;
+  });
 
-    let firstNumber = null;
-
-    test("generates random numbers", async () => {
-      const { randomNumber } = await specHelper.runAction("randomNumber");
-      expect(randomNumber).toBeGreaterThan(0);
-      expect(randomNumber).toBeLessThan(1);
-      firstNumber = randomNumber;
-    });
-
-    test("is unique / random", async () => {
-      const { randomNumber } = await specHelper.runAction("randomNumber");
-      expect(randomNumber).toBeGreaterThan(0);
-      expect(randomNumber).toBeLessThan(1);
-      expect(randomNumber).not.toEqual(firstNumber);
-    });
+  test("is unique / random", async () => {
+    const { randomNumber } = await specHelper.runAction<RandomNumber>(
+      "randomNumber"
+    );
+    expect(randomNumber).toBeGreaterThan(0);
+    expect(randomNumber).toBeLessThan(1);
+    expect(randomNumber).not.toEqual(firstNumber);
   });
 });
 ```
 
-More details on the specHelper methods [can be found here](https://docs.actionherojs.com/modules/spechelper.html). Methods include:
+Note how in the above tests, we pass the class of the action, `RandomNumber` to the specHelper as well. This will type the response in your tests so you can be sure that the type of the response is as expected.
+
+Similarly, you can also test Tasks.  More details on the specHelper methods [can be found here](https://docs.actionherojs.com/modules/specHelper.html). Methods include:
 
 - `buildConnection`
 - `findEnqueuedTasks`
