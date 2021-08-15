@@ -91,7 +91,7 @@ export class UserDelete extends ValidatedAction {
 
 Actionhero supports multiple versions of the same action. This will allow you to support actions/routes of the same name with upgraded functionality. To create actions of the same name with various versions, set the `version` parameter.
 
-```js
+```typescript
 import { Action } from "actionhero";
 
 export class ActionVersion1 extends Action {
@@ -119,10 +119,8 @@ exports class ActionVersion2 extends Action {
 
   async run({ connection }) {
     const number = Math.random();
-    const responseString connection.localize([
-      "Your random number is {{number}}", { number }
-    ]);
-    return { version: 2, randomNumber: responseString}
+    const responseString = `Your random number is ${number}`;
+    return { version: 2, randomNumber: responseString};
   }
 };
 ```

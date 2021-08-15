@@ -143,11 +143,7 @@ export class RandomNumber extends Action {
 
   async run({ connection }) {
     const randomNumber = Math.random();
-    const stringRandomNumber = connection.localize([
-      "Your random number is {{ randomNumber }}",
-      {randomNumber},
-    ]);
-
+    const stringRandomNumber = \`Your random number is \$\{randomNumber\}\`;
     return { randomNumber, stringRandomNumber };
   }
 }`}

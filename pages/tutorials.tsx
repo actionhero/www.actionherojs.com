@@ -137,28 +137,6 @@ export default class WhyPage extends DocsPageWithNav {
                   <Col md={3} style={{ textAlign: "center" }}>
                     <img
                       style={imageStyle}
-                      src={`/static/images/${Theme.icons.localization}`}
-                    />
-                  </Col>
-                  <Col md={9}>
-                    <h3>
-                      <Link href="/tutorials/localization">
-                        <a>Localization</a>
-                      </Link>
-                    </h3>
-                    <p>
-                      Actionhero includes a built-in localization tool based on
-                      i18n which allows you to customize your API's responses to
-                      a specific language or country. You can customize how that
-                      language is determined.
-                    </p>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col md={3} style={{ textAlign: "center" }}>
-                    <img
-                      style={imageStyle}
                       src={`/static/images/${Theme.icons.middleware}`}
                     />
                   </Col>

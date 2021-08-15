@@ -129,12 +129,6 @@ export default class WhyPage extends DocsPageWithNav {
                   <li>hot-reloading developer experience</li>
                 </ul>
 
-                <strong>Localization</strong>
-                <ul>
-                  <li>i18n built in</li>
-                  <li>Customizable keys for localization (URL, Header, etc)</li>
-                </ul>
-
                 <strong>Testing</strong>
                 <ul>
                   <li>Uses Jest for server code testing</li>

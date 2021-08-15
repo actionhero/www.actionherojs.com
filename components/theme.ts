@@ -69,7 +69,6 @@ export default {
     actions: "easy-to-use-actions.svg",
     tasks: "built-in-tasks.svg",
     initializers: "internet-of-things.svg",
-    localization: "localization.svg",
     middleware: "api-first-development.svg",
     testing: "flying-man.svg",
     cache: "api-first-development.svg",

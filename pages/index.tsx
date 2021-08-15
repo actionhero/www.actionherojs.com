@@ -60,9 +60,6 @@ export class RunAction extends Task {
 await task.enqueue("sendWelcomeEmail", {to: 'evan@actionherojs.com'});`,
   clusterReady:
     "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
-  localization: `let number = Math.random()
-let response = connection.localize(['Your random number is {{number}}', {number: number}])
-return {stringRandomNumber: response}`,
   routing: `{
   get: [
     { path: '/users', action: 'usersList' },
@@ -477,13 +474,6 @@ export default class indexPage extends Component {
 
             <Row>
               <FeatureBox
-                title="Localization"
-                image="/static/images/localization.svg"
-                body="The Actionhero API makes is simple to create a traditional HTTP(S) API, but it also lets you easily extend your API to TCP and websocket clients (all included). Actionhero also easily lets you write your own servers to handle custom transports."
-                code={CodeSamples.localization}
-              />
-
-              <FeatureBox
                 title="Routing"
                 image="/static/images/routing.svg"
                 body="Actionhero ships with a robust router to make mapping HTTP requests to your actions a breeze."
@@ -495,6 +485,12 @@ export default class indexPage extends Component {
                 image="/static/images/api-first-development.svg"
                 body="Actionhero makes API-First development easy by enforcing a strict separation of views and application logic and removing barriers to API creation. Versioning your actions is simple and integrates well with Agile or XP team workflows."
               />
+
+              <FeatureBox
+                title="Operations Tools"
+                image="/static/images/ops-tools.svg"
+                body="It is simple to deploy Actionhero with our included CLI tools. You can launch your server as a single instance or as part of a larger deployment cluster. Tools for 0-downtime deployments and robust monitoring and logging hooks make Actionhero a dream platform for your operations team."
+              />
             </Row>
 
             <Row>
@@ -503,12 +499,6 @@ export default class indexPage extends Component {
                 image="/static/images/chat.svg"
                 body="The Actionhero API makes it simple to create a Actionhero (optionally) facilitates real-time communication not only from server-to-client, but also client-to-client! Actionhero's chat sub-system allows for streaming of both public and private messages between clients. Complete with middleware and extensions, you can create chat services, multi-player games, and more!"
                 code={CodeSamples.chat}
-              />
-
-              <FeatureBox
-                title="Operations Tools"
-                image="/static/images/ops-tools.svg"
-                body="It is simple to deploy Actionhero with our included CLI tools. You can launch your server as a single instance or as part of a larger deployment cluster. Tools for 0-downtime deployments and robust monitoring and logging hooks make Actionhero a dream platform for your operations team."
               />
 
               <FeatureBox

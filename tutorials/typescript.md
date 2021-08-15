@@ -302,7 +302,6 @@ ie: `import { log, config } from 'actionhero'`
 - specHelper
 - id (the server’s id)
 - env (development, staging, production)
-- localize (method that accepts a string and a connection)
 
 **The API object**
 
