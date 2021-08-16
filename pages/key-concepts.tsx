@@ -103,7 +103,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   other type of "view" meant to be consumed by a human. Again,
                   there are plugins to introduce new protocols to Actionhero if
                   you want them, but they are optional. Actionhero is not a
-                  font-end server, although it's easy to pair{" "}
+                  front-end server, although it's easy to pair{" "}
                   <a
                     target="_blank"
                     href="https://github.com/actionhero/ah-next-plugin"
