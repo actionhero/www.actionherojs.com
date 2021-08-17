@@ -119,28 +119,26 @@ action.addMiddleware(authenticatedUserMiddleware);
 ## Connection Middleware
 
 ```ts
-
-import {api, Initializer, log} from "actionhero";
+import { api, Initializer, log } from "actionhero";
 export class ConnectionMiddleware extends Initializer {
-    constructor() {
-        super();
-        this.name = "connection_middleware";
-    }
-    async initialize() {
-        const connectionMiddleware = {
-            name: "connection middleware",
-            priority: 1000,
-            create: async (connection) => {
-                log(`connection joined type:${connection.type}`, "info");
-            },
-            destroy: async (connection) => {
-                log(`connection left type:${connection.type}`, "info");
-            },
-        };
-        await api.connections.addMiddleware(connectionMiddleware);
-    }
+  constructor() {
+    super();
+    this.name = "connection_middleware";
+  }
+  async initialize() {
+    const connectionMiddleware = {
+      name: "connection middleware",
+      priority: 1000,
+      create: async (connection) => {
+        log(`connection joined type:${connection.type}`, "info");
+      },
+      destroy: async (connection) => {
+        log(`connection left type:${connection.type}`, "info");
+      },
+    };
+    await api.connections.addMiddleware(connectionMiddleware);
+  }
 }
-
 ```
 
 Like the action middleware above, you can also create middleware to react to the creation or destruction of all connections.
@@ -272,7 +270,6 @@ export class taskMiddleware extends Initializer {
       },
 
       preEnqueue: async function () {
-        const arg = this.args[0]
         return true // returning `false` will prevent the task from enqueuing
       },
 
