@@ -13,7 +13,7 @@ log("OH NO", "emerg"); // will show up in all logger levels
 log("the params were", "info", data.params); // you can log objects too
 ```
 
-Note that you can set a `level` which indicates which level (and those above it) you wish to log per transport.
+Note that you can set a `level` which indicates which level (and those above it) you wish to log per transport. Each logger in Actionhero has it's own level. That means that each logger (eg a file or the console - STDERR and STDOUT) will ignore or print messages it chooses to be relevant. By default, `info` and above messages are shown while `debug` messages are not shown. If you are using the default logger config in `./src/config/logger.ts` (see below), you can use `process.env.LOG_LEVEL` to change the level that both the default console and file logger log at. e.g.: `LOG_LEVEL=debug npm run dev` would run development mode with the log level increased to `debug` and you would see the previously ignored `debug` log messages.
 
 - The default log levels are: `emerg: 0, alert: 1, crit: 2, error: 3, warning: 4, notice: 5, info: 6, debug: 7`.
 - Logging levels in winston conform to the severity ordering specified by RFC5424: severity of all levels is assumed to be numerically ascending from most important to least important.
@@ -33,7 +33,12 @@ You can access the loggers you build up directly, getting the Winston Logger obj
 import * as winston from "winston";
 
 /*
+import * as winston from "winston";
+
+/*
 The loggers defined here will eventually be available via `import { loggers } from "actionhero"`
+
+You may want to customize how Actionhero sets the log level.  By default, you can use `process.env.LOG_LEVEL` to change each logger's level (default: 'info')
 
 learn more about winston v3 loggers @
  - https://github.com/winstonjs/winston
@@ -47,14 +52,15 @@ type ActionheroConfigLoggerBuilderArray = Array<
 export const DEFAULT = {
   logger: (config) => {
     const loggers: ActionheroConfigLoggerBuilderArray = [];
-    loggers.push(buildConsoleLogger());
+    loggers.push(buildConsoleLogger(process.env.LOG_LEVEL));
     config.general.paths.log.forEach((p) => {
-      loggers.push(buildFileLogger(p));
+      loggers.push(buildFileLogger(p, process.env.LOG_LEVEL));
     });
 
     return {
       loggers,
       maxLogStringLength: 100, // the maximum length of param to log (we will truncate)
+      maxLogArrayLength: 10, // the maximum number of items in an array to log before collapsing into one message
     };
   },
 };
@@ -92,24 +98,6 @@ function buildConsoleLogger(level = "info") {
   };
 }
 
-function stringifyExtraMessagePropertiesForConsole(info) {
-  const skippedProperties = ["message", "timestamp", "level"];
-  let response = "";
-
-  for (const key in info) {
-    const value = info[key];
-    if (skippedProperties.includes(key)) {
-      continue;
-    }
-    if (value === undefined || value === null || value === "") {
-      continue;
-    }
-    response += `${key}=${value} `;
-  }
-
-  return response;
-}
-
 function buildFileLogger(path, level = "info", maxFiles = undefined) {
   return function (config) {
     const filename = `${path}/${config.process.id}-${config.process.env}.log`;
@@ -128,6 +116,24 @@ function buildFileLogger(path, level = "info", maxFiles = undefined) {
       ],
     });
   };
+}
+
+function stringifyExtraMessagePropertiesForConsole(info) {
+  const skippedProperties = ["message", "timestamp", "level"];
+  let response = "";
+
+  for (const key in info) {
+    const value = info[key];
+    if (skippedProperties.includes(key)) {
+      continue;
+    }
+    if (value === undefined || value === null || value === "") {
+      continue;
+    }
+    response += `${key}=${value} `;
+  }
+
+  return response;
 }
 ```
 
