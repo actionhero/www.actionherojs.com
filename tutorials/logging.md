@@ -15,7 +15,7 @@ log("the params were", "info", data.params); // you can log objects too
 
 Note that you can set a `level` which indicates which level (and those above it) you wish to log per transport. Each logger in Actionhero has it's own level. That means that each logger (eg a file or the console - STDERR and STDOUT) will ignore or print messages it chooses to be relevant. By default, `info` and above messages are shown while `debug` messages are not shown. If you are using the default logger config in `./src/config/logger.ts` (see below), you can use `process.env.LOG_LEVEL` to change the level that both the default console and file logger log at. e.g.: `LOG_LEVEL=debug npm run dev` would run development mode with the log level increased to `debug` and you would see the previously ignored `debug` log messages.
 
-The log levels are: `emerg: 0, alert: 1, crit: 2, error: 3, warning: 4, notice: 5, info: 6, debug: 7`.  For example, if you set the logger's level to "notice", you would also see "crit" messages, but not "debug" messages.
+The log levels in order from highest priority to lowest are: `["emerg", "alert", "crit", "error", "warning", "notice", "info", "debug"]`. For example, if you set the logger's level to "notice", you would see "crit" messages, but not "debug" messages. The default log level of the console logger is `"info"`, so by default you would see all messages except for `"debug"` messages.
 
 To invoke the logger from your code, use: `log(message, severity, metadata)`.
 
