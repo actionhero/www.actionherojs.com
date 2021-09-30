@@ -150,48 +150,58 @@ Any modification made to the connection at this stage may happen either before o
 ## Chat Middleware
 
 ```ts
-import { log, chatRoom, connection } from "actionhero";
+import { chatRoom, Connection, Initializer } from "actionhero";
 
-var chatMiddleware = {
-  name: "chat middleware",
-  priority: 1000,
-  join: (connection, room) => {
-    // announce all connections entering a room
-    await chatRoom.broadcast(
-      {},
-      room,
-      "I have joined the room: " + connection.id
-    );
-  },
-  leave: (connection, room) => {
-    // announce all connections leaving a room
-    await chatRoom.broadcast(
-      {},
-      room,
-      "I have left the room: " + connection.id
-    );
-  },
-  /**
-   * Will be executed once per client connection before delivering the message.
-   */
-  say: (connection, room, messagePayload) => {
-    // do stuff
-    log(messagePayload);
-    messagePayload.cool = true;
-    return messagePayload;
-  },
-  /**
-   * Will be executed only once, when the message is sent to the server.
-   */
-  onSayReceive: function (connection, room, messagePayload) {
-    // do stuff
-    log(messagePayload);
-    messagePayload.receivedAt = new Date().getTime();
-    return messagePayload;
-  },
-};
+export class ChatMiddlewareInitializer extends Initializer {
+  constructor() {
+    super();
+    this.name = "chat-middleware";
+  }
 
-chatRoom.addMiddleware(chatMiddleware);
+  async start() {
+    const chatMiddleware: chatRoom.ChatMiddleware = {
+      name: "chat middleware",
+      priority: 1000,
+
+      // announce all connections entering a room
+      join: async (connection: Connection, room: string) => {
+        await chatRoom.broadcast(
+          {},
+          room,
+          "I have joined the room: " + connection.id
+        );
+      },
+
+      // announce all connections leaving a room
+      leave: async (connection: Connection, room: string) => {
+        await chatRoom.broadcast(
+          {},
+          room,
+          "I have left the room: " + connection.id
+        );
+      },
+
+      // Will be executed once per client connection before delivering the message.
+      say: (connection: Connection, room: string, messagePayload: any) => {
+        messagePayload.cool = true;
+        return messagePayload;
+      },
+
+      // Will be executed only once, when the message is sent to the server.
+      onSayReceive: function (
+        connection: Connection,
+        room: string,
+        messagePayload: any
+      ) {
+        messagePayload.receivedAt = new Date().getTime();
+        return messagePayload;
+      },
+    };
+
+    chatRoom.addMiddleware(chatMiddleware);
+  }
+}
+
 ```
 
 The last type of middleware is used to act when a connection joins, leaves, or communicates within a chat room. We have 4 types of middleware for each step: `say`, `onSayReceive`, `join`, and `leave`.
