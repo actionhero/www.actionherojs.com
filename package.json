@@ -24,7 +24,7 @@
     "react-waypoint": "^10.1.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
     "@types/react": "^17.0.26",
     "babel-eslint": "^10.1.0",
