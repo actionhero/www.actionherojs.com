@@ -537,7 +537,7 @@ export default class WhyPage extends DocsPageWithNav {
                     <p>
                       Actionhero has moved from being a Javascript project to a
                       Typescript project in version 21. This guide explains how
-                      more your existing Javascript project to Typescript, and
+                      to move your existing Javascript project to Typescript, and
                       how to enjoy all the enhancements of this new version.
                     </p>
                   </Col>
