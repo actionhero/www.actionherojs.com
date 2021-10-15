@@ -201,7 +201,6 @@ export class ChatMiddlewareInitializer extends Initializer {
     chatRoom.addMiddleware(chatMiddleware);
   }
 }
-
 ```
 
 The last type of middleware is used to act when a connection joins, leaves, or communicates within a chat room. We have 4 types of middleware for each step: `say`, `onSayReceive`, `join`, and `leave`.
@@ -219,6 +218,10 @@ More detail and nuance on chat middleware can be found in the [chat tutorial](tu
 - `sayCallbacks` are executed once per client connection. This makes it suitable for customizing the message based on the individual client.
 - `onSayReceiveCallbacks` are executed only once, when the message is sent to the server.
 
+### Chat Middleware blocking/squelching
+
+If you want to selectively prevent chat messages from propagating you have two options. The first is when the middleware throws an error as shown below:
+
 ```ts
 import {chatRoom, connection} from 'actionhero';
 
@@ -235,7 +238,22 @@ chatRoom.addMiddleware({
 });
 ```
 
-If a `say` is blocked via an error thrown, the message will simply not be delivered to the client. If a `join` or `leave` is blocked, the verb or method used to invoke the call will be returned that error.
+If a `say` is blocked via an error thrown, the message will simply not be delivered to the client. If a `join` or `leave` is blocked, the verb or method used to invoke the call will be returned that error. This method will log the error which makes it fine for unusual events but not for a desired design intention.
+
+A second way to block a message is to have the middleware explicitly return null. This will squelch the message from propagating. The example below will prevent the chatroom from echoing the message back to the sending client.
+
+```ts
+chatRoom.addMiddleware(connection, room, messagePayload) => {
+      name: "block echo to sending client",
+      global: true,
+      say: (connection, room, messagePayload) => {
+        if (connection.id === messagePayload.from) {
+          return null;
+        }
+        return messagePayload;
+      },
+    };
+```
 
 ## Task Request Flow
 
