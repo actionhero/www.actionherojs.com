@@ -207,7 +207,7 @@ The last type of middleware is used to act when a connection joins, leaves, or c
 
 Priority is optional in all cases, but can be used to order your middleware. If an error is returned thrown any of these methods, it will be returned to the client, and the action/verb/message will not be sent.
 
-More detail and nuance on chat middleware can be found in the [chat tutorial](tutorial-chat.html)
+More detail and nuance on chat middleware can be found in the [chat tutorial](/tutorials/chat)
 
 ### Chat Middleware Notes
 

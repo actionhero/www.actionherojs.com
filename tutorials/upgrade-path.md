@@ -4,8 +4,6 @@ Upgrading big Actionhero projects to a new major might require some effort. Ever
 
 One of the ways to upgrade your project is to generate a new project using the latest Actionhero framework (`npx Actionhero generate`). Using that as your starting point you can then carefully copy all your `configs`, `initializers`, `servers`, `tasks`, `actions`, and other custom code from your old project, making sure that you are at the same working state as before. It's a good practice to make tests for your actions (or any other component) before you plan to upgrade your Actionhero project.
 
-With good [test coverage](tutorial-testing.html) you can make sure that you have successfully upgraded your project.
-
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
 ## Upgrading from v26 to v27
