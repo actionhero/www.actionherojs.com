@@ -317,7 +317,7 @@ As noted above, centralized logging (Splunk et al) will be invaluable here. You 
 
 ### Actions
 
-Remember that all params which come in via the `web` and `socket` servers are `String`s. If you want to typeCast them (perhaps you always know that the param `user_id` will be an integer), you can do so in a middleware or within an action's [`params.formatter`](tutorial-actions.html) step.
+Remember that all params which come in via the `web` and `socket` servers are `String`s. If you want to typeCast them (perhaps you always know that the param `user_id` will be an integer), you can do so in a middleware or within an action's [`params.formatter`](/tutorials/actions) step.
 
 Always remember to sanitize any input for SQL injection, etc. The best way to describe this is "never pass a query to your database which can be directly modified via user input"!
 

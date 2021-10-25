@@ -203,7 +203,7 @@ You can create you own tasks by placing them in a `./tasks/` directory at the ro
 - `task.description`: a description
 - `task.queue`: the default queue to run this task within (can be overwritten when enqueued)
 - `task.frequency`: In milliseconds, how often should I run?. A frequency of `> 0` denotes this task as periodic and Actionhero will automatically enqueued when the server boots. Only one instance of a periodic task will be enqueued within the cluster at a time, regardless of how many Actionhero nodes are connected.
-- `task.middleware`: middleware modify how your tasks are enqueued. For example, if you use the `queue-lock` plugin, only one instance of any job (with similar arguments) can be enqueued at a time. You can [learn more about middleware here](tutorial-middleware.html)
+- `task.middleware`: middleware modify how your tasks are enqueued. For example, if you use the `queue-lock` plugin, only one instance of any job (with similar arguments) can be enqueued at a time. You can [learn more about middleware here](/tutorials/middleware)
 
 `task.run` contains the actual work that the task does. It takes the following arguments:
 
@@ -286,7 +286,7 @@ class SendWelcomeEmail extends Task {
 
 You may want to schedule jobs every minute/hour/day, like a distributed CRON job. There are a number of excellent node packages to help you with this, like [node-schedule](https://github.com/tejasmanohar/node-schedule) and [node-cron](https://github.com/ncb000gt/node-cron). Actionhero exposes [node-resque's](https://github.com/taskrabbit/node-resque) scheduler to you so you can use the scheduler package of your choice.
 
-Assuming you are running Actionhero across multiple machines, you will need to ensure that only one of your processes is actually scheduling the jobs. To help you with this, you can inspect which of the scheduler processes is correctly acting as leader, and flag only the leader scheduler process to run the schedule. An [initializer for this](tutorial-initializers.html) would look like:
+Assuming you are running Actionhero across multiple machines, you will need to ensure that only one of your processes is actually scheduling the jobs. To help you with this, you can inspect which of the scheduler processes is correctly acting as leader, and flag only the leader scheduler process to run the schedule. An [initializer for this](/tutorials/initializers) would look like:
 
 ```ts
 // file: initializers/node_schedule.js

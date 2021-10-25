@@ -155,60 +155,61 @@ The complete set of options an action can have are:
 import { Action } from "actionhero";
 
 class ValidatedAction extends Action {
-  constructor () {
-    super()
+  constructor() {
+    super();
 
     // (required) the action's name (the \`exports\` key doesn't matter)
-    this.name = 'randomNumber'
+    this.name = "randomNumber";
 
     // (required) the description
-    this.description = 'I am an API method which will generate a random number'
+    this.description = "I am an API method which will generate a random number";
 
     // (required) a hash of all the inputs this action will accept
     // any inputs provided to the action not in this hash will be stripped
-    this.inputs = {
+    (this.inputs = {
       multiplier: {
         required: false,
         validator: (param, connection, actionTemplate) => {
-          if (param < 0) { throw new Error('must be > 0') }
+          if (param < 0) {
+            throw new Error("must be > 0");
+          }
         },
         formatter: (param, connection, actionTemplate) => {
-          return parseInt(param)
+          return parseInt(param);
         },
         default: (param, connection, actionTemplate) => {
-          return 1
+          return 1;
         },
-      }
-    },
-
-    // any middleware to apply before/after this action
-    // global middleware will be applied automatically
-    // default []
-    this.middleware = []
+      },
+    }),
+      // any middleware to apply before/after this action
+      // global middleware will be applied automatically
+      // default []
+      (this.middleware = []);
 
     // an example response
     // default: {}
-    this.outputExample = { randomNumber: 123 }
+    this.outputExample = { randomNumber: 123 };
 
     // you can choose to block certain servers from using this action
     // default: []
-    this.blockedConnectionTypes = ['websocket']
+    this.blockedConnectionTypes = ["websocket"];
 
     // how should this action be logged?
     // default: 'info'
-    this.logLevel = 'warning'
+    this.logLevel = "warning";
 
     // (HTTP only) if the route for this action includes an extension (like .jpg), should the response MIME be adjusted to match?
     // default: true
-    this.matchExtensionMimeType = true
+    this.matchExtensionMimeType = true;
 
     // should this action appear within \`api.documentation\`
     // default: true
-    this.toDocument = true
+    this.toDocument = true;
   }
 
   // (required) the run method of the action
-  async run (data) {
+  async run(data) {
     const randomNumber = Math.random() * data.params.multiplier;
     return { randomNumber };
   }
@@ -499,7 +500,7 @@ export class RecursiveAction extends Action {
 - If you throw an error, be sure that it is a `new Error()` object, and not a string. Thrown errors will automatically be sent to the client as the `error` key in the response object. Also, throw Errors are processed at `config/errors.js` in `genericError(data, error)`. Here you can check your error add to the response (`requestIds`, status codes, etc.)
 - The metadata `outputExample` is used in reflexive and self-documenting actions in the API, an is used by the Swagger action.
 - You can limit how many actions a persistent client (websocket, tcp, etc) can have pending at once with `config.general.simultaneousActions`
-- `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `config.general.disableParamScrubbing`. Note that [Middleware](tutorial-middleware.html) preProcessors will always have access to all params pre-scrubbing.
+- `actions.inputs` are used for both documentation and for building the whitelist of allowed parameters the API will accept. Client params not included in these whitelists will be ignored for security. If you wish to disable the whitelisting you can use the flag at `config.general.disableParamScrubbing`. Note that [Middleware](/tutorials/middleware) preProcessors will always have access to all params pre-scrubbing.
 - `matchExtensionMimeType` is currently only used by the `web` server, and it indicates that if this action is successfully called by a client with `connection.extension` set, the headers of the response should be changed to match that file type. This is useful when creating actions that download files.
 - Actionhero strives to keep the `data.connection` object uniform among various client types, and more importantly, present `data.params` in a homogeneous way to actions. You can inspect `data.connection.type` to learn more about the connection. The gory details of the connection (which vary on its type) are stored in `data.connection.rawConnection` which will contain the websocket, tcp connection, etc. For web clients, `{`data.connection.rawConnection = {req: req, res: res}`}` for example.
 
