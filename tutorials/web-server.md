@@ -1,6 +1,6 @@
 ## Overview
 
-The web server exposes actions and files over http or https. You can visit the API in a browser, Curl, etc. `{url}?action=actionName` or `{url}/api/{actionName}` is how you would access an action. For example, using the default ports in `/config/servers/web.js` you could reach the status action with both `http://127.0.0.1:8080/status` or `http://127.0.0.1:8080/?action=status`
+The web server exposes actions and files over http or https. You can visit the API in a browser, Curl, etc. `{url}/actionName` or `{url}/api/{actionName}` is how you would access an action. For example, using the default ports in `/config/servers/web.js` you could reach the status action with both `http://127.0.0.1:8080/status`.
 
 HTTP responses are always JSON and follow the following format:
 
@@ -104,7 +104,6 @@ export const DEFAULT = {
           "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
         },
         // Route that actions will be served from; secondary route against this route will be treated as actions,
-        //  IE: /api/?action=test == /api/test/
         urlPathForActions: "api",
         // Route that static files will be served from;
         //  path (relative to your project root) to serve static content from
@@ -262,7 +261,7 @@ There are helpers you can use in your actions to send files:
 
 - `/public` and `/api` are routes which expose the directories of those types. These top level path can be configured in `/config/servers/web.js` with `config.servers.web.urlPathForActions` and `config.servers.web.urlPathForFiles`.
 - the root of the web server "/" can be toggled to serve the content between /file or /api actions per your needs `config.servers.web.rootEndpointType`. The default is `api`.
-- Actionhero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}?action=file&fileName={pathToFile}` and `http://{baseUrl}/file/{pathToFile}`.
+- Actionhero will serve up flat files (html, images, etc) as well from your ./public folder. This is accomplished via the `file` route as described above. `http://{baseUrl}/public/{pathToFile}` is equivalent to `http://{baseUrl}/file/{pathToFile}`.
 - Errors will result in a 404 (file not found) with a message you can customize.
 - Proper mime-type headers will be set when possible via the `mime` package.
 
@@ -285,12 +284,6 @@ config.servers.web.urlPathForActions = "api";
 config.servers.web.urlPathForFiles = "public";
 config.servers.web.rootEndpointType = "file";
 ```
-
-There are 3 ways a client can access actions via the web server.
-
-- no routing at all and use GET params: `server.com/api?action=status`
-- with ‘basic' routing, where the action's name will respond after the /api path: `server.com/api/status`
-- or you can modify this with routes. Say you want `server.com/api/stuff/statusPage`
 
 ```ts
 export const DEFAULT = {
@@ -393,7 +386,6 @@ You have to map the specified public folder within the "dir" parameter, relative
 
 #### Route Notes
 
-- actions defined in params directly `action=theAction` or hitting the named URL for an action `/api/theAction` will never override RESTful routing
 - you can mix explicitly defined params with route-defined params. If there is an overlap, the route-defined params win
   - IE: /api/user/123?userId=456 => `connection.userId = 123`
 - routes defined with the "all" method will be duplicated to "get", "put", "post", and "delete"
