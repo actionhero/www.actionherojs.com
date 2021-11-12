@@ -169,15 +169,15 @@ class ValidatedAction extends Action {
     (this.inputs = {
       multiplier: {
         required: false,
-        validator: (param, connection, actionTemplate) => {
+        validator: (param) => {
           if (param < 0) {
             throw new Error("must be > 0");
           }
         },
-        formatter: (param, connection, actionTemplate) => {
+        formatter: (param) => {
           return parseInt(param);
         },
-        default: (param, connection, actionTemplate) => {
+        default: (param) => {
           return 1;
         },
       },
@@ -227,13 +227,13 @@ action.inputs = {
   // a complex input
   multiplier: {
     required: true,
-    validator: (param, connection, actionTemplate) => {
+    validator: (param) => {
       if (param < 0) { throw new Error('must be > 0') }
     },
-    formatter: (param, connection, actionTemplate) => {
+    formatter: (param) => {
       return parseInt(param);
     },
-    default: (param, connection, actionTemplate) => {
+    default: (param) => {
       return 1;
     },
   },
@@ -246,10 +246,10 @@ action.inputs = {
       nestedInput: {
         required: true,
         default: 1,
-        validator: (param, connection, actionTemplate) => {
+        validator: (param) => {
           if (param < 0) { throw new Error('must be > 0') }
         },
-        formatter: (param, connection, actionTemplate) => {
+        formatter: (param) => {
           return parseInt(param);
         },
       },
@@ -263,14 +263,14 @@ The properties of an input are:
 
 - `required` (boolean)
   - Default: `false`
-- `formatter = function(param, connection, actionTemplate)`
+- `formatter = function(param)`
   - will return the new value of the param
   - Default: The parameter is not reformatted
-- `default = function(param, connection, actionTemplate)`
+- `default = function(param)`
   - will return the default value of the param
   - you can also have a static assignment for `default` father than a function, ie: `default: 123`
   - Default: Parameter has no default value
-- `validator = function(param, connection, actionTemplate)`
+- `validator = function(param)`
   - should return true, null, or undefined (return nothing) if validation passed
   - should throw an error message if validation fails which will be returned to the client
   - Default: Parameter is always valid
@@ -298,7 +298,7 @@ Here's an example...
 moneyInCents: {
   required:  true,
   default:   (p) => { return 0 },
-  formatter: (p) => { return parseFloat(p) },
+  formatter: (p) => parseFloat(p),
   validator: (p) => {
     if(isNaN(parseFloat(p)){ throw new Error('not a number') }
     if(p < 0){ throw new Error('money cannot be negative') }
