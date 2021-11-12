@@ -166,26 +166,27 @@ class ValidatedAction extends Action {
 
     // (required) a hash of all the inputs this action will accept
     // any inputs provided to the action not in this hash will be stripped
-    (this.inputs = {
+    this.inputs = {
       multiplier: {
         required: false,
-        validator: (param, connection, actionTemplate) => {
+        validator: (param) => {
           if (param < 0) {
             throw new Error("must be > 0");
           }
         },
-        formatter: (param, connection, actionTemplate) => {
+        formatter: (param) => {
           return parseInt(param);
         },
-        default: (param, connection, actionTemplate) => {
+        default: (param) => {
           return 1;
         },
       },
-    }),
-      // any middleware to apply before/after this action
-      // global middleware will be applied automatically
-      // default []
-      (this.middleware = []);
+    };
+
+    // any middleware to apply before/after this action
+    // global middleware will be applied automatically
+    // default []
+    this.middleware = [];
 
     // an example response
     // default: {}
@@ -227,13 +228,13 @@ action.inputs = {
   // a complex input
   multiplier: {
     required: true,
-    validator: (param, connection, actionTemplate) => {
+    validator: (param) => {
       if (param < 0) { throw new Error('must be > 0') }
     },
-    formatter: (param, connection, actionTemplate) => {
+    formatter: (param) => {
       return parseInt(param);
     },
-    default: (param, connection, actionTemplate) => {
+    default: (param) => {
       return 1;
     },
   },
@@ -246,10 +247,10 @@ action.inputs = {
       nestedInput: {
         required: true,
         default: 1,
-        validator: (param, connection, actionTemplate) => {
+        validator: (param) => {
           if (param < 0) { throw new Error('must be > 0') }
         },
-        formatter: (param, connection, actionTemplate) => {
+        formatter: (param) => {
           return parseInt(param);
         },
       },
@@ -263,14 +264,14 @@ The properties of an input are:
 
 - `required` (boolean)
   - Default: `false`
-- `formatter = function(param, connection, actionTemplate)`
+- `formatter = function(param)`
   - will return the new value of the param
   - Default: The parameter is not reformatted
-- `default = function(param, connection, actionTemplate)`
+- `default = function(param)`
   - will return the default value of the param
   - you can also have a static assignment for `default` father than a function, ie: `default: 123`
   - Default: Parameter has no default value
-- `validator = function(param, connection, actionTemplate)`
+- `validator = function(param)`
   - should return true, null, or undefined (return nothing) if validation passed
   - should throw an error message if validation fails which will be returned to the client
   - Default: Parameter is always valid
@@ -283,7 +284,7 @@ You can define `config.general.missingParamChecks = [null, '', undefined]` to ch
 
 Since all properties of an input are optional, the smallest possible definition of an input is: `name : {}`. However, you should usually specify that an input is required (or not), ie: `{`name: {required: false}`}`.</p>
 
-The methods `default`, `formatter`, and `validator` have the api object set as `this` within their scopes. This means that you can define common formatters within middleware and reference them in each action.</p>
+The methods `default`, `formatter`, and `validator` have the actionProcessor set as `this` within their scopes. You'll have access to the action's class, the connection, etc - the same as data on the Action' s run method if you need it though `this.connection` and `this.actionTemplate`.
 
 The methods are applied in this order:</p>
 
@@ -298,7 +299,7 @@ Here's an example...
 moneyInCents: {
   required:  true,
   default:   (p) => { return 0 },
-  formatter: (p) => { return parseFloat(p) },
+  formatter: (p) => parseFloat(p),
   validator: (p) => {
     if(isNaN(parseFloat(p)){ throw new Error('not a number') }
     if(p < 0){ throw new Error('money cannot be negative') }
