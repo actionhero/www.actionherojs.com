@@ -166,7 +166,7 @@ class ValidatedAction extends Action {
 
     // (required) a hash of all the inputs this action will accept
     // any inputs provided to the action not in this hash will be stripped
-    (this.inputs = {
+    this.inputs = {
       multiplier: {
         required: false,
         validator: (param) => {
@@ -181,11 +181,12 @@ class ValidatedAction extends Action {
           return 1;
         },
       },
-    }),
-      // any middleware to apply before/after this action
-      // global middleware will be applied automatically
-      // default []
-      (this.middleware = []);
+    };
+
+    // any middleware to apply before/after this action
+    // global middleware will be applied automatically
+    // default []
+    this.middleware = [];
 
     // an example response
     // default: {}
@@ -283,7 +284,7 @@ You can define `config.general.missingParamChecks = [null, '', undefined]` to ch
 
 Since all properties of an input are optional, the smallest possible definition of an input is: `name : {}`. However, you should usually specify that an input is required (or not), ie: `{`name: {required: false}`}`.</p>
 
-The methods `default`, `formatter`, and `validator` have the api object set as `this` within their scopes. This means that you can define common formatters within middleware and reference them in each action.</p>
+The methods `default`, `formatter`, and `validator` have the actionProcessor set as `this` within their scopes. You'll have access to the action's class, the connection, etc - the same as data on the Action' s run method if you need it though `this.connection` and `this.actionTemplate`.
 
 The methods are applied in this order:</p>
 
