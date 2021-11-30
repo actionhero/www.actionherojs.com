@@ -6,6 +6,17 @@ One of the ways to upgrade your project is to generate a new project using the l
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
+## Upgrading from v27 to v28
+
+**Strongly Typed Config**
+
+The biggest change in Actionhero v28 is that Actionhero's codebase now has no implicit `any` Typescript types. This means that all of Actionhero is strongly Typed! The largest change was how we now type `./config` files so that they can extend the type of the global config object using modules.
+
+To upgrade from v27 to v28 the fastest way forward may be to delete your `./src/config` directory and re-initialize your actionhero project with `npx actionhero generate .`, and then re-apply your changes. Otherwise, you should copy and paste the config files from Actionhero's source () keeping the following in mind:
+
+- replace any `..` with `"actionhero"`
+- the previous files `./src/config/servers/web.ts` and `./src/config/servers/websocket.ts` have been moved to `./src/config/web.ts` and `./src/config/websocket.ts` respectively to match their new namespace config locations. There is no more `config.servers.web` - it's `config.web` now.
+
 ## Upgrading from v26 to v27
 
 **Spec Helper Type changes**
