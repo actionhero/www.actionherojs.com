@@ -17,6 +17,8 @@ To upgrade from v27 to v28 the fastest way forward may be to delete your `./src/
 - replace any `..` with `"actionhero"`
 - the previous files `./src/config/servers/web.ts` and `./src/config/servers/websocket.ts` have been moved to `./src/config/web.ts` and `./src/config/websocket.ts` respectively to match their new namespace config locations. There is no more `config.servers.web` - it's `config.web` now.
 
+An example of the required changes can be seen [here](https://github.com/actionhero/actionhero-tutorial/pull/263).
+
 ## Upgrading from v26 to v27
 
 **Spec Helper Type changes**
