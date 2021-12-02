@@ -41,9 +41,9 @@ On unix/OSX operating systems, symlinks for both files and folders will be follo
 
 ## Web Clients
 
-- `Cache-Control` and `Expires` or respectively `ETag` headers (depending on configuration) will be sent with it's caching or revalidation time defined by `config.servers.web.flatFileCacheDuration`
+- `Cache-Control` and `Expires` or respectively `ETag` headers (depending on configuration) will be sent with it's caching or revalidation time defined by `config.web.flatFileCacheDuration`
 - Content-Types for files will attempt to be determined using the [mime package](https://npmjs.org/package/mime)
-- Web clients may request `connection.params.file` directly within an action which makes use of `api.sendFile`, or if they are under the `config.servers.web.urlPathForFiles` route, the file will be looked up as if the route matches the directory structure under `flatFileDirectory`.
+- Web clients may request `connection.params.file` directly within an action which makes use of `api.sendFile`, or if they are under the `config.web.urlPathForFiles` route, the file will be looked up as if the route matches the directory structure under `flatFileDirectory`.
 
 ## Non-web Clients
 

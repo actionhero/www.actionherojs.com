@@ -74,14 +74,13 @@ The load order of configs is:
 
 - default values in `/config`
 - environment-specific values in `/config`
-- options passed in to boot with `Actionhero.start({configChanges: configChanges})`
 
-You can `{configChanges: {}}` to a new Actionhero.Process' `start` or `initialize` methods. This can be helpful when creating tests. When using CLI commands, you can also set `process.env.configChanges` or pass `--configChanges` on the command line. In these cases, `configChanges` should be stringified JSON.
+When using CLI commands, you can also set `process.env.ACTIONHERO_CONFIG_OVERRIDES`. In these cases, `ACTIONHERO_CONFIG_OVERRIDES` should be stringified JSON.
 
 ```ts
 // from ./config/namespace.js
 export const DEFAULT = {
-  namespace: function (api) {
+  namespace: function () {
     return {
       enabled: true,
       safe: false,
@@ -90,7 +89,7 @@ export const DEFAULT = {
 };
 
 export const production = {
-  namespace: function (api) {
+  namespace: function () {
     return {
       safe: true,
     };

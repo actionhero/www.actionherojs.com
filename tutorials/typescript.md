@@ -220,7 +220,7 @@ The config module (it is a module now!) produces a static object with your confi
 
 To upgrade your config:
 
-- Change all of the exports, per above. When exporting the default config, use `DEFAULT` (all caps), ie: `export const DEFAULT = {config: { ... }}`
+- Change all of the exports, per above. When exporting the default config, use `DEFAULT` (all caps), ie: `export const DEFAULT = {{ ... }}`
 - Update your paths in `config/general` , ie:
 
 ```json
