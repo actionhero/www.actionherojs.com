@@ -6,7 +6,7 @@ The normal way to deal with configuration changes is to use the files in `/confi
 
 ```js
 export const DEFAULT = {
-  general: (config) => {
+  general: () => {
     return {
       //...
       developmentMode: true,
@@ -16,7 +16,7 @@ export const DEFAULT = {
 };
 
 export const production = {
-  general: (config) => {
+  general: () => {
     return {
       developmentMode: false,
     };

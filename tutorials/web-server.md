@@ -190,7 +190,7 @@ config.web.rootEndpointType = "file";
 
 ```ts
 export const DEFAULT = {
-  routes: (config) => {
+  routes: () => {
     return {
       get: [
         { path: ‘/stuff/statusPage', action: 'status' }
@@ -206,7 +206,7 @@ For a route to match, all params must be satisfied. So, if you expect a route to
 
 ```ts
 export const DEFAULT = {
-  routes: (config) => {
+  routes: () => {
     return {
       all: [
         { path: "/cache/:key/:value", action: "cacheTest" },
@@ -223,7 +223,7 @@ Routes will match the newest version of `apiVersion`. If you want to have a spec
 
 ```ts
 export const DEFAULT = {
-  routes: (config) => {
+  routes: () => {
     return {
       get: [
         { path: "/myAction/old", action: "myAction", apiVersion: 1 },
@@ -304,7 +304,7 @@ You have to map the specified public folder within the "dir" parameter, relative
 
 ```ts
 export const DEFAULT = {
-  routes: (config) => {
+  routes: () => {
     return {
       get: [
         { path: "/users", action: "usersList" }, // (GET) /api/users
