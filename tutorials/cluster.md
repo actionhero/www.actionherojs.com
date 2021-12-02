@@ -30,7 +30,7 @@ Two options have been added to the `config/redis.ts` config file to support this
 
 **WARNING**
 
-RPC calls are authenticated against `config.serverToken` and communication happens over redis pub/sub. BE CAREFUL, as you can call _any_ method within the API namespace on an Actionhero server, including shutdown() and read _any_ data on that node.
+RPC calls are authenticated against `config.general.serverToken` and communication happens over redis pub/sub. BE CAREFUL, as you can call _any_ method within the API namespace on an Actionhero server, including shutdown() and read _any_ data on that node.
 
 ## Connections
 

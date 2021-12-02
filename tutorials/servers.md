@@ -23,7 +23,7 @@ module.exports = class MyServer extends Server {
       sendWelcomeMessage: false,
       verbs: [],
     };
-    // this.config will be set to equal config.servers[this.type]
+    // this.config will be set to equal config[this.type]
   }
 
   async initialize() {
@@ -83,7 +83,7 @@ server.sendMessage = (connection, message) => {
 
 ## Options and Attributes
 
-A server defines `attributes` which define it's behavior. Variables like `canChat` are defined here. `options` are passed in, and come from `config.servers[serverName]`. These can be new variables (like https?) or they can also overwrite the set `attributes`.
+A server defines `attributes` which define it's behavior. Variables like `canChat` are defined here. `options` are passed in, and come from `config[serverName]`. These can be new variables (like https?) or they can also overwrite the set `attributes`.
 The required attributes are provided in a generated server.
 
 ## Verbs

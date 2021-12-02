@@ -17,10 +17,10 @@ Notes:
 // Worker => \`ACTIONHERO_ROLE='worker' npm start\`
 // Server => \`ACTIONHERO_ROLE='server' npm start\`
 
-// config/tasks.js
+// config/tasks.ts
 
 exports.production = {
-  tasks: function (api) {
+  tasks: function () {
     // default to config for 'server'
     let config = {
       scheduler: false,
@@ -39,25 +39,23 @@ exports.production = {
   },
 };
 
-// config/servers/web.js
+// config/web.ts
 
 exports.default = {
-  servers: {
-    web: function (api) {
-      config = {
-        enabled: true,
-        secure: false,
-        serverOptions: {},
-        port: process.env.PORT || 8080,
-        // ...
-      };
+  web: function () {
+    config = {
+      enabled: true,
+      secure: false,
+      serverOptions: {},
+      port: process.env.PORT || 8080,
+      // ...
+    };
 
-      if (process.env.ACTIONHERO_ROLE === "worker") {
-        config.enabled = false;
-      }
+    if (process.env.ACTIONHERO_ROLE === "worker") {
+      config.enabled = false;
+    }
 
-      return config;
-    },
+    return config;
   },
 };
 ```
@@ -124,20 +122,18 @@ Here is an example nginx config for interfacing with Actionhero, including using
 - Note some of the extra work you need to have for the websocket upgrade headers (the primus directive)
 
 ```js
-// From \`config/servers/web.js\`
+// From \`config/web.ts`
 
 exports.production = {
-  servers: {
-    web: function (api) {
-      return {
-        port: "/home/USER/www/APP/current/tmp/sockets/actionhero.sock",
-        bindIP: null,
-        metadataOptions: {
-          serverInformation: false,
-          requesterInformation: false,
-        },
-      };
-    },
+  web: function () {
+    return {
+      port: "/home/USER/www/APP/current/tmp/sockets/actionhero.sock",
+      bindIP: null,
+      metadataOptions: {
+        serverInformation: false,
+        requesterInformation: false,
+      },
+    };
   },
 };
 ```
