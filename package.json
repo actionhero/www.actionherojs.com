@@ -29,7 +29,7 @@
     "@types/react": "^17.0.38",
     "babel-eslint": "^10.1.0",
     "glob": "^7.2.0",
-    "jest": "27.4.7",
+    "jest": "27.5.1",
     "next-remote-watch": "^1.0.0",
     "prettier": "^2.5.1",
     "react-test-renderer": "17.0.2",
