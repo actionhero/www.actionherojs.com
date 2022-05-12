@@ -23,41 +23,38 @@ npm test
 # To deploy your app
 npm run build
 npm run start`,
-  easyToUseActions: `import { Action } from 'Actionhero'
+  easyToUseActions: `import { Action, ParamsFrom } from "actionhero";
 
 export class Greeting extends Action {
-  constructor () {
-    super()
-    this.name = 'greeting'
-    this.description = 'I say hello'
-    this.inputs = {
-      firstName: { required: true }
-    }
-    this.outputExample = { message: "Hello, Evan!" }
-  }
+  name = "greeting";
+  description = "I say hello";
+  inputs = {
+    firstName: { required: true },
+  };
+  outputExample = { message: "Hello, Evan!" };
 
-  async run () {
-    return { message: \`Hello, \${firstName}\` }
+  async run({ params }: { params: ParamsFrom<Greeting> }) {
+    return { message: \`Hello, \${params.firstName}\` };
   }
 }`,
-  backgroundTasks: `import { task, Task} from 'actionhero'
+  backgroundTasks: `import { Task, task, ParamsFrom } from 'actionhero'
 
-export class RunAction extends Task {
-  constructor () {
-    super()
-    this.name = 'sendWelcomeEmail'
-    this.description = 'I send an email'
-    this.frequency = 0
-    this.queue = 'default'
-  }
+export class WelcomeEmailTask extends Task {
+  name = 'sendWelcomeEmail'
+  description = 'I send an email'
+  frequency = 0
+  queue = 'default'
+  inputs = {
+    email: { required: true },
+  };
 
-  async run (params) {
-    await api.sendEmail(params)
+  async run (params: ParamsFrom<WelcomeEmailTask>) {
+    await api.sendEmail(params.email)
   }
 }
 
 // to use it
-await task.enqueue("sendWelcomeEmail", {to: 'evan@actionherojs.com'});`,
+await task.enqueue("sendWelcomeEmail", {email: 'evan@actionherojs.com'});`,
   clusterReady:
     "docker run -t -i --rm --publish 8080:8080 actionhero/actionhero",
   routing: `{
