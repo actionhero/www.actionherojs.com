@@ -127,7 +127,7 @@ export default class extends Component<{}, State> {
                 <RedLine />
                 <p>
                   We provide support for corporate & nonprofit customers
-                  starting at a flat rate of $150/hr. Our services include:
+                  starting at a flat rate of $200/hr. Our services include:
                 </p>
                 <RedLine />
                 <ul>
@@ -182,7 +182,7 @@ export default class extends Component<{}, State> {
                 <RedLine />
                 <p>
                   We provide support for corporate & nonprofit customers
-                  starting at a flat rate of $150/hr. Our services include:
+                  starting at a flat rate of $200/hr. Our services include:
                 </p>
                 <RedLine />
                 <ul>
