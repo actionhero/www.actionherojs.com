@@ -310,6 +310,7 @@ export default class extends Component<{}, State> {
                       src="https://docs.google.com/forms/d/e/1FAIpQLSfx6wh2FeOJb-j0Xfj9tj_HVYdyIMeefUTEjI4PxLW88Q_BBQ/viewform?embedded=true"
                       width="100%"
                       height="880"
+                      // @ts-ignore
                       frameborder="0"
                       marginheight="0"
                       marginwidth="0"
