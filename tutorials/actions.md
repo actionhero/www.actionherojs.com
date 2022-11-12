@@ -30,7 +30,7 @@ You can also define more than one action per file if you would like, and extend 
 ```js
 // A compound Action with Shared Inputs
 
-import { Action } from "actionhero";
+import { Action, ParamsFrom } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor() {
@@ -69,7 +69,7 @@ export class UserAdd extends ValidatedAction {
     this.description = "I add a user";
   }
 
-  run(data) {
+  run({ params }: { params: ParamsFrom<UserAdd> }) {
     // your code here
   }
 }
@@ -81,7 +81,7 @@ export class UserDelete extends ValidatedAction {
     this.description = "I delete a user";
   }
 
-  run(data) {
+  run({ params }: { params: ParamsFrom<UserDelete> }) {
     // your code here
   }
 }
@@ -152,7 +152,7 @@ We go into more detail about routes when discussing the [web server](/tutorials/
 The complete set of options an action can have are:
 
 ```js
-import { Action } from "actionhero";
+import { Action, ParamsFrom } from "actionhero";
 
 class ValidatedAction extends Action {
   constructor() {
@@ -210,8 +210,8 @@ class ValidatedAction extends Action {
   }
 
   // (required) the run method of the action
-  async run(data) {
-    const randomNumber = Math.random() * data.params.multiplier;
+  async run({ params }: { params: ParamsFrom<HelloAction> }) {
+    const randomNumber = Math.random() * params.multiplier;
     return { randomNumber };
   }
 }
