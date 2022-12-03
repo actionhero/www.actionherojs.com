@@ -26,11 +26,10 @@ export const production = {
 
 The priority order of configs is:
 
-1.  options passed in to boot with `actionhero.start({configChanges: configChanges})`
-2.  environment-specific values in `/config`
-3.  default values in `/config`
+1.  environment-specific values in `/config`
+2.  default values in `/config`
 
-When building config files of your own, note that an `exports.default` is always required, and any environment overrides are optional. What is exported is a hash which eventually resolves a synchronous function which accepts the `api` variable.
+When building config files of your own, note that an `export const DEFAULT` is always required, and any environment overrides are optional. What is exported is a hash which eventually resolves a synchronous function.
 
 ## Boot Options to find the Config Directory
 
