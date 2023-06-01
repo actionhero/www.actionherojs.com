@@ -28,7 +28,7 @@
     "@types/node": "^18.16.3",
     "@types/react": "^17.0.45",
     "babel-eslint": "^10.1.0",
-    "glob": "^9.3.2",
+    "glob": "^10.2.6",
     "jest": "27.5.1",
     "next-remote-watch": "^2.0.0",
     "prettier": "^2.8.8",
