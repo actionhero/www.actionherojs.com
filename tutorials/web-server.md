@@ -432,33 +432,8 @@ export class Uploader extends Action {
 // what the params look like to an action
 
 { action: 'uploader',
-  file1:
-   { domain: null,
-     _events: null,
-     _maxListeners: 10,
-     size: 5477608,
-     path: '/app/Actionhero/tmp/86b2aa018a9785e20b3f6cea95babcca',
-     name: '1-02 Concentration Enhancing Menu Initializer.mp3',
-     type: 'audio/mp3',
-     hash: false,
-     lastModifiedDate: Wed Feb 13 2013 20:32:49 GMT-0800 (PST),
-     _writeStream:
-      { ... },
-     length: [Getter],
-     filename: [Getter],
-     mime: [Getter] },
-  file2:
-   { domain: null,
-     _events: null,
-     _maxListeners: 10,
-     size: 10439802,
-     path: '/app/Actionhero/tmp/6052010f1d75ceaeb9197a9a759124dc',
-     name: '1-10 There She Is.mp3',
-     type: 'audio/mp3',
-     hash: false,
-     lastModifiedDate: Wed Feb 13 2013 20:32:49 GMT-0800 (PST),
-     _writeStream:
-      { ... },
+  file1: "PersistentFile: 86b2aa018a9785e20b3f6cea95babcca, Original: 1-02 Concentration Enhancing Menu Initializer.mp3, Path: /app/Actionhero/tmp/86b2aa018a9785e20b3f6cea95babcca"
+  file2:"PersistentFile: 6052010f1d75ceaeb9197a9a759124dc, Original: 1-10 There She Is.mp3, Path: /app/Actionhero/tmp/6052010f1d75ceaeb9197a9a759124dc"
   key1: '123',
   key2: '456',
  }
