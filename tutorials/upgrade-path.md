@@ -8,7 +8,7 @@ Actionhero follows [semantic versioning](http://semver.org/). This means that a 
 
 ## Upgrading from v28 to v29
 
-For most users, this breaking change will not be noticeable. In https://github.com/actionhero/actionhero/pull/2541, Actionhero change the internal representation cache objects to remove `readat` and `expiresAt` from the object, and now rely on redis itself for object expiration. Error responses when objects have expired will be changed as well.
+For most users, this breaking change will not be noticeable. In https://github.com/actionhero/actionhero/pull/2541, Actionhero changed the internal representation fo `cache` objects to remove `readAt` and `expireTimestamp`. We now rely on redis itself for object expiration. Error responses when objects have expired will be changed as well.
 
 ## Upgrading from v27 to v28
 
