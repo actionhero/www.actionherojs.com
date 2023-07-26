@@ -6,6 +6,10 @@ One of the ways to upgrade your project is to generate a new project using the l
 
 Actionhero follows [semantic versioning](http://semver.org/). This means that a minor change is a right-most number. A new feature added is the middle number, and a breaking change is the left number. You should expect something in your application to need to be changed if you upgrade a major version.
 
+## Upgrading from v28 to v29
+
+For most users, this breaking change will not be noticeable. In https://github.com/actionhero/actionhero/pull/2541, Actionhero changed the internal representation fo `cache` objects to remove `readAt` and `expireTimestamp`. We now rely on redis itself for object expiration. Error responses when objects have expired will be changed as well.
+
 ## Upgrading from v27 to v28
 
 **Strongly Typed Config**

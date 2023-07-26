@@ -25,10 +25,10 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.3.3",
     "@types/react": "^17.0.45",
     "babel-eslint": "^10.1.0",
-    "glob": "^10.2.6",
+    "glob": "^10.3.1",
     "jest": "27.5.1",
     "next-remote-watch": "^2.0.0",
     "prettier": "^2.8.8",

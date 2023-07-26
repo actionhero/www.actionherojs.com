@@ -42,9 +42,7 @@ export class CacheTest extends Action {
         loadResp: {
           key: "cacheTest_key",
           value: "value",
-          expireTimestamp: 1420953274716,
           createdAt: 1420953269716,
-          readAt: null,
         },
         deleteResp: true,
       },
