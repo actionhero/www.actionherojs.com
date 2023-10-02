@@ -215,7 +215,7 @@ export default class PluginsPage extends DocsPageWithNav {
                   </a>
                   .
                 </p>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>
@@ -224,7 +224,7 @@ export default class PluginsPage extends DocsPageWithNav {
           <Col md={12}>
             {this.section(
               "databases",
-              <PluginTable plugins={plugins.databases} />
+              <PluginTable plugins={plugins.databases} />,
             )}
           </Col>
         </Row>
@@ -251,7 +251,7 @@ export default class PluginsPage extends DocsPageWithNav {
           <Col md={12}>
             {this.section(
               "integrations",
-              <PluginTable plugins={plugins.integrations} />
+              <PluginTable plugins={plugins.integrations} />,
             )}
           </Col>
         </Row>

@@ -53,7 +53,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </a>{" "}
                   to provide a full guide un using the framework.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -64,7 +64,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <a href="/key-concepts">key concepts page</a> first, which
                   will put these tutorials into context.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -242,7 +242,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </p>
                   </Col>
                 </Row>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -311,7 +311,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </p>
                   </Col>
                 </Row>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -424,7 +424,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </p>
                   </Col>
                 </Row>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -542,7 +542,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </p>
                   </Col>
                 </Row>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>

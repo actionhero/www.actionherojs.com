@@ -166,7 +166,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                 </p>
 
                 <Code language="bash">{ExampleBootCode}</Code>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -184,7 +184,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                 </ul>
 
                 <Code language="bash">{InstallInstructions}</Code>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -227,7 +227,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                     here
                   </a>
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -241,7 +241,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   <strong> Servers</strong>, and how Actionhero differs from a
                   traditional MVC-style framework.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -266,7 +266,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   within <code>config/api.js</code> in the{" "}
                   <code>config.general.paths</code> section.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -281,7 +281,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   . This project demonstrates many of the core features of
                   Actionhero in a simple project.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -296,7 +296,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   . You can submit pull requests to the main branch with any
                   updates or changes.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -307,7 +307,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   Actionhero, and therefore may be slightly ahead of the latest
                   release on NPM.
                 </p>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>

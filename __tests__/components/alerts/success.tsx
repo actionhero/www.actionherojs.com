@@ -7,7 +7,7 @@ import SuccessAlert from "../../../components/alerts/success";
 describe("SuccessAlert", () => {
   it("renders the alert", () => {
     const page = TestUtils.renderIntoDocument(
-      <SuccessAlert message="hello world" />
+      <SuccessAlert message="hello world" />,
     );
     const body = ReactDOM.findDOMNode(page).textContent;
 

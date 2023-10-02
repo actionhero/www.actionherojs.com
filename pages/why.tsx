@@ -59,7 +59,7 @@ export default class WhyPage extends DocsPageWithNav {
                   time in choosing and integrating third-party plugins and
                   extensions to deliver these capabilities.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -161,7 +161,7 @@ export default class WhyPage extends DocsPageWithNav {
                   <li>None included for flexibility</li>
                   <li>Plugins integrate with Seqeulize, Mongo, and more</li>
                 </ul>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -302,7 +302,7 @@ export default class WhyPage extends DocsPageWithNav {
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>

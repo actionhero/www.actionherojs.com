@@ -16,7 +16,7 @@ describe("Community", () => {
     ];
 
     const page = TestUtils.renderIntoDocument(
-      <Community releases={releases} />
+      <Community releases={releases} />,
     );
     const body = ReactDOM.findDOMNode(page).textContent;
 
@@ -33,7 +33,7 @@ describe("Community", () => {
     const error = "Oh No!";
 
     const page = TestUtils.renderIntoDocument(
-      <Community releases={releases} error={error} />
+      <Community releases={releases} error={error} />,
     );
     const body = ReactDOM.findDOMNode(page).textContent;
 

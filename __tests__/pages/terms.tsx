@@ -10,7 +10,7 @@ describe("Terms", () => {
     const body = ReactDOM.findDOMNode(page).textContent;
 
     expect(body).toContain(
-      "These Terms and Conditions apply to the use of this website."
+      "These Terms and Conditions apply to the use of this website.",
     );
   });
 });
