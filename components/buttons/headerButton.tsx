@@ -31,7 +31,7 @@ export default class extends Component<Props, State> {
   render() {
     const style = Theme.buttons.header(
       this.props.backgroundColor,
-      this.props.textColor
+      this.props.textColor,
     );
 
     if (this.state.mouseDown === true) {

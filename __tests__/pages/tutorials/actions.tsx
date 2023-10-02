@@ -12,7 +12,7 @@ The core of Actionhero is the Action framework
 describe("Terms", () => {
   it("renders the page", () => {
     const page = TestUtils.renderIntoDocument(
-      <TutorialContainer name="actions" markdown={markdown} />
+      <TutorialContainer name="actions" markdown={markdown} />,
     );
     const body = ReactDOM.findDOMNode(page).textContent;
 

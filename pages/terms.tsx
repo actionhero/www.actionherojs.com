@@ -166,7 +166,7 @@ export default class TermsPage extends DocsPageWithNav {
                   submit to the exclusive jurisdiction of the courts in that
                   State or location.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -238,7 +238,7 @@ export default class TermsPage extends DocsPageWithNav {
                   change this privacy policy from time to time at our sole
                   discretion.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -250,7 +250,7 @@ export default class TermsPage extends DocsPageWithNav {
                     The V2 Apache Licence, and is distributed with the code.
                   </a>
                 </p>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>

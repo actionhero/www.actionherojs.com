@@ -124,7 +124,7 @@ export default class GetStartedPage extends DocsPageWithNav {
                   when to get out of the way so you can customize your stack to
                   fit your needs.
                 </p>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -184,7 +184,7 @@ export class RandomNumber extends Action {
                     Learn more about Actions
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -276,7 +276,7 @@ await task.enqueueAt(10000, "sendWelcomeEmail", { to: "evan@actionherojs.com" })
                     Learn more about Tasks
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -332,7 +332,7 @@ export class DatabaseInit extends Initializer {
                     Learn more about Initializers
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -378,7 +378,7 @@ chatRoom.broadcast({}, "public-chat-room", "welcome to the room");`}</Code>
                     Learn more about Chat
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -405,7 +405,7 @@ chatRoom.broadcast({}, "public-chat-room", "welcome to the room");`}</Code>
                     Learn more about Servers
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
 
             {this.section(
@@ -462,7 +462,7 @@ describe("Action", () => {
                     Learn more about Testing
                   </Button>
                 </div>
-              </div>
+              </div>,
             )}
           </Col>
         </Row>

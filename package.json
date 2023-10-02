@@ -9,7 +9,7 @@
     "url": "https://github.com/Actionhero/www.actionherojs.com.git"
   },
   "engines": {
-    "node": "14"
+    "node": "18"
   },
   "dependencies": {
     "github-api": "^3.4.0",
@@ -44,6 +44,7 @@
     "build": "next build",
     "test": "jest",
     "pretest": "npm run lint",
-    "lint": "prettier --check pages components pageClasses __tests__"
+    "lint": "prettier --check pages components pageClasses __tests__",
+    "pretty": "prettier --write pages components pageClasses __tests__"
   }
 }

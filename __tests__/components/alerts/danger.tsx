@@ -7,7 +7,7 @@ import DangerAlert from "../../../components/alerts/danger";
 describe("DangerAlert", () => {
   it("renders the alert", () => {
     const page = TestUtils.renderIntoDocument(
-      <DangerAlert message="hello world" />
+      <DangerAlert message="hello world" />,
     );
     const body = ReactDOM.findDOMNode(page).textContent;
 

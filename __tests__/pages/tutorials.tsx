@@ -10,7 +10,7 @@ describe("Terms", () => {
     const body = ReactDOM.findDOMNode(page).textContent;
 
     expect(body).toContain(
-      "These tutorials are here to provide a more story-driven guide to how things work"
+      "These tutorials are here to provide a more story-driven guide to how things work",
     );
   });
 });
