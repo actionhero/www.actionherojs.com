@@ -270,7 +270,7 @@ The properties of an input are:
   - Default: `false`
 - `formatter = function(param, name?)`
   - will return the new value of the param
-  - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside your error message
+  - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
   - Default: The parameter is not reformatted
 - `default = function(param)`
   - will return the default value of the param
@@ -279,7 +279,7 @@ The properties of an input are:
 - `validator = function(param, name?)`
   - should return true, null, or undefined (return nothing) if validation passed
   - should throw an error message if validation fails which will be returned to the client
-    - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside your error message
+    - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
   - Default: Parameter is always valid
 - `schema` (object)
   - optional nested inputs definition
