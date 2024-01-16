@@ -4,7 +4,6 @@ import { Row, Col } from "react-bootstrap";
 import { Waypoint } from "react-waypoint";
 import DocsPage from "../../components/layouts/docsPage";
 import Code from "./../../components/code";
-import Link from "next/link";
 import Theme from "./../../components/theme";
 import RedLine from "./../../components/elements/redLine";
 import BigButton from "./../../components/buttons/bigButton";

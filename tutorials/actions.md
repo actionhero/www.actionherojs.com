@@ -270,7 +270,7 @@ The properties of an input are:
   - Default: `false`
 - `formatter = function(param, name?)`
   - will return the new value of the param
-  - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
+    - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
   - Default: The parameter is not reformatted
 - `default = function(param)`
   - will return the default value of the param
@@ -471,7 +471,7 @@ const response = await action.run(
   nameOfAction,
   actionVersion,
   params,
-  connectionProperties
+  connectionProperties,
 );
 ```
 
@@ -495,7 +495,7 @@ export class RecursiveAction extends Action {
     return Object.assign(
       firstActionResponse,
       secondActionResponse,
-      localResponse
+      localResponse,
     );
   }
 }
