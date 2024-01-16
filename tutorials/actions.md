@@ -169,9 +169,9 @@ class ValidatedAction extends Action {
     this.inputs = {
       multiplier: {
         required: false,
-        validator: (param) => {
+        validator: (param, name) => {
           if (param < 0) {
-            throw new Error("must be > 0");
+            throw new Error(`${name} must be > 0`);
           }
         },
         formatter: (param) => {
@@ -228,8 +228,10 @@ action.inputs = {
   // a complex input
   multiplier: {
     required: true,
-    validator: (param) => {
-      if (param < 0) { throw new Error('must be > 0') }
+    validator: (param, name) => {
+      if (param < 0) {
+        throw new Error(`${name} must be > 0`);
+      }
     },
     formatter: (param) => {
       return parseInt(param);
@@ -247,8 +249,10 @@ action.inputs = {
       nestedInput: {
         required: true,
         default: 1,
-        validator: (param) => {
-          if (param < 0) { throw new Error('must be > 0') }
+        validator: (param, name) => {
+          if (param < 0) {
+            throw new Error(`${name} must be > 0`);
+          }
         },
         formatter: (param) => {
           return parseInt(param);
@@ -264,16 +268,18 @@ The properties of an input are:
 
 - `required` (boolean)
   - Default: `false`
-- `formatter = function(param)`
+- `formatter = function(param, name?)`
   - will return the new value of the param
+  - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
   - Default: The parameter is not reformatted
 - `default = function(param)`
   - will return the default value of the param
   - you can also have a static assignment for `default` father than a function, ie: `default: 123`
   - Default: Parameter has no default value
-- `validator = function(param)`
+- `validator = function(param, name?)`
   - should return true, null, or undefined (return nothing) if validation passed
   - should throw an error message if validation fails which will be returned to the client
+    - Tip: Enhance your Error messages by including the `name` of the erroneous paramater inside them
   - Default: Parameter is always valid
 - `schema` (object)
   - optional nested inputs definition
