@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import { Container, Row } from "react-bootstrap";
 import Head from "next/head";
 import Router from "next/router";
@@ -7,7 +7,11 @@ import TopAlert from "../elements/topAlert";
 import Header from "../header";
 import Footer from "../footer";
 
-export default class extends Component {
+interface Props {
+  children?: ReactNode;
+}
+
+export default class extends Component<Props> {
   componentDidMount() {
     Router.events.on("routeChangeComplete", () => {
       //@ts-ignore
@@ -126,6 +130,7 @@ export default class extends Component {
         </Head>
 
         <Container fluid style={commmonSetupStyle}>
+          <TopAlert />
           <Header />
         </Container>
 

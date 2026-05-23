@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import RedLine from "./redLine";
 import Theme from "../theme";
 import { Waypoint } from "react-waypoint";
@@ -9,6 +9,7 @@ interface Props {
   id?: string;
   title: string;
   parent?: any;
+  children?: ReactNode;
 }
 
 export default class extends Component<Props> {

@@ -2,6 +2,8 @@ import ReactMarkdown from "react-markdown/with-html";
 import { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Waypoint } from "react-waypoint";
+import fs from "fs";
+import path from "path";
 import DocsPage from "../../components/layouts/docsPage";
 import Code from "./../../components/code";
 import Theme from "./../../components/theme";
@@ -19,16 +21,23 @@ interface State {
   contentHeight: number;
 }
 
-export default class TutorialPage extends Component<Props, State> {
-  static async getInitialProps(ctx) {
-    const name = ctx.query.name;
-    const markdown = await require(`./../../tutorials/${name}.md`);
-    return {
-      markdown: markdown.default,
-      name,
-    };
-  }
+export async function getStaticPaths() {
+  const tutorialsDir = path.join(process.cwd(), "tutorials");
+  const files = fs.readdirSync(tutorialsDir).filter((f) => f.endsWith(".md"));
+  return {
+    paths: files.map((f) => ({ params: { name: path.parse(f).name } })),
+    fallback: false,
+  };
+}
 
+export async function getStaticProps({ params }) {
+  const name = params.name;
+  const filePath = path.join(process.cwd(), "tutorials", `${name}.md`);
+  const markdown = fs.readFileSync(filePath, "utf8");
+  return { props: { markdown, name } };
+}
+
+export default class TutorialPage extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

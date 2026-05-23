@@ -47,7 +47,7 @@ export default class extends Component<{}, State> {
             <Col md={4}>
               <div style={{ paddingLeft: columnPadding }}>
                 <p>
-                  <Link href="/terms">
+                  <Link legacyBehavior href="/terms">
                     <a style={footerLinkStyle}>Terms</a>
                   </Link>
                 </p>
@@ -101,17 +101,17 @@ export default class extends Component<{}, State> {
             <Col md={4}>
               <div style={{ paddingLeft: columnPadding }}>
                 <p>
-                  <Link href="/why">
+                  <Link legacyBehavior href="/why">
                     <a style={footerLinkStyle}>Why Actionhero</a>
                   </Link>
                 </p>
                 <p>
-                  <Link href="/get-started">
+                  <Link legacyBehavior href="/get-started">
                     <a style={footerLinkStyle}>Get Started</a>
                   </Link>
                 </p>
                 <p>
-                  <Link href="/key-concepts">
+                  <Link legacyBehavior href="/key-concepts">
                     <a style={footerLinkStyle}>Key Concepts</a>
                   </Link>
                 </p>
@@ -124,17 +124,17 @@ export default class extends Component<{}, State> {
                   </a>
                 </p>
                 <p>
-                  <Link href="/solutions">
+                  <Link legacyBehavior href="/solutions">
                     <a style={footerLinkStyle}>Solutions</a>
                   </Link>
                 </p>
                 <p>
-                  <Link href="/community">
+                  <Link legacyBehavior href="/community">
                     <a style={footerLinkStyle}>Community</a>
                   </Link>
                 </p>
                 <p>
-                  <Link href="/downloads">
+                  <Link legacyBehavior href="/downloads">
                     <a style={footerLinkStyle}>Downloads</a>
                   </Link>
                 </p>
