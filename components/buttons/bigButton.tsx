@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "react-bootstrap";
 import Theme from "../theme";
@@ -8,6 +8,7 @@ interface Props {
   textColor: string;
   href?: string;
   size?: "lg" | "sm";
+  children?: ReactNode;
   onClick?: (e) => {};
   variant?:
     | "link"
@@ -67,9 +68,12 @@ export default class extends Component<Props, State> {
         }}
       >
         {this.props.href ? (
-          <Link href={this.props.href}>
+          <Link legacyBehavior href={this.props.href}>
             <a style={{ textDecoration: "none" }}>
-              <Button style={style} size={this.props.size || "lg"} block>
+              <Button
+                style={{ ...style, width: "100%" }}
+                size={this.props.size || "lg"}
+              >
                 {this.props.children}
               </Button>
             </a>
@@ -77,10 +81,9 @@ export default class extends Component<Props, State> {
         ) : (
           <Button
             onClick={this.props.onClick}
-            style={style}
+            style={{ ...style, width: "100%" }}
             variant={this.props.variant || "primary"}
             size={this.props.size || "lg"}
-            block
           >
             {this.props.children}
           </Button>

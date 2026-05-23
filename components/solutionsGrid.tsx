@@ -90,7 +90,7 @@ export default class extends Component<{}, State> {
                 <RedLine />
                 <p>
                   You always have access to the Actionhero team via{" "}
-                  <Link href="/community">
+                  <Link legacyBehavior href="/community">
                     <a>Slack and Github</a>
                   </Link>
                 </p>

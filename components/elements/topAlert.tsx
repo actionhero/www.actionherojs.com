@@ -13,19 +13,20 @@ export default class TopAlert extends Component {
           borderBottom: `5px solid ${Theme.colors.red}`,
         }}
       >
-        <p>
-          <strong>We need your input!</strong>
-          <br />
-          <br />
-          The Actionhero Team is working on our plans for 2020 and would like to
-          solicit input from our community. <br />
-          Please take 5 to complete our{" "}
+        <p style={{ marginBottom: 0 }}>
+          <strong>Meet Keryx</strong>, the successor to Actionhero — a
+          TypeScript framework on Bun that serves one action class over HTTP,
+          WebSockets, the CLI, background tasks, and as an MCP tool for AI
+          agents.{" "}
           <strong>
-            <a href="https://forms.gle/ZMmCqGN7pvgHKdz57" target="_blank">
-              2020 Developer Survey
+            <a
+              href="https://keryxjs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              keryxjs.com →
             </a>
           </strong>
-          ! .
         </p>
       </div>
     );

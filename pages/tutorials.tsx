@@ -79,7 +79,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/actions">
+                      <Link legacyBehavior href="/tutorials/actions">
                         <a>Actions</a>
                       </Link>
                     </h3>
@@ -99,7 +99,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/tasks">
+                      <Link legacyBehavior href="/tutorials/tasks">
                         <a>Tasks</a>
                       </Link>
                     </h3>
@@ -120,7 +120,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/initializers">
+                      <Link legacyBehavior href="/tutorials/initializers">
                         <a>Initializers</a>
                       </Link>
                     </h3>
@@ -142,7 +142,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/middleware">
+                      <Link legacyBehavior href="/tutorials/middleware">
                         <a>Middleware</a>
                       </Link>
                     </h3>
@@ -163,7 +163,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/testing">
+                      <Link legacyBehavior href="/tutorials/testing">
                         <a>Testing</a>
                       </Link>
                     </h3>
@@ -185,7 +185,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/cache">
+                      <Link legacyBehavior href="/tutorials/cache">
                         <a>Cache</a>
                       </Link>
                     </h3>
@@ -207,7 +207,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/chat">
+                      <Link legacyBehavior href="/tutorials/chat">
                         <a>Chat</a>
                       </Link>
                     </h3>
@@ -230,7 +230,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/cli">
+                      <Link legacyBehavior href="/tutorials/cli">
                         <a>CLI</a>
                       </Link>
                     </h3>
@@ -257,7 +257,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/servers">
+                      <Link legacyBehavior href="/tutorials/servers">
                         <a>Servers</a>
                       </Link>
                     </h3>
@@ -280,7 +280,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/web-server">
+                      <Link legacyBehavior href="/tutorials/web-server">
                         <a>Web Server</a>
                       </Link>
                     </h3>
@@ -300,7 +300,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/websocket-server">
+                      <Link legacyBehavior href="/tutorials/websocket-server">
                         <a>Websocket Server</a>
                       </Link>
                     </h3>
@@ -326,7 +326,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/running-actionhero">
+                      <Link legacyBehavior href="/tutorials/running-actionhero">
                         <a>Running Actionhero</a>
                       </Link>
                     </h3>
@@ -347,7 +347,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/config">
+                      <Link legacyBehavior href="/tutorials/config">
                         <a>Configuration</a>
                       </Link>
                     </h3>
@@ -371,7 +371,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/repl-and-debugging">
+                      <Link legacyBehavior href="/tutorials/repl-and-debugging">
                         <a>REPL and Debugging</a>
                       </Link>
                     </h3>
@@ -393,7 +393,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/file-server">
+                      <Link legacyBehavior href="/tutorials/file-server">
                         <a>File Server</a>
                       </Link>
                     </h3>
@@ -414,7 +414,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/logging">
+                      <Link legacyBehavior href="/tutorials/logging">
                         <a>Logging</a>
                       </Link>
                     </h3>
@@ -439,7 +439,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/plugins">
+                      <Link legacyBehavior href="/tutorials/plugins">
                         <a>Plugins</a>
                       </Link>
                     </h3>
@@ -461,7 +461,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/cluster">
+                      <Link legacyBehavior href="/tutorials/cluster">
                         <a>Cluster</a>
                       </Link>
                     </h3>
@@ -485,7 +485,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/production-notes">
+                      <Link legacyBehavior href="/tutorials/production-notes">
                         <a>Production Notes</a>
                       </Link>
                     </h3>
@@ -507,7 +507,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/upgrade-path">
+                      <Link legacyBehavior href="/tutorials/upgrade-path">
                         <a>Upgrade Path</a>
                       </Link>
                     </h3>
@@ -530,7 +530,7 @@ export default class WhyPage extends DocsPageWithNav {
                   </Col>
                   <Col md={9}>
                     <h3>
-                      <Link href="/tutorials/typescript">
+                      <Link legacyBehavior href="/tutorials/typescript">
                         <a>Typescript</a>
                       </Link>
                     </h3>

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
@@ -6,6 +6,7 @@ interface Props {
   language?: string;
   showLineNumbers?: boolean;
   value?: string;
+  children?: ReactNode;
 }
 
 export default class extends Component<Props> {

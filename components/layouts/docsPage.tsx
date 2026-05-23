@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import Page from "./page";
@@ -13,6 +13,7 @@ interface Props {
   links?: Array<any>;
   showSolutions: boolean;
   currentSection?: string;
+  children?: ReactNode;
 }
 
 interface State {
@@ -115,7 +116,7 @@ export default class extends Component<Props, State> {
                     <span style={{ fontWeight: 400 }}>Up Next</span>
                   </h2>
                   <h2 style={Theme.typography.h2}>
-                    <Link href={this.props.links[0].link}>
+                    <Link legacyBehavior href={this.props.links[0].link}>
                       <a>{this.props.links[0].title.replace("» ", "")}</a>
                     </Link>
                   </h2>
