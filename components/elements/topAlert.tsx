@@ -14,17 +14,19 @@ export default class TopAlert extends Component {
         }}
       >
         <p style={{ marginBottom: 0 }}>
-          <strong>Actionhero has a successor!</strong> Check out{" "}
+          <strong>Meet Keryx</strong>, the successor to Actionhero — a
+          TypeScript framework on Bun that serves one action class over HTTP,
+          WebSockets, the CLI, background tasks, and as an MCP tool for AI
+          agents.{" "}
           <strong>
             <a
               href="https://keryxjs.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              keryxjs.com
+              keryxjs.com →
             </a>
-          </strong>{" "}
-          — the next-generation Node.js framework from the Actionhero team.
+          </strong>
         </p>
       </div>
     );
